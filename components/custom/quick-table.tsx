@@ -1,0 +1,445 @@
+'use client';
+
+import type React from 'react';
+import { useState, useEffect } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  Filter,
+  Loader2,
+} from 'lucide-react';
+import { DataProvider } from '@/lib/services/dataProvider';
+import { cn } from '@/lib/utils';
+
+type FilterOperator = 'eq' | 'contains' | 'gt' | 'lt' | 'gte' | 'lte' | 'neq';
+
+// Update interfaces
+interface DataTableProps {
+  dataSource: DataProvider;
+  columns: {
+    key: string;
+    label: string;
+    sortable?: boolean;
+    filterable?: FilterOperator[]; // Changed from boolean to array of allowed operators
+    renderCell?: (value: any) => React.ReactNode; // Add this line
+  }[];
+  actionButtons?: React.ReactNode;
+  onRowClick?: (row: any) => void;
+}
+
+interface FilterValue {
+  value: string;
+  operator: FilterOperator;
+}
+
+interface TempFilter {
+  column: string;
+  operator: FilterOperator;
+  value: string;
+}
+
+export function DataProviderTable({
+  dataSource,
+  columns,
+  actionButtons,
+  onRowClick,
+}: DataTableProps) {
+  const [data, setData] = useState<any[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalRecords, setTotalRecords] = useState(0); // Add this line
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
+  const [search, setSearch] = useState('');
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    direction: 'asc' | 'desc';
+  } | null>(null);
+  const [filters, setFilters] = useState<Record<string, FilterValue[]>>({});
+
+  // Filter modal state
+  const [filterModalOpen, setFilterModalOpen] = useState(false);
+  const [tempFilter, setTempFilter] = useState<TempFilter>({
+    column: '',
+    operator: 'eq',
+    value: '',
+  });
+
+  const getOperatorSymbol = (operator: FilterOperator): string => {
+    switch (operator) {
+      case 'eq':
+        return '==';
+      case 'contains':
+        return '⊃';
+      case 'gt':
+        return '>';
+      case 'lt':
+        return '<';
+      case 'gte':
+        return '≥';
+      case 'lte':
+        return '≤';
+      case 'neq':
+        return '≠';
+      default:
+        return operator;
+    }
+  };
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const { data, totalPages, total } = await dataSource.getList({
+        // Add total to destructuring
+        resource: 'users',
+        pagination: { page: currentPage, perPage: pageSize },
+        sorters: sortConfig
+          ? [{ field: sortConfig.key, order: sortConfig.direction }]
+          : [],
+        search: search,
+        filters: Object.entries(filters).flatMap(([field, values]) =>
+          values.map(({ value, operator }) => ({ field, operator, value })),
+        ),
+        meta: {},
+      });
+      setData(data);
+      setTotalPages(totalPages);
+      setTotalRecords(total); // Add this line
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [sortConfig, filters, currentPage, pageSize]);
+
+  const handleSort = (key: string) => {
+    setSortConfig((current) => {
+      if (current?.key === key) {
+        if (current.direction === 'asc') {
+          return { key, direction: 'desc' };
+        }
+        return null;
+      }
+      return { key, direction: 'asc' };
+    });
+  };
+
+  const removeFilter = (column: string, filterValue: FilterValue) => {
+    setFilters((prev) => ({
+      ...prev,
+      [column]: prev[column].filter(
+        (v) =>
+          !(
+            v.value === filterValue.value && v.operator === filterValue.operator
+          ),
+      ),
+    }));
+  };
+
+  const handleAddFilter = () => {
+    if (!tempFilter.column || !tempFilter.value) return;
+
+    setFilters((prev) => ({
+      ...prev,
+      [tempFilter.column]: [
+        ...(prev[tempFilter.column] || []),
+        { value: tempFilter.value, operator: tempFilter.operator },
+      ],
+    }));
+
+    setTempFilter({ column: '', operator: 'eq', value: '' });
+    setFilterModalOpen(false);
+  };
+
+  return (
+    <div className='space-y-2'>
+      <div className='flex items-center justify-between'>
+        <Input
+          placeholder='Search...'
+          className='max-w-sm'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className='space-x-2'>
+          <Dialog open={filterModalOpen} onOpenChange={setFilterModalOpen}>
+            <DialogTrigger asChild>
+              <Button variant='outline'>
+                <Filter className='mr-2 h-4 w-4' />
+                Filter
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Add Filter</DialogTitle>
+              </DialogHeader>
+              <div className='grid gap-4 py-4'>
+                <div className='grid gap-2'>
+                  <Label>Column</Label>
+                  <Select
+                    value={tempFilter.column}
+                    onValueChange={(value) =>
+                      setTempFilter((prev) => ({ ...prev, column: value }))
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder='Select column' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {columns
+                        .filter(
+                          (col) => col.filterable && col.filterable.length > 0,
+                        )
+                        .map((column) => (
+                          <SelectItem key={column.key} value={column.key}>
+                            {column.label}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {tempFilter.column && (
+                  <div className='grid gap-2'>
+                    <Label>Operator</Label>
+                    <Select
+                      value={tempFilter.operator}
+                      onValueChange={(value) =>
+                        setTempFilter((prev) => ({
+                          ...prev,
+                          operator: value as FilterOperator,
+                        }))
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {columns
+                          .find((col) => col.key === tempFilter.column)
+                          ?.filterable?.map((op) => (
+                            <SelectItem key={op} value={op}>
+                              {op === 'eq' && 'Equals'}
+                              {op === 'contains' && 'Contains'}
+                              {op === 'gt' && 'Greater than'}
+                              {op === 'lt' && 'Less than'}
+                              {op === 'gte' && 'Greater or equal'}
+                              {op === 'lte' && 'Less or equal'}
+                              {op === 'neq' && 'Not equal'}
+                            </SelectItem>
+                          ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
+
+                {tempFilter.column && (
+                  <div className='grid gap-2'>
+                    <Label>Value</Label>
+                    <Input
+                      value={tempFilter.value}
+                      onChange={(e) =>
+                        setTempFilter((prev) => ({
+                          ...prev,
+                          value: e.target.value,
+                        }))
+                      }
+                      placeholder='Enter value...'
+                    />
+                  </div>
+                )}
+              </div>
+              <Button
+                onClick={handleAddFilter}
+                disabled={!tempFilter.column || !tempFilter.value}
+              >
+                Add Filter
+              </Button>
+            </DialogContent>
+          </Dialog>
+          {actionButtons}
+        </div>
+      </div>
+
+      <div className='flex flex-wrap gap-2'>
+        {Object.entries(filters).flatMap(([column, filterValues]) =>
+          filterValues.map((filterValue) => (
+            <Badge
+              key={`${column}-${filterValue.value}-${filterValue.operator}`}
+              variant='secondary'
+            >
+              {column} {getOperatorSymbol(filterValue.operator)}{' '}
+              {filterValue.value}
+              <button
+                className='ml-1 text-xs'
+                onClick={() => removeFilter(column, filterValue)}
+              >
+                ×
+              </button>
+            </Badge>
+          )),
+        )}
+      </div>
+
+      <div className='rounded-md'>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              {columns.map((column) => (
+                <TableHead
+                  key={column.key}
+                  className={cn(
+                    'font-semibold',
+                    column.sortable ? 'cursor-pointer' : '',
+                  )}
+                  onClick={() => column.sortable && handleSort(column.key)}
+                >
+                  {column.label}
+                  {sortConfig?.key === column.key && (
+                    <span>{sortConfig.direction === 'asc' ? ' ▲' : ' ▼'}</span>
+                  )}
+                </TableHead>
+              ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {isLoading ? (
+              <TableRow className='border-none'>
+                <TableCell
+                  colSpan={columns.length}
+                  className='py-8 text-center'
+                >
+                  <div className='flex items-center justify-center'>
+                    <Loader2 className='h-6 w-6 animate-spin' />
+                    <span className='ml-2'>Loading...</span>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ) : data.length === 0 ? (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className='py-8 text-center'
+                >
+                  No data available
+                </TableCell>
+              </TableRow>
+            ) : (
+              data.map((row, index) => (
+                <TableRow
+                  key={index}
+                  className={cn(
+                    onRowClick && 'cursor-pointer hover:bg-muted/50',
+                  )}
+                  onClick={() => onRowClick?.(row)}
+                >
+                  {columns.map((column) => (
+                    <TableCell key={column.key}>
+                      {column.renderCell
+                        ? column.renderCell(row[column.key])
+                        : row[column.key]}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </div>
+
+      <div className='px-2 pt-4'>
+        <div className='flex items-center justify-between text-sm'>
+          <div className='flex items-center space-x-2'>
+            <p className='text-sm font-medium'>Rows per page</p>
+            <Select
+              value={pageSize.toString()}
+              onValueChange={(value) => setPageSize(Number(value))}
+            >
+              <SelectTrigger className='h-8 w-[70px]'>
+                <SelectValue placeholder={pageSize} />
+              </SelectTrigger>
+              <SelectContent side='top'>
+                {[5, 10, 20, 30, 40, 50].map((size) => (
+                  <SelectItem key={size} value={size.toString()}>
+                    {size}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+            >
+              <ChevronsLeft className='h-4 w-4' />
+            </Button>
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <ChevronLeft className='h-4 w-4' />
+            </Button>
+            <span className='text-sm font-medium'>
+              Page {currentPage} of {totalPages}
+            </span>
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            >
+              <ChevronRight className='h-4 w-4' />
+            </Button>
+            <Button
+              variant='outline'
+              size='sm'
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              <ChevronsRight className='h-4 w-4' />
+            </Button>
+          </div>
+        </div>
+        <p className='text-sm text-foreground/60'>
+          Total: {totalRecords} records{' '}
+        </p>
+      </div>
+    </div>
+  );
+}
