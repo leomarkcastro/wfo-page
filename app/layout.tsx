@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import App from './app';
+import { PublicEnvScript } from 'next-runtime-env';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`antialiased`}>{children}</body>
+      <head>
+        <PublicEnvScript />
+      </head>
+      <body className={`antialiased`}>
+        <App>{children}</App>
+      </body>
     </html>
   );
 }

@@ -169,7 +169,7 @@ function TransactionList() {
             key={transaction.name}
             className='flex items-center justify-between p-4'
           >
-            <div className='flex items-center gap-3'>
+            <div className='flex flex-1 items-center gap-3'>
               <span className='text-2xl'>{transaction.icon}</span>
               <div>
                 <p className='font-medium'>{transaction.name}</p>

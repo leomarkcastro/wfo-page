@@ -1,5 +1,7 @@
-import DashboardContent from './dashboard-content';
-
 export default function DashboardPage() {
-  return <DashboardContent />;
+  return (
+    <div className='flex flex-1 flex-col p-4'>
+      <h1>Welcome to WFO</h1>
+    </div>
+  );
 }

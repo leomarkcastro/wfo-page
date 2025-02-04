@@ -1,11 +1,13 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/use-auth';
 
 export default function DashboardPage() {
-  const router = useRouter();
+  const { user } = useAuth();
 
-  router.replace('/admin/dashboard');
-
-  return <p>Hello</p>;
+  return (
+    <div>
+      <p>{JSON.stringify(user)}</p>
+    </div>
+  );
 }

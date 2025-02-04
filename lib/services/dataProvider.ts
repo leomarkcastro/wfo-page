@@ -63,7 +63,6 @@ export interface DataProvider<
     id: string;
     meta: Meta;
   }) => Promise<{ data: TDataOne }>;
-  getApiUrl: () => string;
   // optional methods
   getMany?: (params: {
     resource: string;

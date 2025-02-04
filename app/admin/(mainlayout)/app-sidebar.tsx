@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/sidebar';
 import { create } from 'zustand';
 import Image from 'next/image';
+import { useAuth } from '@/hooks/use-auth';
 
 export const pathLocation = create<{
   pathID: string;
@@ -57,11 +58,11 @@ const generalItems: AppMenuItem[] = [
 ];
 
 export function AppSidebar() {
+  const { logout, loading, user } = useAuth();
   const pathID = pathLocation((state) => state.pathID);
 
   const handleLogout = () => {
-    // Add your logout logic here
-    console.log('Logging out...');
+    logout();
   };
 
   return (
@@ -130,22 +131,28 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <div className='absolute bottom-4 flex w-56 items-center justify-between gap-4 px-4'>
-        <div className='flex items-center gap-3'>
-          <div className='h-8 w-8 rounded-full bg-secondary text-white' />
-          <div className='flex flex-col text-primary-foreground'>
-            <span className='text-sm font-medium'>Fandawa Pure</span>
-            <span className='text-xs text-gray-400'>fandawa@siohioma.com</span>
+      {!loading && (
+        <div className='absolute bottom-4 flex w-full items-center justify-between gap-4 px-4'>
+          <div className='flex flex-1 items-center gap-3'>
+            <div className='h-8 w-8 rounded-full bg-secondary text-white' />
+            <div className='flex flex-col text-primary-foreground'>
+              <span className='max-w-36 truncate text-sm font-medium'>
+                {user?.name}
+              </span>
+              <span className='max-w-36 truncate text-xs text-gray-400'>
+                {user?.email}
+              </span>
+            </div>
           </div>
+          <button
+            onClick={handleLogout}
+            className='text-gray-200 hover:text-white'
+            title='Logout'
+          >
+            <LogOut className='h-6 w-6' />
+          </button>
         </div>
-        <button
-          onClick={handleLogout}
-          className='text-gray-200 hover:text-white'
-          title='Logout'
-        >
-          <LogOut className='h-4 w-4' />
-        </button>
-      </div>
+      )}
     </Sidebar>
   );
 }

@@ -38,8 +38,16 @@ import {
 } from 'lucide-react';
 import { DataProvider } from '@/lib/services/dataProvider';
 import { cn } from '@/lib/utils';
+import { useDebounce } from '@uidotdev/usehooks';
 
-type FilterOperator = 'eq' | 'contains' | 'gt' | 'lt' | 'gte' | 'lte' | 'neq';
+export type FilterOperator =
+  | 'equals'
+  | 'contains'
+  | 'gt'
+  | 'lt'
+  | 'gte'
+  | 'lte'
+  | 'neq';
 
 // Update interfaces
 interface DataTableProps {
@@ -79,6 +87,7 @@ export function DataProviderTable({
   const [pageSize, setPageSize] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search, 500);
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     direction: 'asc' | 'desc';
@@ -89,13 +98,13 @@ export function DataProviderTable({
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [tempFilter, setTempFilter] = useState<TempFilter>({
     column: '',
-    operator: 'eq',
+    operator: 'equals',
     value: '',
   });
 
   const getOperatorSymbol = (operator: FilterOperator): string => {
     switch (operator) {
-      case 'eq':
+      case 'equals':
         return '==';
       case 'contains':
         return '⊃';
@@ -124,7 +133,7 @@ export function DataProviderTable({
         sorters: sortConfig
           ? [{ field: sortConfig.key, order: sortConfig.direction }]
           : [],
-        search: search,
+        search: debouncedSearch,
         filters: Object.entries(filters).flatMap(([field, values]) =>
           values.map(({ value, operator }) => ({ field, operator, value })),
         ),
@@ -138,9 +147,14 @@ export function DataProviderTable({
     }
   };
 
+  // Add this new useEffect before the existing useEffect
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [debouncedSearch, filters, pageSize]);
+
   useEffect(() => {
     fetchData();
-  }, [sortConfig, filters, currentPage, pageSize]);
+  }, [sortConfig, filters, currentPage, pageSize, debouncedSearch]);
 
   const handleSort = (key: string) => {
     setSortConfig((current) => {
@@ -177,7 +191,7 @@ export function DataProviderTable({
       ],
     }));
 
-    setTempFilter({ column: '', operator: 'eq', value: '' });
+    setTempFilter({ column: '', operator: 'equals', value: '' });
     setFilterModalOpen(false);
   };
 
@@ -248,7 +262,7 @@ export function DataProviderTable({
                           .find((col) => col.key === tempFilter.column)
                           ?.filterable?.map((op) => (
                             <SelectItem key={op} value={op}>
-                              {op === 'eq' && 'Equals'}
+                              {op === 'equals' && 'Equals'}
                               {op === 'contains' && 'Contains'}
                               {op === 'gt' && 'Greater than'}
                               {op === 'lt' && 'Less than'}
@@ -388,7 +402,7 @@ export function DataProviderTable({
                 <SelectValue placeholder={pageSize} />
               </SelectTrigger>
               <SelectContent side='top'>
-                {[5, 10, 20, 30, 40, 50].map((size) => (
+                {[1, 5, 10, 20, 30, 40, 50].map((size) => (
                   <SelectItem key={size} value={size.toString()}>
                     {size}
                   </SelectItem>

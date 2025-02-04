@@ -189,7 +189,6 @@ const allData: {
     ];
 
 export const SampleDataProvider: DataProvider = {
-    getApiUrl: () => '/api/sample',
     create: async (args) => {
         return {
             data: allData.find((data) => data.id === parseInt(args.variables)),
@@ -208,10 +207,20 @@ export const SampleDataProvider: DataProvider = {
         let { page, perPage } = args.pagination;
         page = page - 1; // Convert to 0-based index
 
-        // Apply filters
+        // Apply search
         let filteredData = [...allData];
+        if (args.search) {
+            const searchTerm = args.search.toLowerCase();
+            filteredData = filteredData.filter(item =>
+                Object.values(item).some(value =>
+                    value.toString().toLowerCase().includes(searchTerm)
+                )
+            );
+        }
+
+        // Apply filters
         if (args.filters && args.filters.length > 0) {
-            filteredData = allData.filter(item =>
+            filteredData = filteredData.filter(item =>
                 args.filters.every(filter => {
                     // @ts-ignore
                     const value = item[filter.field];
