@@ -2,7 +2,7 @@
 FROM node:18-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Stage 2: Builder
 FROM node:18-alpine AS builder
@@ -18,7 +18,7 @@ WORKDIR /app
 ENV NODE_ENV production
 
 # Copy necessary files
-COPY --from=builder /app/next.config.ts ./
+COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static

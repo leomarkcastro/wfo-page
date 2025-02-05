@@ -85,14 +85,14 @@ export default function DashboardContent() {
             key: 'name',
             label: 'Name',
             sortable: true,
-            filterable: ['contains', 'eq'],
+            filterable: ['contains', 'equals'],
           },
           { key: 'address', label: 'Address' },
           {
             key: 'id',
             label: 'Age',
             sortable: true,
-            filterable: ['eq', 'lt', 'lte', 'gt', 'gte'],
+            filterable: ['equals', 'lt', 'lte', 'gt', 'gte'],
           },
         ]}
         dataSource={SampleDataProvider}

@@ -19,6 +19,7 @@ const createApolloClient = () => {
     cache: new InMemoryCache({
       dataIdFromObject: (object) => {
         // via regex check if id is a digit only, if so return false, else return the id
+        // @ts-ignore
         const id = (object.id || object._id)?.toString();
         if (id && id.match(/^\d+$/)) {
           return false;

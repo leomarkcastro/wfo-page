@@ -4,19 +4,17 @@ import { DataProvider } from '../services/dataProvider';
 import { OrderDirection } from '@/graphql/generated/graphql';
 
 export const MembersDataProvider: DataProvider = {
-    create: async (args) => {
-        return {
-            data: allData.find((data) => data.id === parseInt(args.variables)),
-        };
+    create: async () => {
+        throw new Error("Method not implemented.");
     },
-    deleteOne: async (args) => {
-        return { data: allData.find((data) => data.id === parseInt(args.id)) };
+    deleteOne: async () => {
+        throw new Error("Method not implemented.");
     },
-    update: async (args) => {
-        return { data: allData.find((data) => data.id === parseInt(args.id)) };
+    update: async () => {
+        throw new Error("Method not implemented.");
     },
-    getOne: async (args) => {
-        return { data: allData.find((data) => data.id === parseInt(args.id)) };
+    getOne: async () => {
+        throw new Error("Method not implemented.");
     },
     getList: async (args) => {
 
