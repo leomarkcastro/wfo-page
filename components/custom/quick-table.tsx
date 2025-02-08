@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Table,
   TableBody,
@@ -61,6 +61,7 @@ interface DataTableProps {
   }[];
   actionButtons?: React.ReactNode;
   onRowClick?: (row: any) => void;
+  initialFilters?: Record<string, FilterValue[]>; // Add this line
 }
 
 interface FilterValue {
@@ -79,6 +80,7 @@ export function DataProviderTable({
   columns,
   actionButtons,
   onRowClick,
+  initialFilters = {}, // Add default value
 }: DataTableProps) {
   const [data, setData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -92,7 +94,8 @@ export function DataProviderTable({
     key: string;
     direction: 'asc' | 'desc';
   } | null>(null);
-  const [filters, setFilters] = useState<Record<string, FilterValue[]>>({});
+  const [filters, setFilters] =
+    useState<Record<string, FilterValue[]>>(initialFilters);
 
   // Filter modal state
   const [filterModalOpen, setFilterModalOpen] = useState(false);
@@ -156,6 +159,15 @@ export function DataProviderTable({
     fetchData();
   }, [sortConfig, filters, currentPage, pageSize, debouncedSearch]);
 
+  // Replace the problematic useEffect
+  useEffect(() => {
+    // const filtersChanged =
+    //   JSON.stringify(filters) !== JSON.stringify(initialFilters);
+    // if (filtersChanged) {
+    setFilters(initialFilters);
+    // }
+  }, []);
+
   const handleSort = (key: string) => {
     setSortConfig((current) => {
       if (current?.key === key) {
@@ -204,7 +216,7 @@ export function DataProviderTable({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <div className='space-x-2'>
+        <div className='flex space-x-2'>
           <Dialog open={filterModalOpen} onOpenChange={setFilterModalOpen}>
             <DialogTrigger asChild>
               <Button variant='outline'>
@@ -324,9 +336,12 @@ export function DataProviderTable({
         )}
       </div>
 
+      <p className='text-sm text-foreground/60'>
+        Total: {totalRecords} records{' '}
+      </p>
       <div className='rounded-md'>
         <Table>
-          <TableHeader>
+          <TableHeader className=''>
             <TableRow>
               {columns.map((column) => (
                 <TableHead
@@ -450,9 +465,6 @@ export function DataProviderTable({
             </Button>
           </div>
         </div>
-        <p className='text-sm text-foreground/60'>
-          Total: {totalRecords} records{' '}
-        </p>
       </div>
     </div>
   );

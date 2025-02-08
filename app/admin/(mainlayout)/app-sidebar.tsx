@@ -66,7 +66,7 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className='w-64 border-r border-none bg-primary text-primary-foreground'>
+    <Sidebar className='z-30 w-64 border-r border-none bg-primary text-primary-foreground'>
       <SidebarContent className='bg-primary text-primary-foreground'>
         <div className='p-6'>
           <h1 className='flex items-center gap-2 text-xl font-semibold'>

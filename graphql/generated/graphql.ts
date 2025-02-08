@@ -21,6 +21,539 @@ export type Scalars = {
   Upload: { input: any; output: any; }
 };
 
+export type Api_Education_AggregateOutput = {
+  __typename?: 'Api_Education_aggregateOutput';
+  breakdown?: Maybe<Array<Maybe<Api_Education_AggregateOutputBreakdown>>>;
+};
+
+export type Api_Education_AggregateOutputBreakdown = {
+  __typename?: 'Api_Education_aggregateOutputBreakdown';
+  counts: Array<Maybe<Api_Education_AggregateOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Education_AggregateOutputBreakdownCounts = {
+  __typename?: 'Api_Education_aggregateOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Education_CreateOutput = {
+  __typename?: 'Api_Education_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Education_DeleteOutput = {
+  __typename?: 'Api_Education_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Education_GetOutput = {
+  __typename?: 'Api_Education_getOutput';
+  data?: Maybe<Api_Education_GetOutputData>;
+};
+
+export type Api_Education_GetOutputData = {
+  __typename?: 'Api_Education_getOutputData';
+  achievement?: Maybe<Scalars['String']['output']>;
+  dateOfAchievement?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  schoolName?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Education_ListOutput = {
+  __typename?: 'Api_Education_listOutput';
+  data?: Maybe<Array<Maybe<Api_Education_ListOutputData>>>;
+  page?: Maybe<Api_Education_ListOutputPage>;
+};
+
+export type Api_Education_ListOutputData = {
+  __typename?: 'Api_Education_listOutputData';
+  achievement?: Maybe<Scalars['String']['output']>;
+  dateOfAchievement?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  schoolName?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Education_ListOutputPage = {
+  __typename?: 'Api_Education_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_Education_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Education_ListOutputPageRange = {
+  __typename?: 'Api_Education_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_Education_UpdateOutput = {
+  __typename?: 'Api_Education_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Member_AggregateOutput = {
+  __typename?: 'Api_Member_aggregateOutput';
+  breakdown?: Maybe<Array<Maybe<Api_Member_AggregateOutputBreakdown>>>;
+};
+
+export type Api_Member_AggregateOutputBreakdown = {
+  __typename?: 'Api_Member_aggregateOutputBreakdown';
+  counts: Array<Maybe<Api_Member_AggregateOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Member_AggregateOutputBreakdownCounts = {
+  __typename?: 'Api_Member_aggregateOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Member_CreateOutput = {
+  __typename?: 'Api_Member_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Member_DeleteOutput = {
+  __typename?: 'Api_Member_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Member_GetOutput = {
+  __typename?: 'Api_Member_getOutput';
+  data?: Maybe<Api_Member_GetOutputData>;
+};
+
+export type Api_Member_GetOutputData = {
+  __typename?: 'Api_Member_getOutputData';
+  avatar?: Maybe<Scalars['String']['output']>;
+  business_addressLine1?: Maybe<Scalars['String']['output']>;
+  business_addressLine2?: Maybe<Scalars['String']['output']>;
+  business_city?: Maybe<Scalars['String']['output']>;
+  business_country?: Maybe<Scalars['String']['output']>;
+  business_phoneNumber?: Maybe<Scalars['String']['output']>;
+  business_postalCode?: Maybe<Scalars['String']['output']>;
+  business_state?: Maybe<Scalars['String']['output']>;
+  cell_phoneNumber?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  dental_degree?: Maybe<Scalars['String']['output']>;
+  dental_graduationYear?: Maybe<Scalars['String']['output']>;
+  dental_school?: Maybe<Scalars['String']['output']>;
+  displayName?: Maybe<Scalars['String']['output']>;
+  effectiveDate?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  expirationDate?: Maybe<Scalars['String']['output']>;
+  home_addressLine1?: Maybe<Scalars['String']['output']>;
+  home_addressLine2?: Maybe<Scalars['String']['output']>;
+  home_city?: Maybe<Scalars['String']['output']>;
+  home_country?: Maybe<Scalars['String']['output']>;
+  home_phoneNumber?: Maybe<Scalars['String']['output']>;
+  home_postalCode?: Maybe<Scalars['String']['output']>;
+  home_state?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isBlacklisted?: Maybe<Scalars['Boolean']['output']>;
+  joinDate?: Maybe<Scalars['String']['output']>;
+  lastName?: Maybe<Scalars['String']['output']>;
+  memberPackage?: Maybe<Scalars['String']['output']>;
+  memberType?: Maybe<Scalars['String']['output']>;
+  middleName?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  ortho_degree?: Maybe<Scalars['String']['output']>;
+  ortho_graduationYear?: Maybe<Scalars['String']['output']>;
+  ortho_school?: Maybe<Scalars['String']['output']>;
+  postgraduate_degree?: Maybe<Scalars['String']['output']>;
+  postgraduate_graduationYear?: Maybe<Scalars['String']['output']>;
+  postgraduate_school?: Maybe<Scalars['String']['output']>;
+  rejoinDate?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Member_ListOutput = {
+  __typename?: 'Api_Member_listOutput';
+  data?: Maybe<Array<Maybe<Api_Member_ListOutputData>>>;
+  page?: Maybe<Api_Member_ListOutputPage>;
+};
+
+export type Api_Member_ListOutputData = {
+  __typename?: 'Api_Member_listOutputData';
+  avatar?: Maybe<Scalars['String']['output']>;
+  business_addressLine1?: Maybe<Scalars['String']['output']>;
+  business_addressLine2?: Maybe<Scalars['String']['output']>;
+  business_city?: Maybe<Scalars['String']['output']>;
+  business_country?: Maybe<Scalars['String']['output']>;
+  business_phoneNumber?: Maybe<Scalars['String']['output']>;
+  business_postalCode?: Maybe<Scalars['String']['output']>;
+  business_state?: Maybe<Scalars['String']['output']>;
+  cell_phoneNumber?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  dental_degree?: Maybe<Scalars['String']['output']>;
+  dental_graduationYear?: Maybe<Scalars['String']['output']>;
+  dental_school?: Maybe<Scalars['String']['output']>;
+  displayName?: Maybe<Scalars['String']['output']>;
+  effectiveDate?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  expirationDate?: Maybe<Scalars['String']['output']>;
+  home_addressLine1?: Maybe<Scalars['String']['output']>;
+  home_addressLine2?: Maybe<Scalars['String']['output']>;
+  home_city?: Maybe<Scalars['String']['output']>;
+  home_country?: Maybe<Scalars['String']['output']>;
+  home_phoneNumber?: Maybe<Scalars['String']['output']>;
+  home_postalCode?: Maybe<Scalars['String']['output']>;
+  home_state?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isBlacklisted?: Maybe<Scalars['Boolean']['output']>;
+  joinDate?: Maybe<Scalars['String']['output']>;
+  lastName?: Maybe<Scalars['String']['output']>;
+  memberPackage?: Maybe<Scalars['String']['output']>;
+  memberType?: Maybe<Scalars['String']['output']>;
+  middleName?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  ortho_degree?: Maybe<Scalars['String']['output']>;
+  ortho_graduationYear?: Maybe<Scalars['String']['output']>;
+  ortho_school?: Maybe<Scalars['String']['output']>;
+  postgraduate_degree?: Maybe<Scalars['String']['output']>;
+  postgraduate_graduationYear?: Maybe<Scalars['String']['output']>;
+  postgraduate_school?: Maybe<Scalars['String']['output']>;
+  rejoinDate?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Member_ListOutputPage = {
+  __typename?: 'Api_Member_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_Member_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Member_ListOutputPageRange = {
+  __typename?: 'Api_Member_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_Member_UpdateOutput = {
+  __typename?: 'Api_Member_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Sync_UsersOutput = {
+  __typename?: 'Api_Sync_usersOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Education_AggregateInput = {
+  data: Api_Education_AggregateInputData;
+};
+
+export type Api_Education_AggregateInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_Education_AggregateInputDataPage>;
+};
+
+export type Api_Education_AggregateInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Education_AggregateInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Education_AggregateInputDataPageSort>;
+};
+
+export type Api_Education_AggregateInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Education_AggregateInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Education_CreateInput = {
+  data: Api_Education_CreateInputData;
+};
+
+export type Api_Education_CreateInputData = {
+  data: Array<InputMaybe<Api_Education_CreateInputDataData>>;
+};
+
+export type Api_Education_CreateInputDataData = {
+  achievement: Scalars['String']['input'];
+  dateOfAchievement: Scalars['String']['input'];
+  schoolName: Scalars['String']['input'];
+  userId: Scalars['String']['input'];
+};
+
+export type Api_Education_DeleteInput = {
+  data: Api_Education_DeleteInputData;
+};
+
+export type Api_Education_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_Education_GetInput = {
+  data: Api_Education_GetInputData;
+};
+
+export type Api_Education_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_Education_ListInput = {
+  data: Api_Education_ListInputData;
+};
+
+export type Api_Education_ListInputData = {
+  page?: InputMaybe<Api_Education_ListInputDataPage>;
+};
+
+export type Api_Education_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Education_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Education_ListInputDataPageSort>;
+};
+
+export type Api_Education_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Education_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Education_UpdateInput = {
+  data: Api_Education_UpdateInputData;
+};
+
+export type Api_Education_UpdateInputData = {
+  data: Array<InputMaybe<Api_Education_UpdateInputDataData>>;
+};
+
+export type Api_Education_UpdateInputDataData = {
+  data: Api_Education_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_Education_UpdateInputDataDataData = {
+  achievement?: InputMaybe<Scalars['String']['input']>;
+  dateOfAchievement?: InputMaybe<Scalars['String']['input']>;
+  schoolName?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Member_AggregateInput = {
+  data: Api_Member_AggregateInputData;
+};
+
+export type Api_Member_AggregateInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_Member_AggregateInputDataPage>;
+};
+
+export type Api_Member_AggregateInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Member_AggregateInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Member_AggregateInputDataPageSort>;
+};
+
+export type Api_Member_AggregateInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Member_AggregateInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Member_CreateInput = {
+  data: Api_Member_CreateInputData;
+};
+
+export type Api_Member_CreateInputData = {
+  data: Array<InputMaybe<Api_Member_CreateInputDataData>>;
+};
+
+export type Api_Member_CreateInputDataData = {
+  business_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  business_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  business_city?: InputMaybe<Scalars['String']['input']>;
+  business_country?: InputMaybe<Scalars['String']['input']>;
+  business_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  business_postalCode?: InputMaybe<Scalars['String']['input']>;
+  business_state?: InputMaybe<Scalars['String']['input']>;
+  cell_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  dental_degree?: InputMaybe<Scalars['String']['input']>;
+  dental_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  dental_school?: InputMaybe<Scalars['String']['input']>;
+  email: Scalars['String']['input'];
+  home_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  home_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  home_city?: InputMaybe<Scalars['String']['input']>;
+  home_country?: InputMaybe<Scalars['String']['input']>;
+  home_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  home_postalCode?: InputMaybe<Scalars['String']['input']>;
+  home_state?: InputMaybe<Scalars['String']['input']>;
+  isBlacklisted?: InputMaybe<Scalars['Boolean']['input']>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  memberPackage?: InputMaybe<Scalars['String']['input']>;
+  memberType?: InputMaybe<Scalars['String']['input']>;
+  middleName?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  ortho_degree?: InputMaybe<Scalars['String']['input']>;
+  ortho_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  ortho_school?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Member_DeleteInput = {
+  data: Api_Member_DeleteInputData;
+};
+
+export type Api_Member_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_Member_GetInput = {
+  data: Api_Member_GetInputData;
+};
+
+export type Api_Member_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_Member_ListInput = {
+  data: Api_Member_ListInputData;
+};
+
+export type Api_Member_ListInputData = {
+  page?: InputMaybe<Api_Member_ListInputDataPage>;
+};
+
+export type Api_Member_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Member_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Member_ListInputDataPageSort>;
+};
+
+export type Api_Member_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Member_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Member_UpdateInput = {
+  data: Api_Member_UpdateInputData;
+};
+
+export type Api_Member_UpdateInputData = {
+  data: Array<InputMaybe<Api_Member_UpdateInputDataData>>;
+};
+
+export type Api_Member_UpdateInputDataData = {
+  data: Api_Member_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_Member_UpdateInputDataDataData = {
+  business_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  business_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  business_city?: InputMaybe<Scalars['String']['input']>;
+  business_country?: InputMaybe<Scalars['String']['input']>;
+  business_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  business_postalCode?: InputMaybe<Scalars['String']['input']>;
+  business_state?: InputMaybe<Scalars['String']['input']>;
+  cell_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  dental_degree?: InputMaybe<Scalars['String']['input']>;
+  dental_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  dental_school?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  home_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  home_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  home_city?: InputMaybe<Scalars['String']['input']>;
+  home_country?: InputMaybe<Scalars['String']['input']>;
+  home_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  home_postalCode?: InputMaybe<Scalars['String']['input']>;
+  home_state?: InputMaybe<Scalars['String']['input']>;
+  isBlacklisted?: InputMaybe<Scalars['Boolean']['input']>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  memberPackage?: InputMaybe<Scalars['String']['input']>;
+  memberType?: InputMaybe<Scalars['String']['input']>;
+  middleName?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  ortho_degree?: InputMaybe<Scalars['String']['input']>;
+  ortho_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  ortho_school?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Sync_UsersInput = {
+  data: Api_Sync_UsersInputData;
+};
+
+export type Api_Sync_UsersInputData = {
+  page?: InputMaybe<Api_Sync_UsersInputDataPage>;
+};
+
+export type Api_Sync_UsersInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Sync_UsersInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Sync_UsersInputDataPageSort>;
+};
+
+export type Api_Sync_UsersInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Sync_UsersInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
 export type AuthenticatedItem = User;
 
 export type BooleanFilter = {
@@ -807,6 +1340,13 @@ export type MailTrackHistoryWhereUniqueInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  api_education_create?: Maybe<Api_Education_CreateOutput>;
+  api_education_delete?: Maybe<Api_Education_DeleteOutput>;
+  api_education_update?: Maybe<Api_Education_UpdateOutput>;
+  api_member_create?: Maybe<Api_Member_CreateOutput>;
+  api_member_delete?: Maybe<Api_Member_DeleteOutput>;
+  api_member_update?: Maybe<Api_Member_UpdateOutput>;
+  api_sync_users?: Maybe<Api_Sync_UsersOutput>;
   authclient_changePassword?: Maybe<Scalars['Boolean']['output']>;
   authclient_login?: Maybe<ClientItemAuthenticationWithPasswordResult>;
   authclient_register?: Maybe<Scalars['Boolean']['output']>;
@@ -839,8 +1379,6 @@ export type Mutation = {
   createUserFlags?: Maybe<Array<Maybe<UserFlag>>>;
   createUserLoginHistories?: Maybe<Array<Maybe<UserLoginHistory>>>;
   createUserLoginHistory?: Maybe<UserLoginHistory>;
-  createUserSubscription?: Maybe<UserSubscription>;
-  createUserSubscriptions?: Maybe<Array<Maybe<UserSubscription>>>;
   createUserSystemFlag?: Maybe<UserSystemFlag>;
   createUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   createUsers?: Maybe<Array<Maybe<User>>>;
@@ -869,8 +1407,6 @@ export type Mutation = {
   deleteUserFlags?: Maybe<Array<Maybe<UserFlag>>>;
   deleteUserLoginHistories?: Maybe<Array<Maybe<UserLoginHistory>>>;
   deleteUserLoginHistory?: Maybe<UserLoginHistory>;
-  deleteUserSubscription?: Maybe<UserSubscription>;
-  deleteUserSubscriptions?: Maybe<Array<Maybe<UserSubscription>>>;
   deleteUserSystemFlag?: Maybe<UserSystemFlag>;
   deleteUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   deleteUsers?: Maybe<Array<Maybe<User>>>;
@@ -901,12 +1437,45 @@ export type Mutation = {
   updateUserFlags?: Maybe<Array<Maybe<UserFlag>>>;
   updateUserLoginHistories?: Maybe<Array<Maybe<UserLoginHistory>>>;
   updateUserLoginHistory?: Maybe<UserLoginHistory>;
-  updateUserSubscription?: Maybe<UserSubscription>;
-  updateUserSubscriptions?: Maybe<Array<Maybe<UserSubscription>>>;
   updateUserSystemFlag?: Maybe<UserSystemFlag>;
   updateUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   updateUsers?: Maybe<Array<Maybe<User>>>;
   user_setFlag?: Maybe<Array<Maybe<UserFlag>>>;
+};
+
+
+export type MutationApi_Education_CreateArgs = {
+  input: Api_Education_CreateInput;
+};
+
+
+export type MutationApi_Education_DeleteArgs = {
+  input: Api_Education_DeleteInput;
+};
+
+
+export type MutationApi_Education_UpdateArgs = {
+  input: Api_Education_UpdateInput;
+};
+
+
+export type MutationApi_Member_CreateArgs = {
+  input: Api_Member_CreateInput;
+};
+
+
+export type MutationApi_Member_DeleteArgs = {
+  input: Api_Member_DeleteInput;
+};
+
+
+export type MutationApi_Member_UpdateArgs = {
+  input: Api_Member_UpdateInput;
+};
+
+
+export type MutationApi_Sync_UsersArgs = {
+  input: Api_Sync_UsersInput;
 };
 
 
@@ -1078,16 +1647,6 @@ export type MutationCreateUserLoginHistoryArgs = {
 };
 
 
-export type MutationCreateUserSubscriptionArgs = {
-  data: UserSubscriptionCreateInput;
-};
-
-
-export type MutationCreateUserSubscriptionsArgs = {
-  data: Array<UserSubscriptionCreateInput>;
-};
-
-
 export type MutationCreateUserSystemFlagArgs = {
   data: UserSystemFlagCreateInput;
 };
@@ -1225,16 +1784,6 @@ export type MutationDeleteUserLoginHistoriesArgs = {
 
 export type MutationDeleteUserLoginHistoryArgs = {
   where: UserLoginHistoryWhereUniqueInput;
-};
-
-
-export type MutationDeleteUserSubscriptionArgs = {
-  where: UserSubscriptionWhereUniqueInput;
-};
-
-
-export type MutationDeleteUserSubscriptionsArgs = {
-  where: Array<UserSubscriptionWhereUniqueInput>;
 };
 
 
@@ -1396,17 +1945,6 @@ export type MutationUpdateUserLoginHistoryArgs = {
 };
 
 
-export type MutationUpdateUserSubscriptionArgs = {
-  data: UserSubscriptionUpdateInput;
-  where: UserSubscriptionWhereUniqueInput;
-};
-
-
-export type MutationUpdateUserSubscriptionsArgs = {
-  data: Array<UserSubscriptionUpdateArgs>;
-};
-
-
 export type MutationUpdateUserSystemFlagArgs = {
   data: UserSystemFlagUpdateInput;
   where: UserSystemFlagWhereUniqueInput;
@@ -1425,6 +1963,11 @@ export type MutationUpdateUsersArgs = {
 
 export type MutationUser_SetFlagArgs = {
   input: User_SetFlagInput;
+};
+
+export type Nf_Sync_Log = {
+  __typename?: 'NF_SYNC_LOG';
+  message: Scalars['String']['output'];
 };
 
 export type NestedStringFilter = {
@@ -1458,6 +2001,12 @@ export type PasswordState = {
 export type Query = {
   __typename?: 'Query';
   ErrorTest?: Maybe<Scalars['String']['output']>;
+  api_education_aggregate?: Maybe<Api_Education_AggregateOutput>;
+  api_education_get?: Maybe<Api_Education_GetOutput>;
+  api_education_list?: Maybe<Api_Education_ListOutput>;
+  api_member_aggregate?: Maybe<Api_Member_AggregateOutput>;
+  api_member_get?: Maybe<Api_Member_GetOutput>;
+  api_member_list?: Maybe<Api_Member_ListOutput>;
   authenticatedItem?: Maybe<AuthenticatedItem>;
   group?: Maybe<Group>;
   groupMember?: Maybe<GroupMember>;
@@ -1498,14 +2047,41 @@ export type Query = {
   userLoginHistories?: Maybe<Array<UserLoginHistory>>;
   userLoginHistoriesCount?: Maybe<Scalars['Int']['output']>;
   userLoginHistory?: Maybe<UserLoginHistory>;
-  userSubscription?: Maybe<UserSubscription>;
-  userSubscriptions?: Maybe<Array<UserSubscription>>;
-  userSubscriptionsCount?: Maybe<Scalars['Int']['output']>;
   userSystemFlag?: Maybe<UserSystemFlag>;
   userSystemFlags?: Maybe<Array<UserSystemFlag>>;
   userSystemFlagsCount?: Maybe<Scalars['Int']['output']>;
   users?: Maybe<Array<User>>;
   usersCount?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type QueryApi_Education_AggregateArgs = {
+  input: Api_Education_AggregateInput;
+};
+
+
+export type QueryApi_Education_GetArgs = {
+  input: Api_Education_GetInput;
+};
+
+
+export type QueryApi_Education_ListArgs = {
+  input: Api_Education_ListInput;
+};
+
+
+export type QueryApi_Member_AggregateArgs = {
+  input: Api_Member_AggregateInput;
+};
+
+
+export type QueryApi_Member_GetArgs = {
+  input: Api_Member_GetInput;
+};
+
+
+export type QueryApi_Member_ListArgs = {
+  input: Api_Member_ListInput;
 };
 
 
@@ -1747,25 +2323,6 @@ export type QueryUserLoginHistoryArgs = {
 };
 
 
-export type QueryUserSubscriptionArgs = {
-  where: UserSubscriptionWhereUniqueInput;
-};
-
-
-export type QueryUserSubscriptionsArgs = {
-  cursor?: InputMaybe<UserSubscriptionWhereUniqueInput>;
-  orderBy?: Array<UserSubscriptionOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: UserSubscriptionWhereInput;
-};
-
-
-export type QueryUserSubscriptionsCountArgs = {
-  where?: UserSubscriptionWhereInput;
-};
-
-
 export type QueryUserSystemFlagArgs = {
   where: UserSystemFlagWhereUniqueInput;
 };
@@ -1955,44 +2512,75 @@ export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Subscription = {
+  __typename?: 'Subscription';
+  nf_sync_log?: Maybe<Nf_Sync_Log>;
+  ping_time?: Maybe<Time>;
+};
+
+export type Time = {
+  __typename?: 'Time';
+  data?: Maybe<Scalars['String']['output']>;
+  iso?: Maybe<Scalars['String']['output']>;
+};
+
 export type User = {
   __typename?: 'User';
-  aaoID?: Maybe<Scalars['String']['output']>;
-  addressLine1?: Maybe<Scalars['String']['output']>;
-  addressLine2?: Maybe<Scalars['String']['output']>;
   adminPassword?: Maybe<PasswordState>;
   avatar?: Maybe<ImageFieldOutput>;
-  city?: Maybe<Scalars['String']['output']>;
-  companyContactEmail?: Maybe<Scalars['String']['output']>;
-  companyContactPerson?: Maybe<Scalars['String']['output']>;
-  companyContactPhone?: Maybe<Scalars['String']['output']>;
-  companyName?: Maybe<Scalars['String']['output']>;
-  country?: Maybe<Scalars['String']['output']>;
+  business_addressLine1?: Maybe<Scalars['String']['output']>;
+  business_addressLine2?: Maybe<Scalars['String']['output']>;
+  business_city?: Maybe<Scalars['String']['output']>;
+  business_country?: Maybe<Scalars['String']['output']>;
+  business_phoneNumber?: Maybe<Scalars['String']['output']>;
+  business_postalCode?: Maybe<Scalars['String']['output']>;
+  business_state?: Maybe<Scalars['String']['output']>;
+  cell_phoneNumber?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  dental_degree?: Maybe<Scalars['String']['output']>;
+  dental_graduationYear?: Maybe<Scalars['String']['output']>;
+  dental_school?: Maybe<Scalars['String']['output']>;
   displayName?: Maybe<Scalars['String']['output']>;
   educationRecords?: Maybe<Array<UserEducationRecord>>;
   educationRecordsCount?: Maybe<Scalars['Int']['output']>;
+  educportal_id?: Maybe<Scalars['String']['output']>;
+  effectiveDate?: Maybe<Scalars['DateTime']['output']>;
   email?: Maybe<Scalars['String']['output']>;
+  expirationDate?: Maybe<Scalars['DateTime']['output']>;
   flags?: Maybe<Array<UserFlag>>;
   flagsCount?: Maybe<Scalars['Int']['output']>;
   groups?: Maybe<Array<GroupMember>>;
   groupsCount?: Maybe<Scalars['Int']['output']>;
+  home_addressLine1?: Maybe<Scalars['String']['output']>;
+  home_addressLine2?: Maybe<Scalars['String']['output']>;
+  home_city?: Maybe<Scalars['String']['output']>;
+  home_country?: Maybe<Scalars['String']['output']>;
+  home_phoneNumber?: Maybe<Scalars['String']['output']>;
+  home_postalCode?: Maybe<Scalars['String']['output']>;
+  home_state?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   isBlacklisted?: Maybe<Scalars['Boolean']['output']>;
+  joinDate?: Maybe<Scalars['DateTime']['output']>;
   lastLogin?: Maybe<Scalars['DateTime']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;
   loginHistory?: Maybe<Array<UserLoginHistory>>;
   loginHistoryCount?: Maybe<Scalars['Int']['output']>;
+  memberPackage?: Maybe<Scalars['String']['output']>;
+  memberType?: Maybe<Scalars['String']['output']>;
+  middleName?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-  phoneNumber?: Maybe<Scalars['String']['output']>;
-  postalCode?: Maybe<Scalars['String']['output']>;
+  netforum_cstKey?: Maybe<Scalars['String']['output']>;
+  netforum_recno?: Maybe<Scalars['String']['output']>;
+  ortho_degree?: Maybe<Scalars['String']['output']>;
+  ortho_graduationYear?: Maybe<Scalars['String']['output']>;
+  ortho_school?: Maybe<Scalars['String']['output']>;
+  postgraduate_degree?: Maybe<Scalars['String']['output']>;
+  postgraduate_graduationYear?: Maybe<Scalars['String']['output']>;
+  postgraduate_school?: Maybe<Scalars['String']['output']>;
+  rejoinDate?: Maybe<Scalars['DateTime']['output']>;
   role?: Maybe<UserRoleType>;
-  state_province?: Maybe<Scalars['String']['output']>;
-  subscriptions?: Maybe<Array<UserSubscription>>;
-  subscriptionsCount?: Maybe<Scalars['Int']['output']>;
   systemFlags?: Maybe<Array<UserSystemFlag>>;
   systemFlagsCount?: Maybe<Scalars['Int']['output']>;
-  wfoID?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2052,20 +2640,6 @@ export type UserLoginHistoryCountArgs = {
 };
 
 
-export type UserSubscriptionsArgs = {
-  cursor?: InputMaybe<UserSubscriptionWhereUniqueInput>;
-  orderBy?: Array<UserSubscriptionOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: UserSubscriptionWhereInput;
-};
-
-
-export type UserSubscriptionsCountArgs = {
-  where?: UserSubscriptionWhereInput;
-};
-
-
 export type UserSystemFlagsArgs = {
   cursor?: InputMaybe<UserSystemFlagWhereUniqueInput>;
   orderBy?: Array<UserSystemFlagOrderByInput>;
@@ -2093,34 +2667,54 @@ export type UserAuthenticationWithPasswordSuccess = {
 };
 
 export type UserCreateInput = {
-  aaoID?: InputMaybe<Scalars['String']['input']>;
-  addressLine1?: InputMaybe<Scalars['String']['input']>;
-  addressLine2?: InputMaybe<Scalars['String']['input']>;
   adminPassword?: InputMaybe<Scalars['String']['input']>;
   avatar?: InputMaybe<ImageFieldInput>;
-  city?: InputMaybe<Scalars['String']['input']>;
-  companyContactEmail?: InputMaybe<Scalars['String']['input']>;
-  companyContactPerson?: InputMaybe<Scalars['String']['input']>;
-  companyContactPhone?: InputMaybe<Scalars['String']['input']>;
-  companyName?: InputMaybe<Scalars['String']['input']>;
-  country?: InputMaybe<Scalars['String']['input']>;
+  business_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  business_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  business_city?: InputMaybe<Scalars['String']['input']>;
+  business_country?: InputMaybe<Scalars['String']['input']>;
+  business_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  business_postalCode?: InputMaybe<Scalars['String']['input']>;
+  business_state?: InputMaybe<Scalars['String']['input']>;
+  cell_phoneNumber?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  dental_degree?: InputMaybe<Scalars['String']['input']>;
+  dental_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  dental_school?: InputMaybe<Scalars['String']['input']>;
   educationRecords?: InputMaybe<UserEducationRecordRelateToManyForCreateInput>;
+  educportal_id?: InputMaybe<Scalars['String']['input']>;
+  effectiveDate?: InputMaybe<Scalars['DateTime']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
+  expirationDate?: InputMaybe<Scalars['DateTime']['input']>;
   flags?: InputMaybe<UserFlagRelateToManyForCreateInput>;
   groups?: InputMaybe<GroupMemberRelateToManyForCreateInput>;
+  home_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  home_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  home_city?: InputMaybe<Scalars['String']['input']>;
+  home_country?: InputMaybe<Scalars['String']['input']>;
+  home_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  home_postalCode?: InputMaybe<Scalars['String']['input']>;
+  home_state?: InputMaybe<Scalars['String']['input']>;
   isBlacklisted?: InputMaybe<Scalars['Boolean']['input']>;
+  joinDate?: InputMaybe<Scalars['DateTime']['input']>;
   lastLogin?: InputMaybe<Scalars['DateTime']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   loginHistory?: InputMaybe<UserLoginHistoryRelateToManyForCreateInput>;
+  memberPackage?: InputMaybe<Scalars['String']['input']>;
+  memberType?: InputMaybe<Scalars['String']['input']>;
+  middleName?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  phoneNumber?: InputMaybe<Scalars['String']['input']>;
-  postalCode?: InputMaybe<Scalars['String']['input']>;
+  netforum_cstKey?: InputMaybe<Scalars['String']['input']>;
+  netforum_recno?: InputMaybe<Scalars['String']['input']>;
+  ortho_degree?: InputMaybe<Scalars['String']['input']>;
+  ortho_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  ortho_school?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  rejoinDate?: InputMaybe<Scalars['DateTime']['input']>;
   role?: InputMaybe<UserRoleType>;
-  state_province?: InputMaybe<Scalars['String']['input']>;
-  subscriptions?: InputMaybe<UserSubscriptionRelateToManyForCreateInput>;
   systemFlags?: InputMaybe<UserSystemFlagRelateToManyForCreateInput>;
-  wfoID?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserEducationRecord = {
@@ -2338,27 +2932,48 @@ export type UserLoginHistoryWhereUniqueInput = {
 };
 
 export type UserOrderByInput = {
-  aaoID?: InputMaybe<OrderDirection>;
-  addressLine1?: InputMaybe<OrderDirection>;
-  addressLine2?: InputMaybe<OrderDirection>;
-  city?: InputMaybe<OrderDirection>;
-  companyContactEmail?: InputMaybe<OrderDirection>;
-  companyContactPerson?: InputMaybe<OrderDirection>;
-  companyContactPhone?: InputMaybe<OrderDirection>;
-  companyName?: InputMaybe<OrderDirection>;
-  country?: InputMaybe<OrderDirection>;
+  business_addressLine1?: InputMaybe<OrderDirection>;
+  business_addressLine2?: InputMaybe<OrderDirection>;
+  business_city?: InputMaybe<OrderDirection>;
+  business_country?: InputMaybe<OrderDirection>;
+  business_phoneNumber?: InputMaybe<OrderDirection>;
+  business_postalCode?: InputMaybe<OrderDirection>;
+  business_state?: InputMaybe<OrderDirection>;
+  cell_phoneNumber?: InputMaybe<OrderDirection>;
   createdAt?: InputMaybe<OrderDirection>;
+  dental_degree?: InputMaybe<OrderDirection>;
+  dental_graduationYear?: InputMaybe<OrderDirection>;
+  dental_school?: InputMaybe<OrderDirection>;
+  educportal_id?: InputMaybe<OrderDirection>;
+  effectiveDate?: InputMaybe<OrderDirection>;
   email?: InputMaybe<OrderDirection>;
+  expirationDate?: InputMaybe<OrderDirection>;
+  home_addressLine1?: InputMaybe<OrderDirection>;
+  home_addressLine2?: InputMaybe<OrderDirection>;
+  home_city?: InputMaybe<OrderDirection>;
+  home_country?: InputMaybe<OrderDirection>;
+  home_phoneNumber?: InputMaybe<OrderDirection>;
+  home_postalCode?: InputMaybe<OrderDirection>;
+  home_state?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   isBlacklisted?: InputMaybe<OrderDirection>;
+  joinDate?: InputMaybe<OrderDirection>;
   lastLogin?: InputMaybe<OrderDirection>;
   lastName?: InputMaybe<OrderDirection>;
+  memberPackage?: InputMaybe<OrderDirection>;
+  memberType?: InputMaybe<OrderDirection>;
+  middleName?: InputMaybe<OrderDirection>;
   name?: InputMaybe<OrderDirection>;
-  phoneNumber?: InputMaybe<OrderDirection>;
-  postalCode?: InputMaybe<OrderDirection>;
+  netforum_cstKey?: InputMaybe<OrderDirection>;
+  netforum_recno?: InputMaybe<OrderDirection>;
+  ortho_degree?: InputMaybe<OrderDirection>;
+  ortho_graduationYear?: InputMaybe<OrderDirection>;
+  ortho_school?: InputMaybe<OrderDirection>;
+  postgraduate_degree?: InputMaybe<OrderDirection>;
+  postgraduate_graduationYear?: InputMaybe<OrderDirection>;
+  postgraduate_school?: InputMaybe<OrderDirection>;
+  rejoinDate?: InputMaybe<OrderDirection>;
   role?: InputMaybe<OrderDirection>;
-  state_province?: InputMaybe<OrderDirection>;
-  wfoID?: InputMaybe<OrderDirection>;
 };
 
 export type UserRelateToOneForCreateInput = {
@@ -2383,79 +2998,6 @@ export type UserRoleTypeNullableFilter = {
   in?: InputMaybe<Array<UserRoleType>>;
   not?: InputMaybe<UserRoleTypeNullableFilter>;
   notIn?: InputMaybe<Array<UserRoleType>>;
-};
-
-export type UserSubscription = {
-  __typename?: 'UserSubscription';
-  endDate?: Maybe<Scalars['DateTime']['output']>;
-  id: Scalars['ID']['output'];
-  metadata?: Maybe<Scalars['String']['output']>;
-  startDate?: Maybe<Scalars['DateTime']['output']>;
-  subscriptionType?: Maybe<Scalars['String']['output']>;
-  user?: Maybe<User>;
-};
-
-export type UserSubscriptionCreateInput = {
-  endDate?: InputMaybe<Scalars['DateTime']['input']>;
-  metadata?: InputMaybe<Scalars['String']['input']>;
-  startDate?: InputMaybe<Scalars['DateTime']['input']>;
-  subscriptionType?: InputMaybe<Scalars['String']['input']>;
-  user?: InputMaybe<UserRelateToOneForCreateInput>;
-};
-
-export type UserSubscriptionManyRelationFilter = {
-  every?: InputMaybe<UserSubscriptionWhereInput>;
-  none?: InputMaybe<UserSubscriptionWhereInput>;
-  some?: InputMaybe<UserSubscriptionWhereInput>;
-};
-
-export type UserSubscriptionOrderByInput = {
-  endDate?: InputMaybe<OrderDirection>;
-  id?: InputMaybe<OrderDirection>;
-  metadata?: InputMaybe<OrderDirection>;
-  startDate?: InputMaybe<OrderDirection>;
-  subscriptionType?: InputMaybe<OrderDirection>;
-};
-
-export type UserSubscriptionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<UserSubscriptionWhereUniqueInput>>;
-  create?: InputMaybe<Array<UserSubscriptionCreateInput>>;
-};
-
-export type UserSubscriptionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<UserSubscriptionWhereUniqueInput>>;
-  create?: InputMaybe<Array<UserSubscriptionCreateInput>>;
-  disconnect?: InputMaybe<Array<UserSubscriptionWhereUniqueInput>>;
-  set?: InputMaybe<Array<UserSubscriptionWhereUniqueInput>>;
-};
-
-export type UserSubscriptionUpdateArgs = {
-  data: UserSubscriptionUpdateInput;
-  where: UserSubscriptionWhereUniqueInput;
-};
-
-export type UserSubscriptionUpdateInput = {
-  endDate?: InputMaybe<Scalars['DateTime']['input']>;
-  metadata?: InputMaybe<Scalars['String']['input']>;
-  startDate?: InputMaybe<Scalars['DateTime']['input']>;
-  subscriptionType?: InputMaybe<Scalars['String']['input']>;
-  user?: InputMaybe<UserRelateToOneForUpdateInput>;
-};
-
-export type UserSubscriptionWhereInput = {
-  AND?: InputMaybe<Array<UserSubscriptionWhereInput>>;
-  NOT?: InputMaybe<Array<UserSubscriptionWhereInput>>;
-  OR?: InputMaybe<Array<UserSubscriptionWhereInput>>;
-  endDate?: InputMaybe<DateTimeNullableFilter>;
-  id?: InputMaybe<IdFilter>;
-  metadata?: InputMaybe<StringFilter>;
-  startDate?: InputMaybe<DateTimeNullableFilter>;
-  subscriptionType?: InputMaybe<StringFilter>;
-  user?: InputMaybe<UserWhereInput>;
-};
-
-export type UserSubscriptionWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type UserSystemFlag = {
@@ -2537,68 +3079,108 @@ export type UserUpdateArgs = {
 };
 
 export type UserUpdateInput = {
-  aaoID?: InputMaybe<Scalars['String']['input']>;
-  addressLine1?: InputMaybe<Scalars['String']['input']>;
-  addressLine2?: InputMaybe<Scalars['String']['input']>;
   adminPassword?: InputMaybe<Scalars['String']['input']>;
   avatar?: InputMaybe<ImageFieldInput>;
-  city?: InputMaybe<Scalars['String']['input']>;
-  companyContactEmail?: InputMaybe<Scalars['String']['input']>;
-  companyContactPerson?: InputMaybe<Scalars['String']['input']>;
-  companyContactPhone?: InputMaybe<Scalars['String']['input']>;
-  companyName?: InputMaybe<Scalars['String']['input']>;
-  country?: InputMaybe<Scalars['String']['input']>;
+  business_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  business_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  business_city?: InputMaybe<Scalars['String']['input']>;
+  business_country?: InputMaybe<Scalars['String']['input']>;
+  business_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  business_postalCode?: InputMaybe<Scalars['String']['input']>;
+  business_state?: InputMaybe<Scalars['String']['input']>;
+  cell_phoneNumber?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  dental_degree?: InputMaybe<Scalars['String']['input']>;
+  dental_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  dental_school?: InputMaybe<Scalars['String']['input']>;
   educationRecords?: InputMaybe<UserEducationRecordRelateToManyForUpdateInput>;
+  educportal_id?: InputMaybe<Scalars['String']['input']>;
+  effectiveDate?: InputMaybe<Scalars['DateTime']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
+  expirationDate?: InputMaybe<Scalars['DateTime']['input']>;
   flags?: InputMaybe<UserFlagRelateToManyForUpdateInput>;
   groups?: InputMaybe<GroupMemberRelateToManyForUpdateInput>;
+  home_addressLine1?: InputMaybe<Scalars['String']['input']>;
+  home_addressLine2?: InputMaybe<Scalars['String']['input']>;
+  home_city?: InputMaybe<Scalars['String']['input']>;
+  home_country?: InputMaybe<Scalars['String']['input']>;
+  home_phoneNumber?: InputMaybe<Scalars['String']['input']>;
+  home_postalCode?: InputMaybe<Scalars['String']['input']>;
+  home_state?: InputMaybe<Scalars['String']['input']>;
   isBlacklisted?: InputMaybe<Scalars['Boolean']['input']>;
+  joinDate?: InputMaybe<Scalars['DateTime']['input']>;
   lastLogin?: InputMaybe<Scalars['DateTime']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   loginHistory?: InputMaybe<UserLoginHistoryRelateToManyForUpdateInput>;
+  memberPackage?: InputMaybe<Scalars['String']['input']>;
+  memberType?: InputMaybe<Scalars['String']['input']>;
+  middleName?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  phoneNumber?: InputMaybe<Scalars['String']['input']>;
-  postalCode?: InputMaybe<Scalars['String']['input']>;
+  netforum_cstKey?: InputMaybe<Scalars['String']['input']>;
+  netforum_recno?: InputMaybe<Scalars['String']['input']>;
+  ortho_degree?: InputMaybe<Scalars['String']['input']>;
+  ortho_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  ortho_school?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
+  postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  rejoinDate?: InputMaybe<Scalars['DateTime']['input']>;
   role?: InputMaybe<UserRoleType>;
-  state_province?: InputMaybe<Scalars['String']['input']>;
-  subscriptions?: InputMaybe<UserSubscriptionRelateToManyForUpdateInput>;
   systemFlags?: InputMaybe<UserSystemFlagRelateToManyForUpdateInput>;
-  wfoID?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>;
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
-  aaoID?: InputMaybe<StringFilter>;
-  addressLine1?: InputMaybe<StringFilter>;
-  addressLine2?: InputMaybe<StringFilter>;
   adminPassword?: InputMaybe<PasswordFilter>;
-  city?: InputMaybe<StringFilter>;
-  companyContactEmail?: InputMaybe<StringFilter>;
-  companyContactPerson?: InputMaybe<StringFilter>;
-  companyContactPhone?: InputMaybe<StringFilter>;
-  companyName?: InputMaybe<StringFilter>;
-  country?: InputMaybe<StringFilter>;
+  business_addressLine1?: InputMaybe<StringFilter>;
+  business_addressLine2?: InputMaybe<StringFilter>;
+  business_city?: InputMaybe<StringFilter>;
+  business_country?: InputMaybe<StringFilter>;
+  business_phoneNumber?: InputMaybe<StringFilter>;
+  business_postalCode?: InputMaybe<StringFilter>;
+  business_state?: InputMaybe<StringFilter>;
+  cell_phoneNumber?: InputMaybe<StringFilter>;
   createdAt?: InputMaybe<DateTimeNullableFilter>;
+  dental_degree?: InputMaybe<StringFilter>;
+  dental_graduationYear?: InputMaybe<StringFilter>;
+  dental_school?: InputMaybe<StringFilter>;
   educationRecords?: InputMaybe<UserEducationRecordManyRelationFilter>;
+  educportal_id?: InputMaybe<StringFilter>;
+  effectiveDate?: InputMaybe<DateTimeNullableFilter>;
   email?: InputMaybe<StringFilter>;
+  expirationDate?: InputMaybe<DateTimeNullableFilter>;
   flags?: InputMaybe<UserFlagManyRelationFilter>;
   groups?: InputMaybe<GroupMemberManyRelationFilter>;
+  home_addressLine1?: InputMaybe<StringFilter>;
+  home_addressLine2?: InputMaybe<StringFilter>;
+  home_city?: InputMaybe<StringFilter>;
+  home_country?: InputMaybe<StringFilter>;
+  home_phoneNumber?: InputMaybe<StringFilter>;
+  home_postalCode?: InputMaybe<StringFilter>;
+  home_state?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   isBlacklisted?: InputMaybe<BooleanFilter>;
+  joinDate?: InputMaybe<DateTimeNullableFilter>;
   lastLogin?: InputMaybe<DateTimeNullableFilter>;
   lastName?: InputMaybe<StringFilter>;
   loginHistory?: InputMaybe<UserLoginHistoryManyRelationFilter>;
+  memberPackage?: InputMaybe<StringFilter>;
+  memberType?: InputMaybe<StringFilter>;
+  middleName?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
-  phoneNumber?: InputMaybe<StringFilter>;
-  postalCode?: InputMaybe<StringFilter>;
+  netforum_cstKey?: InputMaybe<StringFilter>;
+  netforum_recno?: InputMaybe<StringFilter>;
+  ortho_degree?: InputMaybe<StringFilter>;
+  ortho_graduationYear?: InputMaybe<StringFilter>;
+  ortho_school?: InputMaybe<StringFilter>;
+  postgraduate_degree?: InputMaybe<StringFilter>;
+  postgraduate_graduationYear?: InputMaybe<StringFilter>;
+  postgraduate_school?: InputMaybe<StringFilter>;
+  rejoinDate?: InputMaybe<DateTimeNullableFilter>;
   role?: InputMaybe<UserRoleTypeNullableFilter>;
-  state_province?: InputMaybe<StringFilter>;
-  subscriptions?: InputMaybe<UserSubscriptionManyRelationFilter>;
   systemFlags?: InputMaybe<UserSystemFlagManyRelationFilter>;
-  wfoID?: InputMaybe<StringFilter>;
 };
 
 export type UserWhereUniqueInput = {
@@ -2671,43 +3253,94 @@ export type UpdateUserMutationVariables = Exact<{
 
 export type UpdateUserMutation = { __typename?: 'Mutation', updateUser?: { __typename?: 'User', id: string, name?: string | null, lastName?: string | null, displayName?: string | null, email?: string | null, role?: UserRoleType | null, lastLogin?: any | null } | null };
 
-export type UsersQueryVariables = Exact<{
-  where: UserWhereInput;
-  orderBy: Array<UserOrderByInput> | UserOrderByInput;
-  skip: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
+export type Education_ListQueryVariables = Exact<{
+  input: Api_Education_ListInput;
 }>;
 
 
-export type UsersQuery = { __typename?: 'Query', usersCount?: number | null, users?: Array<{ __typename?: 'User', id: string, name?: string | null, lastName?: string | null, displayName?: string | null, email?: string | null, role?: UserRoleType | null, createdAt?: any | null, groupsCount?: number | null, lastLogin?: any | null, loginHistoryCount?: number | null, flagsCount?: number | null, phoneNumber?: string | null, wfoID?: string | null, aaoID?: string | null, addressLine1?: string | null, addressLine2?: string | null, city?: string | null, state_province?: string | null, postalCode?: string | null, country?: string | null, companyName?: string | null, companyContactPerson?: string | null, companyContactPhone?: string | null, companyContactEmail?: string | null, isBlacklisted?: boolean | null, educationRecordsCount?: number | null, subscriptionsCount?: number | null, systemFlagsCount?: number | null }> | null };
+export type Education_ListQuery = { __typename?: 'Query', api_education_list?: { __typename?: 'Api_Education_listOutput', data?: Array<{ __typename?: 'Api_Education_listOutputData', id?: string | null, userId?: string | null, userName?: string | null, schoolName?: string | null, achievement?: string | null, dateOfAchievement?: string | null } | null> | null, page?: { __typename?: 'Api_Education_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Education_listOutputPageRange', from: number, to: number } | null } | null } | null };
 
-export type UserQueryVariables = Exact<{
-  where: UserWhereUniqueInput;
+export type Education_AggregateQueryVariables = Exact<{
+  input: Api_Education_AggregateInput;
 }>;
 
 
-export type UserQuery = { __typename?: 'Query', user?: { __typename?: 'User', id: string, name?: string | null, lastName?: string | null, displayName?: string | null, email?: string | null, role?: UserRoleType | null, createdAt?: any | null, groupsCount?: number | null, lastLogin?: any | null, loginHistoryCount?: number | null, flagsCount?: number | null, phoneNumber?: string | null, wfoID?: string | null, aaoID?: string | null, addressLine1?: string | null, addressLine2?: string | null, city?: string | null, state_province?: string | null, postalCode?: string | null, country?: string | null, companyName?: string | null, companyContactPerson?: string | null, companyContactPhone?: string | null, companyContactEmail?: string | null, isBlacklisted?: boolean | null, educationRecordsCount?: number | null, subscriptionsCount?: number | null, systemFlagsCount?: number | null } | null };
+export type Education_AggregateQuery = { __typename?: 'Query', api_education_aggregate?: { __typename?: 'Api_Education_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_Education_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_Education_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+
+export type Education_GetQueryVariables = Exact<{
+  input: Api_Education_GetInput;
+}>;
+
+
+export type Education_GetQuery = { __typename?: 'Query', api_education_get?: { __typename?: 'Api_Education_getOutput', data?: { __typename?: 'Api_Education_getOutputData', id?: string | null, userId?: string | null, userName?: string | null, schoolName?: string | null, achievement?: string | null, dateOfAchievement?: string | null } | null } | null };
+
+export type Education_CreateMutationVariables = Exact<{
+  input: Api_Education_CreateInput;
+}>;
+
+
+export type Education_CreateMutation = { __typename?: 'Mutation', api_education_create?: { __typename?: 'Api_Education_createOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Education_UpdateMutationVariables = Exact<{
+  input: Api_Education_UpdateInput;
+}>;
+
+
+export type Education_UpdateMutation = { __typename?: 'Mutation', api_education_update?: { __typename?: 'Api_Education_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Education_DeleteMutationVariables = Exact<{
+  input: Api_Education_DeleteInput;
+}>;
+
+
+export type Education_DeleteMutation = { __typename?: 'Mutation', api_education_delete?: { __typename?: 'Api_Education_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Members_ListQueryVariables = Exact<{
+  input: Api_Member_ListInput;
+}>;
+
+
+export type Members_ListQuery = { __typename?: 'Query', api_member_list?: { __typename?: 'Api_Member_listOutput', data?: Array<{ __typename?: 'Api_Member_listOutputData', id?: string | null, email?: string | null, createdAt?: string | null, name?: string | null, middleName?: string | null, lastName?: string | null, displayName?: string | null, avatar?: string | null, home_phoneNumber?: string | null, business_phoneNumber?: string | null, cell_phoneNumber?: string | null, home_addressLine1?: string | null, home_addressLine2?: string | null, home_city?: string | null, home_state?: string | null, home_postalCode?: string | null, home_country?: string | null, business_addressLine1?: string | null, business_addressLine2?: string | null, business_city?: string | null, business_state?: string | null, business_postalCode?: string | null, business_country?: string | null, dental_degree?: string | null, dental_school?: string | null, dental_graduationYear?: string | null, ortho_degree?: string | null, ortho_school?: string | null, ortho_graduationYear?: string | null, postgraduate_degree?: string | null, postgraduate_school?: string | null, postgraduate_graduationYear?: string | null, joinDate?: string | null, rejoinDate?: string | null, effectiveDate?: string | null, expirationDate?: string | null, memberType?: string | null, memberPackage?: string | null, isBlacklisted?: boolean | null } | null> | null, page?: { __typename?: 'Api_Member_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Member_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Members_AggregateQueryVariables = Exact<{
+  input: Api_Member_AggregateInput;
+}>;
+
+
+export type Members_AggregateQuery = { __typename?: 'Query', api_member_aggregate?: { __typename?: 'Api_Member_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_Member_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_Member_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+
+export type Members_GetQueryVariables = Exact<{
+  input: Api_Member_GetInput;
+}>;
+
+
+export type Members_GetQuery = { __typename?: 'Query', api_member_get?: { __typename?: 'Api_Member_getOutput', data?: { __typename?: 'Api_Member_getOutputData', id?: string | null, email?: string | null, createdAt?: string | null, name?: string | null, middleName?: string | null, lastName?: string | null, displayName?: string | null, avatar?: string | null, home_phoneNumber?: string | null, business_phoneNumber?: string | null, cell_phoneNumber?: string | null, home_addressLine1?: string | null, home_addressLine2?: string | null, home_city?: string | null, home_state?: string | null, home_postalCode?: string | null, home_country?: string | null, business_addressLine1?: string | null, business_addressLine2?: string | null, business_city?: string | null, business_state?: string | null, business_postalCode?: string | null, business_country?: string | null, dental_degree?: string | null, dental_school?: string | null, dental_graduationYear?: string | null, ortho_degree?: string | null, ortho_school?: string | null, ortho_graduationYear?: string | null, postgraduate_degree?: string | null, postgraduate_school?: string | null, postgraduate_graduationYear?: string | null, joinDate?: string | null, rejoinDate?: string | null, effectiveDate?: string | null, expirationDate?: string | null, memberType?: string | null, memberPackage?: string | null, isBlacklisted?: boolean | null } | null } | null };
 
 export type Members_CreateMutationVariables = Exact<{
-  data: Array<UserCreateInput> | UserCreateInput;
+  input: Api_Member_CreateInput;
 }>;
 
 
-export type Members_CreateMutation = { __typename?: 'Mutation', createUsers?: Array<{ __typename?: 'User', id: string, name?: string | null, lastName?: string | null, displayName?: string | null, email?: string | null, role?: UserRoleType | null, createdAt?: any | null, groupsCount?: number | null, lastLogin?: any | null, loginHistoryCount?: number | null, flagsCount?: number | null, phoneNumber?: string | null, wfoID?: string | null, aaoID?: string | null, addressLine1?: string | null, addressLine2?: string | null, city?: string | null, state_province?: string | null, postalCode?: string | null, country?: string | null, companyName?: string | null, companyContactPerson?: string | null, companyContactPhone?: string | null, companyContactEmail?: string | null, isBlacklisted?: boolean | null, educationRecordsCount?: number | null, subscriptionsCount?: number | null, systemFlagsCount?: number | null } | null> | null };
+export type Members_CreateMutation = { __typename?: 'Mutation', api_member_create?: { __typename?: 'Api_Member_createOutput', count?: number | null, ids?: Array<string | null> | null } | null };
 
 export type Members_UpdateMutationVariables = Exact<{
-  data: Array<UserUpdateArgs> | UserUpdateArgs;
+  input: Api_Member_UpdateInput;
 }>;
 
 
-export type Members_UpdateMutation = { __typename?: 'Mutation', updateUsers?: Array<{ __typename?: 'User', id: string, name?: string | null, lastName?: string | null, displayName?: string | null, email?: string | null, role?: UserRoleType | null, createdAt?: any | null, groupsCount?: number | null, lastLogin?: any | null, loginHistoryCount?: number | null, flagsCount?: number | null, phoneNumber?: string | null, wfoID?: string | null, aaoID?: string | null, addressLine1?: string | null, addressLine2?: string | null, city?: string | null, state_province?: string | null, postalCode?: string | null, country?: string | null, companyName?: string | null, companyContactPerson?: string | null, companyContactPhone?: string | null, companyContactEmail?: string | null, isBlacklisted?: boolean | null, educationRecordsCount?: number | null, subscriptionsCount?: number | null, systemFlagsCount?: number | null } | null> | null };
+export type Members_UpdateMutation = { __typename?: 'Mutation', api_member_update?: { __typename?: 'Api_Member_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
 
-export type DeleteUsersMutationVariables = Exact<{
-  where: Array<UserWhereUniqueInput> | UserWhereUniqueInput;
+export type Members_DeleteMutationVariables = Exact<{
+  input: Api_Member_DeleteInput;
 }>;
 
 
-export type DeleteUsersMutation = { __typename?: 'Mutation', deleteUsers?: Array<{ __typename?: 'User', id: string, name?: string | null, lastName?: string | null, displayName?: string | null, email?: string | null, role?: UserRoleType | null, createdAt?: any | null, groupsCount?: number | null, lastLogin?: any | null, loginHistoryCount?: number | null, flagsCount?: number | null, phoneNumber?: string | null, wfoID?: string | null, aaoID?: string | null, addressLine1?: string | null, addressLine2?: string | null, city?: string | null, state_province?: string | null, postalCode?: string | null, country?: string | null, companyName?: string | null, companyContactPerson?: string | null, companyContactPhone?: string | null, companyContactEmail?: string | null, isBlacklisted?: boolean | null, educationRecordsCount?: number | null, subscriptionsCount?: number | null, systemFlagsCount?: number | null } | null> | null };
+export type Members_DeleteMutation = { __typename?: 'Mutation', api_member_delete?: { __typename?: 'Api_Member_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Ping_TimeSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Ping_TimeSubscription = { __typename?: 'Subscription', ping_time?: { __typename?: 'Time', iso?: string | null, data?: string | null } | null };
 
 
 export const Authclient_LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ClientItemAuthenticationWithPasswordSuccess"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sessionToken"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ClientItemAuthenticationWithPasswordFailure"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]}}]} as unknown as DocumentNode<Authclient_LoginMutation, Authclient_LoginMutationVariables>;
@@ -2717,8 +3350,16 @@ export const Authclient_ChangePasswordDocument = {"kind":"Document","definitions
 export const Authclient_RequestPasswordResetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_requestPasswordReset"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_requestPasswordReset"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}}]}]}}]} as unknown as DocumentNode<Authclient_RequestPasswordResetMutation, Authclient_RequestPasswordResetMutationVariables>;
 export const Authclient_ResetPasswordDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_resetPassword"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"token"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_resetPassword"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"token"},"value":{"kind":"Variable","name":{"kind":"Name","value":"token"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}]}]}}]} as unknown as DocumentNode<Authclient_ResetPasswordMutation, Authclient_ResetPasswordMutationVariables>;
 export const UpdateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserWhereUniqueInput"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}},{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}}]}}]}}]} as unknown as DocumentNode<UpdateUserMutation, UpdateUserMutationVariables>;
-export const UsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Users"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserWhereInput"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserOrderByInput"}}}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"skip"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"take"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}},{"kind":"Argument","name":{"kind":"Name","value":"orderBy"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orderBy"}}},{"kind":"Argument","name":{"kind":"Name","value":"skip"},"value":{"kind":"Variable","name":{"kind":"Name","value":"skip"}}},{"kind":"Argument","name":{"kind":"Name","value":"take"},"value":{"kind":"Variable","name":{"kind":"Name","value":"take"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"groupsCount"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}},{"kind":"Field","name":{"kind":"Name","value":"loginHistoryCount"}},{"kind":"Field","name":{"kind":"Name","value":"flagsCount"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"wfoID"}},{"kind":"Field","name":{"kind":"Name","value":"aaoID"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state_province"}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPerson"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}},{"kind":"Field","name":{"kind":"Name","value":"educationRecordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"subscriptionsCount"}},{"kind":"Field","name":{"kind":"Name","value":"systemFlagsCount"}}]}},{"kind":"Field","name":{"kind":"Name","value":"usersCount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}]}]}}]} as unknown as DocumentNode<UsersQuery, UsersQueryVariables>;
-export const UserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"User"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserWhereUniqueInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"groupsCount"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}},{"kind":"Field","name":{"kind":"Name","value":"loginHistoryCount"}},{"kind":"Field","name":{"kind":"Name","value":"flagsCount"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"wfoID"}},{"kind":"Field","name":{"kind":"Name","value":"aaoID"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state_province"}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPerson"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}},{"kind":"Field","name":{"kind":"Name","value":"educationRecordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"subscriptionsCount"}},{"kind":"Field","name":{"kind":"Name","value":"systemFlagsCount"}}]}}]}}]} as unknown as DocumentNode<UserQuery, UserQueryVariables>;
-export const Members_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserCreateInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createUsers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"groupsCount"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}},{"kind":"Field","name":{"kind":"Name","value":"loginHistoryCount"}},{"kind":"Field","name":{"kind":"Name","value":"flagsCount"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"wfoID"}},{"kind":"Field","name":{"kind":"Name","value":"aaoID"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state_province"}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPerson"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}},{"kind":"Field","name":{"kind":"Name","value":"educationRecordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"subscriptionsCount"}},{"kind":"Field","name":{"kind":"Name","value":"systemFlagsCount"}}]}}]}}]} as unknown as DocumentNode<Members_CreateMutation, Members_CreateMutationVariables>;
-export const Members_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserUpdateArgs"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateUsers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"groupsCount"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}},{"kind":"Field","name":{"kind":"Name","value":"loginHistoryCount"}},{"kind":"Field","name":{"kind":"Name","value":"flagsCount"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"wfoID"}},{"kind":"Field","name":{"kind":"Name","value":"aaoID"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state_province"}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPerson"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}},{"kind":"Field","name":{"kind":"Name","value":"educationRecordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"subscriptionsCount"}},{"kind":"Field","name":{"kind":"Name","value":"systemFlagsCount"}}]}}]}}]} as unknown as DocumentNode<Members_UpdateMutation, Members_UpdateMutationVariables>;
-export const DeleteUsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteUsers"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserWhereUniqueInput"}}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteUsers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"groupsCount"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}},{"kind":"Field","name":{"kind":"Name","value":"loginHistoryCount"}},{"kind":"Field","name":{"kind":"Name","value":"flagsCount"}},{"kind":"Field","name":{"kind":"Name","value":"phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"wfoID"}},{"kind":"Field","name":{"kind":"Name","value":"aaoID"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state_province"}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"country"}},{"kind":"Field","name":{"kind":"Name","value":"companyName"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPerson"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactPhone"}},{"kind":"Field","name":{"kind":"Name","value":"companyContactEmail"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}},{"kind":"Field","name":{"kind":"Name","value":"educationRecordsCount"}},{"kind":"Field","name":{"kind":"Name","value":"subscriptionsCount"}},{"kind":"Field","name":{"kind":"Name","value":"systemFlagsCount"}}]}}]}}]} as unknown as DocumentNode<DeleteUsersMutation, DeleteUsersMutationVariables>;
+export const Education_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"userName"}},{"kind":"Field","name":{"kind":"Name","value":"schoolName"}},{"kind":"Field","name":{"kind":"Name","value":"achievement"}},{"kind":"Field","name":{"kind":"Name","value":"dateOfAchievement"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Education_ListQuery, Education_ListQueryVariables>;
+export const Education_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Education_AggregateQuery, Education_AggregateQueryVariables>;
+export const Education_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"userName"}},{"kind":"Field","name":{"kind":"Name","value":"schoolName"}},{"kind":"Field","name":{"kind":"Name","value":"achievement"}},{"kind":"Field","name":{"kind":"Name","value":"dateOfAchievement"}}]}}]}}]}}]} as unknown as DocumentNode<Education_GetQuery, Education_GetQueryVariables>;
+export const Education_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_CreateMutation, Education_CreateMutationVariables>;
+export const Education_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_UpdateMutation, Education_UpdateMutationVariables>;
+export const Education_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_DeleteMutation, Education_DeleteMutationVariables>;
+export const Members_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Members_ListQuery, Members_ListQueryVariables>;
+export const Members_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Members_AggregateQuery, Members_AggregateQueryVariables>;
+export const Members_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}}]}}]}}]} as unknown as DocumentNode<Members_GetQuery, Members_GetQueryVariables>;
+export const Members_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_CreateMutation, Members_CreateMutationVariables>;
+export const Members_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_UpdateMutation, Members_UpdateMutationVariables>;
+export const Members_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_DeleteMutation, Members_DeleteMutationVariables>;
+export const Ping_TimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"subscription","name":{"kind":"Name","value":"Ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"iso"}},{"kind":"Field","name":{"kind":"Name","value":"data"}}]}}]}}]} as unknown as DocumentNode<Ping_TimeSubscription, Ping_TimeSubscriptionVariables>;

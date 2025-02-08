@@ -1,37 +1,41 @@
 'use client';
 
-import { QuickForm } from '@/components/custom/quick-form';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useSearchParams, useRouter } from 'next/navigation';
+import TabMainEdit from './TabMainEdit';
+import TabEduc from './TabEduc';
 
 export default function MemberEditPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const currentTab = searchParams.get('tab') || 'account';
+
+  const handleTabChange = (value: string) => {
+    let searchParams = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(searchParams);
+    params.set('tab', value);
+    router.push(`?${params.toString()}`);
+  };
+
   return (
-    <QuickForm
-      gridCols={5}
-      onCancel={() => {
-        window.history.back();
-      }}
-      title='Edit Member'
-      subtitle='Edit member details'
-      fields={[
-        {
-          label: 'Name',
-          name: 'name',
-          type: 'text',
-          required: true,
-          cell: 2,
-          row: 0,
-        },
-        {
-          label: 'Email',
-          name: 'email',
-          type: 'text',
-          required: true,
-          cell: 3,
-          row: 0,
-        },
-      ]}
-      onSubmit={(data) => {
-        console.log(data);
-      }}
-    />
+    <Tabs
+      defaultValue={currentTab}
+      className='w-full'
+      onValueChange={handleTabChange}
+    >
+      <TabsList>
+        <TabsTrigger value='account'>Main Account</TabsTrigger>
+        <TabsTrigger value='education'>Education</TabsTrigger>
+      </TabsList>
+      <p className='p-1 text-xs text-gray-400'>
+        Make sure to save your changes before changing tabs
+      </p>
+      <TabsContent value='account'>
+        <TabMainEdit />
+      </TabsContent>
+      <TabsContent value='education'>
+        <TabEduc />
+      </TabsContent>
+    </Tabs>
   );
 }

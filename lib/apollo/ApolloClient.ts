@@ -1,4 +1,7 @@
-import { ApolloLink } from '@apollo/client';
+import { ApolloLink, split } from '@apollo/client';
+import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { createClient } from 'graphql-ws';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloClient, InMemoryCache } from '@apollo/experimental-nextjs-app-support';
 import axios from 'axios';
@@ -6,6 +9,15 @@ import { buildAxiosFetch } from '@lifeomic/axios-fetch';
 import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
 import { env } from 'next-runtime-env';
 import { AUTHSTORE } from '../store/auth';
+// Create WebSocket link
+const wsLink = typeof window !== 'undefined'
+  ? new GraphQLWsLink(createClient({
+    url: `${env('NEXT_PUBLIC_SERVER_URL')?.startsWith('https') ? 'wss' : 'ws'}://${env('NEXT_PUBLIC_SERVER_URL')?.replace(/^https?:\/\//, '')}${env('NEXT_PUBLIC_GRAPHQL_URL')}`,
+    connectionParams: () => ({
+      authorization: AUTHSTORE.get() ? `Bearer ${AUTHSTORE.get()}` : '',
+    }),
+  }))
+  : null;
 
 const authLink = setContext(async (_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -32,7 +44,22 @@ const fileUploadLink = createUploadLink({
   },
 }) as ApolloLink;
 
-export const apolloLinks = ApolloLink.from([authLink, fileUploadLink]);
+// Split links based on operation
+const splitLink = typeof window !== 'undefined' && wsLink != null
+  ? split(
+    ({ query }) => {
+      const definition = getMainDefinition(query);
+      return (
+        definition.kind === 'OperationDefinition' &&
+        definition.operation === 'subscription'
+      );
+    },
+    wsLink,
+    fileUploadLink
+  )
+  : fileUploadLink;
+
+export const apolloLinks = ApolloLink.from([authLink, splitLink]);
 
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache({

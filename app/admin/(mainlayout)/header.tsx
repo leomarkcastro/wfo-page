@@ -18,7 +18,7 @@ export const AppHeaders = () => {
   return (
     <header
       className={cn(
-        'fixed left-0 top-0 w-full border-b bg-background pl-0 shadow-md transition-[padding]',
+        'fixed left-0 top-0 z-20 w-full border-b bg-background pl-0 shadow-md transition-[padding]',
         open && 'md:pl-64',
       )}
     >

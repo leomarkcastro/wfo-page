@@ -45,19 +45,19 @@ export interface DataProvider<
     resource: string;
     variables: TVariables;
     meta: Meta;
-  }) => Promise<{ data: TDataOne }>;
+  }) => Promise<{ id: string }>;
   update: (params: {
     resource: string;
     id: string;
     variables: TVariables;
     meta: Meta;
-  }) => Promise<{ data: TDataOne }>;
+  }) => Promise<{ id: string }>;
   deleteOne: (params: {
     resource: string;
     id: string;
     variables: TVariables;
     meta: Meta;
-  }) => Promise<{ data: TDataOne }>;
+  }) => Promise<{ id: string }>;
   getOne: (params: {
     resource: string;
     id: string;

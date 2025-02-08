@@ -5,6 +5,7 @@ import { AuthProvider } from '@/hooks/use-auth';
 import { PermissionProvider } from '@/hooks/use-permission';
 import { authBehavior } from '@/lib/authProvider';
 import { permissionProvider } from '@/lib/permissionProvider';
+import { Toaster } from '@/components/ui/toaster';
 
 export default function App({
   children,
@@ -17,6 +18,7 @@ export default function App({
         <PermissionProvider behavior={permissionProvider}>
           {children}
         </PermissionProvider>
+        <Toaster />
       </AuthProvider>
     </ApolloWrapper>
   );

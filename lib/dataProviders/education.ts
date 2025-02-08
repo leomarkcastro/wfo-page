@@ -1,15 +1,11 @@
-import { Members_Create, Members_Delete, Members_Get, Members_List, Members_Update } from '@/graphql/declarations/members';
+import { Education_Create, Education_Delete, Education_Get, Education_List, Education_Update } from '@/graphql/declarations/education';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
-export const MembersDataProvider: DataProvider = {
+export const EducationDataProvider: DataProvider = {
     getList: async (args) => {
-
-        if (args.pagination.page > 1) {
-        }
-
         const data = await apolloClient.query({
-            query: Members_List,
+            query: Education_List,
             variables: {
                 input: {
                     data: {
@@ -30,24 +26,24 @@ export const MembersDataProvider: DataProvider = {
                     }
                 },
             }
-        })
+        });
 
-        let retData = data.data.api_member_list;
-
+        let retData = data.data.api_education_list;
         const total = retData.page.total ?? 0;
         const totalPages = Math.ceil(total / args.pagination.perPage);
 
         return {
-            data: retData.data?.map((user) => user),
+            data: retData.data?.map((education) => education),
             total: total,
             page: args.pagination.page,
             perPage: args.pagination.perPage,
             totalPages: totalPages,
         };
     },
+
     getOne: async (args) => {
         const data = await apolloClient.query({
-            query: Members_Get,
+            query: Education_Get,
             variables: {
                 input: {
                     data: {
@@ -55,15 +51,16 @@ export const MembersDataProvider: DataProvider = {
                     }
                 },
             }
-        })
+        });
 
         return {
-            data: data.data.api_member_get.data
+            data: data.data.api_education_get.data
         };
     },
+
     create: async (args) => {
         const data = await apolloClient.mutate({
-            mutation: Members_Create,
+            mutation: Education_Create,
             variables: {
                 input: {
                     data: {
@@ -73,15 +70,16 @@ export const MembersDataProvider: DataProvider = {
                     }
                 }
             }
-        })
+        });
 
         return {
-            id: data.data.api_member_create.ids[0]
-        }
+            id: data.data.api_education_create.ids[0]
+        };
     },
+
     update: async (args) => {
         const data = await apolloClient.mutate({
-            mutation: Members_Update,
+            mutation: Education_Update,
             variables: {
                 input: {
                     data: {
@@ -94,15 +92,16 @@ export const MembersDataProvider: DataProvider = {
                     }
                 }
             }
-        })
+        });
 
         return {
-            id: data.data.api_member_update.ids[0]
-        }
+            id: data.data.api_education_update.ids[0]
+        };
     },
+
     deleteOne: async (args) => {
         const data = await apolloClient.mutate({
-            mutation: Members_Delete,
+            mutation: Education_Delete,
             variables: {
                 input: {
                     data: {
@@ -110,10 +109,10 @@ export const MembersDataProvider: DataProvider = {
                     }
                 }
             }
-        })
+        });
 
         return {
-            id: data.data.api_member_delete.ids[0]
-        }
+            id: data.data.api_education_delete.ids[0]
+        };
     },
 };

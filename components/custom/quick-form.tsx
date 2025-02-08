@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -15,8 +16,26 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
+import { Card, CardHeader } from './card';
+import { CardFooter } from '../ui/card';
+import { Combobox } from '../ui/combobox';
+import { DeleteModal } from './delete-modal';
 
 export type FieldType =
+  | {
+      type: 'title';
+      name?: string;
+      label: string;
+      row?: number;
+      cell?: number;
+    }
+  | {
+      type: 'divider';
+      name?: string;
+      label?: string;
+      row?: number;
+      cell?: number;
+    }
   | {
       type: 'text';
       name: string;
@@ -44,6 +63,7 @@ export type FieldType =
       required?: boolean;
       row?: number;
       cell?: number;
+      allowCustom?: boolean;
     }
   | {
       type: 'checkbox';
@@ -78,6 +98,38 @@ export type FieldType =
       row?: number;
       cell?: number;
       component: React.ReactNode;
+    }
+  | {
+      type: 'date';
+      name: string;
+      label: string;
+      required?: boolean;
+      row?: number;
+      cell?: number;
+    }
+  | {
+      type: 'time';
+      name: string;
+      label: string;
+      required?: boolean;
+      row?: number;
+      cell?: number;
+    }
+  | {
+      type: 'datetime';
+      name: string;
+      label: string;
+      required?: boolean;
+      row?: number;
+      cell?: number;
+    }
+  | {
+      type: 'display';
+      name: string;
+      label: string;
+      component?: React.ReactNode;
+      row?: number;
+      cell?: number;
     };
 
 export interface QuickFormProps {
@@ -86,19 +138,25 @@ export interface QuickFormProps {
   className?: string;
   gridCols?: number;
   onCancel?: () => void;
+  onDelete?: () => void;
   title?: string;
   subtitle?: string;
+  defaultValues?: Record<string, any>;
 }
 
 export function QuickForm({
   fields,
   onSubmit,
   onCancel,
+  onDelete,
   className,
   gridCols = 1,
   title,
   subtitle,
+  defaultValues,
 }: QuickFormProps) {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   // Dynamically generate Zod schema based on fields
   const generateSchema = () => {
     const schema: Record<string, any> = {};
@@ -126,7 +184,7 @@ export function QuickForm({
             : z.string().optional();
           break;
         case 'checkbox':
-          schema[field.name] = z.boolean();
+          schema[field.name] = z.boolean().default(false);
           break;
         case 'multiselect':
           schema[field.name] = field.required
@@ -138,6 +196,13 @@ export function QuickForm({
             ? z.instanceof(File)
             : z.instanceof(File).optional();
           break;
+        case 'date':
+        case 'time':
+        case 'datetime':
+          schema[field.name] = field.required
+            ? z.string().min(1)
+            : z.string().optional();
+          break;
       }
     });
 
@@ -146,10 +211,34 @@ export function QuickForm({
 
   const form = useForm({
     resolver: zodResolver(generateSchema()),
+    defaultValues: defaultValues,
   });
+
+  const watch = form.watch();
+
+  // Add effect to update form values when defaultValues change
+  useEffect(() => {
+    if (defaultValues) {
+      Object.entries(defaultValues).forEach(([key, value]) => {
+        form.setValue(key, value);
+      });
+    }
+  }, [defaultValues, form]);
 
   const renderField = (field: FieldType) => {
     switch (field.type) {
+      case 'display':
+        return (
+          field.component || (
+            <div className='rounded-md bg-slate-50 p-2'>
+              {form.getValues(field.name)}
+            </div>
+          )
+        );
+      case 'title':
+        return <h3 className='pt-4 text-lg font-semibold'>{field.label}</h3>;
+      case 'divider':
+        return <hr className='my-2 border-t border-gray-200' />;
       case 'text':
         return (
           <Input
@@ -165,8 +254,21 @@ export function QuickForm({
           />
         );
       case 'select':
+        if (field.allowCustom) {
+          return (
+            <Combobox
+              value={watch[field.name]}
+              setValue={(value) => form.setValue(field.name, value)}
+              content={field.options}
+              allowCustom
+            />
+          );
+        }
         return (
-          <Select onValueChange={(value) => form.setValue(field.name, value)}>
+          <Select
+            onValueChange={(value) => form.setValue(field.name, value)}
+            value={watch[field.name]}
+          >
             <SelectTrigger>
               <SelectValue placeholder='Select...' />
             </SelectTrigger>
@@ -183,6 +285,7 @@ export function QuickForm({
         return (
           <Checkbox
             onCheckedChange={(checked) => form.setValue(field.name, checked)}
+            checked={watch[field.name]}
           />
         );
       case 'file':
@@ -198,6 +301,12 @@ export function QuickForm({
         );
       case 'custom':
         return field.component;
+      case 'date':
+        return <Input type='date' {...form.register(field.name)} />;
+      case 'time':
+        return <Input type='time' {...form.register(field.name)} />;
+      case 'datetime':
+        return <Input type='datetime-local' {...form.register(field.name)} />;
     }
   };
 
@@ -214,54 +323,95 @@ export function QuickForm({
 
   return (
     <Form {...form}>
+      <DeleteModal
+        open={showDeleteModal}
+        onOpenChange={setShowDeleteModal}
+        onConfirm={() => {
+          setShowDeleteModal(false);
+          onDelete?.();
+        }}
+      />
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn('space-y-4', className)}
+        className={cn('grid grid-cols-1 gap-2 lg:grid-cols-4')}
       >
-        {(title || subtitle) && (
-          <div className='mb-6 space-y-2'>
-            {subtitle && (
-              <p className='ml-1 text-xs text-muted-foreground'>{subtitle}</p>
-            )}
-            {title && <h2 className='text-2xl font-semibold'>{title}</h2>}
-          </div>
-        )}
-
-        {Object.entries(groupedFields).map(([row, rowFields]) => (
-          <div
-            key={row}
-            className={`grid grid-cols-${gridCols} gap-4`}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`,
-            }}
-          >
-            {rowFields.map((field) => (
-              <div
-                key={field.name}
-                className='space-y-2'
-                style={{
-                  gridColumn: field.cell ? `span ${field.cell}` : 'span 1',
-                }}
-              >
-                <label className='text-sm font-medium'>{field.label}</label>
-                {renderField(field)}
-                {form.formState.errors[field.name] && (
-                  <p className='text-sm text-red-500'>
-                    {form.formState.errors[field.name]?.message as string}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        ))}
-        <div className='flex justify-end gap-2'>
-          {onCancel && (
-            <Button type='button' variant='outline' onClick={onCancel}>
-              Cancel
-            </Button>
+        <div
+          className={cn(
+            'col-span-3 space-y-3 rounded-lg bg-slate-100 p-4',
+            className,
           )}
-          <Button type='submit'>Submit</Button>
+        >
+          {(title || subtitle) && (
+            <div className='mb-6 space-y-2'>
+              {subtitle && (
+                <p className='ml-1 text-xs text-muted-foreground'>{subtitle}</p>
+              )}
+              {title && <h2 className='text-2xl font-semibold'>{title}</h2>}
+            </div>
+          )}
+
+          {Object.entries(groupedFields).map(([row, rowFields]) => (
+            <div
+              key={row}
+              className={`grid grid-cols-${gridCols} gap-4`}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`,
+              }}
+            >
+              {rowFields.map((field) => (
+                <div
+                  key={field.name}
+                  className='flex flex-col gap-2'
+                  style={{
+                    gridColumn: field.cell ? `span ${field.cell}` : 'span 1',
+                  }}
+                >
+                  {field.type === 'title' ? (
+                    ''
+                  ) : (
+                    <label className='text-xs font-medium'>{field.label}</label>
+                  )}
+                  {renderField(field)}
+                  {form.formState.errors[field.name] && (
+                    <p className='text-sm text-red-500'>
+                      {form.formState.errors[field.name]?.message as string}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className='flex justify-end gap-2'>
+          <Card className='h-fit w-full'>
+            <CardHeader title='Actions' action={false} />
+            <CardFooter className='flex w-full flex-col gap-2'>
+              {onCancel && (
+                <Button
+                  className='w-full'
+                  type='button'
+                  variant='outline'
+                  onClick={onCancel}
+                >
+                  Cancel
+                </Button>
+              )}
+              {onDelete && (
+                <Button
+                  className='w-full border-destructive'
+                  type='button'
+                  variant='outline'
+                  onClick={() => setShowDeleteModal(true)}
+                >
+                  Delete
+                </Button>
+              )}
+              <Button className='w-full' type='submit'>
+                Submit
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </form>
     </Form>

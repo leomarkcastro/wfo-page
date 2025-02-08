@@ -4,8 +4,6 @@ import { MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/custom/card';
 import QuickList from '@/components/custom/quick-list';
-import { DataProviderTable } from '@/components/custom/quick-table';
-import { SampleDataProvider } from '@/lib/dataProviders/sample';
 
 export default function DashboardContent() {
   return (
@@ -79,7 +77,7 @@ export default function DashboardContent() {
           },
         ]}
       />
-      <DataProviderTable
+      {/* <DataProviderTable
         columns={[
           {
             key: 'name',
@@ -96,7 +94,7 @@ export default function DashboardContent() {
           },
         ]}
         dataSource={SampleDataProvider}
-      />
+      /> */}
     </div>
   );
 }
