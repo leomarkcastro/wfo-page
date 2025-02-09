@@ -35,12 +35,13 @@ export const Me = graphql(`
       ... on User {
         id
         name
+        middleName
         lastName
         displayName
         email
         role
         createdAt
-        groupsCount
+        lastLogin
       }
     }
   }

@@ -1,6 +1,6 @@
 import { AuthBehavior, User } from "@/hooks/use-auth";
 import { apolloClient } from "../apollo/ApolloClient";
-import { Login, Me, Register, RequestPasswordReset, TokenPasswordReset, UpdatePassword } from "@/graphql/declarations/auth";
+import { Login, Me, Register, RequestPasswordReset, TokenPasswordReset, UpdateMe, UpdatePassword } from "@/graphql/declarations/auth";
 import { AUTHSTORE } from "../store/auth";
 
 export const authBehavior: AuthBehavior = {
@@ -40,11 +40,15 @@ export const authBehavior: AuthBehavior = {
         }
 
         return {
-            id: data.data?.authenticatedItem?.id,
-            email: data.data?.authenticatedItem?.email,
-            name: data.data?.authenticatedItem?.displayName,
-            firstName: data.data?.authenticatedItem?.name,
-            role: data.data?.authenticatedItem?.role,
+            id: data.data.authenticatedItem.id,
+            name: data.data.authenticatedItem.name,
+            middleName: data.data.authenticatedItem.middleName,
+            lastName: data.data.authenticatedItem.lastName,
+            displayName: data.data.authenticatedItem.displayName,
+            email: data.data.authenticatedItem.email,
+            role: data.data.authenticatedItem.role,
+            createdAt: data.data.authenticatedItem.createdAt,
+            lastLogin: data.data.authenticatedItem.lastLogin,
         }
     },
     registerFn: async function (data): Promise<User> {
@@ -102,5 +106,26 @@ export const authBehavior: AuthBehavior = {
         if (!response.data?.authclient_changePassword) {
             throw new Error("Password change failed");
         }
+    },
+    updateMeFn: async function (data) {
+        const response = await apolloClient.mutate({
+            mutation: UpdateMe,
+            variables: {
+                data: {
+                    name: data.name,
+                    middleName: data.middleName,
+                    lastName: data.lastName,
+                },
+                where: {
+                    id: data.id
+                }
+            }
+        });
+
+        if (!response.data?.updateUser?.id) {
+            throw new Error("Update failed");
+        }
+
+        return;
     }
 }

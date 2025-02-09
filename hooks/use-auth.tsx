@@ -8,26 +8,40 @@ import React, {
 
 export interface User {
   id: string;
-  email: string;
   name: string;
-  firstName: string;
+  middleName: string | null;
+  lastName: string;
+  displayName: string;
+  email: string;
   role: string;
-  // Add other user properties as needed
+  createdAt: string;
+  lastLogin: string | null;
+}
+
+export interface UpdateUser {
+  id: string;
+  name: string;
+  middleName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface RegisterUser {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface AuthBehavior {
   loginFn: (credentials: { email: string; password: string }) => Promise<User>;
   logoutFn: () => Promise<void>;
   getMeFn: () => Promise<User>;
-  registerFn: (data: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) => Promise<User>;
+  registerFn: (data: RegisterUser) => Promise<User>;
   requestPasswordResetFn: (email: string) => Promise<void>;
   resetPasswordFn: (token: string, newPassword: string) => Promise<void>;
   changePasswordFn: (oldPassword: string, newPassword: string) => Promise<void>;
+  updateMeFn: (data: UpdateUser) => Promise<void>;
 }
 
 interface AuthContextType {
@@ -36,14 +50,9 @@ interface AuthContextType {
   login: (credentials: { email: string; password: string }) => Promise<User>;
   logout: () => Promise<void>;
   me: () => Promise<User>;
-  updateMe: () => Promise<void>;
+  updateMe: (data: UpdateUser) => Promise<void>;
   isLoggedIn: boolean;
-  register: (data: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) => Promise<User>;
+  register: (data: RegisterUser) => Promise<User>;
   requestPasswordReset: (email: string) => Promise<boolean>;
   resetPassword: (token: string, newPassword: string) => Promise<boolean>;
   changePassword: (
@@ -114,15 +123,17 @@ export function AuthProvider({
     }
   }, [behavior]);
 
-  const updateMe = useCallback(async () => {
-    try {
-      const userData = await me();
-      setUser(userData);
-    } catch (error) {
-      console.error('Failed to update user:', error);
-      throw error;
-    }
-  }, [me]);
+  const updateMe = useCallback(
+    async (data: UpdateUser) => {
+      try {
+        await behavior.updateMeFn(data);
+      } catch (error) {
+        console.error('Failed to update user:', error);
+        throw error;
+      }
+    },
+    [me],
+  );
 
   const register = useCallback(
     async (data: {

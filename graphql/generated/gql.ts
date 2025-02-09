@@ -16,7 +16,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 type Documents = {
     "\n  mutation Authclient_login($email: String!, $password: String!) {\n    authclient_login(email: $email, password: $password) {\n      ... on ClientItemAuthenticationWithPasswordSuccess {\n        sessionToken\n      }\n      ... on ClientItemAuthenticationWithPasswordFailure {\n        message\n      }\n    }\n  }\n": typeof types.Authclient_LoginDocument,
     "\n  mutation Authclient_register(\n    $email: String!\n    $password: String!\n    $firstName: String\n    $lastName: String\n  ) {\n    authclient_register(\n      email: $email\n      password: $password\n      firstName: $firstName\n      lastName: $lastName\n    )\n  }\n": typeof types.Authclient_RegisterDocument,
-    "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        groupsCount\n      }\n    }\n  }\n": typeof types.MeDocument,
+    "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        middleName\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        lastLogin\n      }\n    }\n  }\n": typeof types.MeDocument,
     "\n  mutation Authclient_changePassword(\n    $oldPassword: String!\n    $newPassword: String!\n  ) {\n    authclient_changePassword(\n      oldPassword: $oldPassword\n      newPassword: $newPassword\n    )\n  }\n": typeof types.Authclient_ChangePasswordDocument,
     "\n  mutation Authclient_requestPasswordReset($email: String!) {\n    authclient_requestPasswordReset(email: $email)\n  }\n": typeof types.Authclient_RequestPasswordResetDocument,
     "\n  mutation Authclient_resetPassword($token: String!, $password: String!) {\n    authclient_resetPassword(token: $token, password: $password)\n  }\n": typeof types.Authclient_ResetPasswordDocument,
@@ -38,7 +38,7 @@ type Documents = {
 const documents: Documents = {
     "\n  mutation Authclient_login($email: String!, $password: String!) {\n    authclient_login(email: $email, password: $password) {\n      ... on ClientItemAuthenticationWithPasswordSuccess {\n        sessionToken\n      }\n      ... on ClientItemAuthenticationWithPasswordFailure {\n        message\n      }\n    }\n  }\n": types.Authclient_LoginDocument,
     "\n  mutation Authclient_register(\n    $email: String!\n    $password: String!\n    $firstName: String\n    $lastName: String\n  ) {\n    authclient_register(\n      email: $email\n      password: $password\n      firstName: $firstName\n      lastName: $lastName\n    )\n  }\n": types.Authclient_RegisterDocument,
-    "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        groupsCount\n      }\n    }\n  }\n": types.MeDocument,
+    "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        middleName\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        lastLogin\n      }\n    }\n  }\n": types.MeDocument,
     "\n  mutation Authclient_changePassword(\n    $oldPassword: String!\n    $newPassword: String!\n  ) {\n    authclient_changePassword(\n      oldPassword: $oldPassword\n      newPassword: $newPassword\n    )\n  }\n": types.Authclient_ChangePasswordDocument,
     "\n  mutation Authclient_requestPasswordReset($email: String!) {\n    authclient_requestPasswordReset(email: $email)\n  }\n": types.Authclient_RequestPasswordResetDocument,
     "\n  mutation Authclient_resetPassword($token: String!, $password: String!) {\n    authclient_resetPassword(token: $token, password: $password)\n  }\n": types.Authclient_ResetPasswordDocument,
@@ -83,7 +83,7 @@ export function graphql(source: "\n  mutation Authclient_register(\n    $email: 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        groupsCount\n      }\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        groupsCount\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        middleName\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        lastLogin\n      }\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        middleName\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        lastLogin\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

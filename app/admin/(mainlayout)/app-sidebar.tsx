@@ -1,6 +1,14 @@
 'use client';
 
-import { LayoutGrid, Users, Settings, LogOut } from 'lucide-react';
+import {
+  LayoutGrid,
+  Users,
+  Settings,
+  LogOut,
+  ListCheck,
+  DollarSign,
+  Logs,
+} from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import {
@@ -31,12 +39,34 @@ interface AppMenuItem {
   url: string;
   icon: any;
   badge?: string;
+  disabled?: boolean;
 }
 
 // Menu items
 const menuItems: AppMenuItem[] = [
   { title: 'Overview', url: '/admin', icon: LayoutGrid, id: 'dash' },
   { title: 'Members', url: '/admin/members', icon: Users, id: 'members' },
+  {
+    title: 'Subscriptions',
+    url: '/admin/subscriptions',
+    icon: ListCheck,
+    id: 'subscriptions',
+    disabled: true,
+  },
+  {
+    title: 'Invoices',
+    url: '/admin/invoices',
+    icon: DollarSign,
+    id: 'invoices',
+    disabled: true,
+  },
+  {
+    title: 'Events',
+    url: '/admin/events',
+    icon: Users,
+    id: 'events',
+    disabled: true,
+  },
   // {
   //   title: 'Subscriptions',
   //   url: '/admin/subscriptions',
@@ -47,7 +77,8 @@ const menuItems: AppMenuItem[] = [
 ];
 
 const generalItems: AppMenuItem[] = [
-  { title: 'Settings', url: '/settings', icon: Settings, id: 'settings' },
+  { title: 'Settings', url: '/admin/settings', icon: Settings, id: 'settings' },
+  { title: 'Server Logs', url: '/admin/logs', icon: Logs, id: 'logs' },
 ];
 
 export function AppSidebar() {
@@ -77,12 +108,13 @@ export function AppSidebar() {
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild disabled={item.disabled}>
                     <Link
-                      href={item.url}
+                      href={item.disabled ? '#' : item.url}
                       className={cn(
                         'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-200 transition-colors hover:bg-white/10 hover:text-white',
                         pathID === item.id && 'bg-white/10 text-white',
+                        item.disabled && 'pointer-events-none opacity-50',
                       )}
                     >
                       <item.icon className='h-4 w-4' />
@@ -130,7 +162,7 @@ export function AppSidebar() {
             <div className='h-8 w-8 rounded-full bg-secondary text-white' />
             <div className='flex flex-col text-primary-foreground'>
               <span className='max-w-36 truncate text-sm font-medium'>
-                {user?.name}
+                {user?.displayName}
               </span>
               <span className='max-w-36 truncate text-xs text-gray-400'>
                 {user?.email}
