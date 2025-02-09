@@ -1,3 +1,5 @@
+import { DeepPartial } from "@apollo/client/utilities";
+
 export type Pagination = {
   page: number;
   perPage: number;
@@ -28,12 +30,12 @@ export interface DataProvider<
 > {
   // required methods
   getList: (params: {
-    resource: string;
+    resource?: string;
     pagination: Pagination;
     search: string;
     sorters: Sorter[];
     filters: Filter[];
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{
     data: TDataMany[];
     total: number;
@@ -42,50 +44,66 @@ export interface DataProvider<
     totalPages: number;
   }>;
   create: (params: {
-    resource: string;
+    resource?: string;
     variables: TVariables;
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{ id: string }>;
   update: (params: {
-    resource: string;
+    resource?: string;
     id: string;
     variables: TVariables;
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{ id: string }>;
   deleteOne: (params: {
-    resource: string;
+    resource?: string;
     id: string;
-    variables: TVariables;
-    meta: Meta;
+    variables?: TVariables;
+    meta?: Meta;
   }) => Promise<{ id: string }>;
   getOne: (params: {
-    resource: string;
+    resource?: string;
     id: string;
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{ data: TDataOne }>;
   // optional methods
   getMany?: (params: {
-    resource: string;
+    resource?: string;
     ids: string[];
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{ data: TDataMany[] }>;
   createMany?: (params: {
-    resource: string;
+    resource?: string;
     variables: TVariables;
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{ data: TDataMany[] }>;
   deleteMany?: (params: {
-    resource: string;
+    resource?: string;
     ids: string[];
-    variables: TVariables;
-    meta: Meta;
+    variables?: TVariables;
+    meta?: Meta;
   }) => Promise<{ data: TDataMany[] }>;
   updateMany?: (params: {
-    resource: string;
+    resource?: string;
     ids: string[];
     variables: TVariables;
-    meta: Meta;
+    meta?: Meta;
   }) => Promise<{ data: TDataMany[] }>;
+  aggregate?: (params: {
+    filters: Filter[];
+    countBy: string[];
+    groupBy: string[];
+    operation: string;
+    resource?: string;
+    meta?: Meta;
+  }) => Promise<DeepPartial<{
+    breakdown: {
+      uniqueIdentifier: string;
+      counts: {
+        countBy: string;
+        count: number;
+      }[]
+    }[];
+  }>>;
   custom?: (params: {
     url: string;
     method: string;

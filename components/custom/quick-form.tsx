@@ -387,16 +387,9 @@ export function QuickForm({
           <Card className='h-fit w-full'>
             <CardHeader title='Actions' action={false} />
             <CardFooter className='flex w-full flex-col gap-2'>
-              {onCancel && (
-                <Button
-                  className='w-full'
-                  type='button'
-                  variant='outline'
-                  onClick={onCancel}
-                >
-                  Cancel
-                </Button>
-              )}
+              <Button className='w-full' type='submit'>
+                Submit
+              </Button>
               {onDelete && (
                 <Button
                   className='w-full border-destructive'
@@ -407,9 +400,16 @@ export function QuickForm({
                   Delete
                 </Button>
               )}
-              <Button className='w-full' type='submit'>
-                Submit
-              </Button>
+              {onCancel && (
+                <Button
+                  className='w-full'
+                  type='button'
+                  variant='outline'
+                  onClick={onCancel}
+                >
+                  Cancel
+                </Button>
+              )}
             </CardFooter>
           </Card>
         </div>

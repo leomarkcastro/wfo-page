@@ -1,4 +1,4 @@
-import { Education_Create, Education_Delete, Education_Get, Education_List, Education_Update } from '@/graphql/declarations/education';
+import { Education_Aggregate, Education_Create, Education_Delete, Education_Get, Education_List, Education_Update } from '@/graphql/declarations/education';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
@@ -115,4 +115,26 @@ export const EducationDataProvider: DataProvider = {
             id: data.data.api_education_delete.ids[0]
         };
     },
+    aggregate: async (args) => {
+        const data = await apolloClient.query({
+            query: Education_Aggregate,
+            variables: {
+                input: {
+                    data: {
+                        countBy: args.countBy,
+                        groupBy: args.groupBy,
+                        operation: args.operation,
+                        page: {
+                            filter: args.filters?.map((filter) => ({
+                                field: filter.field,
+                                operation: filter.operator,
+                                value: filter.value,
+                            })),
+                        },
+                    }
+                }
+            }
+        })
+        return data.data.api_education_aggregate;
+    }
 };

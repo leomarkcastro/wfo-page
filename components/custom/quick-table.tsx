@@ -51,6 +51,7 @@ export type FilterOperator =
 
 // Update interfaces
 interface DataTableProps {
+  name: string;
   dataSource: DataProvider;
   columns: {
     key: string;
@@ -62,6 +63,7 @@ interface DataTableProps {
   actionButtons?: React.ReactNode;
   onRowClick?: (row: any) => void;
   initialFilters?: Record<string, FilterValue[]>; // Add this line
+  enableUrlPersistence?: boolean; // Add this line
 }
 
 interface FilterValue {
@@ -75,12 +77,73 @@ interface TempFilter {
   value: string;
 }
 
+// Add these utility functions after the interfaces
+const getStateFromUrl = (tableName: string) => {
+  if (typeof window === 'undefined') return null;
+
+  let returnState: any = {};
+
+  const params = new URLSearchParams(window.location.search);
+  // console.log(params);
+  for (let val of [
+    'currentPage',
+    'pageSize',
+    'search',
+    'sortConfig',
+    'filters',
+  ]) {
+    const stateStr = params.get(`${tableName}_${val}`);
+    if (!stateStr) continue;
+
+    try {
+      returnState[val] = JSON.parse(decodeURIComponent(stateStr));
+    } catch (error) {
+      console.log(error);
+      // return null;
+    }
+  }
+  // const stateStr = params.get(`${tableName}_state`);
+  // if (!stateStr) return null;
+
+  try {
+    return returnState;
+  } catch {
+    return null;
+  }
+};
+
+const updateUrlState = (tableName: string, state: any) => {
+  if (typeof window === 'undefined') return;
+
+  const params = new URLSearchParams(window.location.search);
+  // params.set(`${tableName}_state`, encodeURIComponent(JSON.stringify(state)));
+  for (let val of [
+    'currentPage',
+    'pageSize',
+    'search',
+    'sortConfig',
+    'filters',
+  ]) {
+    if (state[val]) {
+      params.set(
+        `${tableName}_${val}`,
+        encodeURIComponent(JSON.stringify(state[val])),
+      );
+    }
+  }
+
+  const newUrl = `${window.location.pathname}?${params.toString()}`;
+  window.history.replaceState({}, '', newUrl);
+};
+
 export function DataProviderTable({
+  name,
   dataSource,
   columns,
   actionButtons,
   onRowClick,
   initialFilters = {}, // Add default value
+  enableUrlPersistence = false,
 }: DataTableProps) {
   const [data, setData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -155,18 +218,64 @@ export function DataProviderTable({
     setCurrentPage(1);
   }, [debouncedSearch, filters, pageSize]);
 
+  const [persistanceLoaded, setPersistanceLoaded] =
+    useState(!enableUrlPersistence);
+
   useEffect(() => {
+    if (!persistanceLoaded) return;
     fetchData();
-  }, [sortConfig, filters, currentPage, pageSize, debouncedSearch]);
+  }, [
+    persistanceLoaded,
+    sortConfig,
+    filters,
+    currentPage,
+    pageSize,
+    debouncedSearch,
+  ]);
 
   // Replace the problematic useEffect
   useEffect(() => {
     // const filtersChanged =
     //   JSON.stringify(filters) !== JSON.stringify(initialFilters);
     // if (filtersChanged) {
-    setFilters(initialFilters);
+    if (initialFilters) {
+      setFilters(initialFilters);
+    }
     // }
   }, []);
+
+  // Add this useEffect at the beginning
+  useEffect(() => {
+    if (!enableUrlPersistence) return;
+
+    const savedState = getStateFromUrl(name);
+    // console.log(savedState);
+    if (savedState) {
+      if (savedState.currentPage) setCurrentPage(savedState.currentPage);
+      if (savedState.pageSize) setPageSize(savedState.pageSize);
+      if (savedState.search) setSearch(savedState.search);
+      if (savedState.sortConfig) setSortConfig(savedState.sortConfig);
+      if (savedState.filters) setFilters(savedState.filters);
+    }
+    setTimeout(() => {
+      setPersistanceLoaded(true);
+    }, 1000);
+  }, []);
+
+  // Add this useEffect after other useEffects
+  useEffect(() => {
+    if (!enableUrlPersistence) return;
+    if (!persistanceLoaded) return;
+
+    // console.log('Updating URL state');
+    updateUrlState(name, {
+      currentPage,
+      pageSize,
+      search,
+      sortConfig,
+      filters,
+    });
+  }, [currentPage, pageSize, search, sortConfig, filters]);
 
   const handleSort = (key: string) => {
     setSortConfig((current) => {
@@ -361,7 +470,7 @@ export function DataProviderTable({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {isLoading ? (
+            {isLoading || !persistanceLoaded ? (
               <TableRow className='border-none'>
                 <TableCell
                   colSpan={columns.length}
@@ -417,7 +526,7 @@ export function DataProviderTable({
                 <SelectValue placeholder={pageSize} />
               </SelectTrigger>
               <SelectContent side='top'>
-                {[1, 5, 10, 20, 30, 40, 50].map((size) => (
+                {[10, 30, 50, 100].map((size) => (
                   <SelectItem key={size} value={size.toString()}>
                     {size}
                   </SelectItem>

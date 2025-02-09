@@ -12,6 +12,7 @@ export default function TabEduc() {
 
   return (
     <DataProviderTable
+      name='Educations'
       onRowClick={(row) => {
         // console.log(row);
         router.push(`/admin/educations/edit/${row.id}?userId=${id}`);

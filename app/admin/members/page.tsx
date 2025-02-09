@@ -12,6 +12,8 @@ export default function DashboardPage() {
   return (
     <div>
       <DataProviderTable
+        name='Members'
+        enableUrlPersistence={true}
         onRowClick={(row) => {
           // console.log(row);
           router.push(`/admin/members/edit/${row.id}`);

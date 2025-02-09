@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  LayoutGrid,
-  Users,
-  Settings,
-  ListCheck,
-  Calendar,
-  LogOut,
-} from 'lucide-react';
+import { LayoutGrid, Users, Settings, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import {
@@ -44,13 +37,13 @@ interface AppMenuItem {
 const menuItems: AppMenuItem[] = [
   { title: 'Overview', url: '/admin', icon: LayoutGrid, id: 'dash' },
   { title: 'Members', url: '/admin/members', icon: Users, id: 'members' },
-  {
-    title: 'Subscriptions',
-    url: '/admin/subscriptions',
-    icon: ListCheck,
-    id: 'subscriptions',
-  },
-  { title: 'Calendar', url: '/admin/calendar', icon: Calendar, id: 'calendar' },
+  // {
+  //   title: 'Subscriptions',
+  //   url: '/admin/subscriptions',
+  //   icon: ListCheck,
+  //   id: 'subscriptions',
+  // },
+  // { title: 'Calendar', url: '/admin/calendar', icon: Calendar, id: 'calendar' },
 ];
 
 const generalItems: AppMenuItem[] = [
