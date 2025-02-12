@@ -149,7 +149,7 @@ export function DataProviderTable({
   const [totalPages, setTotalPages] = useState(1);
   const [totalRecords, setTotalRecords] = useState(0); // Add this line
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(25);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search, 500);
@@ -526,7 +526,7 @@ export function DataProviderTable({
                 <SelectValue placeholder={pageSize} />
               </SelectTrigger>
               <SelectContent side='top'>
-                {[10, 30, 50, 100].map((size) => (
+                {[10, 25, 50, 100].map((size) => (
                   <SelectItem key={size} value={size.toString()}>
                     {size}
                   </SelectItem>
