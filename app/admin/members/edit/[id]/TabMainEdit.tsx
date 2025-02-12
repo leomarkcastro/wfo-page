@@ -31,6 +31,10 @@ export default function TabMainEdit() {
       'dental_graduationYear',
       'ortho_graduationYear',
       'postgraduate_graduationYear',
+      'joinDate',
+      'rejoinDate',
+      'effectiveDate',
+      'expirationDate',
     ].forEach((field) => {
       if (data[field]) {
         data[field] = moment(data[field]).format('YYYY-MM-DD');
@@ -43,6 +47,20 @@ export default function TabMainEdit() {
 
   async function submitData(data) {
     if (!id) return;
+    // convert the dates back to ISO format
+    [
+      'dental_graduationYear',
+      'ortho_graduationYear',
+      'postgraduate_graduationYear',
+      'joinDate',
+      'rejoinDate',
+      'effectiveDate',
+      'expirationDate',
+    ].forEach((field) => {
+      if (data[field]) {
+        data[field] = moment(data[field]).toISOString();
+      }
+    });
     const res = await MembersDataProvider.update({
       id: id as string,
       variables: data,
@@ -86,8 +104,8 @@ export default function TabMainEdit() {
         submitData(data);
       }}
       onDelete={deleteData}
-      title='Edit Member'
-      subtitle='Edit member details'
+      // title='Edit Member'
+      // subtitle='Edit member details'
       fields={[
         {
           type: 'title',
@@ -391,6 +409,38 @@ export default function TabMainEdit() {
           label: 'Blacklisted',
           row: 24,
           cell: 1,
+        },
+        {
+          type: 'date',
+          name: 'joinDate',
+          label: 'Join Date',
+          row: 24,
+          cell: 1,
+          readonly: true,
+        },
+        {
+          type: 'date',
+          name: 'rejoinDate',
+          label: 'Rejoin Date',
+          row: 24,
+          cell: 1,
+          readonly: true,
+        },
+        {
+          type: 'date',
+          name: 'effectiveDate',
+          label: 'Effective Date',
+          row: 24,
+          cell: 1,
+          readonly: true,
+        },
+        {
+          type: 'date',
+          name: 'expirationDate',
+          label: 'Expiration Date',
+          row: 25,
+          cell: 1,
+          readonly: true,
         },
         {
           type: 'divider',

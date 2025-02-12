@@ -14,6 +14,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
+    "\n  mutation Api_sync_users($input: Api_sync_usersInput!) {\n    api_sync_users(input: $input) {\n      count\n    }\n  }\n": typeof types.Api_Sync_UsersDocument,
+    "\n  mutation Api_sync_crm_wordpress($input: Api_sync_crm_wordpressInput!) {\n    api_sync_crm_wordpress(input: $input) {\n      success\n    }\n  }\n": typeof types.Api_Sync_Crm_WordpressDocument,
+    "\n  mutation Api_sync_crm_netforum($input: Api_sync_crm_netforumInput!) {\n    api_sync_crm_netforum(input: $input) {\n      success\n    }\n  }\n": typeof types.Api_Sync_Crm_NetforumDocument,
     "\n  mutation Authclient_login($email: String!, $password: String!) {\n    authclient_login(email: $email, password: $password) {\n      ... on ClientItemAuthenticationWithPasswordSuccess {\n        sessionToken\n      }\n      ... on ClientItemAuthenticationWithPasswordFailure {\n        message\n      }\n    }\n  }\n": typeof types.Authclient_LoginDocument,
     "\n  mutation Authclient_register(\n    $email: String!\n    $password: String!\n    $firstName: String\n    $lastName: String\n  ) {\n    authclient_register(\n      email: $email\n      password: $password\n      firstName: $firstName\n      lastName: $lastName\n    )\n  }\n": typeof types.Authclient_RegisterDocument,
     "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        middleName\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        lastLogin\n      }\n    }\n  }\n": typeof types.MeDocument,
@@ -34,8 +37,13 @@ type Documents = {
     "\n  mutation Members_Update($input: Api_member_updateInput!) {\n    api_member_update(input: $input) {\n      count\n      ids\n    }\n  }\n": typeof types.Members_UpdateDocument,
     "\n  mutation Members_Delete($input: Api_member_deleteInput!) {\n    api_member_delete(input: $input) {\n      count\n      ids\n    }\n  }\n": typeof types.Members_DeleteDocument,
     "\n  subscription Ping_time {\n    ping_time {\n      iso\n      data\n    }\n  }\n": typeof types.Ping_TimeDocument,
+    "\n  query Api_wpportaluser_list($input: Api_wpportaluser_listInput!) {\n    api_wpportaluser_list(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n      page {\n        total\n        range {\n          from\n          to\n        }\n        page\n        pageSize\n      }\n    }\n  }\n": typeof types.Api_Wpportaluser_ListDocument,
+    "\n  query Api_wpportaluser_get($input: Api_wpportaluser_getInput!) {\n    api_wpportaluser_get(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n    }\n  }\n": typeof types.Api_Wpportaluser_GetDocument,
 };
 const documents: Documents = {
+    "\n  mutation Api_sync_users($input: Api_sync_usersInput!) {\n    api_sync_users(input: $input) {\n      count\n    }\n  }\n": types.Api_Sync_UsersDocument,
+    "\n  mutation Api_sync_crm_wordpress($input: Api_sync_crm_wordpressInput!) {\n    api_sync_crm_wordpress(input: $input) {\n      success\n    }\n  }\n": types.Api_Sync_Crm_WordpressDocument,
+    "\n  mutation Api_sync_crm_netforum($input: Api_sync_crm_netforumInput!) {\n    api_sync_crm_netforum(input: $input) {\n      success\n    }\n  }\n": types.Api_Sync_Crm_NetforumDocument,
     "\n  mutation Authclient_login($email: String!, $password: String!) {\n    authclient_login(email: $email, password: $password) {\n      ... on ClientItemAuthenticationWithPasswordSuccess {\n        sessionToken\n      }\n      ... on ClientItemAuthenticationWithPasswordFailure {\n        message\n      }\n    }\n  }\n": types.Authclient_LoginDocument,
     "\n  mutation Authclient_register(\n    $email: String!\n    $password: String!\n    $firstName: String\n    $lastName: String\n  ) {\n    authclient_register(\n      email: $email\n      password: $password\n      firstName: $firstName\n      lastName: $lastName\n    )\n  }\n": types.Authclient_RegisterDocument,
     "\n  query Me {\n    authenticatedItem {\n      ... on User {\n        id\n        name\n        middleName\n        lastName\n        displayName\n        email\n        role\n        createdAt\n        lastLogin\n      }\n    }\n  }\n": types.MeDocument,
@@ -56,6 +64,8 @@ const documents: Documents = {
     "\n  mutation Members_Update($input: Api_member_updateInput!) {\n    api_member_update(input: $input) {\n      count\n      ids\n    }\n  }\n": types.Members_UpdateDocument,
     "\n  mutation Members_Delete($input: Api_member_deleteInput!) {\n    api_member_delete(input: $input) {\n      count\n      ids\n    }\n  }\n": types.Members_DeleteDocument,
     "\n  subscription Ping_time {\n    ping_time {\n      iso\n      data\n    }\n  }\n": types.Ping_TimeDocument,
+    "\n  query Api_wpportaluser_list($input: Api_wpportaluser_listInput!) {\n    api_wpportaluser_list(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n      page {\n        total\n        range {\n          from\n          to\n        }\n        page\n        pageSize\n      }\n    }\n  }\n": types.Api_Wpportaluser_ListDocument,
+    "\n  query Api_wpportaluser_get($input: Api_wpportaluser_getInput!) {\n    api_wpportaluser_get(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n    }\n  }\n": types.Api_Wpportaluser_GetDocument,
 };
 
 /**
@@ -72,6 +82,18 @@ const documents: Documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation Api_sync_users($input: Api_sync_usersInput!) {\n    api_sync_users(input: $input) {\n      count\n    }\n  }\n"): (typeof documents)["\n  mutation Api_sync_users($input: Api_sync_usersInput!) {\n    api_sync_users(input: $input) {\n      count\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation Api_sync_crm_wordpress($input: Api_sync_crm_wordpressInput!) {\n    api_sync_crm_wordpress(input: $input) {\n      success\n    }\n  }\n"): (typeof documents)["\n  mutation Api_sync_crm_wordpress($input: Api_sync_crm_wordpressInput!) {\n    api_sync_crm_wordpress(input: $input) {\n      success\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation Api_sync_crm_netforum($input: Api_sync_crm_netforumInput!) {\n    api_sync_crm_netforum(input: $input) {\n      success\n    }\n  }\n"): (typeof documents)["\n  mutation Api_sync_crm_netforum($input: Api_sync_crm_netforumInput!) {\n    api_sync_crm_netforum(input: $input) {\n      success\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -152,6 +174,14 @@ export function graphql(source: "\n  mutation Members_Delete($input: Api_member_
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  subscription Ping_time {\n    ping_time {\n      iso\n      data\n    }\n  }\n"): (typeof documents)["\n  subscription Ping_time {\n    ping_time {\n      iso\n      data\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query Api_wpportaluser_list($input: Api_wpportaluser_listInput!) {\n    api_wpportaluser_list(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n      page {\n        total\n        range {\n          from\n          to\n        }\n        page\n        pageSize\n      }\n    }\n  }\n"): (typeof documents)["\n  query Api_wpportaluser_list($input: Api_wpportaluser_listInput!) {\n    api_wpportaluser_list(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n      page {\n        total\n        range {\n          from\n          to\n        }\n        page\n        pageSize\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query Api_wpportaluser_get($input: Api_wpportaluser_getInput!) {\n    api_wpportaluser_get(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Api_wpportaluser_get($input: Api_wpportaluser_getInput!) {\n    api_wpportaluser_get(input: $input) {\n      data {\n        user_id\n        first_name\n        last_name\n        email\n        registered_date\n        avatar_url\n        roles\n        profile_fields {\n          value\n          group\n          field_id\n          field_type\n        }\n        courses_count\n        courses {\n          course_id\n          title\n          enrollment_date\n          completion_date\n          progress_percentage\n          completed_steps\n          total_steps\n          status\n        }\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

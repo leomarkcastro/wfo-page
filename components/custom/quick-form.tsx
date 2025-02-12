@@ -42,6 +42,7 @@ export type FieldType =
       label: string;
       placeholder?: string;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -52,6 +53,7 @@ export type FieldType =
       min?: number;
       max?: number;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -61,6 +63,7 @@ export type FieldType =
       label: string;
       options: { label: string; value: string }[];
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
       allowCustom?: boolean;
@@ -69,6 +72,7 @@ export type FieldType =
       type: 'checkbox';
       name: string;
       label: string;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -78,6 +82,7 @@ export type FieldType =
       label: string;
       options: { label: string; value: string }[];
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -87,6 +92,7 @@ export type FieldType =
       label: string;
       accept?: string;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -95,6 +101,7 @@ export type FieldType =
       name: string;
       label: string;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
       component: React.ReactNode;
@@ -104,6 +111,7 @@ export type FieldType =
       name: string;
       label: string;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -112,6 +120,7 @@ export type FieldType =
       name: string;
       label: string;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -120,6 +129,7 @@ export type FieldType =
       name: string;
       label: string;
       required?: boolean;
+      readonly?: boolean;
       row?: number;
       cell?: number;
     }
@@ -142,6 +152,10 @@ export interface QuickFormProps {
   title?: string;
   subtitle?: string;
   defaultValues?: Record<string, any>;
+  hideActions?: boolean;
+  hideSubmit?: boolean;
+  hideDelete?: boolean;
+  hideCancel?: boolean;
 }
 
 export function QuickForm({
@@ -154,6 +168,10 @@ export function QuickForm({
   title,
   subtitle,
   defaultValues,
+  hideActions = false,
+  hideSubmit = false,
+  hideDelete = false,
+  hideCancel = false,
 }: QuickFormProps) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -243,6 +261,7 @@ export function QuickForm({
         return (
           <Input
             placeholder={field.placeholder}
+            readOnly={field.readonly}
             {...form.register(field.name)}
           />
         );
@@ -250,6 +269,7 @@ export function QuickForm({
         return (
           <Input
             type='number'
+            readOnly={field.readonly}
             {...form.register(field.name, { valueAsNumber: true })}
           />
         );
@@ -302,11 +322,29 @@ export function QuickForm({
       case 'custom':
         return field.component;
       case 'date':
-        return <Input type='date' {...form.register(field.name)} />;
+        return (
+          <Input
+            type='date'
+            readOnly={field.readonly}
+            {...form.register(field.name)}
+          />
+        );
       case 'time':
-        return <Input type='time' {...form.register(field.name)} />;
+        return (
+          <Input
+            type='time'
+            readOnly={field.readonly}
+            {...form.register(field.name)}
+          />
+        );
       case 'datetime':
-        return <Input type='datetime-local' {...form.register(field.name)} />;
+        return (
+          <Input
+            type='datetime-local'
+            readOnly={field.readonly}
+            {...form.register(field.name)}
+          />
+        );
     }
   };
 
@@ -339,6 +377,7 @@ export function QuickForm({
           className={cn(
             'col-span-3 space-y-3 rounded-lg bg-slate-100 p-4',
             className,
+            hideActions && 'lg:col-span-4',
           )}
         >
           {(title || subtitle) && (
@@ -383,36 +422,40 @@ export function QuickForm({
             </div>
           ))}
         </div>
-        <div className='flex justify-end gap-2'>
-          <Card className='h-fit w-full'>
-            <CardHeader title='Actions' action={false} />
-            <CardFooter className='flex w-full flex-col gap-2'>
-              <Button className='w-full' type='submit'>
-                Submit
-              </Button>
-              {onDelete && (
-                <Button
-                  className='w-full border-destructive'
-                  type='button'
-                  variant='outline'
-                  onClick={() => setShowDeleteModal(true)}
-                >
-                  Delete
-                </Button>
-              )}
-              {onCancel && (
-                <Button
-                  className='w-full'
-                  type='button'
-                  variant='outline'
-                  onClick={onCancel}
-                >
-                  Cancel
-                </Button>
-              )}
-            </CardFooter>
-          </Card>
-        </div>
+        {!hideActions && (
+          <div className='flex justify-end gap-2'>
+            <Card className='h-fit w-full'>
+              <CardHeader title='Actions' action={false} />
+              <CardFooter className='flex w-full flex-col gap-2'>
+                {!hideSubmit && (
+                  <Button className='w-full' type='submit'>
+                    Submit
+                  </Button>
+                )}
+                {onDelete && !hideDelete && (
+                  <Button
+                    className='w-full border-destructive'
+                    type='button'
+                    variant='outline'
+                    onClick={() => setShowDeleteModal(true)}
+                  >
+                    Delete
+                  </Button>
+                )}
+                {onCancel && !hideCancel && (
+                  <Button
+                    className='w-full'
+                    type='button'
+                    variant='outline'
+                    onClick={onCancel}
+                  >
+                    Cancel
+                  </Button>
+                )}
+              </CardFooter>
+            </Card>
+          </div>
+        )}
       </form>
     </Form>
   );

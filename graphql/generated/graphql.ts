@@ -247,9 +247,112 @@ export type Api_Member_UpdateOutput = {
   ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
+export type Api_Sync_Crm_NetforumOutput = {
+  __typename?: 'Api_Sync_crm_netforumOutput';
+  success?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type Api_Sync_Crm_WordpressOutput = {
+  __typename?: 'Api_Sync_crm_wordpressOutput';
+  success?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type Api_Sync_UsersOutput = {
   __typename?: 'Api_Sync_usersOutput';
   count?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Wpportaluser_GetOutput = {
+  __typename?: 'Api_Wpportaluser_getOutput';
+  data?: Maybe<Api_Wpportaluser_GetOutputData>;
+};
+
+export type Api_Wpportaluser_GetOutputData = {
+  __typename?: 'Api_Wpportaluser_getOutputData';
+  avatar_url?: Maybe<Scalars['String']['output']>;
+  courses?: Maybe<Array<Maybe<Api_Wpportaluser_GetOutputDataCourses>>>;
+  courses_count?: Maybe<Scalars['Float']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  first_name?: Maybe<Scalars['String']['output']>;
+  last_name?: Maybe<Scalars['String']['output']>;
+  profile_fields?: Maybe<Array<Maybe<Api_Wpportaluser_GetOutputDataProfile_Fields>>>;
+  registered_date?: Maybe<Scalars['String']['output']>;
+  roles?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  user_id?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Wpportaluser_GetOutputDataCourses = {
+  __typename?: 'Api_Wpportaluser_getOutputDataCourses';
+  completed_steps?: Maybe<Scalars['Float']['output']>;
+  completion_date?: Maybe<Scalars['String']['output']>;
+  course_id?: Maybe<Scalars['Float']['output']>;
+  enrollment_date?: Maybe<Scalars['String']['output']>;
+  progress_percentage?: Maybe<Scalars['Float']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  total_steps?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Wpportaluser_GetOutputDataProfile_Fields = {
+  __typename?: 'Api_Wpportaluser_getOutputDataProfile_fields';
+  field_id?: Maybe<Scalars['String']['output']>;
+  field_type?: Maybe<Scalars['String']['output']>;
+  group?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Wpportaluser_ListOutput = {
+  __typename?: 'Api_Wpportaluser_listOutput';
+  data?: Maybe<Array<Maybe<Api_Wpportaluser_ListOutputData>>>;
+  page?: Maybe<Api_Wpportaluser_ListOutputPage>;
+};
+
+export type Api_Wpportaluser_ListOutputData = {
+  __typename?: 'Api_Wpportaluser_listOutputData';
+  avatar_url?: Maybe<Scalars['String']['output']>;
+  courses?: Maybe<Array<Maybe<Api_Wpportaluser_ListOutputDataCourses>>>;
+  courses_count?: Maybe<Scalars['Float']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  first_name?: Maybe<Scalars['String']['output']>;
+  last_name?: Maybe<Scalars['String']['output']>;
+  profile_fields?: Maybe<Array<Maybe<Api_Wpportaluser_ListOutputDataProfile_Fields>>>;
+  registered_date?: Maybe<Scalars['String']['output']>;
+  roles?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  user_id?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Wpportaluser_ListOutputDataCourses = {
+  __typename?: 'Api_Wpportaluser_listOutputDataCourses';
+  completed_steps?: Maybe<Scalars['Float']['output']>;
+  completion_date?: Maybe<Scalars['String']['output']>;
+  course_id?: Maybe<Scalars['Float']['output']>;
+  enrollment_date?: Maybe<Scalars['String']['output']>;
+  progress_percentage?: Maybe<Scalars['Float']['output']>;
+  status?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  total_steps?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Wpportaluser_ListOutputDataProfile_Fields = {
+  __typename?: 'Api_Wpportaluser_listOutputDataProfile_fields';
+  field_id?: Maybe<Scalars['String']['output']>;
+  field_type?: Maybe<Scalars['String']['output']>;
+  group?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Wpportaluser_ListOutputPage = {
+  __typename?: 'Api_Wpportaluser_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_Wpportaluser_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Wpportaluser_ListOutputPageRange = {
+  __typename?: 'Api_Wpportaluser_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
 };
 
 export type Api_Education_AggregateInput = {
@@ -293,6 +396,7 @@ export type Api_Education_CreateInputData = {
 
 export type Api_Education_CreateInputDataData = {
   achievement: Scalars['String']['input'];
+  courseID: Scalars['String']['input'];
   dateOfAchievement: Scalars['String']['input'];
   schoolName: Scalars['String']['input'];
   userId: Scalars['String']['input'];
@@ -357,6 +461,7 @@ export type Api_Education_UpdateInputDataData = {
 
 export type Api_Education_UpdateInputDataDataData = {
   achievement?: InputMaybe<Scalars['String']['input']>;
+  courseID?: InputMaybe<Scalars['String']['input']>;
   dateOfAchievement?: InputMaybe<Scalars['String']['input']>;
   schoolName?: InputMaybe<Scalars['String']['input']>;
   userId?: InputMaybe<Scalars['String']['input']>;
@@ -413,7 +518,9 @@ export type Api_Member_CreateInputDataData = {
   dental_degree?: InputMaybe<Scalars['String']['input']>;
   dental_graduationYear?: InputMaybe<Scalars['String']['input']>;
   dental_school?: InputMaybe<Scalars['String']['input']>;
+  effectiveDate?: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
+  expirationDate?: InputMaybe<Scalars['String']['input']>;
   home_addressLine1?: InputMaybe<Scalars['String']['input']>;
   home_addressLine2?: InputMaybe<Scalars['String']['input']>;
   home_city?: InputMaybe<Scalars['String']['input']>;
@@ -422,6 +529,7 @@ export type Api_Member_CreateInputDataData = {
   home_postalCode?: InputMaybe<Scalars['String']['input']>;
   home_state?: InputMaybe<Scalars['String']['input']>;
   isBlacklisted?: InputMaybe<Scalars['Boolean']['input']>;
+  joinDate?: InputMaybe<Scalars['String']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   memberPackage?: InputMaybe<Scalars['String']['input']>;
   memberType?: InputMaybe<Scalars['String']['input']>;
@@ -433,6 +541,7 @@ export type Api_Member_CreateInputDataData = {
   postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
   postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
   postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  rejoinDate?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Api_Member_DeleteInput = {
@@ -504,7 +613,9 @@ export type Api_Member_UpdateInputDataDataData = {
   dental_degree?: InputMaybe<Scalars['String']['input']>;
   dental_graduationYear?: InputMaybe<Scalars['String']['input']>;
   dental_school?: InputMaybe<Scalars['String']['input']>;
+  effectiveDate?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
+  expirationDate?: InputMaybe<Scalars['String']['input']>;
   home_addressLine1?: InputMaybe<Scalars['String']['input']>;
   home_addressLine2?: InputMaybe<Scalars['String']['input']>;
   home_city?: InputMaybe<Scalars['String']['input']>;
@@ -513,6 +624,7 @@ export type Api_Member_UpdateInputDataDataData = {
   home_postalCode?: InputMaybe<Scalars['String']['input']>;
   home_state?: InputMaybe<Scalars['String']['input']>;
   isBlacklisted?: InputMaybe<Scalars['Boolean']['input']>;
+  joinDate?: InputMaybe<Scalars['String']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   memberPackage?: InputMaybe<Scalars['String']['input']>;
   memberType?: InputMaybe<Scalars['String']['input']>;
@@ -524,6 +636,25 @@ export type Api_Member_UpdateInputDataDataData = {
   postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
   postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
   postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  rejoinDate?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Sync_Crm_NetforumInput = {
+  data: Api_Sync_Crm_NetforumInputData;
+};
+
+export type Api_Sync_Crm_NetforumInputData = {
+  destination: Scalars['String']['input'];
+  email: Scalars['String']['input'];
+};
+
+export type Api_Sync_Crm_WordpressInput = {
+  data: Api_Sync_Crm_WordpressInputData;
+};
+
+export type Api_Sync_Crm_WordpressInputData = {
+  destination: Scalars['String']['input'];
+  email: Scalars['String']['input'];
 };
 
 export type Api_Sync_UsersInput = {
@@ -550,6 +681,44 @@ export type Api_Sync_UsersInputDataPageFilter = {
 };
 
 export type Api_Sync_UsersInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Wpportaluser_GetInput = {
+  data: Api_Wpportaluser_GetInputData;
+};
+
+export type Api_Wpportaluser_GetInputData = {
+  dbID?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  wpID?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Wpportaluser_ListInput = {
+  data: Api_Wpportaluser_ListInputData;
+};
+
+export type Api_Wpportaluser_ListInputData = {
+  page?: InputMaybe<Api_Wpportaluser_ListInputDataPage>;
+};
+
+export type Api_Wpportaluser_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Wpportaluser_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Wpportaluser_ListInputDataPageSort>;
+};
+
+export type Api_Wpportaluser_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Wpportaluser_ListInputDataPageSort = {
   field: Scalars['String']['input'];
   order: Scalars['String']['input'];
 };
@@ -1346,6 +1515,8 @@ export type Mutation = {
   api_member_create?: Maybe<Api_Member_CreateOutput>;
   api_member_delete?: Maybe<Api_Member_DeleteOutput>;
   api_member_update?: Maybe<Api_Member_UpdateOutput>;
+  api_sync_crm_netforum?: Maybe<Api_Sync_Crm_NetforumOutput>;
+  api_sync_crm_wordpress?: Maybe<Api_Sync_Crm_WordpressOutput>;
   api_sync_users?: Maybe<Api_Sync_UsersOutput>;
   authclient_changePassword?: Maybe<Scalars['Boolean']['output']>;
   authclient_login?: Maybe<ClientItemAuthenticationWithPasswordResult>;
@@ -1368,6 +1539,8 @@ export type Mutation = {
   createMailSendLogs?: Maybe<Array<Maybe<MailSendLog>>>;
   createMailTrackHistories?: Maybe<Array<Maybe<MailTrackHistory>>>;
   createMailTrackHistory?: Maybe<MailTrackHistory>;
+  createNetforumLog?: Maybe<NetforumLog>;
+  createNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
   createServerError?: Maybe<ServerError>;
   createServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   createServerLog?: Maybe<ServerLog>;
@@ -1382,6 +1555,8 @@ export type Mutation = {
   createUserSystemFlag?: Maybe<UserSystemFlag>;
   createUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   createUsers?: Maybe<Array<Maybe<User>>>;
+  createWPLog?: Maybe<WpLog>;
+  createWPLogs?: Maybe<Array<Maybe<WpLog>>>;
   deleteGroup?: Maybe<Group>;
   deleteGroupMember?: Maybe<GroupMember>;
   deleteGroupMemberFlag?: Maybe<GroupMemberFlag>;
@@ -1396,6 +1571,8 @@ export type Mutation = {
   deleteMailSendLogs?: Maybe<Array<Maybe<MailSendLog>>>;
   deleteMailTrackHistories?: Maybe<Array<Maybe<MailTrackHistory>>>;
   deleteMailTrackHistory?: Maybe<MailTrackHistory>;
+  deleteNetforumLog?: Maybe<NetforumLog>;
+  deleteNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
   deleteServerError?: Maybe<ServerError>;
   deleteServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   deleteServerLog?: Maybe<ServerLog>;
@@ -1410,6 +1587,8 @@ export type Mutation = {
   deleteUserSystemFlag?: Maybe<UserSystemFlag>;
   deleteUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   deleteUsers?: Maybe<Array<Maybe<User>>>;
+  deleteWPLog?: Maybe<WpLog>;
+  deleteWPLogs?: Maybe<Array<Maybe<WpLog>>>;
   endSession: Scalars['Boolean']['output'];
   file_upload?: Maybe<FileUploadOutput>;
   updateGroup?: Maybe<Group>;
@@ -1426,6 +1605,8 @@ export type Mutation = {
   updateMailSendLogs?: Maybe<Array<Maybe<MailSendLog>>>;
   updateMailTrackHistories?: Maybe<Array<Maybe<MailTrackHistory>>>;
   updateMailTrackHistory?: Maybe<MailTrackHistory>;
+  updateNetforumLog?: Maybe<NetforumLog>;
+  updateNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
   updateServerError?: Maybe<ServerError>;
   updateServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   updateServerLog?: Maybe<ServerLog>;
@@ -1440,6 +1621,8 @@ export type Mutation = {
   updateUserSystemFlag?: Maybe<UserSystemFlag>;
   updateUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   updateUsers?: Maybe<Array<Maybe<User>>>;
+  updateWPLog?: Maybe<WpLog>;
+  updateWPLogs?: Maybe<Array<Maybe<WpLog>>>;
   user_setFlag?: Maybe<Array<Maybe<UserFlag>>>;
 };
 
@@ -1471,6 +1654,16 @@ export type MutationApi_Member_DeleteArgs = {
 
 export type MutationApi_Member_UpdateArgs = {
   input: Api_Member_UpdateInput;
+};
+
+
+export type MutationApi_Sync_Crm_NetforumArgs = {
+  input: Api_Sync_Crm_NetforumInput;
+};
+
+
+export type MutationApi_Sync_Crm_WordpressArgs = {
+  input: Api_Sync_Crm_WordpressInput;
 };
 
 
@@ -1592,6 +1785,16 @@ export type MutationCreateMailTrackHistoryArgs = {
 };
 
 
+export type MutationCreateNetforumLogArgs = {
+  data: NetforumLogCreateInput;
+};
+
+
+export type MutationCreateNetforumLogsArgs = {
+  data: Array<NetforumLogCreateInput>;
+};
+
+
 export type MutationCreateServerErrorArgs = {
   data: ServerErrorCreateInput;
 };
@@ -1659,6 +1862,16 @@ export type MutationCreateUserSystemFlagsArgs = {
 
 export type MutationCreateUsersArgs = {
   data: Array<UserCreateInput>;
+};
+
+
+export type MutationCreateWpLogArgs = {
+  data: WpLogCreateInput;
+};
+
+
+export type MutationCreateWpLogsArgs = {
+  data: Array<WpLogCreateInput>;
 };
 
 
@@ -1732,6 +1945,16 @@ export type MutationDeleteMailTrackHistoryArgs = {
 };
 
 
+export type MutationDeleteNetforumLogArgs = {
+  where: NetforumLogWhereUniqueInput;
+};
+
+
+export type MutationDeleteNetforumLogsArgs = {
+  where: Array<NetforumLogWhereUniqueInput>;
+};
+
+
 export type MutationDeleteServerErrorArgs = {
   where: ServerErrorWhereUniqueInput;
 };
@@ -1799,6 +2022,16 @@ export type MutationDeleteUserSystemFlagsArgs = {
 
 export type MutationDeleteUsersArgs = {
   where: Array<UserWhereUniqueInput>;
+};
+
+
+export type MutationDeleteWpLogArgs = {
+  where: WpLogWhereUniqueInput;
+};
+
+
+export type MutationDeleteWpLogsArgs = {
+  where: Array<WpLogWhereUniqueInput>;
 };
 
 
@@ -1884,6 +2117,17 @@ export type MutationUpdateMailTrackHistoryArgs = {
 };
 
 
+export type MutationUpdateNetforumLogArgs = {
+  data: NetforumLogUpdateInput;
+  where: NetforumLogWhereUniqueInput;
+};
+
+
+export type MutationUpdateNetforumLogsArgs = {
+  data: Array<NetforumLogUpdateArgs>;
+};
+
+
 export type MutationUpdateServerErrorArgs = {
   data: ServerErrorUpdateInput;
   where: ServerErrorWhereUniqueInput;
@@ -1961,6 +2205,17 @@ export type MutationUpdateUsersArgs = {
 };
 
 
+export type MutationUpdateWpLogArgs = {
+  data: WpLogUpdateInput;
+  where: WpLogWhereUniqueInput;
+};
+
+
+export type MutationUpdateWpLogsArgs = {
+  data: Array<WpLogUpdateArgs>;
+};
+
+
 export type MutationUser_SetFlagArgs = {
   input: User_SetFlagInput;
 };
@@ -1982,6 +2237,52 @@ export type NestedStringFilter = {
   not?: InputMaybe<NestedStringFilter>;
   notIn?: InputMaybe<Array<Scalars['String']['input']>>;
   startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NetforumLog = {
+  __typename?: 'NetforumLog';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  metadata?: Maybe<Scalars['String']['output']>;
+  topic?: Maybe<Scalars['String']['output']>;
+};
+
+export type NetforumLogCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  topic?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NetforumLogOrderByInput = {
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  metadata?: InputMaybe<OrderDirection>;
+  topic?: InputMaybe<OrderDirection>;
+};
+
+export type NetforumLogUpdateArgs = {
+  data: NetforumLogUpdateInput;
+  where: NetforumLogWhereUniqueInput;
+};
+
+export type NetforumLogUpdateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  topic?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NetforumLogWhereInput = {
+  AND?: InputMaybe<Array<NetforumLogWhereInput>>;
+  NOT?: InputMaybe<Array<NetforumLogWhereInput>>;
+  OR?: InputMaybe<Array<NetforumLogWhereInput>>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  metadata?: InputMaybe<StringFilter>;
+  topic?: InputMaybe<StringFilter>;
+};
+
+export type NetforumLogWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export enum OrderDirection {
@@ -2007,6 +2308,8 @@ export type Query = {
   api_member_aggregate?: Maybe<Api_Member_AggregateOutput>;
   api_member_get?: Maybe<Api_Member_GetOutput>;
   api_member_list?: Maybe<Api_Member_ListOutput>;
+  api_wpportaluser_get?: Maybe<Api_Wpportaluser_GetOutput>;
+  api_wpportaluser_list?: Maybe<Api_Wpportaluser_ListOutput>;
   authenticatedItem?: Maybe<AuthenticatedItem>;
   group?: Maybe<Group>;
   groupMember?: Maybe<GroupMember>;
@@ -2031,6 +2334,9 @@ export type Query = {
   mailTrackHistories?: Maybe<Array<MailTrackHistory>>;
   mailTrackHistoriesCount?: Maybe<Scalars['Int']['output']>;
   mailTrackHistory?: Maybe<MailTrackHistory>;
+  netforumLog?: Maybe<NetforumLog>;
+  netforumLogs?: Maybe<Array<NetforumLog>>;
+  netforumLogsCount?: Maybe<Scalars['Int']['output']>;
   serverError?: Maybe<ServerError>;
   serverErrors?: Maybe<Array<ServerError>>;
   serverErrorsCount?: Maybe<Scalars['Int']['output']>;
@@ -2052,6 +2358,9 @@ export type Query = {
   userSystemFlagsCount?: Maybe<Scalars['Int']['output']>;
   users?: Maybe<Array<User>>;
   usersCount?: Maybe<Scalars['Int']['output']>;
+  wPLog?: Maybe<WpLog>;
+  wPLogs?: Maybe<Array<WpLog>>;
+  wPLogsCount?: Maybe<Scalars['Int']['output']>;
 };
 
 
@@ -2082,6 +2391,16 @@ export type QueryApi_Member_GetArgs = {
 
 export type QueryApi_Member_ListArgs = {
   input: Api_Member_ListInput;
+};
+
+
+export type QueryApi_Wpportaluser_GetArgs = {
+  input: Api_Wpportaluser_GetInput;
+};
+
+
+export type QueryApi_Wpportaluser_ListArgs = {
+  input: Api_Wpportaluser_ListInput;
 };
 
 
@@ -2223,6 +2542,25 @@ export type QueryMailTrackHistoryArgs = {
 };
 
 
+export type QueryNetforumLogArgs = {
+  where: NetforumLogWhereUniqueInput;
+};
+
+
+export type QueryNetforumLogsArgs = {
+  cursor?: InputMaybe<NetforumLogWhereUniqueInput>;
+  orderBy?: Array<NetforumLogOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NetforumLogWhereInput;
+};
+
+
+export type QueryNetforumLogsCountArgs = {
+  where?: NetforumLogWhereInput;
+};
+
+
 export type QueryServerErrorArgs = {
   where: ServerErrorWhereUniqueInput;
 };
@@ -2353,6 +2691,25 @@ export type QueryUsersArgs = {
 
 export type QueryUsersCountArgs = {
   where?: UserWhereInput;
+};
+
+
+export type QueryWpLogArgs = {
+  where: WpLogWhereUniqueInput;
+};
+
+
+export type QueryWpLogsArgs = {
+  cursor?: InputMaybe<WpLogWhereUniqueInput>;
+  orderBy?: Array<WpLogOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: WpLogWhereInput;
+};
+
+
+export type QueryWpLogsCountArgs = {
+  where?: WpLogWhereInput;
 };
 
 export enum QueryMode {
@@ -2526,6 +2883,7 @@ export type Time = {
 
 export type User = {
   __typename?: 'User';
+  about?: Maybe<Scalars['String']['output']>;
   adminPassword?: Maybe<PasswordState>;
   avatar?: Maybe<ImageFieldOutput>;
   business_addressLine1?: Maybe<Scalars['String']['output']>;
@@ -2582,6 +2940,7 @@ export type User = {
   role?: Maybe<UserRoleType>;
   systemFlags?: Maybe<Array<UserSystemFlag>>;
   systemFlagsCount?: Maybe<Scalars['Int']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 
@@ -2668,6 +3027,7 @@ export type UserAuthenticationWithPasswordSuccess = {
 };
 
 export type UserCreateInput = {
+  about?: InputMaybe<Scalars['String']['input']>;
   adminPassword?: InputMaybe<Scalars['String']['input']>;
   avatar?: InputMaybe<ImageFieldInput>;
   business_addressLine1?: InputMaybe<Scalars['String']['input']>;
@@ -2717,11 +3077,13 @@ export type UserCreateInput = {
   rejoinDate?: InputMaybe<Scalars['DateTime']['input']>;
   role?: InputMaybe<UserRoleType>;
   systemFlags?: InputMaybe<UserSystemFlagRelateToManyForCreateInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type UserEducationRecord = {
   __typename?: 'UserEducationRecord';
   achievement?: Maybe<Scalars['String']['output']>;
+  courseID?: Maybe<Scalars['String']['output']>;
   dateOfAchievement?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['ID']['output'];
   schoolName?: Maybe<Scalars['String']['output']>;
@@ -2730,6 +3092,7 @@ export type UserEducationRecord = {
 
 export type UserEducationRecordCreateInput = {
   achievement?: InputMaybe<Scalars['String']['input']>;
+  courseID?: InputMaybe<Scalars['String']['input']>;
   dateOfAchievement?: InputMaybe<Scalars['DateTime']['input']>;
   schoolName?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<UserRelateToOneForCreateInput>;
@@ -2743,6 +3106,7 @@ export type UserEducationRecordManyRelationFilter = {
 
 export type UserEducationRecordOrderByInput = {
   achievement?: InputMaybe<OrderDirection>;
+  courseID?: InputMaybe<OrderDirection>;
   dateOfAchievement?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   schoolName?: InputMaybe<OrderDirection>;
@@ -2767,6 +3131,7 @@ export type UserEducationRecordUpdateArgs = {
 
 export type UserEducationRecordUpdateInput = {
   achievement?: InputMaybe<Scalars['String']['input']>;
+  courseID?: InputMaybe<Scalars['String']['input']>;
   dateOfAchievement?: InputMaybe<Scalars['DateTime']['input']>;
   schoolName?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<UserRelateToOneForUpdateInput>;
@@ -2777,6 +3142,7 @@ export type UserEducationRecordWhereInput = {
   NOT?: InputMaybe<Array<UserEducationRecordWhereInput>>;
   OR?: InputMaybe<Array<UserEducationRecordWhereInput>>;
   achievement?: InputMaybe<StringFilter>;
+  courseID?: InputMaybe<StringFilter>;
   dateOfAchievement?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<IdFilter>;
   schoolName?: InputMaybe<StringFilter>;
@@ -2934,6 +3300,7 @@ export type UserLoginHistoryWhereUniqueInput = {
 };
 
 export type UserOrderByInput = {
+  about?: InputMaybe<OrderDirection>;
   business_addressLine1?: InputMaybe<OrderDirection>;
   business_addressLine2?: InputMaybe<OrderDirection>;
   business_city?: InputMaybe<OrderDirection>;
@@ -2977,6 +3344,7 @@ export type UserOrderByInput = {
   postgraduate_school?: InputMaybe<OrderDirection>;
   rejoinDate?: InputMaybe<OrderDirection>;
   role?: InputMaybe<OrderDirection>;
+  updatedAt?: InputMaybe<OrderDirection>;
 };
 
 export type UserRelateToOneForCreateInput = {
@@ -3082,6 +3450,7 @@ export type UserUpdateArgs = {
 };
 
 export type UserUpdateInput = {
+  about?: InputMaybe<Scalars['String']['input']>;
   adminPassword?: InputMaybe<Scalars['String']['input']>;
   avatar?: InputMaybe<ImageFieldInput>;
   business_addressLine1?: InputMaybe<Scalars['String']['input']>;
@@ -3131,12 +3500,14 @@ export type UserUpdateInput = {
   rejoinDate?: InputMaybe<Scalars['DateTime']['input']>;
   role?: InputMaybe<UserRoleType>;
   systemFlags?: InputMaybe<UserSystemFlagRelateToManyForUpdateInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>;
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
+  about?: InputMaybe<StringFilter>;
   adminPassword?: InputMaybe<PasswordFilter>;
   business_addressLine1?: InputMaybe<StringFilter>;
   business_addressLine2?: InputMaybe<StringFilter>;
@@ -3186,6 +3557,7 @@ export type UserWhereInput = {
   rejoinDate?: InputMaybe<DateTimeNullableFilter>;
   role?: InputMaybe<UserRoleTypeNullableFilter>;
   systemFlags?: InputMaybe<UserSystemFlagManyRelationFilter>;
+  updatedAt?: InputMaybe<DateTimeNullableFilter>;
 };
 
 export type UserWhereUniqueInput = {
@@ -3203,6 +3575,73 @@ export type User_SetFlagInputData = {
   metadata?: InputMaybe<Scalars['String']['input']>;
   value: Scalars['String']['input'];
 };
+
+export type WpLog = {
+  __typename?: 'WPLog';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  metadata?: Maybe<Scalars['String']['output']>;
+  topic?: Maybe<Scalars['String']['output']>;
+};
+
+export type WpLogCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  topic?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type WpLogOrderByInput = {
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  metadata?: InputMaybe<OrderDirection>;
+  topic?: InputMaybe<OrderDirection>;
+};
+
+export type WpLogUpdateArgs = {
+  data: WpLogUpdateInput;
+  where: WpLogWhereUniqueInput;
+};
+
+export type WpLogUpdateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  topic?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type WpLogWhereInput = {
+  AND?: InputMaybe<Array<WpLogWhereInput>>;
+  NOT?: InputMaybe<Array<WpLogWhereInput>>;
+  OR?: InputMaybe<Array<WpLogWhereInput>>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  metadata?: InputMaybe<StringFilter>;
+  topic?: InputMaybe<StringFilter>;
+};
+
+export type WpLogWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type Api_Sync_UsersMutationVariables = Exact<{
+  input: Api_Sync_UsersInput;
+}>;
+
+
+export type Api_Sync_UsersMutation = { __typename?: 'Mutation', api_sync_users?: { __typename?: 'Api_Sync_usersOutput', count?: number | null } | null };
+
+export type Api_Sync_Crm_WordpressMutationVariables = Exact<{
+  input: Api_Sync_Crm_WordpressInput;
+}>;
+
+
+export type Api_Sync_Crm_WordpressMutation = { __typename?: 'Mutation', api_sync_crm_wordpress?: { __typename?: 'Api_Sync_crm_wordpressOutput', success?: boolean | null } | null };
+
+export type Api_Sync_Crm_NetforumMutationVariables = Exact<{
+  input: Api_Sync_Crm_NetforumInput;
+}>;
+
+
+export type Api_Sync_Crm_NetforumMutation = { __typename?: 'Mutation', api_sync_crm_netforum?: { __typename?: 'Api_Sync_crm_netforumOutput', success?: boolean | null } | null };
 
 export type Authclient_LoginMutationVariables = Exact<{
   email: Scalars['String']['input'];
@@ -3347,7 +3786,24 @@ export type Ping_TimeSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 export type Ping_TimeSubscription = { __typename?: 'Subscription', ping_time?: { __typename?: 'Time', iso?: string | null, data?: string | null } | null };
 
+export type Api_Wpportaluser_ListQueryVariables = Exact<{
+  input: Api_Wpportaluser_ListInput;
+}>;
 
+
+export type Api_Wpportaluser_ListQuery = { __typename?: 'Query', api_wpportaluser_list?: { __typename?: 'Api_Wpportaluser_listOutput', data?: Array<{ __typename?: 'Api_Wpportaluser_listOutputData', user_id?: number | null, first_name?: string | null, last_name?: string | null, email?: string | null, registered_date?: string | null, avatar_url?: string | null, roles?: Array<string | null> | null, courses_count?: number | null, profile_fields?: Array<{ __typename?: 'Api_Wpportaluser_listOutputDataProfile_fields', value?: string | null, group?: string | null, field_id?: string | null, field_type?: string | null } | null> | null, courses?: Array<{ __typename?: 'Api_Wpportaluser_listOutputDataCourses', course_id?: number | null, title?: string | null, enrollment_date?: string | null, completion_date?: string | null, progress_percentage?: number | null, completed_steps?: number | null, total_steps?: number | null, status?: string | null } | null> | null } | null> | null, page?: { __typename?: 'Api_Wpportaluser_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Wpportaluser_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Api_Wpportaluser_GetQueryVariables = Exact<{
+  input: Api_Wpportaluser_GetInput;
+}>;
+
+
+export type Api_Wpportaluser_GetQuery = { __typename?: 'Query', api_wpportaluser_get?: { __typename?: 'Api_Wpportaluser_getOutput', data?: { __typename?: 'Api_Wpportaluser_getOutputData', user_id?: number | null, first_name?: string | null, last_name?: string | null, email?: string | null, registered_date?: string | null, avatar_url?: string | null, roles?: Array<string | null> | null, courses_count?: number | null, profile_fields?: Array<{ __typename?: 'Api_Wpportaluser_getOutputDataProfile_fields', value?: string | null, group?: string | null, field_id?: string | null, field_type?: string | null } | null> | null, courses?: Array<{ __typename?: 'Api_Wpportaluser_getOutputDataCourses', course_id?: number | null, title?: string | null, enrollment_date?: string | null, completion_date?: string | null, progress_percentage?: number | null, completed_steps?: number | null, total_steps?: number | null, status?: string | null } | null> | null } | null } | null };
+
+
+export const Api_Sync_UsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_users"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_usersInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_users"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_UsersMutation, Api_Sync_UsersMutationVariables>;
+export const Api_Sync_Crm_WordpressDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_crm_wordpress"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_crm_wordpressInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_crm_wordpress"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_Crm_WordpressMutation, Api_Sync_Crm_WordpressMutationVariables>;
+export const Api_Sync_Crm_NetforumDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_crm_netforum"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_crm_netforumInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_crm_netforum"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_Crm_NetforumMutation, Api_Sync_Crm_NetforumMutationVariables>;
 export const Authclient_LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ClientItemAuthenticationWithPasswordSuccess"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sessionToken"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ClientItemAuthenticationWithPasswordFailure"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]}}]} as unknown as DocumentNode<Authclient_LoginMutation, Authclient_LoginMutationVariables>;
 export const Authclient_RegisterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_register"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"firstName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_register"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}},{"kind":"Argument","name":{"kind":"Name","value":"firstName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"firstName"}}},{"kind":"Argument","name":{"kind":"Name","value":"lastName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}}}]}]}}]} as unknown as DocumentNode<Authclient_RegisterMutation, Authclient_RegisterMutationVariables>;
 export const MeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authenticatedItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"User"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}}]}}]}}]}}]} as unknown as DocumentNode<MeQuery, MeQueryVariables>;
@@ -3368,3 +3824,5 @@ export const Members_CreateDocument = {"kind":"Document","definitions":[{"kind":
 export const Members_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_UpdateMutation, Members_UpdateMutationVariables>;
 export const Members_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_DeleteMutation, Members_DeleteMutationVariables>;
 export const Ping_TimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"subscription","name":{"kind":"Name","value":"Ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"iso"}},{"kind":"Field","name":{"kind":"Name","value":"data"}}]}}]}}]} as unknown as DocumentNode<Ping_TimeSubscription, Ping_TimeSubscriptionVariables>;
+export const Api_Wpportaluser_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_wpportaluser_list"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_wpportaluser_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_wpportaluser_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"registered_date"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"profile_fields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"field_id"}},{"kind":"Field","name":{"kind":"Name","value":"field_type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses_count"}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"course_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enrollment_date"}},{"kind":"Field","name":{"kind":"Name","value":"completion_date"}},{"kind":"Field","name":{"kind":"Name","value":"progress_percentage"}},{"kind":"Field","name":{"kind":"Name","value":"completed_steps"}},{"kind":"Field","name":{"kind":"Name","value":"total_steps"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Api_Wpportaluser_ListQuery, Api_Wpportaluser_ListQueryVariables>;
+export const Api_Wpportaluser_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_wpportaluser_get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_wpportaluser_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_wpportaluser_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"registered_date"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"profile_fields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"field_id"}},{"kind":"Field","name":{"kind":"Name","value":"field_type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses_count"}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"course_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enrollment_date"}},{"kind":"Field","name":{"kind":"Name","value":"completion_date"}},{"kind":"Field","name":{"kind":"Name","value":"progress_percentage"}},{"kind":"Field","name":{"kind":"Name","value":"completed_steps"}},{"kind":"Field","name":{"kind":"Name","value":"total_steps"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Api_Wpportaluser_GetQuery, Api_Wpportaluser_GetQueryVariables>;

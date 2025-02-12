@@ -4,6 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useSearchParams, useRouter } from 'next/navigation';
 import TabMainEdit from './TabMainEdit';
 import TabEduc from './TabEduc';
+import TabSync from './TabSync';
+import PagePath from '@/app/admin/(mainlayout)/path';
+import TabEducPortal from './TabEducPortal';
 
 export default function MemberEditPage() {
   const router = useRouter();
@@ -18,24 +21,35 @@ export default function MemberEditPage() {
   };
 
   return (
-    <Tabs
-      defaultValue={currentTab}
-      className='w-full'
-      onValueChange={handleTabChange}
-    >
-      <TabsList>
-        <TabsTrigger value='account'>Main Account</TabsTrigger>
-        <TabsTrigger value='education'>Education</TabsTrigger>
-      </TabsList>
-      <p className='p-1 text-xs text-gray-400'>
-        Make sure to save your changes before changing tabs
-      </p>
-      <TabsContent value='account'>
-        <TabMainEdit />
-      </TabsContent>
-      <TabsContent value='education'>
-        <TabEduc />
-      </TabsContent>
-    </Tabs>
+    <>
+      <PagePath id='members' title='Edit Member' />
+      <Tabs
+        defaultValue={currentTab}
+        className='w-full'
+        onValueChange={handleTabChange}
+      >
+        <TabsList>
+          <TabsTrigger value='account'>Main Account</TabsTrigger>
+          <TabsTrigger value='education'>Education</TabsTrigger>
+          <TabsTrigger value='educportal'>Education Portal</TabsTrigger>
+          <TabsTrigger value='sync'>Sync Options</TabsTrigger>
+        </TabsList>
+        <p className='p-1 text-xs text-gray-400'>
+          Make sure to save your changes before changing tabs
+        </p>
+        <TabsContent value='account'>
+          <TabMainEdit />
+        </TabsContent>
+        <TabsContent value='education'>
+          <TabEduc />
+        </TabsContent>
+        <TabsContent value='educportal'>
+          <TabEducPortal />
+        </TabsContent>
+        <TabsContent value='sync'>
+          <TabSync />
+        </TabsContent>
+      </Tabs>
+    </>
   );
 }

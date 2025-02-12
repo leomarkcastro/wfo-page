@@ -1,6 +1,7 @@
 import { Members_Aggregate, Members_Create, Members_Delete, Members_Get, Members_List, Members_Update } from '@/graphql/declarations/members';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
+import { cleanUpObject } from '../services/cleanUpObject';
 
 export const MembersDataProvider: DataProvider = {
     getList: async (args) => {
@@ -88,7 +89,7 @@ export const MembersDataProvider: DataProvider = {
                         data: [
                             {
                                 id: args.id,
-                                data: args.variables
+                                data: cleanUpObject(args.variables)
                             }
                         ]
                     }
