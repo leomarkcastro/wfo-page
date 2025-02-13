@@ -257,9 +257,19 @@ export type Api_Sync_Crm_WordpressOutput = {
   success?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type Api_Sync_UsersOutput = {
-  __typename?: 'Api_Sync_usersOutput';
+export type Api_Sync_From_NetforumOutput = {
+  __typename?: 'Api_Sync_from_netforumOutput';
   count?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Sync_From_WordpressOutput = {
+  __typename?: 'Api_Sync_from_wordpressOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_TimecheckOutput = {
+  __typename?: 'Api_TimecheckOutput';
+  time?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_Wpportaluser_GetOutput = {
@@ -657,32 +667,28 @@ export type Api_Sync_Crm_WordpressInputData = {
   email: Scalars['String']['input'];
 };
 
-export type Api_Sync_UsersInput = {
-  data: Api_Sync_UsersInputData;
+export type Api_Sync_From_NetforumInput = {
+  data: Api_Sync_From_NetforumInputData;
 };
 
-export type Api_Sync_UsersInputData = {
-  page?: InputMaybe<Api_Sync_UsersInputDataPage>;
+export type Api_Sync_From_NetforumInputData = {
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Api_Sync_UsersInputDataPage = {
-  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  filter?: InputMaybe<Array<InputMaybe<Api_Sync_UsersInputDataPageFilter>>>;
-  page?: InputMaybe<Scalars['Float']['input']>;
-  pageSize?: InputMaybe<Scalars['Float']['input']>;
-  search?: InputMaybe<Scalars['String']['input']>;
-  sort?: InputMaybe<Api_Sync_UsersInputDataPageSort>;
+export type Api_Sync_From_WordpressInput = {
+  data: Api_Sync_From_WordpressInputData;
 };
 
-export type Api_Sync_UsersInputDataPageFilter = {
-  field: Scalars['String']['input'];
-  operation: Scalars['String']['input'];
-  value: Scalars['String']['input'];
+export type Api_Sync_From_WordpressInputData = {
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Api_Sync_UsersInputDataPageSort = {
-  field: Scalars['String']['input'];
-  order: Scalars['String']['input'];
+export type Api_TimecheckInput = {
+  data: Api_TimecheckInputData;
+};
+
+export type Api_TimecheckInputData = {
+  key: Scalars['String']['input'];
 };
 
 export type Api_Wpportaluser_GetInput = {
@@ -1517,7 +1523,8 @@ export type Mutation = {
   api_member_update?: Maybe<Api_Member_UpdateOutput>;
   api_sync_crm_netforum?: Maybe<Api_Sync_Crm_NetforumOutput>;
   api_sync_crm_wordpress?: Maybe<Api_Sync_Crm_WordpressOutput>;
-  api_sync_users?: Maybe<Api_Sync_UsersOutput>;
+  api_sync_from_netforum?: Maybe<Api_Sync_From_NetforumOutput>;
+  api_sync_from_wordpress?: Maybe<Api_Sync_From_WordpressOutput>;
   authclient_changePassword?: Maybe<Scalars['Boolean']['output']>;
   authclient_login?: Maybe<ClientItemAuthenticationWithPasswordResult>;
   authclient_register?: Maybe<Scalars['Boolean']['output']>;
@@ -1667,8 +1674,13 @@ export type MutationApi_Sync_Crm_WordpressArgs = {
 };
 
 
-export type MutationApi_Sync_UsersArgs = {
-  input: Api_Sync_UsersInput;
+export type MutationApi_Sync_From_NetforumArgs = {
+  input: Api_Sync_From_NetforumInput;
+};
+
+
+export type MutationApi_Sync_From_WordpressArgs = {
+  input: Api_Sync_From_WordpressInput;
 };
 
 
@@ -2308,6 +2320,7 @@ export type Query = {
   api_member_aggregate?: Maybe<Api_Member_AggregateOutput>;
   api_member_get?: Maybe<Api_Member_GetOutput>;
   api_member_list?: Maybe<Api_Member_ListOutput>;
+  api_timecheck?: Maybe<Api_TimecheckOutput>;
   api_wpportaluser_get?: Maybe<Api_Wpportaluser_GetOutput>;
   api_wpportaluser_list?: Maybe<Api_Wpportaluser_ListOutput>;
   authenticatedItem?: Maybe<AuthenticatedItem>;
@@ -2391,6 +2404,11 @@ export type QueryApi_Member_GetArgs = {
 
 export type QueryApi_Member_ListArgs = {
   input: Api_Member_ListInput;
+};
+
+
+export type QueryApi_TimecheckArgs = {
+  input: Api_TimecheckInput;
 };
 
 
@@ -3622,13 +3640,6 @@ export type WpLogWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
-export type Api_Sync_UsersMutationVariables = Exact<{
-  input: Api_Sync_UsersInput;
-}>;
-
-
-export type Api_Sync_UsersMutation = { __typename?: 'Mutation', api_sync_users?: { __typename?: 'Api_Sync_usersOutput', count?: number | null } | null };
-
 export type Api_Sync_Crm_WordpressMutationVariables = Exact<{
   input: Api_Sync_Crm_WordpressInput;
 }>;
@@ -3642,6 +3653,27 @@ export type Api_Sync_Crm_NetforumMutationVariables = Exact<{
 
 
 export type Api_Sync_Crm_NetforumMutation = { __typename?: 'Mutation', api_sync_crm_netforum?: { __typename?: 'Api_Sync_crm_netforumOutput', success?: boolean | null } | null };
+
+export type Api_Sync_From_NetforumMutationVariables = Exact<{
+  input: Api_Sync_From_NetforumInput;
+}>;
+
+
+export type Api_Sync_From_NetforumMutation = { __typename?: 'Mutation', api_sync_from_netforum?: { __typename?: 'Api_Sync_from_netforumOutput', count?: number | null } | null };
+
+export type Api_Sync_From_WordpressMutationVariables = Exact<{
+  input: Api_Sync_From_WordpressInput;
+}>;
+
+
+export type Api_Sync_From_WordpressMutation = { __typename?: 'Mutation', api_sync_from_wordpress?: { __typename?: 'Api_Sync_from_wordpressOutput', count?: number | null } | null };
+
+export type Api_TimecheckQueryVariables = Exact<{
+  input: Api_TimecheckInput;
+}>;
+
+
+export type Api_TimecheckQuery = { __typename?: 'Query', api_timecheck?: { __typename?: 'Api_TimecheckOutput', time?: string | null } | null };
 
 export type Authclient_LoginMutationVariables = Exact<{
   email: Scalars['String']['input'];
@@ -3801,9 +3833,11 @@ export type Api_Wpportaluser_GetQueryVariables = Exact<{
 export type Api_Wpportaluser_GetQuery = { __typename?: 'Query', api_wpportaluser_get?: { __typename?: 'Api_Wpportaluser_getOutput', data?: { __typename?: 'Api_Wpportaluser_getOutputData', user_id?: number | null, first_name?: string | null, last_name?: string | null, email?: string | null, registered_date?: string | null, avatar_url?: string | null, roles?: Array<string | null> | null, courses_count?: number | null, profile_fields?: Array<{ __typename?: 'Api_Wpportaluser_getOutputDataProfile_fields', value?: string | null, group?: string | null, field_id?: string | null, field_type?: string | null } | null> | null, courses?: Array<{ __typename?: 'Api_Wpportaluser_getOutputDataCourses', course_id?: number | null, title?: string | null, enrollment_date?: string | null, completion_date?: string | null, progress_percentage?: number | null, completed_steps?: number | null, total_steps?: number | null, status?: string | null } | null> | null } | null } | null };
 
 
-export const Api_Sync_UsersDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_users"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_usersInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_users"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_UsersMutation, Api_Sync_UsersMutationVariables>;
 export const Api_Sync_Crm_WordpressDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_crm_wordpress"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_crm_wordpressInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_crm_wordpress"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_Crm_WordpressMutation, Api_Sync_Crm_WordpressMutationVariables>;
 export const Api_Sync_Crm_NetforumDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_crm_netforum"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_crm_netforumInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_crm_netforum"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"success"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_Crm_NetforumMutation, Api_Sync_Crm_NetforumMutationVariables>;
+export const Api_Sync_From_NetforumDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_from_netforum"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_from_netforumInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_from_netforum"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_From_NetforumMutation, Api_Sync_From_NetforumMutationVariables>;
+export const Api_Sync_From_WordpressDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Api_sync_from_wordpress"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_sync_from_wordpressInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_sync_from_wordpress"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<Api_Sync_From_WordpressMutation, Api_Sync_From_WordpressMutationVariables>;
+export const Api_TimecheckDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_timecheck"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_timecheckInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_timecheck"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"time"}}]}}]}}]} as unknown as DocumentNode<Api_TimecheckQuery, Api_TimecheckQueryVariables>;
 export const Authclient_LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_login"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ClientItemAuthenticationWithPasswordSuccess"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sessionToken"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ClientItemAuthenticationWithPasswordFailure"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]}}]} as unknown as DocumentNode<Authclient_LoginMutation, Authclient_LoginMutationVariables>;
 export const Authclient_RegisterDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_register"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"email"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"firstName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_register"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"email"},"value":{"kind":"Variable","name":{"kind":"Name","value":"email"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}},{"kind":"Argument","name":{"kind":"Name","value":"firstName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"firstName"}}},{"kind":"Argument","name":{"kind":"Name","value":"lastName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lastName"}}}]}]}}]} as unknown as DocumentNode<Authclient_RegisterMutation, Authclient_RegisterMutationVariables>;
 export const MeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Me"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authenticatedItem"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"User"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}}]}}]}}]}}]} as unknown as DocumentNode<MeQuery, MeQueryVariables>;
