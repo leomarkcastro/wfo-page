@@ -47,6 +47,9 @@ export default function TabMainEdit() {
 
   async function submitData(data) {
     if (!id) return;
+    // convert the date to a timestamp
+    data.dateOfAchievement = moment(data.dateOfAchievement).toISOString();
+
     await EducationDataProvider.update({
       id: id as string,
       variables: data,
