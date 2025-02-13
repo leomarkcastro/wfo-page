@@ -31,6 +31,12 @@ export default function TabMainEdit() {
     // Format graduation years to YYYY-MM-DD format for date inputs
     ['dateOfAchievement'].forEach((field) => {
       if (data[field]) {
+        let timeData = data[field];
+        // if timedata is numeric but is a string, convert to number
+        if (typeof timeData === 'string' && !isNaN(Number(timeData))) {
+          timeData = parseInt(timeData);
+        }
+
         data[field] = moment(data[field]).format('YYYY-MM-DD');
       }
     });
