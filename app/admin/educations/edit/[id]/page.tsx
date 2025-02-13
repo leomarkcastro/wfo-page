@@ -36,8 +36,9 @@ export default function TabMainEdit() {
         if (typeof timeData === 'string' && !isNaN(Number(timeData))) {
           timeData = parseInt(timeData);
         }
+        // console.log('timeData', timeData);
 
-        data[field] = moment(data[field]).format('YYYY-MM-DD');
+        data[field] = moment(timeData).format('YYYY-MM-DD');
       }
     });
     setData(data);
