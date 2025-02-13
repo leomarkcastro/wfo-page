@@ -106,7 +106,7 @@ export function SyncSettings() {
               <h3 className='text-lg font-medium'>NetForum Members</h3>
               <p className='text-sm text-muted-foreground'>
                 Last synced:{' '}
-                {formatLastSync(nfLastSync.api_timecheck.time || null)}
+                {formatLastSync(nfLastSync?.api_timecheck?.time || null)}
               </p>
             </div>
             <Button
@@ -131,7 +131,7 @@ export function SyncSettings() {
               <h3 className='text-lg font-medium'>WordPress Members</h3>
               <p className='text-sm text-muted-foreground'>
                 Last synced:{' '}
-                {formatLastSync(wpLastSync.api_timecheck.time || null)}
+                {formatLastSync(wpLastSync?.api_timecheck?.time || null)}
               </p>
             </div>
             <Button
