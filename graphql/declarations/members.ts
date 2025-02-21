@@ -7,11 +7,16 @@ export const Members_List = graphql(`
         id
         email
         createdAt
+        updatedAt
+        society
         name
         middleName
         lastName
         displayName
+        prefix
+        suffix
         avatar
+        about
         home_phoneNumber
         business_phoneNumber
         cell_phoneNumber
@@ -78,10 +83,15 @@ export const Members_Get = graphql(`
         id
         email
         createdAt
+        updatedAt
+        society
+        about
         name
         middleName
         lastName
         displayName
+        suffix
+        prefix
         avatar
         home_phoneNumber
         business_phoneNumber

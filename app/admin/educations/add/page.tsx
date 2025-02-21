@@ -4,6 +4,7 @@ import { QuickForm } from '@/components/custom/quick-form';
 import { EducationDataProvider } from '@/lib/dataProviders/education';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { createProvider } from '@/lib/services/createProvider';
 
 export default function TabMainEdit() {
   const router = useRouter();
@@ -11,8 +12,15 @@ export default function TabMainEdit() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
 
+  const dataHookProvider = createProvider({
+    name: EducationDataProvider.name,
+    dataProvider: EducationDataProvider,
+  });
+
+  const useCreate = dataHookProvider.useCreate();
+
   async function submitData(data) {
-    const res = await EducationDataProvider.create({
+    const res = await useCreate.mutateAsync({
       variables: {
         ...data,
         userId: userId || '',
@@ -20,6 +28,7 @@ export default function TabMainEdit() {
       meta: {},
       resource: 'educations',
     });
+
     toast({
       title: 'Education Created',
       description: 'Education record has been created successfully',

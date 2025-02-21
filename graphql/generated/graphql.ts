@@ -101,6 +101,142 @@ export type Api_Education_UpdateOutput = {
   ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
+export type Api_File_CreateOutput = {
+  __typename?: 'Api_File_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_File_DeleteOutput = {
+  __typename?: 'Api_File_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_File_GetOutput = {
+  __typename?: 'Api_File_getOutput';
+  data?: Maybe<Api_File_GetOutputData>;
+};
+
+export type Api_File_GetOutputData = {
+  __typename?: 'Api_File_getOutputData';
+  assignedTo: Scalars['String']['output'];
+  category: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  metadata: Scalars['String']['output'];
+  mime: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  note: Scalars['String']['output'];
+  path: Scalars['String']['output'];
+  size: Scalars['String']['output'];
+  url: Scalars['String']['output'];
+};
+
+export type Api_File_ListOutput = {
+  __typename?: 'Api_File_listOutput';
+  data?: Maybe<Array<Maybe<Api_File_ListOutputData>>>;
+  page?: Maybe<Api_File_ListOutputPage>;
+};
+
+export type Api_File_ListOutputData = {
+  __typename?: 'Api_File_listOutputData';
+  assignedTo?: Maybe<Scalars['String']['output']>;
+  category?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<Scalars['String']['output']>;
+  mime?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  path?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_File_ListOutputPage = {
+  __typename?: 'Api_File_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_File_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_File_ListOutputPageRange = {
+  __typename?: 'Api_File_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_File_UpdateOutput = {
+  __typename?: 'Api_File_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_InvoiceBatch_CreateOutput = {
+  __typename?: 'Api_InvoiceBatch_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_InvoiceBatch_DeleteOutput = {
+  __typename?: 'Api_InvoiceBatch_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_InvoiceBatch_GetOutput = {
+  __typename?: 'Api_InvoiceBatch_getOutput';
+  data?: Maybe<Api_InvoiceBatch_GetOutputData>;
+};
+
+export type Api_InvoiceBatch_GetOutputData = {
+  __typename?: 'Api_InvoiceBatch_getOutputData';
+  batchID?: Maybe<Scalars['String']['output']>;
+  closedAt?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  customer?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isOpen?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type Api_InvoiceBatch_ListOutput = {
+  __typename?: 'Api_InvoiceBatch_listOutput';
+  data?: Maybe<Array<Maybe<Api_InvoiceBatch_ListOutputData>>>;
+  page?: Maybe<Api_InvoiceBatch_ListOutputPage>;
+};
+
+export type Api_InvoiceBatch_ListOutputData = {
+  __typename?: 'Api_InvoiceBatch_listOutputData';
+  batchID: Scalars['String']['output'];
+  closedAt: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
+  customer: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  isOpen: Scalars['Boolean']['output'];
+};
+
+export type Api_InvoiceBatch_ListOutputPage = {
+  __typename?: 'Api_InvoiceBatch_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_InvoiceBatch_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_InvoiceBatch_ListOutputPageRange = {
+  __typename?: 'Api_InvoiceBatch_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_InvoiceBatch_UpdateOutput = {
+  __typename?: 'Api_InvoiceBatch_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
 export type Api_Member_AggregateOutput = {
   __typename?: 'Api_Member_aggregateOutput';
   breakdown?: Maybe<Array<Maybe<Api_Member_AggregateOutputBreakdown>>>;
@@ -137,6 +273,7 @@ export type Api_Member_GetOutput = {
 
 export type Api_Member_GetOutputData = {
   __typename?: 'Api_Member_getOutputData';
+  about?: Maybe<Scalars['String']['output']>;
   avatar?: Maybe<Scalars['String']['output']>;
   business_addressLine1?: Maybe<Scalars['String']['output']>;
   business_addressLine2?: Maybe<Scalars['String']['output']>;
@@ -175,7 +312,11 @@ export type Api_Member_GetOutputData = {
   postgraduate_degree?: Maybe<Scalars['String']['output']>;
   postgraduate_graduationYear?: Maybe<Scalars['String']['output']>;
   postgraduate_school?: Maybe<Scalars['String']['output']>;
+  prefix?: Maybe<Scalars['String']['output']>;
   rejoinDate?: Maybe<Scalars['String']['output']>;
+  society?: Maybe<Scalars['String']['output']>;
+  suffix?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_Member_ListOutput = {
@@ -186,6 +327,7 @@ export type Api_Member_ListOutput = {
 
 export type Api_Member_ListOutputData = {
   __typename?: 'Api_Member_listOutputData';
+  about?: Maybe<Scalars['String']['output']>;
   avatar?: Maybe<Scalars['String']['output']>;
   business_addressLine1?: Maybe<Scalars['String']['output']>;
   business_addressLine2?: Maybe<Scalars['String']['output']>;
@@ -224,7 +366,11 @@ export type Api_Member_ListOutputData = {
   postgraduate_degree?: Maybe<Scalars['String']['output']>;
   postgraduate_graduationYear?: Maybe<Scalars['String']['output']>;
   postgraduate_school?: Maybe<Scalars['String']['output']>;
+  prefix?: Maybe<Scalars['String']['output']>;
   rejoinDate?: Maybe<Scalars['String']['output']>;
+  society?: Maybe<Scalars['String']['output']>;
+  suffix?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_Member_ListOutputPage = {
@@ -243,6 +389,249 @@ export type Api_Member_ListOutputPageRange = {
 
 export type Api_Member_UpdateOutput = {
   __typename?: 'Api_Member_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Note_CreateOutput = {
+  __typename?: 'Api_Note_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Note_DeleteOutput = {
+  __typename?: 'Api_Note_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Note_GetOutput = {
+  __typename?: 'Api_Note_getOutput';
+  data?: Maybe<Api_Note_GetOutputData>;
+};
+
+export type Api_Note_GetOutputData = {
+  __typename?: 'Api_Note_getOutputData';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Note_ListOutput = {
+  __typename?: 'Api_Note_listOutput';
+  data?: Maybe<Array<Maybe<Api_Note_ListOutputData>>>;
+  page?: Maybe<Api_Note_ListOutputPage>;
+};
+
+export type Api_Note_ListOutputData = {
+  __typename?: 'Api_Note_listOutputData';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  userId?: Maybe<Scalars['String']['output']>;
+  userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Note_ListOutputPage = {
+  __typename?: 'Api_Note_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_Note_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Note_ListOutputPageRange = {
+  __typename?: 'Api_Note_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_Note_UpdateOutput = {
+  __typename?: 'Api_Note_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_ProductFulfillment_AggregateOutput = {
+  __typename?: 'Api_ProductFulfillment_aggregateOutput';
+  breakdown?: Maybe<Array<Maybe<Api_ProductFulfillment_AggregateOutputBreakdown>>>;
+};
+
+export type Api_ProductFulfillment_AggregateOutputBreakdown = {
+  __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown';
+  counts: Array<Maybe<Api_ProductFulfillment_AggregateOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ProductFulfillment_AggregateOutputBreakdownCounts = {
+  __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ProductFulfillment_CreateOutput = {
+  __typename?: 'Api_ProductFulfillment_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_ProductFulfillment_DeleteOutput = {
+  __typename?: 'Api_ProductFulfillment_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_ProductFulfillment_GetOutput = {
+  __typename?: 'Api_ProductFulfillment_getOutput';
+  data?: Maybe<Api_ProductFulfillment_GetOutputData>;
+};
+
+export type Api_ProductFulfillment_GetOutputData = {
+  __typename?: 'Api_ProductFulfillment_getOutputData';
+  balance?: Maybe<Scalars['Float']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  package?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
+  product?: Maybe<Scalars['String']['output']>;
+  quantity?: Maybe<Scalars['Float']['output']>;
+  returnedCancelled?: Maybe<Scalars['Boolean']['output']>;
+  returnedCancelledAt?: Maybe<Scalars['String']['output']>;
+  shipped?: Maybe<Scalars['Boolean']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_ProductFulfillment_ListOutput = {
+  __typename?: 'Api_ProductFulfillment_listOutput';
+  data?: Maybe<Array<Maybe<Api_ProductFulfillment_ListOutputData>>>;
+  page?: Maybe<Api_ProductFulfillment_ListOutputPage>;
+};
+
+export type Api_ProductFulfillment_ListOutputData = {
+  __typename?: 'Api_ProductFulfillment_listOutputData';
+  balance?: Maybe<Scalars['Float']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  package?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
+  product?: Maybe<Scalars['String']['output']>;
+  quantity?: Maybe<Scalars['Float']['output']>;
+  returnedCancelled?: Maybe<Scalars['Boolean']['output']>;
+  returnedCancelledAt?: Maybe<Scalars['String']['output']>;
+  shipped?: Maybe<Scalars['Boolean']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_ProductFulfillment_ListOutputPage = {
+  __typename?: 'Api_ProductFulfillment_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_ProductFulfillment_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_ProductFulfillment_ListOutputPageRange = {
+  __typename?: 'Api_ProductFulfillment_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_ProductFulfillment_UpdateOutput = {
+  __typename?: 'Api_ProductFulfillment_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_ServicePurchase_AggregateOutput = {
+  __typename?: 'Api_ServicePurchase_aggregateOutput';
+  breakdown?: Maybe<Array<Maybe<Api_ServicePurchase_AggregateOutputBreakdown>>>;
+};
+
+export type Api_ServicePurchase_AggregateOutputBreakdown = {
+  __typename?: 'Api_ServicePurchase_aggregateOutputBreakdown';
+  counts: Array<Maybe<Api_ServicePurchase_AggregateOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ServicePurchase_AggregateOutputBreakdownCounts = {
+  __typename?: 'Api_ServicePurchase_aggregateOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ServicePurchase_CreateOutput = {
+  __typename?: 'Api_ServicePurchase_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_ServicePurchase_DeleteOutput = {
+  __typename?: 'Api_ServicePurchase_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_ServicePurchase_GetOutput = {
+  __typename?: 'Api_ServicePurchase_getOutput';
+  data?: Maybe<Api_ServicePurchase_GetOutputData>;
+};
+
+export type Api_ServicePurchase_GetOutputData = {
+  __typename?: 'Api_ServicePurchase_getOutputData';
+  balanceDue?: Maybe<Scalars['Float']['output']>;
+  cancelled?: Maybe<Scalars['Boolean']['output']>;
+  cancelledAt?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  product?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ServicePurchase_ListOutput = {
+  __typename?: 'Api_ServicePurchase_listOutput';
+  data?: Maybe<Array<Maybe<Api_ServicePurchase_ListOutputData>>>;
+  page?: Maybe<Api_ServicePurchase_ListOutputPage>;
+};
+
+export type Api_ServicePurchase_ListOutputData = {
+  __typename?: 'Api_ServicePurchase_listOutputData';
+  balanceDue?: Maybe<Scalars['Float']['output']>;
+  cancelled?: Maybe<Scalars['Boolean']['output']>;
+  cancelledAt?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  product?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ServicePurchase_ListOutputPage = {
+  __typename?: 'Api_ServicePurchase_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_ServicePurchase_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_ServicePurchase_ListOutputPageRange = {
+  __typename?: 'Api_ServicePurchase_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_ServicePurchase_UpdateOutput = {
+  __typename?: 'Api_ServicePurchase_updateOutput';
   count?: Maybe<Scalars['Float']['output']>;
   ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
@@ -406,7 +795,7 @@ export type Api_Education_CreateInputData = {
 
 export type Api_Education_CreateInputDataData = {
   achievement: Scalars['String']['input'];
-  courseID: Scalars['String']['input'];
+  courseID?: InputMaybe<Scalars['String']['input']>;
   dateOfAchievement: Scalars['String']['input'];
   schoolName: Scalars['String']['input'];
   userId: Scalars['String']['input'];
@@ -477,6 +866,172 @@ export type Api_Education_UpdateInputDataDataData = {
   userId?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Api_File_CreateInput = {
+  data: Api_File_CreateInputData;
+};
+
+export type Api_File_CreateInputData = {
+  data: Array<InputMaybe<Api_File_CreateInputDataData>>;
+};
+
+export type Api_File_CreateInputDataData = {
+  assignedTo?: InputMaybe<Scalars['String']['input']>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  mime?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_File_DeleteInput = {
+  data: Api_File_DeleteInputData;
+};
+
+export type Api_File_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_File_GetInput = {
+  data: Api_File_GetInputData;
+};
+
+export type Api_File_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_File_ListInput = {
+  data: Api_File_ListInputData;
+};
+
+export type Api_File_ListInputData = {
+  page?: InputMaybe<Api_File_ListInputDataPage>;
+};
+
+export type Api_File_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_File_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_File_ListInputDataPageSort>;
+};
+
+export type Api_File_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_File_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_File_UpdateInput = {
+  data: Api_File_UpdateInputData;
+};
+
+export type Api_File_UpdateInputData = {
+  data: Array<InputMaybe<Api_File_UpdateInputDataData>>;
+};
+
+export type Api_File_UpdateInputDataData = {
+  data: Api_File_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_File_UpdateInputDataDataData = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  mime?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_InvoiceBatch_CreateInput = {
+  data: Api_InvoiceBatch_CreateInputData;
+};
+
+export type Api_InvoiceBatch_CreateInputData = {
+  data: Array<InputMaybe<Api_InvoiceBatch_CreateInputDataData>>;
+};
+
+export type Api_InvoiceBatch_CreateInputDataData = {
+  batchID: Scalars['String']['input'];
+  customer: Scalars['String']['input'];
+  isOpen: Scalars['Boolean']['input'];
+};
+
+export type Api_InvoiceBatch_DeleteInput = {
+  data: Api_InvoiceBatch_DeleteInputData;
+};
+
+export type Api_InvoiceBatch_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_InvoiceBatch_GetInput = {
+  data: Api_InvoiceBatch_GetInputData;
+};
+
+export type Api_InvoiceBatch_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_InvoiceBatch_ListInput = {
+  data: Api_InvoiceBatch_ListInputData;
+};
+
+export type Api_InvoiceBatch_ListInputData = {
+  page?: InputMaybe<Api_InvoiceBatch_ListInputDataPage>;
+};
+
+export type Api_InvoiceBatch_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_InvoiceBatch_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_InvoiceBatch_ListInputDataPageSort>;
+};
+
+export type Api_InvoiceBatch_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_InvoiceBatch_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_InvoiceBatch_UpdateInput = {
+  data: Api_InvoiceBatch_UpdateInputData;
+};
+
+export type Api_InvoiceBatch_UpdateInputData = {
+  data: Array<InputMaybe<Api_InvoiceBatch_UpdateInputDataData>>;
+};
+
+export type Api_InvoiceBatch_UpdateInputDataData = {
+  data: Api_InvoiceBatch_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_InvoiceBatch_UpdateInputDataDataData = {
+  batchID?: InputMaybe<Scalars['String']['input']>;
+  closedAt?: InputMaybe<Scalars['String']['input']>;
+  customer?: InputMaybe<Scalars['String']['input']>;
+  isOpen?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type Api_Member_AggregateInput = {
   data: Api_Member_AggregateInputData;
 };
@@ -517,6 +1072,7 @@ export type Api_Member_CreateInputData = {
 };
 
 export type Api_Member_CreateInputDataData = {
+  about?: InputMaybe<Scalars['String']['input']>;
   business_addressLine1?: InputMaybe<Scalars['String']['input']>;
   business_addressLine2?: InputMaybe<Scalars['String']['input']>;
   business_city?: InputMaybe<Scalars['String']['input']>;
@@ -551,7 +1107,10 @@ export type Api_Member_CreateInputDataData = {
   postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
   postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
   postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  prefix?: InputMaybe<Scalars['String']['input']>;
   rejoinDate?: InputMaybe<Scalars['String']['input']>;
+  society?: InputMaybe<Scalars['String']['input']>;
+  suffix?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Api_Member_DeleteInput = {
@@ -612,6 +1171,7 @@ export type Api_Member_UpdateInputDataData = {
 };
 
 export type Api_Member_UpdateInputDataDataData = {
+  about?: InputMaybe<Scalars['String']['input']>;
   business_addressLine1?: InputMaybe<Scalars['String']['input']>;
   business_addressLine2?: InputMaybe<Scalars['String']['input']>;
   business_city?: InputMaybe<Scalars['String']['input']>;
@@ -646,7 +1206,324 @@ export type Api_Member_UpdateInputDataDataData = {
   postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
   postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
   postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  prefix?: InputMaybe<Scalars['String']['input']>;
   rejoinDate?: InputMaybe<Scalars['String']['input']>;
+  society?: InputMaybe<Scalars['String']['input']>;
+  suffix?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Note_CreateInput = {
+  data: Api_Note_CreateInputData;
+};
+
+export type Api_Note_CreateInputData = {
+  data: Array<InputMaybe<Api_Note_CreateInputDataData>>;
+};
+
+export type Api_Note_CreateInputDataData = {
+  content: Scalars['String']['input'];
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  title: Scalars['String']['input'];
+  type: Scalars['String']['input'];
+  userId: Scalars['String']['input'];
+};
+
+export type Api_Note_DeleteInput = {
+  data: Api_Note_DeleteInputData;
+};
+
+export type Api_Note_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_Note_GetInput = {
+  data: Api_Note_GetInputData;
+};
+
+export type Api_Note_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_Note_ListInput = {
+  data: Api_Note_ListInputData;
+};
+
+export type Api_Note_ListInputData = {
+  page?: InputMaybe<Api_Note_ListInputDataPage>;
+};
+
+export type Api_Note_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Note_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Note_ListInputDataPageSort>;
+};
+
+export type Api_Note_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Note_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Note_UpdateInput = {
+  data: Api_Note_UpdateInputData;
+};
+
+export type Api_Note_UpdateInputData = {
+  data: Array<InputMaybe<Api_Note_UpdateInputDataData>>;
+};
+
+export type Api_Note_UpdateInputDataData = {
+  data: Api_Note_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_Note_UpdateInputDataDataData = {
+  content?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_ProductFulfillment_AggregateInput = {
+  data: Api_ProductFulfillment_AggregateInputData;
+};
+
+export type Api_ProductFulfillment_AggregateInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_ProductFulfillment_AggregateInputDataPage>;
+};
+
+export type Api_ProductFulfillment_AggregateInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_ProductFulfillment_AggregateInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_ProductFulfillment_AggregateInputDataPageSort>;
+};
+
+export type Api_ProductFulfillment_AggregateInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_AggregateInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_CreateInput = {
+  data: Api_ProductFulfillment_CreateInputData;
+};
+
+export type Api_ProductFulfillment_CreateInputData = {
+  data: Array<InputMaybe<Api_ProductFulfillment_CreateInputDataData>>;
+};
+
+export type Api_ProductFulfillment_CreateInputDataData = {
+  balance: Scalars['Float']['input'];
+  note?: InputMaybe<Scalars['String']['input']>;
+  package: Scalars['String']['input'];
+  price: Scalars['Float']['input'];
+  product: Scalars['String']['input'];
+  quantity: Scalars['Float']['input'];
+  shipped?: InputMaybe<Scalars['Boolean']['input']>;
+  total: Scalars['Float']['input'];
+};
+
+export type Api_ProductFulfillment_DeleteInput = {
+  data: Api_ProductFulfillment_DeleteInputData;
+};
+
+export type Api_ProductFulfillment_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_ProductFulfillment_GetInput = {
+  data: Api_ProductFulfillment_GetInputData;
+};
+
+export type Api_ProductFulfillment_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_ListInput = {
+  data: Api_ProductFulfillment_ListInputData;
+};
+
+export type Api_ProductFulfillment_ListInputData = {
+  page?: InputMaybe<Api_ProductFulfillment_ListInputDataPage>;
+};
+
+export type Api_ProductFulfillment_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_ProductFulfillment_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_ProductFulfillment_ListInputDataPageSort>;
+};
+
+export type Api_ProductFulfillment_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_UpdateInput = {
+  data: Api_ProductFulfillment_UpdateInputData;
+};
+
+export type Api_ProductFulfillment_UpdateInputData = {
+  data: Array<InputMaybe<Api_ProductFulfillment_UpdateInputDataData>>;
+};
+
+export type Api_ProductFulfillment_UpdateInputDataData = {
+  data: Api_ProductFulfillment_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_UpdateInputDataDataData = {
+  balance?: InputMaybe<Scalars['Float']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  package?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  quantity?: InputMaybe<Scalars['Float']['input']>;
+  returnedCancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  returnedCancelledAt?: InputMaybe<Scalars['String']['input']>;
+  shipped?: InputMaybe<Scalars['Boolean']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type Api_ServicePurchase_AggregateInput = {
+  data: Api_ServicePurchase_AggregateInputData;
+};
+
+export type Api_ServicePurchase_AggregateInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_ServicePurchase_AggregateInputDataPage>;
+};
+
+export type Api_ServicePurchase_AggregateInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_ServicePurchase_AggregateInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_ServicePurchase_AggregateInputDataPageSort>;
+};
+
+export type Api_ServicePurchase_AggregateInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_AggregateInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_CreateInput = {
+  data: Api_ServicePurchase_CreateInputData;
+};
+
+export type Api_ServicePurchase_CreateInputData = {
+  data: Array<InputMaybe<Api_ServicePurchase_CreateInputDataData>>;
+};
+
+export type Api_ServicePurchase_CreateInputDataData = {
+  balanceDue: Scalars['Float']['input'];
+  note?: InputMaybe<Scalars['String']['input']>;
+  product: Scalars['String']['input'];
+  total: Scalars['Float']['input'];
+  type: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_DeleteInput = {
+  data: Api_ServicePurchase_DeleteInputData;
+};
+
+export type Api_ServicePurchase_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_ServicePurchase_GetInput = {
+  data: Api_ServicePurchase_GetInputData;
+};
+
+export type Api_ServicePurchase_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_ListInput = {
+  data: Api_ServicePurchase_ListInputData;
+};
+
+export type Api_ServicePurchase_ListInputData = {
+  page?: InputMaybe<Api_ServicePurchase_ListInputDataPage>;
+};
+
+export type Api_ServicePurchase_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_ServicePurchase_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_ServicePurchase_ListInputDataPageSort>;
+};
+
+export type Api_ServicePurchase_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_UpdateInput = {
+  data: Api_ServicePurchase_UpdateInputData;
+};
+
+export type Api_ServicePurchase_UpdateInputData = {
+  data: Array<InputMaybe<Api_ServicePurchase_UpdateInputDataData>>;
+};
+
+export type Api_ServicePurchase_UpdateInputDataData = {
+  data: Api_ServicePurchase_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_UpdateInputDataDataData = {
+  balanceDue?: InputMaybe<Scalars['Float']['input']>;
+  cancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  cancelledAt?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Api_Sync_Crm_NetforumInput = {
@@ -766,6 +1643,66 @@ export type DateTimeNullableFilter = {
   notIn?: InputMaybe<Array<Scalars['DateTime']['input']>>;
 };
 
+export type File = {
+  __typename?: 'File';
+  assignedTo?: Maybe<Scalars['String']['output']>;
+  category?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  metadata?: Maybe<Scalars['String']['output']>;
+  mime?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  path?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type FileCreateInput = {
+  assignedTo?: InputMaybe<Scalars['String']['input']>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  mime?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FileOrderByInput = {
+  assignedTo?: InputMaybe<OrderDirection>;
+  category?: InputMaybe<OrderDirection>;
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  metadata?: InputMaybe<OrderDirection>;
+  mime?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  note?: InputMaybe<OrderDirection>;
+  path?: InputMaybe<OrderDirection>;
+  size?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type FileUpdateArgs = {
+  data: FileUpdateInput;
+  where: FileWhereUniqueInput;
+};
+
+export type FileUpdateInput = {
+  assignedTo?: InputMaybe<Scalars['String']['input']>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  mime?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type FileUploadOutput = {
   __typename?: 'FileUploadOutput';
   files: Array<Maybe<FileUploadOutputFiles>>;
@@ -775,6 +1712,27 @@ export type FileUploadOutputFiles = {
   __typename?: 'FileUploadOutputFiles';
   filename: Scalars['String']['output'];
   url: Scalars['String']['output'];
+};
+
+export type FileWhereInput = {
+  AND?: InputMaybe<Array<FileWhereInput>>;
+  NOT?: InputMaybe<Array<FileWhereInput>>;
+  OR?: InputMaybe<Array<FileWhereInput>>;
+  assignedTo?: InputMaybe<StringFilter>;
+  category?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  metadata?: InputMaybe<StringFilter>;
+  mime?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  note?: InputMaybe<StringFilter>;
+  path?: InputMaybe<StringFilter>;
+  size?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type FileWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type File_UploadInput = {
@@ -1108,6 +2066,62 @@ export type InvoiceLineItemsArgs = {
 
 export type InvoiceLineItemsCountArgs = {
   where?: InvoiceLineItemWhereInput;
+};
+
+export type InvoiceBatch = {
+  __typename?: 'InvoiceBatch';
+  batchID?: Maybe<Scalars['String']['output']>;
+  closedAt?: Maybe<Scalars['DateTime']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  customer?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  isOpen?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type InvoiceBatchCreateInput = {
+  batchID?: InputMaybe<Scalars['String']['input']>;
+  closedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  customer?: InputMaybe<Scalars['String']['input']>;
+  isOpen?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type InvoiceBatchOrderByInput = {
+  batchID?: InputMaybe<OrderDirection>;
+  closedAt?: InputMaybe<OrderDirection>;
+  createdAt?: InputMaybe<OrderDirection>;
+  customer?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  isOpen?: InputMaybe<OrderDirection>;
+};
+
+export type InvoiceBatchUpdateArgs = {
+  data: InvoiceBatchUpdateInput;
+  where: InvoiceBatchWhereUniqueInput;
+};
+
+export type InvoiceBatchUpdateInput = {
+  batchID?: InputMaybe<Scalars['String']['input']>;
+  closedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  customer?: InputMaybe<Scalars['String']['input']>;
+  isOpen?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type InvoiceBatchWhereInput = {
+  AND?: InputMaybe<Array<InvoiceBatchWhereInput>>;
+  NOT?: InputMaybe<Array<InvoiceBatchWhereInput>>;
+  OR?: InputMaybe<Array<InvoiceBatchWhereInput>>;
+  batchID?: InputMaybe<StringFilter>;
+  closedAt?: InputMaybe<DateTimeNullableFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  customer?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  isOpen?: InputMaybe<BooleanFilter>;
+};
+
+export type InvoiceBatchWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type InvoiceCreateInput = {
@@ -1518,9 +2532,24 @@ export type Mutation = {
   api_education_create?: Maybe<Api_Education_CreateOutput>;
   api_education_delete?: Maybe<Api_Education_DeleteOutput>;
   api_education_update?: Maybe<Api_Education_UpdateOutput>;
+  api_file_create?: Maybe<Api_File_CreateOutput>;
+  api_file_delete?: Maybe<Api_File_DeleteOutput>;
+  api_file_update?: Maybe<Api_File_UpdateOutput>;
+  api_invoiceBatch_create?: Maybe<Api_InvoiceBatch_CreateOutput>;
+  api_invoiceBatch_delete?: Maybe<Api_InvoiceBatch_DeleteOutput>;
+  api_invoiceBatch_update?: Maybe<Api_InvoiceBatch_UpdateOutput>;
   api_member_create?: Maybe<Api_Member_CreateOutput>;
   api_member_delete?: Maybe<Api_Member_DeleteOutput>;
   api_member_update?: Maybe<Api_Member_UpdateOutput>;
+  api_note_create?: Maybe<Api_Note_CreateOutput>;
+  api_note_delete?: Maybe<Api_Note_DeleteOutput>;
+  api_note_update?: Maybe<Api_Note_UpdateOutput>;
+  api_productFulfillment_create?: Maybe<Api_ProductFulfillment_CreateOutput>;
+  api_productFulfillment_delete?: Maybe<Api_ProductFulfillment_DeleteOutput>;
+  api_productFulfillment_update?: Maybe<Api_ProductFulfillment_UpdateOutput>;
+  api_servicePurchase_create?: Maybe<Api_ServicePurchase_CreateOutput>;
+  api_servicePurchase_delete?: Maybe<Api_ServicePurchase_DeleteOutput>;
+  api_servicePurchase_update?: Maybe<Api_ServicePurchase_UpdateOutput>;
   api_sync_crm_netforum?: Maybe<Api_Sync_Crm_NetforumOutput>;
   api_sync_crm_wordpress?: Maybe<Api_Sync_Crm_WordpressOutput>;
   api_sync_from_netforum?: Maybe<Api_Sync_From_NetforumOutput>;
@@ -1531,6 +2560,8 @@ export type Mutation = {
   authclient_requestPasswordReset?: Maybe<Scalars['Boolean']['output']>;
   authclient_resetPassword?: Maybe<Scalars['Boolean']['output']>;
   authenticateUserWithPassword?: Maybe<UserAuthenticationWithPasswordResult>;
+  createFile?: Maybe<File>;
+  createFiles?: Maybe<Array<Maybe<File>>>;
   createGroup?: Maybe<Group>;
   createGroupMember?: Maybe<GroupMember>;
   createGroupMemberFlag?: Maybe<GroupMemberFlag>;
@@ -1539,6 +2570,8 @@ export type Mutation = {
   createGroups?: Maybe<Array<Maybe<Group>>>;
   createInitialUser: UserAuthenticationWithPasswordSuccess;
   createInvoice?: Maybe<Invoice>;
+  createInvoiceBatch?: Maybe<InvoiceBatch>;
+  createInvoiceBatches?: Maybe<Array<Maybe<InvoiceBatch>>>;
   createInvoiceLineItem?: Maybe<InvoiceLineItem>;
   createInvoiceLineItems?: Maybe<Array<Maybe<InvoiceLineItem>>>;
   createInvoices?: Maybe<Array<Maybe<Invoice>>>;
@@ -1548,10 +2581,14 @@ export type Mutation = {
   createMailTrackHistory?: Maybe<MailTrackHistory>;
   createNetforumLog?: Maybe<NetforumLog>;
   createNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
+  createProductFulfillment?: Maybe<ProductFulfillment>;
+  createProductFulfillments?: Maybe<Array<Maybe<ProductFulfillment>>>;
   createServerError?: Maybe<ServerError>;
   createServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   createServerLog?: Maybe<ServerLog>;
   createServerLogs?: Maybe<Array<Maybe<ServerLog>>>;
+  createServicePurchase?: Maybe<ServicePurchase>;
+  createServicePurchases?: Maybe<Array<Maybe<ServicePurchase>>>;
   createUser?: Maybe<User>;
   createUserEducationRecord?: Maybe<UserEducationRecord>;
   createUserEducationRecords?: Maybe<Array<Maybe<UserEducationRecord>>>;
@@ -1559,11 +2596,15 @@ export type Mutation = {
   createUserFlags?: Maybe<Array<Maybe<UserFlag>>>;
   createUserLoginHistories?: Maybe<Array<Maybe<UserLoginHistory>>>;
   createUserLoginHistory?: Maybe<UserLoginHistory>;
+  createUserNote?: Maybe<UserNote>;
+  createUserNotes?: Maybe<Array<Maybe<UserNote>>>;
   createUserSystemFlag?: Maybe<UserSystemFlag>;
   createUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   createUsers?: Maybe<Array<Maybe<User>>>;
   createWPLog?: Maybe<WpLog>;
   createWPLogs?: Maybe<Array<Maybe<WpLog>>>;
+  deleteFile?: Maybe<File>;
+  deleteFiles?: Maybe<Array<Maybe<File>>>;
   deleteGroup?: Maybe<Group>;
   deleteGroupMember?: Maybe<GroupMember>;
   deleteGroupMemberFlag?: Maybe<GroupMemberFlag>;
@@ -1571,6 +2612,8 @@ export type Mutation = {
   deleteGroupMembers?: Maybe<Array<Maybe<GroupMember>>>;
   deleteGroups?: Maybe<Array<Maybe<Group>>>;
   deleteInvoice?: Maybe<Invoice>;
+  deleteInvoiceBatch?: Maybe<InvoiceBatch>;
+  deleteInvoiceBatches?: Maybe<Array<Maybe<InvoiceBatch>>>;
   deleteInvoiceLineItem?: Maybe<InvoiceLineItem>;
   deleteInvoiceLineItems?: Maybe<Array<Maybe<InvoiceLineItem>>>;
   deleteInvoices?: Maybe<Array<Maybe<Invoice>>>;
@@ -1580,10 +2623,14 @@ export type Mutation = {
   deleteMailTrackHistory?: Maybe<MailTrackHistory>;
   deleteNetforumLog?: Maybe<NetforumLog>;
   deleteNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
+  deleteProductFulfillment?: Maybe<ProductFulfillment>;
+  deleteProductFulfillments?: Maybe<Array<Maybe<ProductFulfillment>>>;
   deleteServerError?: Maybe<ServerError>;
   deleteServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   deleteServerLog?: Maybe<ServerLog>;
   deleteServerLogs?: Maybe<Array<Maybe<ServerLog>>>;
+  deleteServicePurchase?: Maybe<ServicePurchase>;
+  deleteServicePurchases?: Maybe<Array<Maybe<ServicePurchase>>>;
   deleteUser?: Maybe<User>;
   deleteUserEducationRecord?: Maybe<UserEducationRecord>;
   deleteUserEducationRecords?: Maybe<Array<Maybe<UserEducationRecord>>>;
@@ -1591,6 +2638,8 @@ export type Mutation = {
   deleteUserFlags?: Maybe<Array<Maybe<UserFlag>>>;
   deleteUserLoginHistories?: Maybe<Array<Maybe<UserLoginHistory>>>;
   deleteUserLoginHistory?: Maybe<UserLoginHistory>;
+  deleteUserNote?: Maybe<UserNote>;
+  deleteUserNotes?: Maybe<Array<Maybe<UserNote>>>;
   deleteUserSystemFlag?: Maybe<UserSystemFlag>;
   deleteUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   deleteUsers?: Maybe<Array<Maybe<User>>>;
@@ -1598,6 +2647,8 @@ export type Mutation = {
   deleteWPLogs?: Maybe<Array<Maybe<WpLog>>>;
   endSession: Scalars['Boolean']['output'];
   file_upload?: Maybe<FileUploadOutput>;
+  updateFile?: Maybe<File>;
+  updateFiles?: Maybe<Array<Maybe<File>>>;
   updateGroup?: Maybe<Group>;
   updateGroupMember?: Maybe<GroupMember>;
   updateGroupMemberFlag?: Maybe<GroupMemberFlag>;
@@ -1605,6 +2656,8 @@ export type Mutation = {
   updateGroupMembers?: Maybe<Array<Maybe<GroupMember>>>;
   updateGroups?: Maybe<Array<Maybe<Group>>>;
   updateInvoice?: Maybe<Invoice>;
+  updateInvoiceBatch?: Maybe<InvoiceBatch>;
+  updateInvoiceBatches?: Maybe<Array<Maybe<InvoiceBatch>>>;
   updateInvoiceLineItem?: Maybe<InvoiceLineItem>;
   updateInvoiceLineItems?: Maybe<Array<Maybe<InvoiceLineItem>>>;
   updateInvoices?: Maybe<Array<Maybe<Invoice>>>;
@@ -1614,10 +2667,14 @@ export type Mutation = {
   updateMailTrackHistory?: Maybe<MailTrackHistory>;
   updateNetforumLog?: Maybe<NetforumLog>;
   updateNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
+  updateProductFulfillment?: Maybe<ProductFulfillment>;
+  updateProductFulfillments?: Maybe<Array<Maybe<ProductFulfillment>>>;
   updateServerError?: Maybe<ServerError>;
   updateServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   updateServerLog?: Maybe<ServerLog>;
   updateServerLogs?: Maybe<Array<Maybe<ServerLog>>>;
+  updateServicePurchase?: Maybe<ServicePurchase>;
+  updateServicePurchases?: Maybe<Array<Maybe<ServicePurchase>>>;
   updateUser?: Maybe<User>;
   updateUserEducationRecord?: Maybe<UserEducationRecord>;
   updateUserEducationRecords?: Maybe<Array<Maybe<UserEducationRecord>>>;
@@ -1625,6 +2682,8 @@ export type Mutation = {
   updateUserFlags?: Maybe<Array<Maybe<UserFlag>>>;
   updateUserLoginHistories?: Maybe<Array<Maybe<UserLoginHistory>>>;
   updateUserLoginHistory?: Maybe<UserLoginHistory>;
+  updateUserNote?: Maybe<UserNote>;
+  updateUserNotes?: Maybe<Array<Maybe<UserNote>>>;
   updateUserSystemFlag?: Maybe<UserSystemFlag>;
   updateUserSystemFlags?: Maybe<Array<Maybe<UserSystemFlag>>>;
   updateUsers?: Maybe<Array<Maybe<User>>>;
@@ -1649,6 +2708,36 @@ export type MutationApi_Education_UpdateArgs = {
 };
 
 
+export type MutationApi_File_CreateArgs = {
+  input: Api_File_CreateInput;
+};
+
+
+export type MutationApi_File_DeleteArgs = {
+  input: Api_File_DeleteInput;
+};
+
+
+export type MutationApi_File_UpdateArgs = {
+  input: Api_File_UpdateInput;
+};
+
+
+export type MutationApi_InvoiceBatch_CreateArgs = {
+  input: Api_InvoiceBatch_CreateInput;
+};
+
+
+export type MutationApi_InvoiceBatch_DeleteArgs = {
+  input: Api_InvoiceBatch_DeleteInput;
+};
+
+
+export type MutationApi_InvoiceBatch_UpdateArgs = {
+  input: Api_InvoiceBatch_UpdateInput;
+};
+
+
 export type MutationApi_Member_CreateArgs = {
   input: Api_Member_CreateInput;
 };
@@ -1661,6 +2750,51 @@ export type MutationApi_Member_DeleteArgs = {
 
 export type MutationApi_Member_UpdateArgs = {
   input: Api_Member_UpdateInput;
+};
+
+
+export type MutationApi_Note_CreateArgs = {
+  input: Api_Note_CreateInput;
+};
+
+
+export type MutationApi_Note_DeleteArgs = {
+  input: Api_Note_DeleteInput;
+};
+
+
+export type MutationApi_Note_UpdateArgs = {
+  input: Api_Note_UpdateInput;
+};
+
+
+export type MutationApi_ProductFulfillment_CreateArgs = {
+  input: Api_ProductFulfillment_CreateInput;
+};
+
+
+export type MutationApi_ProductFulfillment_DeleteArgs = {
+  input: Api_ProductFulfillment_DeleteInput;
+};
+
+
+export type MutationApi_ProductFulfillment_UpdateArgs = {
+  input: Api_ProductFulfillment_UpdateInput;
+};
+
+
+export type MutationApi_ServicePurchase_CreateArgs = {
+  input: Api_ServicePurchase_CreateInput;
+};
+
+
+export type MutationApi_ServicePurchase_DeleteArgs = {
+  input: Api_ServicePurchase_DeleteInput;
+};
+
+
+export type MutationApi_ServicePurchase_UpdateArgs = {
+  input: Api_ServicePurchase_UpdateInput;
 };
 
 
@@ -1722,6 +2856,16 @@ export type MutationAuthenticateUserWithPasswordArgs = {
 };
 
 
+export type MutationCreateFileArgs = {
+  data: FileCreateInput;
+};
+
+
+export type MutationCreateFilesArgs = {
+  data: Array<FileCreateInput>;
+};
+
+
 export type MutationCreateGroupArgs = {
   data: GroupCreateInput;
 };
@@ -1759,6 +2903,16 @@ export type MutationCreateInitialUserArgs = {
 
 export type MutationCreateInvoiceArgs = {
   data: InvoiceCreateInput;
+};
+
+
+export type MutationCreateInvoiceBatchArgs = {
+  data: InvoiceBatchCreateInput;
+};
+
+
+export type MutationCreateInvoiceBatchesArgs = {
+  data: Array<InvoiceBatchCreateInput>;
 };
 
 
@@ -1807,6 +2961,16 @@ export type MutationCreateNetforumLogsArgs = {
 };
 
 
+export type MutationCreateProductFulfillmentArgs = {
+  data: ProductFulfillmentCreateInput;
+};
+
+
+export type MutationCreateProductFulfillmentsArgs = {
+  data: Array<ProductFulfillmentCreateInput>;
+};
+
+
 export type MutationCreateServerErrorArgs = {
   data: ServerErrorCreateInput;
 };
@@ -1824,6 +2988,16 @@ export type MutationCreateServerLogArgs = {
 
 export type MutationCreateServerLogsArgs = {
   data: Array<ServerLogCreateInput>;
+};
+
+
+export type MutationCreateServicePurchaseArgs = {
+  data: ServicePurchaseCreateInput;
+};
+
+
+export type MutationCreateServicePurchasesArgs = {
+  data: Array<ServicePurchaseCreateInput>;
 };
 
 
@@ -1862,6 +3036,16 @@ export type MutationCreateUserLoginHistoryArgs = {
 };
 
 
+export type MutationCreateUserNoteArgs = {
+  data: UserNoteCreateInput;
+};
+
+
+export type MutationCreateUserNotesArgs = {
+  data: Array<UserNoteCreateInput>;
+};
+
+
 export type MutationCreateUserSystemFlagArgs = {
   data: UserSystemFlagCreateInput;
 };
@@ -1884,6 +3068,16 @@ export type MutationCreateWpLogArgs = {
 
 export type MutationCreateWpLogsArgs = {
   data: Array<WpLogCreateInput>;
+};
+
+
+export type MutationDeleteFileArgs = {
+  where: FileWhereUniqueInput;
+};
+
+
+export type MutationDeleteFilesArgs = {
+  where: Array<FileWhereUniqueInput>;
 };
 
 
@@ -1919,6 +3113,16 @@ export type MutationDeleteGroupsArgs = {
 
 export type MutationDeleteInvoiceArgs = {
   where: InvoiceWhereUniqueInput;
+};
+
+
+export type MutationDeleteInvoiceBatchArgs = {
+  where: InvoiceBatchWhereUniqueInput;
+};
+
+
+export type MutationDeleteInvoiceBatchesArgs = {
+  where: Array<InvoiceBatchWhereUniqueInput>;
 };
 
 
@@ -1967,6 +3171,16 @@ export type MutationDeleteNetforumLogsArgs = {
 };
 
 
+export type MutationDeleteProductFulfillmentArgs = {
+  where: ProductFulfillmentWhereUniqueInput;
+};
+
+
+export type MutationDeleteProductFulfillmentsArgs = {
+  where: Array<ProductFulfillmentWhereUniqueInput>;
+};
+
+
 export type MutationDeleteServerErrorArgs = {
   where: ServerErrorWhereUniqueInput;
 };
@@ -1984,6 +3198,16 @@ export type MutationDeleteServerLogArgs = {
 
 export type MutationDeleteServerLogsArgs = {
   where: Array<ServerLogWhereUniqueInput>;
+};
+
+
+export type MutationDeleteServicePurchaseArgs = {
+  where: ServicePurchaseWhereUniqueInput;
+};
+
+
+export type MutationDeleteServicePurchasesArgs = {
+  where: Array<ServicePurchaseWhereUniqueInput>;
 };
 
 
@@ -2022,6 +3246,16 @@ export type MutationDeleteUserLoginHistoryArgs = {
 };
 
 
+export type MutationDeleteUserNoteArgs = {
+  where: UserNoteWhereUniqueInput;
+};
+
+
+export type MutationDeleteUserNotesArgs = {
+  where: Array<UserNoteWhereUniqueInput>;
+};
+
+
 export type MutationDeleteUserSystemFlagArgs = {
   where: UserSystemFlagWhereUniqueInput;
 };
@@ -2049,6 +3283,17 @@ export type MutationDeleteWpLogsArgs = {
 
 export type MutationFile_UploadArgs = {
   input: File_UploadInput;
+};
+
+
+export type MutationUpdateFileArgs = {
+  data: FileUpdateInput;
+  where: FileWhereUniqueInput;
+};
+
+
+export type MutationUpdateFilesArgs = {
+  data: Array<FileUpdateArgs>;
 };
 
 
@@ -2088,6 +3333,17 @@ export type MutationUpdateGroupsArgs = {
 export type MutationUpdateInvoiceArgs = {
   data: InvoiceUpdateInput;
   where: InvoiceWhereUniqueInput;
+};
+
+
+export type MutationUpdateInvoiceBatchArgs = {
+  data: InvoiceBatchUpdateInput;
+  where: InvoiceBatchWhereUniqueInput;
+};
+
+
+export type MutationUpdateInvoiceBatchesArgs = {
+  data: Array<InvoiceBatchUpdateArgs>;
 };
 
 
@@ -2140,6 +3396,17 @@ export type MutationUpdateNetforumLogsArgs = {
 };
 
 
+export type MutationUpdateProductFulfillmentArgs = {
+  data: ProductFulfillmentUpdateInput;
+  where: ProductFulfillmentWhereUniqueInput;
+};
+
+
+export type MutationUpdateProductFulfillmentsArgs = {
+  data: Array<ProductFulfillmentUpdateArgs>;
+};
+
+
 export type MutationUpdateServerErrorArgs = {
   data: ServerErrorUpdateInput;
   where: ServerErrorWhereUniqueInput;
@@ -2159,6 +3426,17 @@ export type MutationUpdateServerLogArgs = {
 
 export type MutationUpdateServerLogsArgs = {
   data: Array<ServerLogUpdateArgs>;
+};
+
+
+export type MutationUpdateServicePurchaseArgs = {
+  data: ServicePurchaseUpdateInput;
+  where: ServicePurchaseWhereUniqueInput;
+};
+
+
+export type MutationUpdateServicePurchasesArgs = {
+  data: Array<ServicePurchaseUpdateArgs>;
 };
 
 
@@ -2198,6 +3476,17 @@ export type MutationUpdateUserLoginHistoriesArgs = {
 export type MutationUpdateUserLoginHistoryArgs = {
   data: UserLoginHistoryUpdateInput;
   where: UserLoginHistoryWhereUniqueInput;
+};
+
+
+export type MutationUpdateUserNoteArgs = {
+  data: UserNoteUpdateInput;
+  where: UserNoteWhereUniqueInput;
+};
+
+
+export type MutationUpdateUserNotesArgs = {
+  data: Array<UserNoteUpdateArgs>;
 };
 
 
@@ -2311,19 +3600,115 @@ export type PasswordState = {
   isSet: Scalars['Boolean']['output'];
 };
 
+export type ProductFulfillment = {
+  __typename?: 'ProductFulfillment';
+  balance?: Maybe<Scalars['Float']['output']>;
+  id: Scalars['ID']['output'];
+  note?: Maybe<Scalars['String']['output']>;
+  package?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
+  product?: Maybe<Scalars['String']['output']>;
+  quantity?: Maybe<Scalars['Float']['output']>;
+  returnedCancelled?: Maybe<Scalars['Boolean']['output']>;
+  returnedCancelledAt?: Maybe<Scalars['DateTime']['output']>;
+  shipped?: Maybe<Scalars['Boolean']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type ProductFulfillmentCreateInput = {
+  balance?: InputMaybe<Scalars['Float']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  package?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  quantity?: InputMaybe<Scalars['Float']['input']>;
+  returnedCancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  returnedCancelledAt?: InputMaybe<Scalars['DateTime']['input']>;
+  shipped?: InputMaybe<Scalars['Boolean']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ProductFulfillmentOrderByInput = {
+  balance?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  note?: InputMaybe<OrderDirection>;
+  package?: InputMaybe<OrderDirection>;
+  price?: InputMaybe<OrderDirection>;
+  product?: InputMaybe<OrderDirection>;
+  quantity?: InputMaybe<OrderDirection>;
+  returnedCancelled?: InputMaybe<OrderDirection>;
+  returnedCancelledAt?: InputMaybe<OrderDirection>;
+  shipped?: InputMaybe<OrderDirection>;
+  total?: InputMaybe<OrderDirection>;
+};
+
+export type ProductFulfillmentUpdateArgs = {
+  data: ProductFulfillmentUpdateInput;
+  where: ProductFulfillmentWhereUniqueInput;
+};
+
+export type ProductFulfillmentUpdateInput = {
+  balance?: InputMaybe<Scalars['Float']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  package?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  quantity?: InputMaybe<Scalars['Float']['input']>;
+  returnedCancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  returnedCancelledAt?: InputMaybe<Scalars['DateTime']['input']>;
+  shipped?: InputMaybe<Scalars['Boolean']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ProductFulfillmentWhereInput = {
+  AND?: InputMaybe<Array<ProductFulfillmentWhereInput>>;
+  NOT?: InputMaybe<Array<ProductFulfillmentWhereInput>>;
+  OR?: InputMaybe<Array<ProductFulfillmentWhereInput>>;
+  balance?: InputMaybe<FloatNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  note?: InputMaybe<StringFilter>;
+  package?: InputMaybe<StringFilter>;
+  price?: InputMaybe<FloatNullableFilter>;
+  product?: InputMaybe<StringFilter>;
+  quantity?: InputMaybe<FloatNullableFilter>;
+  returnedCancelled?: InputMaybe<BooleanFilter>;
+  returnedCancelledAt?: InputMaybe<DateTimeNullableFilter>;
+  shipped?: InputMaybe<BooleanFilter>;
+  total?: InputMaybe<FloatNullableFilter>;
+};
+
+export type ProductFulfillmentWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   ErrorTest?: Maybe<Scalars['String']['output']>;
   api_education_aggregate?: Maybe<Api_Education_AggregateOutput>;
   api_education_get?: Maybe<Api_Education_GetOutput>;
   api_education_list?: Maybe<Api_Education_ListOutput>;
+  api_file_get?: Maybe<Api_File_GetOutput>;
+  api_file_list?: Maybe<Api_File_ListOutput>;
+  api_invoiceBatch_get?: Maybe<Api_InvoiceBatch_GetOutput>;
+  api_invoiceBatch_list?: Maybe<Api_InvoiceBatch_ListOutput>;
   api_member_aggregate?: Maybe<Api_Member_AggregateOutput>;
   api_member_get?: Maybe<Api_Member_GetOutput>;
   api_member_list?: Maybe<Api_Member_ListOutput>;
+  api_note_get?: Maybe<Api_Note_GetOutput>;
+  api_note_list?: Maybe<Api_Note_ListOutput>;
+  api_productFulfillment_aggregate?: Maybe<Api_ProductFulfillment_AggregateOutput>;
+  api_productFulfillment_get?: Maybe<Api_ProductFulfillment_GetOutput>;
+  api_productFulfillment_list?: Maybe<Api_ProductFulfillment_ListOutput>;
+  api_servicePurchase_aggregate?: Maybe<Api_ServicePurchase_AggregateOutput>;
+  api_servicePurchase_get?: Maybe<Api_ServicePurchase_GetOutput>;
+  api_servicePurchase_list?: Maybe<Api_ServicePurchase_ListOutput>;
   api_timecheck?: Maybe<Api_TimecheckOutput>;
   api_wpportaluser_get?: Maybe<Api_Wpportaluser_GetOutput>;
   api_wpportaluser_list?: Maybe<Api_Wpportaluser_ListOutput>;
   authenticatedItem?: Maybe<AuthenticatedItem>;
+  file?: Maybe<File>;
+  files?: Maybe<Array<File>>;
+  filesCount?: Maybe<Scalars['Int']['output']>;
   group?: Maybe<Group>;
   groupMember?: Maybe<GroupMember>;
   groupMemberFlag?: Maybe<GroupMemberFlag>;
@@ -2335,6 +3720,9 @@ export type Query = {
   groups?: Maybe<Array<Group>>;
   groupsCount?: Maybe<Scalars['Int']['output']>;
   invoice?: Maybe<Invoice>;
+  invoiceBatch?: Maybe<InvoiceBatch>;
+  invoiceBatches?: Maybe<Array<InvoiceBatch>>;
+  invoiceBatchesCount?: Maybe<Scalars['Int']['output']>;
   invoiceLineItem?: Maybe<InvoiceLineItem>;
   invoiceLineItems?: Maybe<Array<InvoiceLineItem>>;
   invoiceLineItemsCount?: Maybe<Scalars['Int']['output']>;
@@ -2350,12 +3738,18 @@ export type Query = {
   netforumLog?: Maybe<NetforumLog>;
   netforumLogs?: Maybe<Array<NetforumLog>>;
   netforumLogsCount?: Maybe<Scalars['Int']['output']>;
+  productFulfillment?: Maybe<ProductFulfillment>;
+  productFulfillments?: Maybe<Array<ProductFulfillment>>;
+  productFulfillmentsCount?: Maybe<Scalars['Int']['output']>;
   serverError?: Maybe<ServerError>;
   serverErrors?: Maybe<Array<ServerError>>;
   serverErrorsCount?: Maybe<Scalars['Int']['output']>;
   serverLog?: Maybe<ServerLog>;
   serverLogs?: Maybe<Array<ServerLog>>;
   serverLogsCount?: Maybe<Scalars['Int']['output']>;
+  servicePurchase?: Maybe<ServicePurchase>;
+  servicePurchases?: Maybe<Array<ServicePurchase>>;
+  servicePurchasesCount?: Maybe<Scalars['Int']['output']>;
   user?: Maybe<User>;
   userEducationRecord?: Maybe<UserEducationRecord>;
   userEducationRecords?: Maybe<Array<UserEducationRecord>>;
@@ -2366,6 +3760,9 @@ export type Query = {
   userLoginHistories?: Maybe<Array<UserLoginHistory>>;
   userLoginHistoriesCount?: Maybe<Scalars['Int']['output']>;
   userLoginHistory?: Maybe<UserLoginHistory>;
+  userNote?: Maybe<UserNote>;
+  userNotes?: Maybe<Array<UserNote>>;
+  userNotesCount?: Maybe<Scalars['Int']['output']>;
   userSystemFlag?: Maybe<UserSystemFlag>;
   userSystemFlags?: Maybe<Array<UserSystemFlag>>;
   userSystemFlagsCount?: Maybe<Scalars['Int']['output']>;
@@ -2392,6 +3789,26 @@ export type QueryApi_Education_ListArgs = {
 };
 
 
+export type QueryApi_File_GetArgs = {
+  input: Api_File_GetInput;
+};
+
+
+export type QueryApi_File_ListArgs = {
+  input: Api_File_ListInput;
+};
+
+
+export type QueryApi_InvoiceBatch_GetArgs = {
+  input: Api_InvoiceBatch_GetInput;
+};
+
+
+export type QueryApi_InvoiceBatch_ListArgs = {
+  input: Api_InvoiceBatch_ListInput;
+};
+
+
 export type QueryApi_Member_AggregateArgs = {
   input: Api_Member_AggregateInput;
 };
@@ -2407,6 +3824,46 @@ export type QueryApi_Member_ListArgs = {
 };
 
 
+export type QueryApi_Note_GetArgs = {
+  input: Api_Note_GetInput;
+};
+
+
+export type QueryApi_Note_ListArgs = {
+  input: Api_Note_ListInput;
+};
+
+
+export type QueryApi_ProductFulfillment_AggregateArgs = {
+  input: Api_ProductFulfillment_AggregateInput;
+};
+
+
+export type QueryApi_ProductFulfillment_GetArgs = {
+  input: Api_ProductFulfillment_GetInput;
+};
+
+
+export type QueryApi_ProductFulfillment_ListArgs = {
+  input: Api_ProductFulfillment_ListInput;
+};
+
+
+export type QueryApi_ServicePurchase_AggregateArgs = {
+  input: Api_ServicePurchase_AggregateInput;
+};
+
+
+export type QueryApi_ServicePurchase_GetArgs = {
+  input: Api_ServicePurchase_GetInput;
+};
+
+
+export type QueryApi_ServicePurchase_ListArgs = {
+  input: Api_ServicePurchase_ListInput;
+};
+
+
 export type QueryApi_TimecheckArgs = {
   input: Api_TimecheckInput;
 };
@@ -2419,6 +3876,25 @@ export type QueryApi_Wpportaluser_GetArgs = {
 
 export type QueryApi_Wpportaluser_ListArgs = {
   input: Api_Wpportaluser_ListInput;
+};
+
+
+export type QueryFileArgs = {
+  where: FileWhereUniqueInput;
+};
+
+
+export type QueryFilesArgs = {
+  cursor?: InputMaybe<FileWhereUniqueInput>;
+  orderBy?: Array<FileOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FileWhereInput;
+};
+
+
+export type QueryFilesCountArgs = {
+  where?: FileWhereInput;
 };
 
 
@@ -2486,6 +3962,25 @@ export type QueryGroupsCountArgs = {
 
 export type QueryInvoiceArgs = {
   where: InvoiceWhereUniqueInput;
+};
+
+
+export type QueryInvoiceBatchArgs = {
+  where: InvoiceBatchWhereUniqueInput;
+};
+
+
+export type QueryInvoiceBatchesArgs = {
+  cursor?: InputMaybe<InvoiceBatchWhereUniqueInput>;
+  orderBy?: Array<InvoiceBatchOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: InvoiceBatchWhereInput;
+};
+
+
+export type QueryInvoiceBatchesCountArgs = {
+  where?: InvoiceBatchWhereInput;
 };
 
 
@@ -2579,6 +4074,25 @@ export type QueryNetforumLogsCountArgs = {
 };
 
 
+export type QueryProductFulfillmentArgs = {
+  where: ProductFulfillmentWhereUniqueInput;
+};
+
+
+export type QueryProductFulfillmentsArgs = {
+  cursor?: InputMaybe<ProductFulfillmentWhereUniqueInput>;
+  orderBy?: Array<ProductFulfillmentOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ProductFulfillmentWhereInput;
+};
+
+
+export type QueryProductFulfillmentsCountArgs = {
+  where?: ProductFulfillmentWhereInput;
+};
+
+
 export type QueryServerErrorArgs = {
   where: ServerErrorWhereUniqueInput;
 };
@@ -2614,6 +4128,25 @@ export type QueryServerLogsArgs = {
 
 export type QueryServerLogsCountArgs = {
   where?: ServerLogWhereInput;
+};
+
+
+export type QueryServicePurchaseArgs = {
+  where: ServicePurchaseWhereUniqueInput;
+};
+
+
+export type QueryServicePurchasesArgs = {
+  cursor?: InputMaybe<ServicePurchaseWhereUniqueInput>;
+  orderBy?: Array<ServicePurchaseOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ServicePurchaseWhereInput;
+};
+
+
+export type QueryServicePurchasesCountArgs = {
+  where?: ServicePurchaseWhereInput;
 };
 
 
@@ -2676,6 +4209,25 @@ export type QueryUserLoginHistoriesCountArgs = {
 
 export type QueryUserLoginHistoryArgs = {
   where: UserLoginHistoryWhereUniqueInput;
+};
+
+
+export type QueryUserNoteArgs = {
+  where: UserNoteWhereUniqueInput;
+};
+
+
+export type QueryUserNotesArgs = {
+  cursor?: InputMaybe<UserNoteWhereUniqueInput>;
+  orderBy?: Array<UserNoteOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: UserNoteWhereInput;
+};
+
+
+export type QueryUserNotesCountArgs = {
+  where?: UserNoteWhereInput;
 };
 
 
@@ -2872,6 +4424,77 @@ export type ServerLogWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type ServicePurchase = {
+  __typename?: 'ServicePurchase';
+  balanceDue?: Maybe<Scalars['Float']['output']>;
+  cancelled?: Maybe<Scalars['Boolean']['output']>;
+  cancelledAt?: Maybe<Scalars['DateTime']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  note?: Maybe<Scalars['String']['output']>;
+  product?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+export type ServicePurchaseCreateInput = {
+  balanceDue?: InputMaybe<Scalars['Float']['input']>;
+  cancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  cancelledAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ServicePurchaseOrderByInput = {
+  balanceDue?: InputMaybe<OrderDirection>;
+  cancelled?: InputMaybe<OrderDirection>;
+  cancelledAt?: InputMaybe<OrderDirection>;
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  note?: InputMaybe<OrderDirection>;
+  product?: InputMaybe<OrderDirection>;
+  total?: InputMaybe<OrderDirection>;
+  type?: InputMaybe<OrderDirection>;
+};
+
+export type ServicePurchaseUpdateArgs = {
+  data: ServicePurchaseUpdateInput;
+  where: ServicePurchaseWhereUniqueInput;
+};
+
+export type ServicePurchaseUpdateInput = {
+  balanceDue?: InputMaybe<Scalars['Float']['input']>;
+  cancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  cancelledAt?: InputMaybe<Scalars['DateTime']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ServicePurchaseWhereInput = {
+  AND?: InputMaybe<Array<ServicePurchaseWhereInput>>;
+  NOT?: InputMaybe<Array<ServicePurchaseWhereInput>>;
+  OR?: InputMaybe<Array<ServicePurchaseWhereInput>>;
+  balanceDue?: InputMaybe<FloatNullableFilter>;
+  cancelled?: InputMaybe<BooleanFilter>;
+  cancelledAt?: InputMaybe<DateTimeNullableFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  note?: InputMaybe<StringFilter>;
+  product?: InputMaybe<StringFilter>;
+  total?: InputMaybe<FloatNullableFilter>;
+  type?: InputMaybe<StringFilter>;
+};
+
+export type ServicePurchaseWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type StringFilter = {
   contains?: InputMaybe<Scalars['String']['input']>;
   endsWith?: InputMaybe<Scalars['String']['input']>;
@@ -2948,14 +4571,19 @@ export type User = {
   name?: Maybe<Scalars['String']['output']>;
   netforum_cstKey?: Maybe<Scalars['String']['output']>;
   netforum_recno?: Maybe<Scalars['String']['output']>;
+  notes?: Maybe<Array<UserNote>>;
+  notesCount?: Maybe<Scalars['Int']['output']>;
   ortho_degree?: Maybe<Scalars['String']['output']>;
   ortho_graduationYear?: Maybe<Scalars['String']['output']>;
   ortho_school?: Maybe<Scalars['String']['output']>;
   postgraduate_degree?: Maybe<Scalars['String']['output']>;
   postgraduate_graduationYear?: Maybe<Scalars['String']['output']>;
   postgraduate_school?: Maybe<Scalars['String']['output']>;
+  prefix?: Maybe<Scalars['String']['output']>;
   rejoinDate?: Maybe<Scalars['DateTime']['output']>;
   role?: Maybe<UserRoleType>;
+  society?: Maybe<Scalars['String']['output']>;
+  suffix?: Maybe<Scalars['String']['output']>;
   systemFlags?: Maybe<Array<UserSystemFlag>>;
   systemFlagsCount?: Maybe<Scalars['Int']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -3015,6 +4643,20 @@ export type UserLoginHistoryArgs = {
 
 export type UserLoginHistoryCountArgs = {
   where?: UserLoginHistoryWhereInput;
+};
+
+
+export type UserNotesArgs = {
+  cursor?: InputMaybe<UserNoteWhereUniqueInput>;
+  orderBy?: Array<UserNoteOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: UserNoteWhereInput;
+};
+
+
+export type UserNotesCountArgs = {
+  where?: UserNoteWhereInput;
 };
 
 
@@ -3086,14 +4728,18 @@ export type UserCreateInput = {
   name?: InputMaybe<Scalars['String']['input']>;
   netforum_cstKey?: InputMaybe<Scalars['String']['input']>;
   netforum_recno?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<UserNoteRelateToManyForCreateInput>;
   ortho_degree?: InputMaybe<Scalars['String']['input']>;
   ortho_graduationYear?: InputMaybe<Scalars['String']['input']>;
   ortho_school?: InputMaybe<Scalars['String']['input']>;
   postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
   postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
   postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  prefix?: InputMaybe<Scalars['String']['input']>;
   rejoinDate?: InputMaybe<Scalars['DateTime']['input']>;
   role?: InputMaybe<UserRoleType>;
+  society?: InputMaybe<Scalars['String']['input']>;
+  suffix?: InputMaybe<Scalars['String']['input']>;
   systemFlags?: InputMaybe<UserSystemFlagRelateToManyForCreateInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -3317,6 +4963,84 @@ export type UserLoginHistoryWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type UserNote = {
+  __typename?: 'UserNote';
+  content?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  metadata?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  user?: Maybe<User>;
+};
+
+export type UserNoteCreateInput = {
+  content?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  user?: InputMaybe<UserRelateToOneForCreateInput>;
+};
+
+export type UserNoteManyRelationFilter = {
+  every?: InputMaybe<UserNoteWhereInput>;
+  none?: InputMaybe<UserNoteWhereInput>;
+  some?: InputMaybe<UserNoteWhereInput>;
+};
+
+export type UserNoteOrderByInput = {
+  content?: InputMaybe<OrderDirection>;
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  metadata?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+  type?: InputMaybe<OrderDirection>;
+};
+
+export type UserNoteRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<UserNoteWhereUniqueInput>>;
+  create?: InputMaybe<Array<UserNoteCreateInput>>;
+};
+
+export type UserNoteRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<UserNoteWhereUniqueInput>>;
+  create?: InputMaybe<Array<UserNoteCreateInput>>;
+  disconnect?: InputMaybe<Array<UserNoteWhereUniqueInput>>;
+  set?: InputMaybe<Array<UserNoteWhereUniqueInput>>;
+};
+
+export type UserNoteUpdateArgs = {
+  data: UserNoteUpdateInput;
+  where: UserNoteWhereUniqueInput;
+};
+
+export type UserNoteUpdateInput = {
+  content?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  metadata?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  user?: InputMaybe<UserRelateToOneForUpdateInput>;
+};
+
+export type UserNoteWhereInput = {
+  AND?: InputMaybe<Array<UserNoteWhereInput>>;
+  NOT?: InputMaybe<Array<UserNoteWhereInput>>;
+  OR?: InputMaybe<Array<UserNoteWhereInput>>;
+  content?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  metadata?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  type?: InputMaybe<StringFilter>;
+  user?: InputMaybe<UserWhereInput>;
+};
+
+export type UserNoteWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type UserOrderByInput = {
   about?: InputMaybe<OrderDirection>;
   business_addressLine1?: InputMaybe<OrderDirection>;
@@ -3360,8 +5084,11 @@ export type UserOrderByInput = {
   postgraduate_degree?: InputMaybe<OrderDirection>;
   postgraduate_graduationYear?: InputMaybe<OrderDirection>;
   postgraduate_school?: InputMaybe<OrderDirection>;
+  prefix?: InputMaybe<OrderDirection>;
   rejoinDate?: InputMaybe<OrderDirection>;
   role?: InputMaybe<OrderDirection>;
+  society?: InputMaybe<OrderDirection>;
+  suffix?: InputMaybe<OrderDirection>;
   updatedAt?: InputMaybe<OrderDirection>;
 };
 
@@ -3509,14 +5236,18 @@ export type UserUpdateInput = {
   name?: InputMaybe<Scalars['String']['input']>;
   netforum_cstKey?: InputMaybe<Scalars['String']['input']>;
   netforum_recno?: InputMaybe<Scalars['String']['input']>;
+  notes?: InputMaybe<UserNoteRelateToManyForUpdateInput>;
   ortho_degree?: InputMaybe<Scalars['String']['input']>;
   ortho_graduationYear?: InputMaybe<Scalars['String']['input']>;
   ortho_school?: InputMaybe<Scalars['String']['input']>;
   postgraduate_degree?: InputMaybe<Scalars['String']['input']>;
   postgraduate_graduationYear?: InputMaybe<Scalars['String']['input']>;
   postgraduate_school?: InputMaybe<Scalars['String']['input']>;
+  prefix?: InputMaybe<Scalars['String']['input']>;
   rejoinDate?: InputMaybe<Scalars['DateTime']['input']>;
   role?: InputMaybe<UserRoleType>;
+  society?: InputMaybe<Scalars['String']['input']>;
+  suffix?: InputMaybe<Scalars['String']['input']>;
   systemFlags?: InputMaybe<UserSystemFlagRelateToManyForUpdateInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -3566,14 +5297,18 @@ export type UserWhereInput = {
   name?: InputMaybe<StringFilter>;
   netforum_cstKey?: InputMaybe<StringFilter>;
   netforum_recno?: InputMaybe<StringFilter>;
+  notes?: InputMaybe<UserNoteManyRelationFilter>;
   ortho_degree?: InputMaybe<StringFilter>;
   ortho_graduationYear?: InputMaybe<StringFilter>;
   ortho_school?: InputMaybe<StringFilter>;
   postgraduate_degree?: InputMaybe<StringFilter>;
   postgraduate_graduationYear?: InputMaybe<StringFilter>;
   postgraduate_school?: InputMaybe<StringFilter>;
+  prefix?: InputMaybe<StringFilter>;
   rejoinDate?: InputMaybe<DateTimeNullableFilter>;
   role?: InputMaybe<UserRoleTypeNullableFilter>;
+  society?: InputMaybe<StringFilter>;
+  suffix?: InputMaybe<StringFilter>;
   systemFlags?: InputMaybe<UserSystemFlagManyRelationFilter>;
   updatedAt?: InputMaybe<DateTimeNullableFilter>;
 };
@@ -3771,12 +5506,89 @@ export type Education_DeleteMutationVariables = Exact<{
 
 export type Education_DeleteMutation = { __typename?: 'Mutation', api_education_delete?: { __typename?: 'Api_Education_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
 
+export type Files_ListQueryVariables = Exact<{
+  input: Api_File_ListInput;
+}>;
+
+
+export type Files_ListQuery = { __typename?: 'Query', api_file_list?: { __typename?: 'Api_File_listOutput', data?: Array<{ __typename?: 'Api_File_listOutputData', id?: string | null, assignedTo?: string | null, name?: string | null, url?: string | null, mime?: string | null, size?: string | null, metadata?: string | null, createdAt?: string | null, path?: string | null, category?: string | null, note?: string | null } | null> | null, page?: { __typename?: 'Api_File_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_File_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Files_GetQueryVariables = Exact<{
+  input: Api_File_GetInput;
+}>;
+
+
+export type Files_GetQuery = { __typename?: 'Query', api_file_get?: { __typename?: 'Api_File_getOutput', data?: { __typename?: 'Api_File_getOutputData', id: string, assignedTo: string, name: string, url: string, mime: string, size: string, metadata: string, createdAt: string, path: string, category: string, note: string } | null } | null };
+
+export type Files_CreateMutationVariables = Exact<{
+  input: Api_File_CreateInput;
+}>;
+
+
+export type Files_CreateMutation = { __typename?: 'Mutation', api_file_create?: { __typename?: 'Api_File_createOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Files_UpdateMutationVariables = Exact<{
+  input: Api_File_UpdateInput;
+}>;
+
+
+export type Files_UpdateMutation = { __typename?: 'Mutation', api_file_update?: { __typename?: 'Api_File_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Files_DeleteMutationVariables = Exact<{
+  input: Api_File_DeleteInput;
+}>;
+
+
+export type Files_DeleteMutation = { __typename?: 'Mutation', api_file_delete?: { __typename?: 'Api_File_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type File_UploadMutationVariables = Exact<{
+  input: File_UploadInput;
+}>;
+
+
+export type File_UploadMutation = { __typename?: 'Mutation', file_upload?: { __typename?: 'FileUploadOutput', files: Array<{ __typename?: 'FileUploadOutputFiles', url: string, filename: string } | null> } | null };
+
+export type InvoiceBatch_ListQueryVariables = Exact<{
+  input: Api_InvoiceBatch_ListInput;
+}>;
+
+
+export type InvoiceBatch_ListQuery = { __typename?: 'Query', api_invoiceBatch_list?: { __typename?: 'Api_InvoiceBatch_listOutput', data?: Array<{ __typename?: 'Api_InvoiceBatch_listOutputData', id: string, customer: string, batchID: string, isOpen: boolean, closedAt: string, createdAt: string } | null> | null, page?: { __typename?: 'Api_InvoiceBatch_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_InvoiceBatch_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Api_InvoiceBatch_GetQueryVariables = Exact<{
+  input: Api_InvoiceBatch_GetInput;
+}>;
+
+
+export type Api_InvoiceBatch_GetQuery = { __typename?: 'Query', api_invoiceBatch_get?: { __typename?: 'Api_InvoiceBatch_getOutput', data?: { __typename?: 'Api_InvoiceBatch_getOutputData', id?: string | null, customer?: string | null, batchID?: string | null, isOpen?: boolean | null, closedAt?: string | null, createdAt?: string | null } | null } | null };
+
+export type InvoiceBatch_CreateMutationVariables = Exact<{
+  input: Api_InvoiceBatch_CreateInput;
+}>;
+
+
+export type InvoiceBatch_CreateMutation = { __typename?: 'Mutation', api_invoiceBatch_create?: { __typename?: 'Api_InvoiceBatch_createOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type InvoiceBatch_UpdateMutationVariables = Exact<{
+  input: Api_InvoiceBatch_UpdateInput;
+}>;
+
+
+export type InvoiceBatch_UpdateMutation = { __typename?: 'Mutation', api_invoiceBatch_update?: { __typename?: 'Api_InvoiceBatch_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type InvoiceBatch_DeleteMutationVariables = Exact<{
+  input: Api_InvoiceBatch_DeleteInput;
+}>;
+
+
+export type InvoiceBatch_DeleteMutation = { __typename?: 'Mutation', api_invoiceBatch_delete?: { __typename?: 'Api_InvoiceBatch_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
 export type Members_ListQueryVariables = Exact<{
   input: Api_Member_ListInput;
 }>;
 
 
-export type Members_ListQuery = { __typename?: 'Query', api_member_list?: { __typename?: 'Api_Member_listOutput', data?: Array<{ __typename?: 'Api_Member_listOutputData', id?: string | null, email?: string | null, createdAt?: string | null, name?: string | null, middleName?: string | null, lastName?: string | null, displayName?: string | null, avatar?: string | null, home_phoneNumber?: string | null, business_phoneNumber?: string | null, cell_phoneNumber?: string | null, home_addressLine1?: string | null, home_addressLine2?: string | null, home_city?: string | null, home_state?: string | null, home_postalCode?: string | null, home_country?: string | null, business_addressLine1?: string | null, business_addressLine2?: string | null, business_city?: string | null, business_state?: string | null, business_postalCode?: string | null, business_country?: string | null, dental_degree?: string | null, dental_school?: string | null, dental_graduationYear?: string | null, ortho_degree?: string | null, ortho_school?: string | null, ortho_graduationYear?: string | null, postgraduate_degree?: string | null, postgraduate_school?: string | null, postgraduate_graduationYear?: string | null, joinDate?: string | null, rejoinDate?: string | null, effectiveDate?: string | null, expirationDate?: string | null, memberType?: string | null, memberPackage?: string | null, isBlacklisted?: boolean | null } | null> | null, page?: { __typename?: 'Api_Member_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Member_listOutputPageRange', from: number, to: number } | null } | null } | null };
+export type Members_ListQuery = { __typename?: 'Query', api_member_list?: { __typename?: 'Api_Member_listOutput', data?: Array<{ __typename?: 'Api_Member_listOutputData', id?: string | null, email?: string | null, createdAt?: string | null, updatedAt?: string | null, society?: string | null, name?: string | null, middleName?: string | null, lastName?: string | null, displayName?: string | null, prefix?: string | null, suffix?: string | null, avatar?: string | null, about?: string | null, home_phoneNumber?: string | null, business_phoneNumber?: string | null, cell_phoneNumber?: string | null, home_addressLine1?: string | null, home_addressLine2?: string | null, home_city?: string | null, home_state?: string | null, home_postalCode?: string | null, home_country?: string | null, business_addressLine1?: string | null, business_addressLine2?: string | null, business_city?: string | null, business_state?: string | null, business_postalCode?: string | null, business_country?: string | null, dental_degree?: string | null, dental_school?: string | null, dental_graduationYear?: string | null, ortho_degree?: string | null, ortho_school?: string | null, ortho_graduationYear?: string | null, postgraduate_degree?: string | null, postgraduate_school?: string | null, postgraduate_graduationYear?: string | null, joinDate?: string | null, rejoinDate?: string | null, effectiveDate?: string | null, expirationDate?: string | null, memberType?: string | null, memberPackage?: string | null, isBlacklisted?: boolean | null } | null> | null, page?: { __typename?: 'Api_Member_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Member_listOutputPageRange', from: number, to: number } | null } | null } | null };
 
 export type Members_AggregateQueryVariables = Exact<{
   input: Api_Member_AggregateInput;
@@ -3790,7 +5602,7 @@ export type Members_GetQueryVariables = Exact<{
 }>;
 
 
-export type Members_GetQuery = { __typename?: 'Query', api_member_get?: { __typename?: 'Api_Member_getOutput', data?: { __typename?: 'Api_Member_getOutputData', id?: string | null, email?: string | null, createdAt?: string | null, name?: string | null, middleName?: string | null, lastName?: string | null, displayName?: string | null, avatar?: string | null, home_phoneNumber?: string | null, business_phoneNumber?: string | null, cell_phoneNumber?: string | null, home_addressLine1?: string | null, home_addressLine2?: string | null, home_city?: string | null, home_state?: string | null, home_postalCode?: string | null, home_country?: string | null, business_addressLine1?: string | null, business_addressLine2?: string | null, business_city?: string | null, business_state?: string | null, business_postalCode?: string | null, business_country?: string | null, dental_degree?: string | null, dental_school?: string | null, dental_graduationYear?: string | null, ortho_degree?: string | null, ortho_school?: string | null, ortho_graduationYear?: string | null, postgraduate_degree?: string | null, postgraduate_school?: string | null, postgraduate_graduationYear?: string | null, joinDate?: string | null, rejoinDate?: string | null, effectiveDate?: string | null, expirationDate?: string | null, memberType?: string | null, memberPackage?: string | null, isBlacklisted?: boolean | null } | null } | null };
+export type Members_GetQuery = { __typename?: 'Query', api_member_get?: { __typename?: 'Api_Member_getOutput', data?: { __typename?: 'Api_Member_getOutputData', id?: string | null, email?: string | null, createdAt?: string | null, updatedAt?: string | null, society?: string | null, about?: string | null, name?: string | null, middleName?: string | null, lastName?: string | null, displayName?: string | null, suffix?: string | null, prefix?: string | null, avatar?: string | null, home_phoneNumber?: string | null, business_phoneNumber?: string | null, cell_phoneNumber?: string | null, home_addressLine1?: string | null, home_addressLine2?: string | null, home_city?: string | null, home_state?: string | null, home_postalCode?: string | null, home_country?: string | null, business_addressLine1?: string | null, business_addressLine2?: string | null, business_city?: string | null, business_state?: string | null, business_postalCode?: string | null, business_country?: string | null, dental_degree?: string | null, dental_school?: string | null, dental_graduationYear?: string | null, ortho_degree?: string | null, ortho_school?: string | null, ortho_graduationYear?: string | null, postgraduate_degree?: string | null, postgraduate_school?: string | null, postgraduate_graduationYear?: string | null, joinDate?: string | null, rejoinDate?: string | null, effectiveDate?: string | null, expirationDate?: string | null, memberType?: string | null, memberPackage?: string | null, isBlacklisted?: boolean | null } | null } | null };
 
 export type Members_CreateMutationVariables = Exact<{
   input: Api_Member_CreateInput;
@@ -3812,6 +5624,125 @@ export type Members_DeleteMutationVariables = Exact<{
 
 
 export type Members_DeleteMutation = { __typename?: 'Mutation', api_member_delete?: { __typename?: 'Api_Member_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Notes_ListQueryVariables = Exact<{
+  input: Api_Note_ListInput;
+}>;
+
+
+export type Notes_ListQuery = { __typename?: 'Query', api_note_list?: { __typename?: 'Api_Note_listOutput', data?: Array<{ __typename?: 'Api_Note_listOutputData', id?: string | null, userId?: string | null, userName?: string | null, content?: string | null, type?: string | null, title?: string | null, metadata?: string | null, createdAt?: string | null } | null> | null, page?: { __typename?: 'Api_Note_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Note_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Notes_GetQueryVariables = Exact<{
+  input: Api_Note_GetInput;
+}>;
+
+
+export type Notes_GetQuery = { __typename?: 'Query', api_note_get?: { __typename?: 'Api_Note_getOutput', data?: { __typename?: 'Api_Note_getOutputData', id?: string | null, userId?: string | null, userName?: string | null, content?: string | null, type?: string | null, title?: string | null, metadata?: string | null, createdAt?: string | null } | null } | null };
+
+export type Notes_CreateMutationVariables = Exact<{
+  input: Api_Note_CreateInput;
+}>;
+
+
+export type Notes_CreateMutation = { __typename?: 'Mutation', api_note_create?: { __typename?: 'Api_Note_createOutput', ids?: Array<string | null> | null, count?: number | null } | null };
+
+export type Notes_UpdateMutationVariables = Exact<{
+  input: Api_Note_UpdateInput;
+}>;
+
+
+export type Notes_UpdateMutation = { __typename?: 'Mutation', api_note_update?: { __typename?: 'Api_Note_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Notes_DeleteMutationVariables = Exact<{
+  input: Api_Note_DeleteInput;
+}>;
+
+
+export type Notes_DeleteMutation = { __typename?: 'Mutation', api_note_delete?: { __typename?: 'Api_Note_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type ProductFulfillment_ListQueryVariables = Exact<{
+  input: Api_ProductFulfillment_ListInput;
+}>;
+
+
+export type ProductFulfillment_ListQuery = { __typename?: 'Query', api_productFulfillment_list?: { __typename?: 'Api_ProductFulfillment_listOutput', data?: Array<{ __typename?: 'Api_ProductFulfillment_listOutputData', id?: string | null, product?: string | null, package?: string | null, price?: number | null, quantity?: number | null, total?: number | null, balance?: number | null, shipped?: boolean | null, returnedCancelled?: boolean | null, returnedCancelledAt?: string | null, note?: string | null } | null> | null, page?: { __typename?: 'Api_ProductFulfillment_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_ProductFulfillment_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Api_ProductFulfillment_GetQueryVariables = Exact<{
+  input: Api_ProductFulfillment_GetInput;
+}>;
+
+
+export type Api_ProductFulfillment_GetQuery = { __typename?: 'Query', api_productFulfillment_get?: { __typename?: 'Api_ProductFulfillment_getOutput', data?: { __typename?: 'Api_ProductFulfillment_getOutputData', id?: string | null, product?: string | null, package?: string | null, price?: number | null, quantity?: number | null, total?: number | null, balance?: number | null, shipped?: boolean | null, returnedCancelled?: boolean | null, returnedCancelledAt?: string | null, note?: string | null } | null } | null };
+
+export type ProductFulfillment_CreateMutationVariables = Exact<{
+  input: Api_ProductFulfillment_CreateInput;
+}>;
+
+
+export type ProductFulfillment_CreateMutation = { __typename?: 'Mutation', api_productFulfillment_create?: { __typename?: 'Api_ProductFulfillment_createOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type ProductFulfillment_UpdateMutationVariables = Exact<{
+  input: Api_ProductFulfillment_UpdateInput;
+}>;
+
+
+export type ProductFulfillment_UpdateMutation = { __typename?: 'Mutation', api_productFulfillment_update?: { __typename?: 'Api_ProductFulfillment_updateOutput', ids?: Array<string | null> | null, count?: number | null } | null };
+
+export type ProductFulfillment_DeleteMutationVariables = Exact<{
+  input: Api_ProductFulfillment_DeleteInput;
+}>;
+
+
+export type ProductFulfillment_DeleteMutation = { __typename?: 'Mutation', api_productFulfillment_delete?: { __typename?: 'Api_ProductFulfillment_deleteOutput', ids?: Array<string | null> | null, count?: number | null } | null };
+
+export type ProductFulfillment_AggregateQueryVariables = Exact<{
+  input: Api_ProductFulfillment_AggregateInput;
+}>;
+
+
+export type ProductFulfillment_AggregateQuery = { __typename?: 'Query', api_productFulfillment_aggregate?: { __typename?: 'Api_ProductFulfillment_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+
+export type Api_ServicePurchase_ListQueryVariables = Exact<{
+  input: Api_ServicePurchase_ListInput;
+}>;
+
+
+export type Api_ServicePurchase_ListQuery = { __typename?: 'Query', api_servicePurchase_list?: { __typename?: 'Api_ServicePurchase_listOutput', data?: Array<{ __typename?: 'Api_ServicePurchase_listOutputData', id?: string | null, product?: string | null, type?: string | null, total?: number | null, balanceDue?: number | null, cancelled?: boolean | null, cancelledAt?: string | null, note?: string | null, createdAt?: string | null } | null> | null, page?: { __typename?: 'Api_ServicePurchase_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_ServicePurchase_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type ServicePurchase_GetQueryVariables = Exact<{
+  input: Api_ServicePurchase_GetInput;
+}>;
+
+
+export type ServicePurchase_GetQuery = { __typename?: 'Query', api_servicePurchase_get?: { __typename?: 'Api_ServicePurchase_getOutput', data?: { __typename?: 'Api_ServicePurchase_getOutputData', id?: string | null, product?: string | null, type?: string | null, total?: number | null, balanceDue?: number | null, cancelled?: boolean | null, cancelledAt?: string | null, note?: string | null, createdAt?: string | null } | null } | null };
+
+export type ServicePurchase_CreateMutationVariables = Exact<{
+  input: Api_ServicePurchase_CreateInput;
+}>;
+
+
+export type ServicePurchase_CreateMutation = { __typename?: 'Mutation', api_servicePurchase_create?: { __typename?: 'Api_ServicePurchase_createOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type ServicePurchase_UpdateMutationVariables = Exact<{
+  input: Api_ServicePurchase_UpdateInput;
+}>;
+
+
+export type ServicePurchase_UpdateMutation = { __typename?: 'Mutation', api_servicePurchase_update?: { __typename?: 'Api_ServicePurchase_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type ServicePurchase_DeleteMutationVariables = Exact<{
+  input: Api_ServicePurchase_DeleteInput;
+}>;
+
+
+export type ServicePurchase_DeleteMutation = { __typename?: 'Mutation', api_servicePurchase_delete?: { __typename?: 'Api_ServicePurchase_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Api_ProductFulfillment_AggregateQueryVariables = Exact<{
+  input: Api_ProductFulfillment_AggregateInput;
+}>;
+
+
+export type Api_ProductFulfillment_AggregateQuery = { __typename?: 'Query', api_productFulfillment_aggregate?: { __typename?: 'Api_ProductFulfillment_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
 
 export type Ping_TimeSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
@@ -3851,12 +5782,40 @@ export const Education_GetDocument = {"kind":"Document","definitions":[{"kind":"
 export const Education_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_CreateMutation, Education_CreateMutationVariables>;
 export const Education_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_UpdateMutation, Education_UpdateMutationVariables>;
 export const Education_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_DeleteMutation, Education_DeleteMutationVariables>;
-export const Members_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Members_ListQuery, Members_ListQueryVariables>;
+export const Files_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Files_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"assignedTo"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"note"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Files_ListQuery, Files_ListQueryVariables>;
+export const Files_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Files_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"assignedTo"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"mime"}},{"kind":"Field","name":{"kind":"Name","value":"size"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"category"}},{"kind":"Field","name":{"kind":"Name","value":"note"}}]}}]}}]}}]} as unknown as DocumentNode<Files_GetQuery, Files_GetQueryVariables>;
+export const Files_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Files_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Files_CreateMutation, Files_CreateMutationVariables>;
+export const Files_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Files_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Files_UpdateMutation, Files_UpdateMutationVariables>;
+export const Files_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Files_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Files_DeleteMutation, Files_DeleteMutationVariables>;
+export const File_UploadDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"File_upload"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"File_uploadInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"file_upload"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"files"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"filename"}}]}}]}}]}}]} as unknown as DocumentNode<File_UploadMutation, File_UploadMutationVariables>;
+export const InvoiceBatch_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InvoiceBatch_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"customer"}},{"kind":"Field","name":{"kind":"Name","value":"batchID"}},{"kind":"Field","name":{"kind":"Name","value":"isOpen"}},{"kind":"Field","name":{"kind":"Name","value":"closedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_ListQuery, InvoiceBatch_ListQueryVariables>;
+export const Api_InvoiceBatch_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_invoiceBatch_get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"customer"}},{"kind":"Field","name":{"kind":"Name","value":"batchID"}},{"kind":"Field","name":{"kind":"Name","value":"isOpen"}},{"kind":"Field","name":{"kind":"Name","value":"closedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<Api_InvoiceBatch_GetQuery, Api_InvoiceBatch_GetQueryVariables>;
+export const InvoiceBatch_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InvoiceBatch_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_CreateMutation, InvoiceBatch_CreateMutationVariables>;
+export const InvoiceBatch_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InvoiceBatch_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_UpdateMutation, InvoiceBatch_UpdateMutationVariables>;
+export const InvoiceBatch_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InvoiceBatch_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_DeleteMutation, InvoiceBatch_DeleteMutationVariables>;
+export const Members_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"society"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"prefix"}},{"kind":"Field","name":{"kind":"Name","value":"suffix"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"about"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Members_ListQuery, Members_ListQueryVariables>;
 export const Members_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Members_AggregateQuery, Members_AggregateQueryVariables>;
-export const Members_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}}]}}]}}]} as unknown as DocumentNode<Members_GetQuery, Members_GetQueryVariables>;
+export const Members_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"society"}},{"kind":"Field","name":{"kind":"Name","value":"about"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"suffix"}},{"kind":"Field","name":{"kind":"Name","value":"prefix"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}}]}}]}}]} as unknown as DocumentNode<Members_GetQuery, Members_GetQueryVariables>;
 export const Members_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_CreateMutation, Members_CreateMutationVariables>;
 export const Members_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_UpdateMutation, Members_UpdateMutationVariables>;
 export const Members_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_DeleteMutation, Members_DeleteMutationVariables>;
+export const Notes_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Notes_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_note_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_note_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"userName"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Notes_ListQuery, Notes_ListQueryVariables>;
+export const Notes_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Notes_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_note_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_note_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"userName"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<Notes_GetQuery, Notes_GetQueryVariables>;
+export const Notes_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Notes_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_note_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_note_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<Notes_CreateMutation, Notes_CreateMutationVariables>;
+export const Notes_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Notes_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_note_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_note_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Notes_UpdateMutation, Notes_UpdateMutationVariables>;
+export const Notes_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Notes_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_note_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_note_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Notes_DeleteMutation, Notes_DeleteMutationVariables>;
+export const ProductFulfillment_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProductFulfillment_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"package"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balance"}},{"kind":"Field","name":{"kind":"Name","value":"shipped"}},{"kind":"Field","name":{"kind":"Name","value":"returnedCancelled"}},{"kind":"Field","name":{"kind":"Name","value":"returnedCancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_ListQuery, ProductFulfillment_ListQueryVariables>;
+export const Api_ProductFulfillment_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_productFulfillment_get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"package"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balance"}},{"kind":"Field","name":{"kind":"Name","value":"shipped"}},{"kind":"Field","name":{"kind":"Name","value":"returnedCancelled"}},{"kind":"Field","name":{"kind":"Name","value":"returnedCancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}}]}}]}}]}}]} as unknown as DocumentNode<Api_ProductFulfillment_GetQuery, Api_ProductFulfillment_GetQueryVariables>;
+export const ProductFulfillment_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_CreateMutation, ProductFulfillment_CreateMutationVariables>;
+export const ProductFulfillment_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_UpdateMutation, ProductFulfillment_UpdateMutationVariables>;
+export const ProductFulfillment_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_DeleteMutation, ProductFulfillment_DeleteMutationVariables>;
+export const ProductFulfillment_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProductFulfillment_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_AggregateQuery, ProductFulfillment_AggregateQueryVariables>;
+export const Api_ServicePurchase_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_servicePurchase_list"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balanceDue"}},{"kind":"Field","name":{"kind":"Name","value":"cancelled"}},{"kind":"Field","name":{"kind":"Name","value":"cancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Api_ServicePurchase_ListQuery, Api_ServicePurchase_ListQueryVariables>;
+export const ServicePurchase_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ServicePurchase_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balanceDue"}},{"kind":"Field","name":{"kind":"Name","value":"cancelled"}},{"kind":"Field","name":{"kind":"Name","value":"cancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_GetQuery, ServicePurchase_GetQueryVariables>;
+export const ServicePurchase_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_CreateMutation, ServicePurchase_CreateMutationVariables>;
+export const ServicePurchase_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_UpdateMutation, ServicePurchase_UpdateMutationVariables>;
+export const ServicePurchase_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_DeleteMutation, ServicePurchase_DeleteMutationVariables>;
+export const Api_ProductFulfillment_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_productFulfillment_aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Api_ProductFulfillment_AggregateQuery, Api_ProductFulfillment_AggregateQueryVariables>;
 export const Ping_TimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"subscription","name":{"kind":"Name","value":"Ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"iso"}},{"kind":"Field","name":{"kind":"Name","value":"data"}}]}}]}}]} as unknown as DocumentNode<Ping_TimeSubscription, Ping_TimeSubscriptionVariables>;
 export const Api_Wpportaluser_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_wpportaluser_list"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_wpportaluser_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_wpportaluser_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"registered_date"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"profile_fields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"field_id"}},{"kind":"Field","name":{"kind":"Name","value":"field_type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses_count"}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"course_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enrollment_date"}},{"kind":"Field","name":{"kind":"Name","value":"completion_date"}},{"kind":"Field","name":{"kind":"Name","value":"progress_percentage"}},{"kind":"Field","name":{"kind":"Name","value":"completed_steps"}},{"kind":"Field","name":{"kind":"Name","value":"total_steps"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Api_Wpportaluser_ListQuery, Api_Wpportaluser_ListQueryVariables>;
 export const Api_Wpportaluser_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_wpportaluser_get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_wpportaluser_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_wpportaluser_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"registered_date"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"profile_fields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"field_id"}},{"kind":"Field","name":{"kind":"Name","value":"field_type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses_count"}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"course_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enrollment_date"}},{"kind":"Field","name":{"kind":"Name","value":"completion_date"}},{"kind":"Field","name":{"kind":"Name","value":"progress_percentage"}},{"kind":"Field","name":{"kind":"Name","value":"completed_steps"}},{"kind":"Field","name":{"kind":"Name","value":"total_steps"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Api_Wpportaluser_GetQuery, Api_Wpportaluser_GetQueryVariables>;

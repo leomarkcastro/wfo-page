@@ -6,6 +6,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import moment from 'moment';
+import { createProvider } from '@/lib/services/createProvider';
 
 export default function TabMainEdit() {
   const router = useRouter();
@@ -14,48 +15,47 @@ export default function TabMainEdit() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
 
+  const dataHookProvider = createProvider({
+    name: EducationDataProvider.name,
+    dataProvider: EducationDataProvider,
+  });
+
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
+  const useDelete = dataHookProvider.useDelete();
+  const useUpdate = dataHookProvider.useUpdate();
+  const { data: lData, isLoading: loading } = dataHookProvider.useOne(id);
 
   const { toast } = useToast();
 
-  async function fetchData() {
+  useEffect(() => {
     if (!id) return;
-    const res = await EducationDataProvider.getOne({
-      id: id as string,
-      meta: {},
-      resource: 'educations',
-    });
-    let data = JSON.parse(JSON.stringify(res.data));
+    if (!lData) return;
+    let data = JSON.parse(JSON.stringify(lData.data));
 
-    // Format graduation years to YYYY-MM-DD format for date inputs
     ['dateOfAchievement'].forEach((field) => {
       if (data[field]) {
         let timeData = data[field];
-        // if timedata is numeric but is a string, convert to number
         if (typeof timeData === 'string' && !isNaN(Number(timeData))) {
           timeData = parseInt(timeData);
         }
-        // console.log('timeData', timeData);
-
         data[field] = moment(timeData).format('YYYY-MM-DD');
       }
     });
+
     setData(data);
-    setLoading(false);
-  }
+  }, [lData, loading]);
 
   async function submitData(data) {
     if (!id) return;
-    // convert the date to a timestamp
     data.dateOfAchievement = moment(data.dateOfAchievement).toISOString();
 
-    await EducationDataProvider.update({
+    await useUpdate.mutateAsync({
       id: id as string,
       variables: data,
       meta: {},
       resource: 'educations',
     });
+
     toast({
       title: 'Education Updated',
       description: 'Education record has been updated successfully',
@@ -65,22 +65,16 @@ export default function TabMainEdit() {
 
   async function deleteData() {
     if (!id) return;
-    await EducationDataProvider.deleteOne({
+    await useDelete.mutateAsync({
       id: id as string,
-      meta: {},
-      resource: 'educations',
-      variables: {},
     });
+
     toast({
       title: 'Education Deleted',
       description: 'Education record has been deleted successfully',
     });
     router.push(`/admin/members/edit/${userId}?tab=education`);
   }
-
-  useEffect(() => {
-    fetchData();
-  }, [id]);
 
   if (loading) return <div>Loading...</div>;
   return (

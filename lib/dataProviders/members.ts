@@ -4,6 +4,7 @@ import { DataProvider } from '../services/dataProvider';
 import { cleanUpObject } from '../services/cleanUpObject';
 
 export const MembersDataProvider: DataProvider = {
+    name: 'MembersDataProvider',
     getList: async (args) => {
 
         if (args.pagination.page > 1) {
@@ -30,7 +31,8 @@ export const MembersDataProvider: DataProvider = {
                         }
                     }
                 },
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
 
         let retData = data.data.api_member_list;
@@ -55,7 +57,8 @@ export const MembersDataProvider: DataProvider = {
                         id: args.id
                     }
                 },
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
 
         return {
@@ -73,7 +76,8 @@ export const MembersDataProvider: DataProvider = {
                         ]
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
 
         return {
@@ -94,7 +98,8 @@ export const MembersDataProvider: DataProvider = {
                         ]
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
 
         return {
@@ -110,7 +115,8 @@ export const MembersDataProvider: DataProvider = {
                         data: [args.id]
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
 
         return {
@@ -135,7 +141,8 @@ export const MembersDataProvider: DataProvider = {
                         },
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
         return data.data.api_member_aggregate;
     }

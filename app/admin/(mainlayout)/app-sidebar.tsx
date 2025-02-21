@@ -5,9 +5,10 @@ import {
   Users,
   Settings,
   LogOut,
-  ListCheck,
   DollarSign,
   Logs,
+  Map,
+  BoxesIcon,
 } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -47,24 +48,22 @@ const menuItems: AppMenuItem[] = [
   { title: 'Overview', url: '/admin', icon: LayoutGrid, id: 'dash' },
   { title: 'Members', url: '/admin/members', icon: Users, id: 'members' },
   {
-    title: 'Subscriptions',
-    url: '/admin/subscriptions',
-    icon: ListCheck,
-    id: 'subscriptions',
-    disabled: true,
+    title: 'Collections',
+    url: '/admin/collections',
+    icon: BoxesIcon,
+    id: 'collections',
   },
   {
-    title: 'Invoices',
-    url: '/admin/invoices',
+    title: 'Products',
+    url: '/admin/products',
     icon: DollarSign,
-    id: 'invoices',
-    disabled: true,
+    id: 'products',
   },
   {
-    title: 'Events',
-    url: '/admin/events',
-    icon: Users,
-    id: 'events',
+    title: 'Societies',
+    url: '/admin/societies',
+    icon: Map,
+    id: 'subscriptions',
     disabled: true,
   },
   // {

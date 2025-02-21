@@ -2,7 +2,9 @@ import { Education_Aggregate, Education_Create, Education_Delete, Education_Get,
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
+
 export const EducationDataProvider: DataProvider = {
+    name: 'EducationDataProvider',
     getList: async (args) => {
         const data = await apolloClient.query({
             query: Education_List,
@@ -25,7 +27,8 @@ export const EducationDataProvider: DataProvider = {
                         }
                     }
                 },
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
 
         let retData = data.data.api_education_list;
@@ -50,7 +53,8 @@ export const EducationDataProvider: DataProvider = {
                         id: args.id
                     }
                 },
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
 
         return {
@@ -69,8 +73,10 @@ export const EducationDataProvider: DataProvider = {
                         ]
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
+
 
         return {
             id: data.data.api_education_create.ids[0]
@@ -91,7 +97,8 @@ export const EducationDataProvider: DataProvider = {
                         ]
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
 
         return {
@@ -108,7 +115,8 @@ export const EducationDataProvider: DataProvider = {
                         data: [args.id]
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
 
         return {
@@ -133,8 +141,10 @@ export const EducationDataProvider: DataProvider = {
                         },
                     }
                 }
-            }
+            },
+            fetchPolicy: 'no-cache'
         })
         return data.data.api_education_aggregate;
-    }
+    },
+
 };

@@ -3,6 +3,7 @@ import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
 export const WpPortalUserDataProvider: DataProvider = {
+    name: 'WpPortalUserDataProvider',
     getList: async (args) => {
         const data = await apolloClient.query({
             query: Education_List,
@@ -25,7 +26,8 @@ export const WpPortalUserDataProvider: DataProvider = {
                         }
                     }
                 },
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
 
         let retData = data.data.api_education_list;
@@ -50,7 +52,8 @@ export const WpPortalUserDataProvider: DataProvider = {
                         id: args.id
                     }
                 },
-            }
+            },
+            fetchPolicy: 'no-cache'
         });
 
         return {

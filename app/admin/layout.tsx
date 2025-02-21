@@ -17,7 +17,14 @@ export default function DashboardPage({
 
   useEffect(() => {
     if (!loading && !user?.id) {
-      router.replace('/auth/login');
+      const currentPath = window.location.pathname;
+      if (currentPath.startsWith('/admin')) {
+        router.replace(
+          `/auth/login?redirect=${encodeURIComponent(currentPath)}`,
+        );
+      } else {
+        router.replace('/auth/login');
+      }
     }
   }, [user, loading]);
 

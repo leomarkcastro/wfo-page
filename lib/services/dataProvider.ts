@@ -28,6 +28,7 @@ export interface DataProvider<
   TDataOne = TDataMany extends Array<infer T> ? T : TDataMany,
   TVariables = Parameters<TFetcher>[0],
 > {
+  name: string;
   // required methods
   getList: (params: {
     resource?: string;

@@ -6,6 +6,10 @@ import { PermissionProvider } from '@/hooks/use-permission';
 import { authBehavior } from '@/lib/authProvider';
 import { permissionProvider } from '@/lib/permissionProvider';
 import { Toaster } from '@/components/ui/toaster';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// Create a client
+const queryClient = new QueryClient();
 
 export default function App({
   children,
@@ -14,12 +18,14 @@ export default function App({
 }>) {
   return (
     <ApolloWrapper>
-      <AuthProvider behavior={authBehavior}>
-        <PermissionProvider behavior={permissionProvider}>
-          {children}
-        </PermissionProvider>
-        <Toaster />
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider behavior={authBehavior}>
+          <PermissionProvider behavior={permissionProvider}>
+            {children}
+          </PermissionProvider>
+          <Toaster />
+        </AuthProvider>
+      </QueryClientProvider>
     </ApolloWrapper>
   );
 }

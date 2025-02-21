@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { Apple, Facebook } from 'lucide-react';
 import { AuthLayout } from '@/components/auth/auth-layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -10,6 +9,8 @@ import { useAuth } from '@/hooks/use-auth';
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = new URLSearchParams(window.location.search);
+  const redirectUrl = searchParams.get('redirect') || '/admin';
 
   const { login } = useAuth();
 
@@ -41,7 +42,7 @@ export default function LoginPage() {
         throw new Error('Login failed');
       }
 
-      router.push('/admin'); // Redirect after successful login
+      router.push(redirectUrl); // Redirect after successful login
     } catch (err) {
       setError('Invalid email or password');
     } finally {

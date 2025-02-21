@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
@@ -21,32 +22,33 @@ import { CardFooter } from '../ui/card';
 import { Combobox } from '../ui/combobox';
 import { DeleteModal } from './delete-modal';
 
+type BaseFieldProps = {
+  before?: React.ReactNode | ((form: any) => React.ReactNode);
+  after?: React.ReactNode | ((form: any) => React.ReactNode);
+  row?: number;
+  cell?: number;
+};
+
 export type FieldType =
-  | {
+  | ({
       type: 'title';
       name?: string;
       label: string;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'divider';
       name?: string;
       label?: string;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'text';
       name: string;
       label: string;
       placeholder?: string;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'number';
       name: string;
       label: string;
@@ -54,97 +56,87 @@ export type FieldType =
       max?: number;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'select';
       name: string;
       label: string;
       options: { label: string; value: string }[];
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
       allowCustom?: boolean;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'checkbox';
       name: string;
       label: string;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'multiselect';
       name: string;
       label: string;
       options: { label: string; value: string }[];
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'file';
       name: string;
       label: string;
       accept?: string;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'custom';
       name: string;
       label: string;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-      component: React.ReactNode;
-    }
-  | {
+      component: React.ReactNode | ((form: any) => React.ReactNode);
+    } & BaseFieldProps)
+  | ({
       type: 'date';
       name: string;
       label: string;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'time';
       name: string;
       label: string;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
       type: 'datetime';
       name: string;
       label: string;
       required?: boolean;
       readonly?: boolean;
-      row?: number;
-      cell?: number;
-    }
-  | {
+    } & BaseFieldProps)
+  | ({
+      type: 'textarea';
+      name: string;
+      label: string;
+      placeholder?: string;
+      required?: boolean;
+      readonly?: boolean;
+      rows?: number;
+    } & BaseFieldProps)
+  | ({
       type: 'display';
       name: string;
       label: string;
-      component?: React.ReactNode;
-      row?: number;
-      cell?: number;
-    };
+      component?: React.ReactNode | ((form: any) => React.ReactNode);
+    } & BaseFieldProps);
 
 export interface QuickFormProps {
   fields: FieldType[];
   onSubmit: (data: any) => void;
+  onValueChange?: (form: any) => void;
   className?: string;
   gridCols?: number;
   onCancel?: () => void;
@@ -156,11 +148,14 @@ export interface QuickFormProps {
   hideSubmit?: boolean;
   hideDelete?: boolean;
   hideCancel?: boolean;
+  onForm?: (form: any) => void;
 }
 
 export function QuickForm({
   fields,
   onSubmit,
+  onValueChange,
+  onForm,
   onCancel,
   onDelete,
   className,
@@ -221,6 +216,11 @@ export function QuickForm({
             ? z.string().min(1)
             : z.string().optional();
           break;
+        case 'textarea':
+          schema[field.name] = field.required
+            ? z.string().min(1)
+            : z.string().optional();
+          break;
       }
     });
 
@@ -231,6 +231,11 @@ export function QuickForm({
     resolver: zodResolver(generateSchema()),
     defaultValues: defaultValues,
   });
+
+  // Add this effect
+  useEffect(() => {
+    onForm?.(form);
+  }, [form, onForm]);
 
   const watch = form.watch();
 
@@ -243,48 +248,84 @@ export function QuickForm({
     }
   }, [defaultValues, form]);
 
+  // Add this effect after the form declaration
+  useEffect(() => {
+    const subscription = form.watch((value) => {
+      onValueChange?.(form);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const renderComponent = (
+    component: React.ReactNode | ((form: any) => React.ReactNode),
+  ) => {
+    return typeof component === 'function' ? component(form) : component;
+  };
+
+  const wrapWithBeforeAfter = (input: React.ReactNode, field: FieldType) => {
+    if (!field.before && !field.after) return input;
+
+    return (
+      <div className='flex items-center gap-2'>
+        {field.before && (
+          <div className='flex-shrink-0'>{renderComponent(field.before)}</div>
+        )}
+        <div className='flex-grow'>{input}</div>
+        {field.after && (
+          <div className='flex-shrink-0'>{renderComponent(field.after)}</div>
+        )}
+      </div>
+    );
+  };
+
   const renderField = (field: FieldType) => {
     switch (field.type) {
       case 'display':
-        return (
-          field.component || (
-            <div className='rounded-md bg-slate-50 p-2'>
-              {form.getValues(field.name)}
-            </div>
-          )
+        return wrapWithBeforeAfter(
+          typeof field.component === 'function'
+            ? field.component(form)
+            : field.component || (
+                <div className='rounded-md bg-slate-50 p-2'>
+                  {form.getValues(field.name)}
+                </div>
+              ),
+          field,
         );
       case 'title':
         return <h3 className='pt-4 text-lg font-semibold'>{field.label}</h3>;
       case 'divider':
         return <hr className='my-2 border-t border-gray-200' />;
       case 'text':
-        return (
+        return wrapWithBeforeAfter(
           <Input
             placeholder={field.placeholder}
             readOnly={field.readonly}
             {...form.register(field.name)}
-          />
+          />,
+          field,
         );
       case 'number':
-        return (
+        return wrapWithBeforeAfter(
           <Input
             type='number'
             readOnly={field.readonly}
             {...form.register(field.name, { valueAsNumber: true })}
-          />
+          />,
+          field,
         );
       case 'select':
         if (field.allowCustom) {
-          return (
+          return wrapWithBeforeAfter(
             <Combobox
               value={watch[field.name]}
               setValue={(value) => form.setValue(field.name, value)}
               content={field.options}
               allowCustom
-            />
+            />,
+            field,
           );
         }
-        return (
+        return wrapWithBeforeAfter(
           <Select
             onValueChange={(value) => form.setValue(field.name, value)}
             value={watch[field.name]}
@@ -299,17 +340,19 @@ export function QuickForm({
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </Select>,
+          field,
         );
       case 'checkbox':
-        return (
+        return wrapWithBeforeAfter(
           <Checkbox
             onCheckedChange={(checked) => form.setValue(field.name, checked)}
             checked={watch[field.name]}
-          />
+          />,
+          field,
         );
       case 'file':
-        return (
+        return wrapWithBeforeAfter(
           <Input
             type='file'
             accept={field.accept}
@@ -317,33 +360,52 @@ export function QuickForm({
               const file = e.target.files?.[0];
               if (file) form.setValue(field.name, file);
             }}
-          />
+          />,
+          field,
         );
       case 'custom':
-        return field.component;
+        return wrapWithBeforeAfter(
+          typeof field.component === 'function'
+            ? field.component(form)
+            : field.component,
+          field,
+        );
       case 'date':
-        return (
+        return wrapWithBeforeAfter(
           <Input
             type='date'
             readOnly={field.readonly}
             {...form.register(field.name)}
-          />
+          />,
+          field,
         );
       case 'time':
-        return (
+        return wrapWithBeforeAfter(
           <Input
             type='time'
             readOnly={field.readonly}
             {...form.register(field.name)}
-          />
+          />,
+          field,
         );
       case 'datetime':
-        return (
+        return wrapWithBeforeAfter(
           <Input
             type='datetime-local'
             readOnly={field.readonly}
             {...form.register(field.name)}
-          />
+          />,
+          field,
+        );
+      case 'textarea':
+        return wrapWithBeforeAfter(
+          <Textarea
+            placeholder={field.placeholder}
+            readOnly={field.readonly}
+            rows={field.rows}
+            {...form.register(field.name)}
+          />,
+          field,
         );
     }
   };
@@ -409,7 +471,13 @@ export function QuickForm({
                   {field.type === 'title' ? (
                     ''
                   ) : (
-                    <label className='text-xs font-medium'>{field.label}</label>
+                    <label className='text-xs font-medium'>
+                      {field.label}
+                      {/* @ts-ignore */}
+                      {field.type !== 'checkbox' && field.required && (
+                        <span className='pl-1 text-red-500'>*</span>
+                      )}
+                    </label>
                   )}
                   {renderField(field)}
                   {form.formState.errors[field.name] && (
@@ -449,7 +517,7 @@ export function QuickForm({
                     variant='outline'
                     onClick={onCancel}
                   >
-                    Cancel
+                    Back
                   </Button>
                 )}
               </CardFooter>

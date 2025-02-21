@@ -39,6 +39,7 @@ import {
 import { DataProvider } from '@/lib/services/dataProvider';
 import { cn } from '@/lib/utils';
 import { useDebounce } from '@uidotdev/usehooks';
+import { createProvider } from '@/lib/services/createProvider';
 
 export type FilterOperator =
   | 'equals'
@@ -145,6 +146,11 @@ export function DataProviderTable({
   initialFilters = {}, // Add default value
   enableUrlPersistence = false,
 }: DataTableProps) {
+  const dataHookProvider = createProvider({
+    name: dataSource.name,
+    dataProvider: dataSource,
+  });
+
   const [data, setData] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [totalRecords, setTotalRecords] = useState(0); // Add this line
@@ -189,49 +195,37 @@ export function DataProviderTable({
     }
   };
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const { data, totalPages, total } = await dataSource.getList({
-        // Add total to destructuring
-        resource: 'users',
-        pagination: { page: currentPage, perPage: pageSize },
-        sorters: sortConfig
-          ? [{ field: sortConfig.key, order: sortConfig.direction }]
-          : [],
-        search: debouncedSearch,
-        filters: Object.entries(filters).flatMap(([field, values]) =>
-          values.map(({ value, operator }) => ({ field, operator, value })),
-        ),
-        meta: {},
-      });
-      setData(data);
-      setTotalPages(totalPages);
-      setTotalRecords(total); // Add this line
-    } finally {
-      setIsLoading(false);
+  const [persistanceLoaded, setPersistanceLoaded] =
+    useState(!enableUrlPersistence);
+
+  const { data: lData, isLoading: lLoading } = dataHookProvider.useList({
+    // Add total to destructuring
+    resource: 'users',
+    pagination: { page: currentPage, perPage: pageSize },
+    sorters: sortConfig
+      ? [{ field: sortConfig.key, order: sortConfig.direction }]
+      : [],
+    search: debouncedSearch,
+    filters: Object.entries(filters).flatMap(([field, values]) =>
+      values.map(({ value, operator }) => ({ field, operator, value })),
+    ),
+    meta: {},
+  });
+
+  useEffect(() => {
+    if (!persistanceLoaded) {
+      return;
     }
-  };
+    setIsLoading(lLoading);
+    setData(lData?.data);
+    setTotalPages(lData?.totalPages);
+    setTotalRecords(lData?.total); // Add this line
+  }, [persistanceLoaded, lLoading, lData]);
 
   // Add this new useEffect before the existing useEffect
   useEffect(() => {
     setCurrentPage(1);
   }, [debouncedSearch, filters, pageSize]);
-
-  const [persistanceLoaded, setPersistanceLoaded] =
-    useState(!enableUrlPersistence);
-
-  useEffect(() => {
-    if (!persistanceLoaded) return;
-    fetchData();
-  }, [
-    persistanceLoaded,
-    sortConfig,
-    filters,
-    currentPage,
-    pageSize,
-    debouncedSearch,
-  ]);
 
   // Replace the problematic useEffect
   useEffect(() => {
@@ -315,6 +309,10 @@ export function DataProviderTable({
     setTempFilter({ column: '', operator: 'equals', value: '' });
     setFilterModalOpen(false);
   };
+
+  if (!data && !isLoading) {
+    return null;
+  }
 
   return (
     <div className='space-y-2'>
