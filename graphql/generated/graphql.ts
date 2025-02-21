@@ -28,12 +28,6 @@ export type Api_Education_AggregateOutput = {
 
 export type Api_Education_AggregateOutputBreakdown = {
   __typename?: 'Api_Education_aggregateOutputBreakdown';
-  counts: Array<Maybe<Api_Education_AggregateOutputBreakdownCounts>>;
-  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
-};
-
-export type Api_Education_AggregateOutputBreakdownCounts = {
-  __typename?: 'Api_Education_aggregateOutputBreakdownCounts';
   count?: Maybe<Scalars['Float']['output']>;
   countBy?: Maybe<Scalars['String']['output']>;
 };
@@ -63,6 +57,23 @@ export type Api_Education_GetOutputData = {
   schoolName?: Maybe<Scalars['String']['output']>;
   userId?: Maybe<Scalars['String']['output']>;
   userName?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Education_GroupByOutput = {
+  __typename?: 'Api_Education_groupByOutput';
+  breakdown?: Maybe<Array<Maybe<Api_Education_GroupByOutputBreakdown>>>;
+};
+
+export type Api_Education_GroupByOutputBreakdown = {
+  __typename?: 'Api_Education_groupByOutputBreakdown';
+  counts: Array<Maybe<Api_Education_GroupByOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Education_GroupByOutputBreakdownCounts = {
+  __typename?: 'Api_Education_groupByOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_Education_ListOutput = {
@@ -209,12 +220,12 @@ export type Api_InvoiceBatch_ListOutput = {
 
 export type Api_InvoiceBatch_ListOutputData = {
   __typename?: 'Api_InvoiceBatch_listOutputData';
-  batchID: Scalars['String']['output'];
-  closedAt: Scalars['String']['output'];
-  createdAt: Scalars['String']['output'];
-  customer: Scalars['String']['output'];
-  id: Scalars['String']['output'];
-  isOpen: Scalars['Boolean']['output'];
+  batchID?: Maybe<Scalars['String']['output']>;
+  closedAt?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['String']['output']>;
+  customer?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isOpen?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type Api_InvoiceBatch_ListOutputPage = {
@@ -244,12 +255,6 @@ export type Api_Member_AggregateOutput = {
 
 export type Api_Member_AggregateOutputBreakdown = {
   __typename?: 'Api_Member_aggregateOutputBreakdown';
-  counts: Array<Maybe<Api_Member_AggregateOutputBreakdownCounts>>;
-  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
-};
-
-export type Api_Member_AggregateOutputBreakdownCounts = {
-  __typename?: 'Api_Member_aggregateOutputBreakdownCounts';
   count?: Maybe<Scalars['Float']['output']>;
   countBy?: Maybe<Scalars['String']['output']>;
 };
@@ -317,6 +322,23 @@ export type Api_Member_GetOutputData = {
   society?: Maybe<Scalars['String']['output']>;
   suffix?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Member_GroupByOutput = {
+  __typename?: 'Api_Member_groupByOutput';
+  breakdown?: Maybe<Array<Maybe<Api_Member_GroupByOutputBreakdown>>>;
+};
+
+export type Api_Member_GroupByOutputBreakdown = {
+  __typename?: 'Api_Member_groupByOutputBreakdown';
+  counts: Array<Maybe<Api_Member_GroupByOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Member_GroupByOutputBreakdownCounts = {
+  __typename?: 'Api_Member_groupByOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_Member_ListOutput = {
@@ -467,12 +489,6 @@ export type Api_ProductFulfillment_AggregateOutput = {
 
 export type Api_ProductFulfillment_AggregateOutputBreakdown = {
   __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown';
-  counts: Array<Maybe<Api_ProductFulfillment_AggregateOutputBreakdownCounts>>;
-  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
-};
-
-export type Api_ProductFulfillment_AggregateOutputBreakdownCounts = {
-  __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdownCounts';
   count?: Maybe<Scalars['Float']['output']>;
   countBy?: Maybe<Scalars['String']['output']>;
 };
@@ -507,6 +523,23 @@ export type Api_ProductFulfillment_GetOutputData = {
   returnedCancelledAt?: Maybe<Scalars['String']['output']>;
   shipped?: Maybe<Scalars['Boolean']['output']>;
   total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_ProductFulfillment_GroupByOutput = {
+  __typename?: 'Api_ProductFulfillment_groupByOutput';
+  breakdown?: Maybe<Array<Maybe<Api_ProductFulfillment_GroupByOutputBreakdown>>>;
+};
+
+export type Api_ProductFulfillment_GroupByOutputBreakdown = {
+  __typename?: 'Api_ProductFulfillment_groupByOutputBreakdown';
+  counts: Array<Maybe<Api_ProductFulfillment_GroupByOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ProductFulfillment_GroupByOutputBreakdownCounts = {
+  __typename?: 'Api_ProductFulfillment_groupByOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_ProductFulfillment_ListOutput = {
@@ -557,12 +590,6 @@ export type Api_ServicePurchase_AggregateOutput = {
 
 export type Api_ServicePurchase_AggregateOutputBreakdown = {
   __typename?: 'Api_ServicePurchase_aggregateOutputBreakdown';
-  counts: Array<Maybe<Api_ServicePurchase_AggregateOutputBreakdownCounts>>;
-  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
-};
-
-export type Api_ServicePurchase_AggregateOutputBreakdownCounts = {
-  __typename?: 'Api_ServicePurchase_aggregateOutputBreakdownCounts';
   count?: Maybe<Scalars['Float']['output']>;
   countBy?: Maybe<Scalars['String']['output']>;
 };
@@ -595,6 +622,23 @@ export type Api_ServicePurchase_GetOutputData = {
   product?: Maybe<Scalars['String']['output']>;
   total?: Maybe<Scalars['Float']['output']>;
   type?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ServicePurchase_GroupByOutput = {
+  __typename?: 'Api_ServicePurchase_groupByOutput';
+  breakdown?: Maybe<Array<Maybe<Api_ServicePurchase_GroupByOutputBreakdown>>>;
+};
+
+export type Api_ServicePurchase_GroupByOutputBreakdown = {
+  __typename?: 'Api_ServicePurchase_groupByOutputBreakdown';
+  counts: Array<Maybe<Api_ServicePurchase_GroupByOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_ServicePurchase_GroupByOutputBreakdownCounts = {
+  __typename?: 'Api_ServicePurchase_groupByOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
 };
 
 export type Api_ServicePurchase_ListOutput = {
@@ -760,7 +804,6 @@ export type Api_Education_AggregateInput = {
 
 export type Api_Education_AggregateInputData = {
   countBy: Array<InputMaybe<Scalars['String']['input']>>;
-  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
   operation: Scalars['String']['input'];
   page?: InputMaybe<Api_Education_AggregateInputDataPage>;
 };
@@ -815,6 +858,37 @@ export type Api_Education_GetInput = {
 
 export type Api_Education_GetInputData = {
   id: Scalars['String']['input'];
+};
+
+export type Api_Education_GroupByInput = {
+  data: Api_Education_GroupByInputData;
+};
+
+export type Api_Education_GroupByInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_Education_GroupByInputDataPage>;
+};
+
+export type Api_Education_GroupByInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Education_GroupByInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Education_GroupByInputDataPageSort>;
+};
+
+export type Api_Education_GroupByInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Education_GroupByInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
 };
 
 export type Api_Education_ListInput = {
@@ -1038,7 +1112,6 @@ export type Api_Member_AggregateInput = {
 
 export type Api_Member_AggregateInputData = {
   countBy: Array<InputMaybe<Scalars['String']['input']>>;
-  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
   operation: Scalars['String']['input'];
   page?: InputMaybe<Api_Member_AggregateInputDataPage>;
 };
@@ -1127,6 +1200,37 @@ export type Api_Member_GetInput = {
 
 export type Api_Member_GetInputData = {
   id: Scalars['String']['input'];
+};
+
+export type Api_Member_GroupByInput = {
+  data: Api_Member_GroupByInputData;
+};
+
+export type Api_Member_GroupByInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_Member_GroupByInputDataPage>;
+};
+
+export type Api_Member_GroupByInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Member_GroupByInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Member_GroupByInputDataPageSort>;
+};
+
+export type Api_Member_GroupByInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Member_GroupByInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
 };
 
 export type Api_Member_ListInput = {
@@ -1298,7 +1402,6 @@ export type Api_ProductFulfillment_AggregateInput = {
 
 export type Api_ProductFulfillment_AggregateInputData = {
   countBy: Array<InputMaybe<Scalars['String']['input']>>;
-  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
   operation: Scalars['String']['input'];
   page?: InputMaybe<Api_ProductFulfillment_AggregateInputDataPage>;
 };
@@ -1356,6 +1459,38 @@ export type Api_ProductFulfillment_GetInput = {
 
 export type Api_ProductFulfillment_GetInputData = {
   id: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_GroupByInput = {
+  data: Api_ProductFulfillment_GroupByInputData;
+};
+
+export type Api_ProductFulfillment_GroupByInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_ProductFulfillment_GroupByInputDataPage>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_ProductFulfillment_GroupByInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_ProductFulfillment_GroupByInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_ProductFulfillment_GroupByInputDataPageSort>;
+};
+
+export type Api_ProductFulfillment_GroupByInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_ProductFulfillment_GroupByInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
 };
 
 export type Api_ProductFulfillment_ListInput = {
@@ -1418,7 +1553,6 @@ export type Api_ServicePurchase_AggregateInput = {
 
 export type Api_ServicePurchase_AggregateInputData = {
   countBy: Array<InputMaybe<Scalars['String']['input']>>;
-  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
   operation: Scalars['String']['input'];
   page?: InputMaybe<Api_ServicePurchase_AggregateInputDataPage>;
 };
@@ -1473,6 +1607,38 @@ export type Api_ServicePurchase_GetInput = {
 
 export type Api_ServicePurchase_GetInputData = {
   id: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_GroupByInput = {
+  data: Api_ServicePurchase_GroupByInputData;
+};
+
+export type Api_ServicePurchase_GroupByInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_ServicePurchase_GroupByInputDataPage>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_ServicePurchase_GroupByInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_ServicePurchase_GroupByInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_ServicePurchase_GroupByInputDataPageSort>;
+};
+
+export type Api_ServicePurchase_GroupByInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_ServicePurchase_GroupByInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
 };
 
 export type Api_ServicePurchase_ListInput = {
@@ -3686,6 +3852,7 @@ export type Query = {
   ErrorTest?: Maybe<Scalars['String']['output']>;
   api_education_aggregate?: Maybe<Api_Education_AggregateOutput>;
   api_education_get?: Maybe<Api_Education_GetOutput>;
+  api_education_groupBy?: Maybe<Api_Education_GroupByOutput>;
   api_education_list?: Maybe<Api_Education_ListOutput>;
   api_file_get?: Maybe<Api_File_GetOutput>;
   api_file_list?: Maybe<Api_File_ListOutput>;
@@ -3693,14 +3860,17 @@ export type Query = {
   api_invoiceBatch_list?: Maybe<Api_InvoiceBatch_ListOutput>;
   api_member_aggregate?: Maybe<Api_Member_AggregateOutput>;
   api_member_get?: Maybe<Api_Member_GetOutput>;
+  api_member_groupBy?: Maybe<Api_Member_GroupByOutput>;
   api_member_list?: Maybe<Api_Member_ListOutput>;
   api_note_get?: Maybe<Api_Note_GetOutput>;
   api_note_list?: Maybe<Api_Note_ListOutput>;
   api_productFulfillment_aggregate?: Maybe<Api_ProductFulfillment_AggregateOutput>;
   api_productFulfillment_get?: Maybe<Api_ProductFulfillment_GetOutput>;
+  api_productFulfillment_groupBy?: Maybe<Api_ProductFulfillment_GroupByOutput>;
   api_productFulfillment_list?: Maybe<Api_ProductFulfillment_ListOutput>;
   api_servicePurchase_aggregate?: Maybe<Api_ServicePurchase_AggregateOutput>;
   api_servicePurchase_get?: Maybe<Api_ServicePurchase_GetOutput>;
+  api_servicePurchase_groupBy?: Maybe<Api_ServicePurchase_GroupByOutput>;
   api_servicePurchase_list?: Maybe<Api_ServicePurchase_ListOutput>;
   api_timecheck?: Maybe<Api_TimecheckOutput>;
   api_wpportaluser_get?: Maybe<Api_Wpportaluser_GetOutput>;
@@ -3784,6 +3954,11 @@ export type QueryApi_Education_GetArgs = {
 };
 
 
+export type QueryApi_Education_GroupByArgs = {
+  input: Api_Education_GroupByInput;
+};
+
+
 export type QueryApi_Education_ListArgs = {
   input: Api_Education_ListInput;
 };
@@ -3819,6 +3994,11 @@ export type QueryApi_Member_GetArgs = {
 };
 
 
+export type QueryApi_Member_GroupByArgs = {
+  input: Api_Member_GroupByInput;
+};
+
+
 export type QueryApi_Member_ListArgs = {
   input: Api_Member_ListInput;
 };
@@ -3844,6 +4024,11 @@ export type QueryApi_ProductFulfillment_GetArgs = {
 };
 
 
+export type QueryApi_ProductFulfillment_GroupByArgs = {
+  input: Api_ProductFulfillment_GroupByInput;
+};
+
+
 export type QueryApi_ProductFulfillment_ListArgs = {
   input: Api_ProductFulfillment_ListInput;
 };
@@ -3856,6 +4041,11 @@ export type QueryApi_ServicePurchase_AggregateArgs = {
 
 export type QueryApi_ServicePurchase_GetArgs = {
   input: Api_ServicePurchase_GetInput;
+};
+
+
+export type QueryApi_ServicePurchase_GroupByArgs = {
+  input: Api_ServicePurchase_GroupByInput;
 };
 
 
@@ -5476,7 +5666,14 @@ export type Education_AggregateQueryVariables = Exact<{
 }>;
 
 
-export type Education_AggregateQuery = { __typename?: 'Query', api_education_aggregate?: { __typename?: 'Api_Education_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_Education_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_Education_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+export type Education_AggregateQuery = { __typename?: 'Query', api_education_aggregate?: { __typename?: 'Api_Education_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_Education_aggregateOutputBreakdown', countBy?: string | null, count?: number | null } | null> | null } | null };
+
+export type Education_GroupByQueryVariables = Exact<{
+  input: Api_Education_GroupByInput;
+}>;
+
+
+export type Education_GroupByQuery = { __typename?: 'Query', api_education_groupBy?: { __typename?: 'Api_Education_groupByOutput', breakdown?: Array<{ __typename?: 'Api_Education_groupByOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_Education_groupByOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
 
 export type Education_GetQueryVariables = Exact<{
   input: Api_Education_GetInput;
@@ -5553,7 +5750,7 @@ export type InvoiceBatch_ListQueryVariables = Exact<{
 }>;
 
 
-export type InvoiceBatch_ListQuery = { __typename?: 'Query', api_invoiceBatch_list?: { __typename?: 'Api_InvoiceBatch_listOutput', data?: Array<{ __typename?: 'Api_InvoiceBatch_listOutputData', id: string, customer: string, batchID: string, isOpen: boolean, closedAt: string, createdAt: string } | null> | null, page?: { __typename?: 'Api_InvoiceBatch_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_InvoiceBatch_listOutputPageRange', from: number, to: number } | null } | null } | null };
+export type InvoiceBatch_ListQuery = { __typename?: 'Query', api_invoiceBatch_list?: { __typename?: 'Api_InvoiceBatch_listOutput', data?: Array<{ __typename?: 'Api_InvoiceBatch_listOutputData', id?: string | null, customer?: string | null, batchID?: string | null, isOpen?: boolean | null, closedAt?: string | null, createdAt?: string | null } | null> | null, page?: { __typename?: 'Api_InvoiceBatch_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_InvoiceBatch_listOutputPageRange', from: number, to: number } | null } | null } | null };
 
 export type Api_InvoiceBatch_GetQueryVariables = Exact<{
   input: Api_InvoiceBatch_GetInput;
@@ -5595,7 +5792,14 @@ export type Members_AggregateQueryVariables = Exact<{
 }>;
 
 
-export type Members_AggregateQuery = { __typename?: 'Query', api_member_aggregate?: { __typename?: 'Api_Member_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_Member_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_Member_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+export type Members_AggregateQuery = { __typename?: 'Query', api_member_aggregate?: { __typename?: 'Api_Member_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_Member_aggregateOutputBreakdown', countBy?: string | null, count?: number | null } | null> | null } | null };
+
+export type Members_GroupByQueryVariables = Exact<{
+  input: Api_Member_GroupByInput;
+}>;
+
+
+export type Members_GroupByQuery = { __typename?: 'Query', api_member_groupBy?: { __typename?: 'Api_Member_groupByOutput', breakdown?: Array<{ __typename?: 'Api_Member_groupByOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_Member_groupByOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
 
 export type Members_GetQueryVariables = Exact<{
   input: Api_Member_GetInput;
@@ -5695,12 +5899,19 @@ export type ProductFulfillment_DeleteMutationVariables = Exact<{
 
 export type ProductFulfillment_DeleteMutation = { __typename?: 'Mutation', api_productFulfillment_delete?: { __typename?: 'Api_ProductFulfillment_deleteOutput', ids?: Array<string | null> | null, count?: number | null } | null };
 
-export type ProductFulfillment_AggregateQueryVariables = Exact<{
+export type Api_ProductFulfillment_AggregateQueryVariables = Exact<{
   input: Api_ProductFulfillment_AggregateInput;
 }>;
 
 
-export type ProductFulfillment_AggregateQuery = { __typename?: 'Query', api_productFulfillment_aggregate?: { __typename?: 'Api_ProductFulfillment_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+export type Api_ProductFulfillment_AggregateQuery = { __typename?: 'Query', api_productFulfillment_aggregate?: { __typename?: 'Api_ProductFulfillment_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown', countBy?: string | null, count?: number | null } | null> | null } | null };
+
+export type ProductFulfillment_GroupByQueryVariables = Exact<{
+  input: Api_ProductFulfillment_GroupByInput;
+}>;
+
+
+export type ProductFulfillment_GroupByQuery = { __typename?: 'Query', api_productFulfillment_groupBy?: { __typename?: 'Api_ProductFulfillment_groupByOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_groupByOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ProductFulfillment_groupByOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
 
 export type Api_ServicePurchase_ListQueryVariables = Exact<{
   input: Api_ServicePurchase_ListInput;
@@ -5737,12 +5948,19 @@ export type ServicePurchase_DeleteMutationVariables = Exact<{
 
 export type ServicePurchase_DeleteMutation = { __typename?: 'Mutation', api_servicePurchase_delete?: { __typename?: 'Api_ServicePurchase_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
 
-export type Api_ProductFulfillment_AggregateQueryVariables = Exact<{
-  input: Api_ProductFulfillment_AggregateInput;
+export type ServicePurchase_AggregateQueryVariables = Exact<{
+  input: Api_ServicePurchase_AggregateInput;
 }>;
 
 
-export type Api_ProductFulfillment_AggregateQuery = { __typename?: 'Query', api_productFulfillment_aggregate?: { __typename?: 'Api_ProductFulfillment_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ProductFulfillment_aggregateOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
+export type ServicePurchase_AggregateQuery = { __typename?: 'Query', api_servicePurchase_aggregate?: { __typename?: 'Api_ServicePurchase_aggregateOutput', breakdown?: Array<{ __typename?: 'Api_ServicePurchase_aggregateOutputBreakdown', countBy?: string | null, count?: number | null } | null> | null } | null };
+
+export type ServicePurchase_GroupByQueryVariables = Exact<{
+  input: Api_ServicePurchase_GroupByInput;
+}>;
+
+
+export type ServicePurchase_GroupByQuery = { __typename?: 'Query', api_servicePurchase_groupBy?: { __typename?: 'Api_ServicePurchase_groupByOutput', breakdown?: Array<{ __typename?: 'Api_ServicePurchase_groupByOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ServicePurchase_groupByOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
 
 export type Ping_TimeSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
@@ -5777,7 +5995,8 @@ export const Authclient_RequestPasswordResetDocument = {"kind":"Document","defin
 export const Authclient_ResetPasswordDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Authclient_resetPassword"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"token"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"authclient_resetPassword"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"token"},"value":{"kind":"Variable","name":{"kind":"Name","value":"token"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}]}]}}]} as unknown as DocumentNode<Authclient_ResetPasswordMutation, Authclient_ResetPasswordMutationVariables>;
 export const UpdateUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"UpdateUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"where"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserWhereUniqueInput"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UserUpdateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"Variable","name":{"kind":"Name","value":"where"}}},{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"lastLogin"}}]}}]}}]} as unknown as DocumentNode<UpdateUserMutation, UpdateUserMutationVariables>;
 export const Education_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"userName"}},{"kind":"Field","name":{"kind":"Name","value":"schoolName"}},{"kind":"Field","name":{"kind":"Name","value":"achievement"}},{"kind":"Field","name":{"kind":"Name","value":"dateOfAchievement"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Education_ListQuery, Education_ListQueryVariables>;
-export const Education_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Education_AggregateQuery, Education_AggregateQueryVariables>;
+export const Education_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<Education_AggregateQuery, Education_AggregateQueryVariables>;
+export const Education_GroupByDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_GroupBy"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_groupByInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_groupBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Education_GroupByQuery, Education_GroupByQueryVariables>;
 export const Education_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Education_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"userId"}},{"kind":"Field","name":{"kind":"Name","value":"userName"}},{"kind":"Field","name":{"kind":"Name","value":"schoolName"}},{"kind":"Field","name":{"kind":"Name","value":"achievement"}},{"kind":"Field","name":{"kind":"Name","value":"dateOfAchievement"}}]}}]}}]}}]} as unknown as DocumentNode<Education_GetQuery, Education_GetQueryVariables>;
 export const Education_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_CreateMutation, Education_CreateMutationVariables>;
 export const Education_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Education_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_education_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_education_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Education_UpdateMutation, Education_UpdateMutationVariables>;
@@ -5794,7 +6013,8 @@ export const InvoiceBatch_CreateDocument = {"kind":"Document","definitions":[{"k
 export const InvoiceBatch_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InvoiceBatch_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_UpdateMutation, InvoiceBatch_UpdateMutationVariables>;
 export const InvoiceBatch_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InvoiceBatch_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_DeleteMutation, InvoiceBatch_DeleteMutationVariables>;
 export const Members_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"society"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"prefix"}},{"kind":"Field","name":{"kind":"Name","value":"suffix"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"about"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Members_ListQuery, Members_ListQueryVariables>;
-export const Members_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Members_AggregateQuery, Members_AggregateQueryVariables>;
+export const Members_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<Members_AggregateQuery, Members_AggregateQueryVariables>;
+export const Members_GroupByDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_GroupBy"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_groupByInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_groupBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Members_GroupByQuery, Members_GroupByQueryVariables>;
 export const Members_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Members_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"society"}},{"kind":"Field","name":{"kind":"Name","value":"about"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"middleName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}},{"kind":"Field","name":{"kind":"Name","value":"suffix"}},{"kind":"Field","name":{"kind":"Name","value":"prefix"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"}},{"kind":"Field","name":{"kind":"Name","value":"home_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"business_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"cell_phoneNumber"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"home_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"home_city"}},{"kind":"Field","name":{"kind":"Name","value":"home_state"}},{"kind":"Field","name":{"kind":"Name","value":"home_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"home_country"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine1"}},{"kind":"Field","name":{"kind":"Name","value":"business_addressLine2"}},{"kind":"Field","name":{"kind":"Name","value":"business_city"}},{"kind":"Field","name":{"kind":"Name","value":"business_state"}},{"kind":"Field","name":{"kind":"Name","value":"business_postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"business_country"}},{"kind":"Field","name":{"kind":"Name","value":"dental_degree"}},{"kind":"Field","name":{"kind":"Name","value":"dental_school"}},{"kind":"Field","name":{"kind":"Name","value":"dental_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_degree"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_school"}},{"kind":"Field","name":{"kind":"Name","value":"ortho_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_degree"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_school"}},{"kind":"Field","name":{"kind":"Name","value":"postgraduate_graduationYear"}},{"kind":"Field","name":{"kind":"Name","value":"joinDate"}},{"kind":"Field","name":{"kind":"Name","value":"rejoinDate"}},{"kind":"Field","name":{"kind":"Name","value":"effectiveDate"}},{"kind":"Field","name":{"kind":"Name","value":"expirationDate"}},{"kind":"Field","name":{"kind":"Name","value":"memberType"}},{"kind":"Field","name":{"kind":"Name","value":"memberPackage"}},{"kind":"Field","name":{"kind":"Name","value":"isBlacklisted"}}]}}]}}]}}]} as unknown as DocumentNode<Members_GetQuery, Members_GetQueryVariables>;
 export const Members_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_CreateMutation, Members_CreateMutationVariables>;
 export const Members_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Members_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_member_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_member_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Members_UpdateMutation, Members_UpdateMutationVariables>;
@@ -5809,13 +6029,15 @@ export const Api_ProductFulfillment_GetDocument = {"kind":"Document","definition
 export const ProductFulfillment_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_CreateMutation, ProductFulfillment_CreateMutationVariables>;
 export const ProductFulfillment_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_UpdateMutation, ProductFulfillment_UpdateMutationVariables>;
 export const ProductFulfillment_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_DeleteMutation, ProductFulfillment_DeleteMutationVariables>;
-export const ProductFulfillment_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProductFulfillment_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_AggregateQuery, ProductFulfillment_AggregateQueryVariables>;
+export const Api_ProductFulfillment_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_productFulfillment_aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<Api_ProductFulfillment_AggregateQuery, Api_ProductFulfillment_AggregateQueryVariables>;
+export const ProductFulfillment_GroupByDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProductFulfillment_GroupBy"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_groupByInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_groupBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_GroupByQuery, ProductFulfillment_GroupByQueryVariables>;
 export const Api_ServicePurchase_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_servicePurchase_list"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balanceDue"}},{"kind":"Field","name":{"kind":"Name","value":"cancelled"}},{"kind":"Field","name":{"kind":"Name","value":"cancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Api_ServicePurchase_ListQuery, Api_ServicePurchase_ListQueryVariables>;
 export const ServicePurchase_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ServicePurchase_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balanceDue"}},{"kind":"Field","name":{"kind":"Name","value":"cancelled"}},{"kind":"Field","name":{"kind":"Name","value":"cancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_GetQuery, ServicePurchase_GetQueryVariables>;
 export const ServicePurchase_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_CreateMutation, ServicePurchase_CreateMutationVariables>;
 export const ServicePurchase_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_UpdateMutation, ServicePurchase_UpdateMutationVariables>;
 export const ServicePurchase_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_DeleteMutation, ServicePurchase_DeleteMutationVariables>;
-export const Api_ProductFulfillment_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_productFulfillment_aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Api_ProductFulfillment_AggregateQuery, Api_ProductFulfillment_AggregateQueryVariables>;
+export const ServicePurchase_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ServicePurchase_Aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_AggregateQuery, ServicePurchase_AggregateQueryVariables>;
+export const ServicePurchase_GroupByDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ServicePurchase_GroupBy"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_groupByInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_groupBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_GroupByQuery, ServicePurchase_GroupByQueryVariables>;
 export const Ping_TimeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"subscription","name":{"kind":"Name","value":"Ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ping_time"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"iso"}},{"kind":"Field","name":{"kind":"Name","value":"data"}}]}}]}}]} as unknown as DocumentNode<Ping_TimeSubscription, Ping_TimeSubscriptionVariables>;
 export const Api_Wpportaluser_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_wpportaluser_list"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_wpportaluser_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_wpportaluser_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"registered_date"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"profile_fields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"field_id"}},{"kind":"Field","name":{"kind":"Name","value":"field_type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses_count"}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"course_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enrollment_date"}},{"kind":"Field","name":{"kind":"Name","value":"completion_date"}},{"kind":"Field","name":{"kind":"Name","value":"progress_percentage"}},{"kind":"Field","name":{"kind":"Name","value":"completed_steps"}},{"kind":"Field","name":{"kind":"Name","value":"total_steps"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Api_Wpportaluser_ListQuery, Api_Wpportaluser_ListQueryVariables>;
 export const Api_Wpportaluser_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_wpportaluser_get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_wpportaluser_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_wpportaluser_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"first_name"}},{"kind":"Field","name":{"kind":"Name","value":"last_name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"registered_date"}},{"kind":"Field","name":{"kind":"Name","value":"avatar_url"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"profile_fields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"field_id"}},{"kind":"Field","name":{"kind":"Name","value":"field_type"}}]}},{"kind":"Field","name":{"kind":"Name","value":"courses_count"}},{"kind":"Field","name":{"kind":"Name","value":"courses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"course_id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"enrollment_date"}},{"kind":"Field","name":{"kind":"Name","value":"completion_date"}},{"kind":"Field","name":{"kind":"Name","value":"progress_percentage"}},{"kind":"Field","name":{"kind":"Name","value":"completed_steps"}},{"kind":"Field","name":{"kind":"Name","value":"total_steps"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]}}]}}]} as unknown as DocumentNode<Api_Wpportaluser_GetQuery, Api_Wpportaluser_GetQueryVariables>;

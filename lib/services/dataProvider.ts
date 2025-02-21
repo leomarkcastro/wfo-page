@@ -92,6 +92,18 @@ export interface DataProvider<
   aggregate?: (params: {
     filters: Filter[];
     countBy: string[];
+    operation: string;
+    resource?: string;
+    meta?: Meta;
+  }) => Promise<DeepPartial<{
+    breakdown: {
+      countBy: string;
+      count: number;
+    }[];
+  }>>;
+  groupBy?: (params: {
+    filters: Filter[];
+    countBy: string[];
     groupBy: string[];
     operation: string;
     resource?: string;

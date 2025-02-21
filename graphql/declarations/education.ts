@@ -28,6 +28,17 @@ export const Education_Aggregate = graphql(`
   query Education_Aggregate($input: Api_education_aggregateInput!) {
     api_education_aggregate(input: $input) {
       breakdown {
+        countBy
+        count
+      }
+    }
+  }
+`);
+
+export const Education_GroupBy = graphql(`
+  query Education_GroupBy($input: Api_education_groupByInput!) {
+    api_education_groupBy(input: $input) {
+      breakdown {
         uniqueIdentifier
         counts {
           countBy

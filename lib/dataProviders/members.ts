@@ -1,4 +1,4 @@
-import { Members_Aggregate, Members_Create, Members_Delete, Members_Get, Members_List, Members_Update } from '@/graphql/declarations/members';
+import { Members_Aggregate, Members_Create, Members_Delete, Members_Get, Members_List, Members_Update, Members_GroupBy } from '@/graphql/declarations/members';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 import { cleanUpObject } from '../services/cleanUpObject';
@@ -130,7 +130,6 @@ export const MembersDataProvider: DataProvider = {
                 input: {
                     data: {
                         countBy: args.countBy,
-                        groupBy: args.groupBy,
                         operation: args.operation,
                         page: {
                             filter: args.filters?.map((filter) => ({
@@ -143,7 +142,30 @@ export const MembersDataProvider: DataProvider = {
                 }
             },
             fetchPolicy: 'no-cache'
-        })
+        });
         return data.data.api_member_aggregate;
+    },
+    groupBy: async (args) => {
+        const data = await apolloClient.query({
+            query: Members_GroupBy,
+            variables: {
+                input: {
+                    data: {
+                        countBy: args.countBy,
+                        operation: args.operation,
+                        groupBy: args.groupBy,
+                        page: {
+                            filter: args.filters?.map((filter) => ({
+                                field: filter.field,
+                                operation: filter.operator,
+                                value: filter.value,
+                            })),
+                        },
+                    }
+                }
+            },
+            fetchPolicy: 'no-cache'
+        });
+        return data.data.api_member_groupBy;
     }
 };

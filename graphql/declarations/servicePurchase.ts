@@ -73,10 +73,19 @@ export const ServicePurchase_Delete = graphql(`
 `);
 
 export const ServicePurchase_Aggregate = graphql(`
-  query Api_productFulfillment_aggregate(
-    $input: Api_productFulfillment_aggregateInput!
-  ) {
-    api_productFulfillment_aggregate(input: $input) {
+  query ServicePurchase_Aggregate($input: Api_servicePurchase_aggregateInput!) {
+    api_servicePurchase_aggregate(input: $input) {
+      breakdown {
+        countBy
+        count
+      }
+    }
+  }
+`);
+
+export const ServicePurchase_GroupBy = graphql(`
+  query ServicePurchase_GroupBy($input: Api_servicePurchase_groupByInput!) {
+    api_servicePurchase_groupBy(input: $input) {
       breakdown {
         uniqueIdentifier
         counts {

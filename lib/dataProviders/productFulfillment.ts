@@ -1,4 +1,4 @@
-import { ProductFulfillment_Aggregate, ProductFulfillment_Create, ProductFulfillment_Delete, ProductFulfillment_Get, ProductFulfillment_List, ProductFulfillment_Update } from '@/graphql/declarations/productFulfillment';
+import { ProductFulfillment_Aggregate, ProductFulfillment_Create, ProductFulfillment_Delete, ProductFulfillment_Get, ProductFulfillment_GroupBy, ProductFulfillment_List, ProductFulfillment_Update } from '@/graphql/declarations/productFulfillment';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
@@ -128,7 +128,6 @@ export const ProductFulfillmentDataProvider: DataProvider = {
                 input: {
                     data: {
                         countBy: args.countBy,
-                        groupBy: args.groupBy,
                         operation: args.operation,
                         page: {
                             filter: args.filters?.map((filter) => ({
@@ -143,5 +142,28 @@ export const ProductFulfillmentDataProvider: DataProvider = {
             fetchPolicy: 'no-cache'
         });
         return data.data.api_productFulfillment_aggregate;
+    },
+    groupBy: async (args) => {
+        const data = await apolloClient.query({
+            query: ProductFulfillment_GroupBy,
+            variables: {
+                input: {
+                    data: {
+                        countBy: args.countBy,
+                        operation: args.operation,
+                        groupBy: args.groupBy,
+                        page: {
+                            filter: args.filters?.map((filter) => ({
+                                field: filter.field,
+                                operation: filter.operator,
+                                value: filter.value,
+                            })),
+                        },
+                    }
+                }
+            },
+            fetchPolicy: 'no-cache'
+        });
+        return data.data.api_productFulfillment_groupBy;
     }
 };

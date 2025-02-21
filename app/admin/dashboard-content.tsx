@@ -7,6 +7,7 @@ import { StackedBar } from '@/components/charts/StackedBar';
 import { BarChartMultiple } from '@/components/charts/BarChartMultiple';
 import { useFunction } from '@/components/hooks/useFunction';
 import { MembersDataProvider } from '@/lib/dataProviders/members';
+import { ServicePurchaseDataProvider } from '@/lib/dataProviders/servicePurchase';
 import chroma from 'chroma-js';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -160,20 +161,6 @@ function MetricsCards() {
 
   return (
     <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
-      {/* <div className='rounded-lg bg-primary p-6 text-primary-foreground'>
-      <div className='mb-4'>
-        <span className='text-xs'>Feb 12th 2024</span>
-        <h3 className='mt-1 text-lg font-semibold'>
-          Sales revenue increased
-          <br />
-          40% in 1 week
-        </h3>
-      </div>
-      <Button variant='link' className='p-0 text-secondary'>
-        See Statistics →
-      </Button>
-    </div> */}
-
       <MetricCard title='Total Members' value={totalCount} />
 
       <MetricCard
@@ -187,14 +174,35 @@ function MetricsCards() {
         }
       />
 
-      <MetricCard
-        title='Subscription Revenue'
-        value='$32.000'
-        change='-24%'
-        trend='down'
-      />
+      <ServicePurchaseRevenue />
     </div>
   );
+}
+
+function ServicePurchaseRevenue() {
+  const { ppData: currentRevenue, loading: currentLoading } = useFunction(
+    () => {
+      const previousMonth = new Date();
+      return ServicePurchaseDataProvider.aggregate({
+        countBy: ['total'],
+        operation: '_sum',
+        filters: [],
+      });
+    },
+    {
+      autoLoad: true,
+      postProcess(data) {
+        const total = data.breakdown[0]?.count || 0;
+        return `$${total.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+      },
+    },
+  );
+
+  if (currentLoading) {
+    return <MetricCard title='Service Purchase Revenue' value='Loading...' />;
+  }
+
+  return <MetricCard title='Service Purchase Revenue' value={currentRevenue} />;
 }
 
 function UniqueCountriesCount() {
@@ -202,7 +210,7 @@ function UniqueCountriesCount() {
   const [expanded, setExpanded] = useState(false);
   const { ppData, loading } = useFunction(
     () => {
-      return MembersDataProvider.aggregate({
+      return MembersDataProvider.groupBy({
         filters: [
           {
             field: 'expirationDate',
@@ -305,7 +313,7 @@ function MemberTypeCount() {
   const router = useRouter();
   const { ppData, loading } = useFunction(
     () => {
-      return MembersDataProvider.aggregate({
+      return MembersDataProvider.groupBy({
         filters: [
           {
             field: 'expirationDate',

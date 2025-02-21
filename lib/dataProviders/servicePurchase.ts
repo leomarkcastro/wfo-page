@@ -1,4 +1,4 @@
-import { ServicePurchase_Aggregate, ServicePurchase_Create, ServicePurchase_Delete, ServicePurchase_Get, ServicePurchase_List, ServicePurchase_Update } from '@/graphql/declarations/servicePurchase';
+import { ServicePurchase_Aggregate, ServicePurchase_Create, ServicePurchase_Delete, ServicePurchase_Get, ServicePurchase_GroupBy, ServicePurchase_List, ServicePurchase_Update } from '@/graphql/declarations/servicePurchase';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
@@ -128,7 +128,6 @@ export const ServicePurchaseDataProvider: DataProvider = {
                 input: {
                     data: {
                         countBy: args.countBy,
-                        groupBy: args.groupBy,
                         operation: args.operation,
                         page: {
                             filter: args.filters?.map((filter) => ({
@@ -142,6 +141,29 @@ export const ServicePurchaseDataProvider: DataProvider = {
             },
             fetchPolicy: 'no-cache'
         });
-        return data.data.api_productFulfillment_aggregate;
+        return data.data.api_servicePurchase_aggregate;
+    },
+    groupBy: async (args) => {
+        const data = await apolloClient.query({
+            query: ServicePurchase_GroupBy,
+            variables: {
+                input: {
+                    data: {
+                        countBy: args.countBy,
+                        operation: args.operation,
+                        groupBy: args.groupBy,
+                        page: {
+                            filter: args.filters?.map((filter) => ({
+                                field: filter.field,
+                                operation: filter.operator,
+                                value: filter.value,
+                            })),
+                        },
+                    }
+                }
+            },
+            fetchPolicy: 'no-cache'
+        });
+        return data.data.api_servicePurchase_groupBy;
     }
 };

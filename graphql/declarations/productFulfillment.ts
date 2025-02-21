@@ -83,10 +83,23 @@ export const ProductFulfillment_Delete = graphql(`
 `);
 
 export const ProductFulfillment_Aggregate = graphql(`
-  query ProductFulfillment_Aggregate(
+  query Api_productFulfillment_aggregate(
     $input: Api_productFulfillment_aggregateInput!
   ) {
     api_productFulfillment_aggregate(input: $input) {
+      breakdown {
+        countBy
+        count
+      }
+    }
+  }
+`);
+
+export const ProductFulfillment_GroupBy = graphql(`
+  query ProductFulfillment_GroupBy(
+    $input: Api_productFulfillment_groupByInput!
+  ) {
+    api_productFulfillment_groupBy(input: $input) {
       breakdown {
         uniqueIdentifier
         counts {

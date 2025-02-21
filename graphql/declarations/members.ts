@@ -66,6 +66,17 @@ export const Members_Aggregate = graphql(`
   query Members_Aggregate($input: Api_member_aggregateInput!) {
     api_member_aggregate(input: $input) {
       breakdown {
+        countBy
+        count
+      }
+    }
+  }
+`);
+
+export const Members_GroupBy = graphql(`
+  query Members_GroupBy($input: Api_member_groupByInput!) {
+    api_member_groupBy(input: $input) {
+      breakdown {
         uniqueIdentifier
         counts {
           countBy
