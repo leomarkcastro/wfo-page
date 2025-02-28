@@ -20,7 +20,7 @@ export default function NotesAdd() {
       }}
       transformSubmitData={(data) => ({
         ...data,
-        userId: userId || '',
+        userId: userId ? userId : undefined,
       })}
       fields={[
         {

@@ -16,6 +16,11 @@ export default function NotesEdit() {
       dataProvider={NotesDataProvider}
       dontReturnOnSubmit
       // returnPath={`/admin/members/edit/${userId}?tab=notes`}
+
+      transformSubmitData={(data) => ({
+        ...data,
+        userId: data.userId ? data.userId : undefined,
+      })}
       fields={[
         {
           type: 'text',
