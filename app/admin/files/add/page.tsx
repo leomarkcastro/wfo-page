@@ -35,7 +35,7 @@ export default function FilesAdd() {
       url: uploadURL.data.file_upload.files[0].url,
       mime: data.file.type,
       size: data.file.size.toString(),
-      assignedTo: assignedTo,
+      assignedTo: assignedTo ? assignedTo : undefined,
       category: data.category,
       note: data.note,
     };

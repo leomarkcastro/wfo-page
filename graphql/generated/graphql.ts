@@ -1038,6 +1038,7 @@ export type Api_InvoiceBatch_CreateInputData = {
 
 export type Api_InvoiceBatch_CreateInputDataData = {
   batchID: Scalars['String']['input'];
+  closedAt?: InputMaybe<Scalars['String']['input']>;
   customer: Scalars['String']['input'];
   isOpen: Scalars['Boolean']['input'];
 };
@@ -1441,6 +1442,8 @@ export type Api_ProductFulfillment_CreateInputDataData = {
   price: Scalars['Float']['input'];
   product: Scalars['String']['input'];
   quantity: Scalars['Float']['input'];
+  returnedCancelled: Scalars['Boolean']['input'];
+  returnedCancelledAt: Scalars['String']['input'];
   shipped?: InputMaybe<Scalars['Boolean']['input']>;
   total: Scalars['Float']['input'];
 };
@@ -1587,6 +1590,8 @@ export type Api_ServicePurchase_CreateInputData = {
 
 export type Api_ServicePurchase_CreateInputDataData = {
   balanceDue: Scalars['Float']['input'];
+  cancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  cancelledAt?: InputMaybe<Scalars['String']['input']>;
   note?: InputMaybe<Scalars['String']['input']>;
   product: Scalars['String']['input'];
   total: Scalars['Float']['input'];
