@@ -25,7 +25,7 @@ import {
   Api_sync_crm_netforum,
   Api_sync_crm_wordpress,
 } from '@/graphql/declarations/admin';
-import { useFunction } from '@/components/hooks/useFunction';
+import { useFunction } from '@/lib/hooks/useFunction';
 import { MembersDataProvider } from '@/lib/dataProviders/members';
 
 type SyncOperation = {

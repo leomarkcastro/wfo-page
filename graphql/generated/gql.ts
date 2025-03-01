@@ -38,7 +38,8 @@ type Documents = {
     "\n  mutation Files_Create($input: Api_file_createInput!) {\n    api_file_create(input: $input) {\n      count\n      ids\n    }\n  }\n": typeof types.Files_CreateDocument,
     "\n  mutation Files_Update($input: Api_file_updateInput!) {\n    api_file_update(input: $input) {\n      count\n      ids\n    }\n  }\n": typeof types.Files_UpdateDocument,
     "\n  mutation Files_Delete($input: Api_file_deleteInput!) {\n    api_file_delete(input: $input) {\n      count\n      ids\n    }\n  }\n": typeof types.Files_DeleteDocument,
-    "\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        url\n        filename\n      }\n    }\n  }\n": typeof types.File_UploadDocument,
+    "\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        id\n        url\n        filename\n      }\n    }\n  }\n": typeof types.File_UploadDocument,
+    "\n  mutation File_uploadURL($input: File_uploadURLInput!) {\n    file_uploadURL(input: $input) {\n      files {\n        id\n        uploadURL\n        fileName\n        viewURL\n      }\n    }\n  }\n": typeof types.File_UploadUrlDocument,
     "\n  query InvoiceBatch_List($input: Api_invoiceBatch_listInput!) {\n    api_invoiceBatch_list(input: $input) {\n      data {\n        id\n        customer\n        batchID\n        isOpen\n        closedAt\n        createdAt\n      }\n      page {\n        total\n        range {\n          from\n          to\n        }\n        page\n        pageSize\n      }\n    }\n  }\n": typeof types.InvoiceBatch_ListDocument,
     "\n  query Api_invoiceBatch_get($input: Api_invoiceBatch_getInput!) {\n    api_invoiceBatch_get(input: $input) {\n      data {\n        id\n        customer\n        batchID\n        isOpen\n        closedAt\n        createdAt\n      }\n    }\n  }\n": typeof types.Api_InvoiceBatch_GetDocument,
     "\n  mutation InvoiceBatch_Create($input: Api_invoiceBatch_createInput!) {\n    api_invoiceBatch_create(input: $input) {\n      count\n      ids\n    }\n  }\n": typeof types.InvoiceBatch_CreateDocument,
@@ -99,7 +100,8 @@ const documents: Documents = {
     "\n  mutation Files_Create($input: Api_file_createInput!) {\n    api_file_create(input: $input) {\n      count\n      ids\n    }\n  }\n": types.Files_CreateDocument,
     "\n  mutation Files_Update($input: Api_file_updateInput!) {\n    api_file_update(input: $input) {\n      count\n      ids\n    }\n  }\n": types.Files_UpdateDocument,
     "\n  mutation Files_Delete($input: Api_file_deleteInput!) {\n    api_file_delete(input: $input) {\n      count\n      ids\n    }\n  }\n": types.Files_DeleteDocument,
-    "\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        url\n        filename\n      }\n    }\n  }\n": types.File_UploadDocument,
+    "\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        id\n        url\n        filename\n      }\n    }\n  }\n": types.File_UploadDocument,
+    "\n  mutation File_uploadURL($input: File_uploadURLInput!) {\n    file_uploadURL(input: $input) {\n      files {\n        id\n        uploadURL\n        fileName\n        viewURL\n      }\n    }\n  }\n": types.File_UploadUrlDocument,
     "\n  query InvoiceBatch_List($input: Api_invoiceBatch_listInput!) {\n    api_invoiceBatch_list(input: $input) {\n      data {\n        id\n        customer\n        batchID\n        isOpen\n        closedAt\n        createdAt\n      }\n      page {\n        total\n        range {\n          from\n          to\n        }\n        page\n        pageSize\n      }\n    }\n  }\n": types.InvoiceBatch_ListDocument,
     "\n  query Api_invoiceBatch_get($input: Api_invoiceBatch_getInput!) {\n    api_invoiceBatch_get(input: $input) {\n      data {\n        id\n        customer\n        batchID\n        isOpen\n        closedAt\n        createdAt\n      }\n    }\n  }\n": types.Api_InvoiceBatch_GetDocument,
     "\n  mutation InvoiceBatch_Create($input: Api_invoiceBatch_createInput!) {\n    api_invoiceBatch_create(input: $input) {\n      count\n      ids\n    }\n  }\n": types.InvoiceBatch_CreateDocument,
@@ -249,7 +251,11 @@ export function graphql(source: "\n  mutation Files_Delete($input: Api_file_dele
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        url\n        filename\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        url\n        filename\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        id\n        url\n        filename\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation File_upload($input: File_uploadInput!) {\n    file_upload(input: $input) {\n      files {\n        id\n        url\n        filename\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation File_uploadURL($input: File_uploadURLInput!) {\n    file_uploadURL(input: $input) {\n      files {\n        id\n        uploadURL\n        fileName\n        viewURL\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation File_uploadURL($input: File_uploadURLInput!) {\n    file_uploadURL(input: $input) {\n      files {\n        id\n        uploadURL\n        fileName\n        viewURL\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

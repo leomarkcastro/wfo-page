@@ -61,7 +61,6 @@ export default function ProductFulfillmentEdit() {
           type: 'display',
           name: 'total',
           label: 'Total',
-          required: true,
           component: (form) => (
             <span className='p-1'>{formatMoney(form.watch('total'))}</span>
           ),

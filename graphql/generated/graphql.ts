@@ -1037,10 +1037,10 @@ export type Api_InvoiceBatch_CreateInputData = {
 };
 
 export type Api_InvoiceBatch_CreateInputDataData = {
-  batchID: Scalars['String']['input'];
+  batchID?: InputMaybe<Scalars['String']['input']>;
   closedAt?: InputMaybe<Scalars['String']['input']>;
-  customer: Scalars['String']['input'];
-  isOpen: Scalars['Boolean']['input'];
+  customer?: InputMaybe<Scalars['String']['input']>;
+  isOpen?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type Api_InvoiceBatch_DeleteInput = {
@@ -1330,7 +1330,7 @@ export type Api_Note_CreateInputDataData = {
   metadata?: InputMaybe<Scalars['String']['input']>;
   title: Scalars['String']['input'];
   type: Scalars['String']['input'];
-  userId: Scalars['String']['input'];
+  userId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Api_Note_DeleteInput = {
@@ -1436,16 +1436,16 @@ export type Api_ProductFulfillment_CreateInputData = {
 };
 
 export type Api_ProductFulfillment_CreateInputDataData = {
-  balance: Scalars['Float']['input'];
+  balance?: InputMaybe<Scalars['Float']['input']>;
   note?: InputMaybe<Scalars['String']['input']>;
-  package: Scalars['String']['input'];
-  price: Scalars['Float']['input'];
-  product: Scalars['String']['input'];
-  quantity: Scalars['Float']['input'];
-  returnedCancelled: Scalars['Boolean']['input'];
-  returnedCancelledAt: Scalars['String']['input'];
+  package?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  product?: InputMaybe<Scalars['String']['input']>;
+  quantity?: InputMaybe<Scalars['Float']['input']>;
+  returnedCancelled?: InputMaybe<Scalars['Boolean']['input']>;
+  returnedCancelledAt?: InputMaybe<Scalars['String']['input']>;
   shipped?: InputMaybe<Scalars['Boolean']['input']>;
-  total: Scalars['Float']['input'];
+  total?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type Api_ProductFulfillment_DeleteInput = {
@@ -1589,13 +1589,13 @@ export type Api_ServicePurchase_CreateInputData = {
 };
 
 export type Api_ServicePurchase_CreateInputDataData = {
-  balanceDue: Scalars['Float']['input'];
+  balanceDue?: InputMaybe<Scalars['Float']['input']>;
   cancelled?: InputMaybe<Scalars['Boolean']['input']>;
   cancelledAt?: InputMaybe<Scalars['String']['input']>;
   note?: InputMaybe<Scalars['String']['input']>;
-  product: Scalars['String']['input'];
-  total: Scalars['Float']['input'];
-  type: Scalars['String']['input'];
+  product?: InputMaybe<Scalars['String']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Api_ServicePurchase_DeleteInput = {
@@ -1882,7 +1882,21 @@ export type FileUploadOutput = {
 export type FileUploadOutputFiles = {
   __typename?: 'FileUploadOutputFiles';
   filename: Scalars['String']['output'];
+  id?: Maybe<Scalars['String']['output']>;
   url: Scalars['String']['output'];
+};
+
+export type FileUploadUrlOutput = {
+  __typename?: 'FileUploadURLOutput';
+  files: Array<Maybe<FileUploadUrlOutputFiles>>;
+};
+
+export type FileUploadUrlOutputFiles = {
+  __typename?: 'FileUploadURLOutputFiles';
+  fileName?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  uploadURL?: Maybe<Scalars['String']['output']>;
+  viewURL?: Maybe<Scalars['String']['output']>;
 };
 
 export type FileWhereInput = {
@@ -1908,12 +1922,24 @@ export type FileWhereUniqueInput = {
 
 export type File_UploadInput = {
   files: Array<InputMaybe<File_UploadInputFiles>>;
+  saveToDB?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type File_UploadInputFiles = {
   b64: Scalars['String']['input'];
   filename: Scalars['String']['input'];
   mimetype?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type File_UploadUrlInput = {
+  files: Array<InputMaybe<File_UploadUrlInputFiles>>;
+  saveToDB?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type File_UploadUrlInputFiles = {
+  filename: Scalars['String']['input'];
+  mimetype?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type FloatNullableFilter = {
@@ -2818,6 +2844,7 @@ export type Mutation = {
   deleteWPLogs?: Maybe<Array<Maybe<WpLog>>>;
   endSession: Scalars['Boolean']['output'];
   file_upload?: Maybe<FileUploadOutput>;
+  file_uploadURL?: Maybe<FileUploadUrlOutput>;
   updateFile?: Maybe<File>;
   updateFiles?: Maybe<Array<Maybe<File>>>;
   updateGroup?: Maybe<Group>;
@@ -3454,6 +3481,11 @@ export type MutationDeleteWpLogsArgs = {
 
 export type MutationFile_UploadArgs = {
   input: File_UploadInput;
+};
+
+
+export type MutationFile_UploadUrlArgs = {
+  input: File_UploadUrlInput;
 };
 
 
@@ -5748,7 +5780,14 @@ export type File_UploadMutationVariables = Exact<{
 }>;
 
 
-export type File_UploadMutation = { __typename?: 'Mutation', file_upload?: { __typename?: 'FileUploadOutput', files: Array<{ __typename?: 'FileUploadOutputFiles', url: string, filename: string } | null> } | null };
+export type File_UploadMutation = { __typename?: 'Mutation', file_upload?: { __typename?: 'FileUploadOutput', files: Array<{ __typename?: 'FileUploadOutputFiles', id?: string | null, url: string, filename: string } | null> } | null };
+
+export type File_UploadUrlMutationVariables = Exact<{
+  input: File_UploadUrlInput;
+}>;
+
+
+export type File_UploadUrlMutation = { __typename?: 'Mutation', file_uploadURL?: { __typename?: 'FileUploadURLOutput', files: Array<{ __typename?: 'FileUploadURLOutputFiles', id?: string | null, uploadURL?: string | null, fileName?: string | null, viewURL?: string | null } | null> } | null };
 
 export type InvoiceBatch_ListQueryVariables = Exact<{
   input: Api_InvoiceBatch_ListInput;
@@ -6011,7 +6050,8 @@ export const Files_GetDocument = {"kind":"Document","definitions":[{"kind":"Oper
 export const Files_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Files_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Files_CreateMutation, Files_CreateMutationVariables>;
 export const Files_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Files_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Files_UpdateMutation, Files_UpdateMutationVariables>;
 export const Files_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Files_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_file_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_file_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Files_DeleteMutation, Files_DeleteMutationVariables>;
-export const File_UploadDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"File_upload"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"File_uploadInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"file_upload"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"files"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"filename"}}]}}]}}]}}]} as unknown as DocumentNode<File_UploadMutation, File_UploadMutationVariables>;
+export const File_UploadDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"File_upload"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"File_uploadInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"file_upload"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"files"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"filename"}}]}}]}}]}}]} as unknown as DocumentNode<File_UploadMutation, File_UploadMutationVariables>;
+export const File_UploadUrlDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"File_uploadURL"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"File_uploadURLInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"file_uploadURL"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"files"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uploadURL"}},{"kind":"Field","name":{"kind":"Name","value":"fileName"}},{"kind":"Field","name":{"kind":"Name","value":"viewURL"}}]}}]}}]}}]} as unknown as DocumentNode<File_UploadUrlMutation, File_UploadUrlMutationVariables>;
 export const InvoiceBatch_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"InvoiceBatch_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"customer"}},{"kind":"Field","name":{"kind":"Name","value":"batchID"}},{"kind":"Field","name":{"kind":"Name","value":"isOpen"}},{"kind":"Field","name":{"kind":"Name","value":"closedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_ListQuery, InvoiceBatch_ListQueryVariables>;
 export const Api_InvoiceBatch_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_invoiceBatch_get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"customer"}},{"kind":"Field","name":{"kind":"Name","value":"batchID"}},{"kind":"Field","name":{"kind":"Name","value":"isOpen"}},{"kind":"Field","name":{"kind":"Name","value":"closedAt"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<Api_InvoiceBatch_GetQuery, Api_InvoiceBatch_GetQueryVariables>;
 export const InvoiceBatch_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InvoiceBatch_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_invoiceBatch_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_invoiceBatch_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<InvoiceBatch_CreateMutation, InvoiceBatch_CreateMutationVariables>;

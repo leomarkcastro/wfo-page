@@ -3,7 +3,7 @@
 import { QuickForm } from '@/components/custom/quick-form';
 import { useParams } from 'next/navigation';
 import moment from 'moment';
-import { useFunction } from '@/components/hooks/useFunction';
+import { useFunction } from '@/lib/hooks/useFunction';
 import { apolloClient } from '@/lib/apollo/ApolloClient';
 import { Api_Wpportaluser_GetDocument } from '@/graphql/generated/graphql';
 import { useMemo } from 'react';
@@ -109,7 +109,7 @@ export default function TabEducPortal() {
     <QuickForm
       gridCols={3}
       onSubmit={() => {}}
-      hideActions={true}
+      hideActionsCard={true}
       fields={[
         {
           type: 'title',

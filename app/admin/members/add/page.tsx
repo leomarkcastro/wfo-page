@@ -1,10 +1,11 @@
 'use client';
 
+import { FieldType } from '@/components/custom/quick-form.types';
 import { ResourceForm } from '@/components/custom/resource-form';
 import { MembersDataProvider } from '@/lib/dataProviders/members';
 
 export default function MembersAdd() {
-  const fields = [
+  const fields: FieldType[] = [
     {
       type: 'title',
       label: 'Personal Information',

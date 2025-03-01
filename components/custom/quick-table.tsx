@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Table,
   TableBody,
@@ -42,29 +42,38 @@ import { useDebounce } from '@uidotdev/usehooks';
 import { createProvider } from '@/lib/services/createProvider';
 
 export type FilterOperator =
-  | 'equals'
   | 'contains'
+  | 'equals'
   | 'gt'
   | 'lt'
   | 'gte'
   | 'lte'
-  | 'neq';
+  | 'ncontains'
+  | 'nequals'
+  | 'startsWith'
+  | 'endsWith'
+  | 'nstartsWith'
+  | 'nendsWith';
+
+export interface ColumnsDataTable {
+  key: string;
+  label: string;
+  sortable?: boolean;
+  filterable?: FilterOperator[];
+  specialType?: 'datetime' | 'number' | 'boolean' | 'date' | 'time';
+  renderCell?: (value: any, allValue: any) => React.ReactNode;
+}
 
 // Update interfaces
 interface DataTableProps {
   name: string;
   dataSource: DataProvider;
-  columns: {
-    key: string;
-    label: string;
-    sortable?: boolean;
-    filterable?: FilterOperator[]; // Changed from boolean to array of allowed operators
-    renderCell?: (value: any) => React.ReactNode; // Add this line
-  }[];
+  columns: ColumnsDataTable[];
   actionButtons?: React.ReactNode;
   onRowClick?: (row: any) => void;
   initialFilters?: Record<string, FilterValue[]>; // Add this line
   enableUrlPersistence?: boolean; // Add this line
+  passFilters?: boolean; // Add this line
 }
 
 interface FilterValue {
@@ -145,6 +154,7 @@ export function DataProviderTable({
   onRowClick,
   initialFilters = {}, // Add default value
   enableUrlPersistence = false,
+  passFilters = false,
 }: DataTableProps) {
   const dataHookProvider = createProvider({
     name: dataSource.name,
@@ -163,8 +173,25 @@ export function DataProviderTable({
     key: string;
     direction: 'asc' | 'desc';
   } | null>(null);
-  const [filters, setFilters] =
-    useState<Record<string, FilterValue[]>>(initialFilters);
+  const [_filters, setFilters] = useState<Record<string, FilterValue[]>>({});
+
+  const filters = useMemo(() => {
+    // combbined initialFilters and _filters keys
+    const keys = [
+      ...Object.keys(initialFilters),
+      ...Object.keys(_filters),
+    ].filter((v, i, a) => a.indexOf(v) === i);
+
+    return keys.reduce(
+      (acc, key) => {
+        return {
+          ...acc,
+          [key]: [...(_filters[key] || []), ...(initialFilters[key] || [])],
+        };
+      },
+      {} as Record<string, FilterValue[]>,
+    );
+  }, [_filters, initialFilters]);
 
   // Filter modal state
   const [filterModalOpen, setFilterModalOpen] = useState(false);
@@ -188,7 +215,7 @@ export function DataProviderTable({
         return '≥';
       case 'lte':
         return '≤';
-      case 'neq':
+      case 'nequals':
         return '≠';
       default:
         return operator;
@@ -227,16 +254,22 @@ export function DataProviderTable({
     setCurrentPage(1);
   }, [debouncedSearch, filters, pageSize]);
 
+  const alreadyLoaded = useRef(false);
+
   // Replace the problematic useEffect
-  useEffect(() => {
-    // const filtersChanged =
-    //   JSON.stringify(filters) !== JSON.stringify(initialFilters);
-    // if (filtersChanged) {
-    if (initialFilters) {
-      setFilters(initialFilters);
-    }
-    // }
-  }, []);
+  // useEffect(() => {
+  //   if (alreadyLoaded.current && !passFilters) {
+  //     return;
+  //   }
+  //   // const filtersChanged =
+  //   //   JSON.stringify(filters) !== JSON.stringify(initialFilters);
+  //   // if (filtersChanged) {
+  //   if (initialFilters) {
+  //     setFilters(initialFilters);
+  //     alreadyLoaded.current = true;
+  //   }
+  //   // }
+  // }, [initialFilters]);
 
   // Add this useEffect at the beginning
   useEffect(() => {
@@ -267,9 +300,9 @@ export function DataProviderTable({
       pageSize,
       search,
       sortConfig,
-      filters,
+      filters: _filters,
     });
-  }, [currentPage, pageSize, search, sortConfig, filters]);
+  }, [currentPage, pageSize, search, sortConfig, _filters]);
 
   const handleSort = (key: string) => {
     setSortConfig((current) => {
@@ -286,7 +319,7 @@ export function DataProviderTable({
   const removeFilter = (column: string, filterValue: FilterValue) => {
     setFilters((prev) => ({
       ...prev,
-      [column]: prev[column].filter(
+      [column]: prev[column]?.filter(
         (v) =>
           !(
             v.value === filterValue.value && v.operator === filterValue.operator
@@ -298,11 +331,32 @@ export function DataProviderTable({
   const handleAddFilter = () => {
     if (!tempFilter.column || !tempFilter.value) return;
 
+    let value: string = tempFilter.value;
+    const column = columns.find((col) => col.key === tempFilter.column);
+
+    if (column?.specialType) {
+      switch (column.specialType) {
+        case 'datetime':
+        case 'date':
+        case 'time':
+          value = `d:${value}`;
+          break;
+        case 'number':
+          value = `n:${value}`;
+          break;
+        case 'boolean':
+          value = `b:${value.toLowerCase()}`;
+          break;
+        default:
+          break;
+      }
+    }
+
     setFilters((prev) => ({
       ...prev,
       [tempFilter.column]: [
         ...(prev[tempFilter.column] || []),
-        { value: tempFilter.value, operator: tempFilter.operator },
+        { value: value, operator: tempFilter.operator },
       ],
     }));
 
@@ -387,7 +441,7 @@ export function DataProviderTable({
                               {op === 'lt' && 'Less than'}
                               {op === 'gte' && 'Greater or equal'}
                               {op === 'lte' && 'Less or equal'}
-                              {op === 'neq' && 'Not equal'}
+                              {op === 'nequals' && 'Not equal'}
                             </SelectItem>
                           ))}
                       </SelectContent>
@@ -398,16 +452,99 @@ export function DataProviderTable({
                 {tempFilter.column && (
                   <div className='grid gap-2'>
                     <Label>Value</Label>
-                    <Input
-                      value={tempFilter.value}
-                      onChange={(e) =>
-                        setTempFilter((prev) => ({
-                          ...prev,
-                          value: e.target.value,
-                        }))
+                    {(() => {
+                      const columnType = columns.find(
+                        (col) => col.key === tempFilter.column,
+                      )?.specialType;
+
+                      switch (columnType) {
+                        case 'boolean':
+                          return (
+                            <div className='flex items-center space-x-2'>
+                              <input
+                                type='checkbox'
+                                checked={tempFilter.value === 'true'}
+                                onChange={(e) =>
+                                  setTempFilter((prev) => ({
+                                    ...prev,
+                                    value: e.target.checked.toString(),
+                                  }))
+                                }
+                                className='h-4 w-4'
+                              />
+                              <span className='text-sm'>
+                                {tempFilter.value === 'true' ? 'Yes' : 'No'}
+                              </span>
+                            </div>
+                          );
+                        case 'number':
+                          return (
+                            <Input
+                              type='number'
+                              value={tempFilter.value}
+                              onChange={(e) =>
+                                setTempFilter((prev) => ({
+                                  ...prev,
+                                  value: e.target.value,
+                                }))
+                              }
+                              placeholder='Enter number...'
+                            />
+                          );
+                        case 'datetime':
+                          return (
+                            <Input
+                              type='datetime-local'
+                              value={tempFilter.value}
+                              onChange={(e) =>
+                                setTempFilter((prev) => ({
+                                  ...prev,
+                                  value: e.target.value,
+                                }))
+                              }
+                            />
+                          );
+                        case 'date':
+                          return (
+                            <Input
+                              type='date'
+                              value={tempFilter.value}
+                              onChange={(e) =>
+                                setTempFilter((prev) => ({
+                                  ...prev,
+                                  value: e.target.value,
+                                }))
+                              }
+                            />
+                          );
+                        case 'time':
+                          return (
+                            <Input
+                              type='time'
+                              value={tempFilter.value}
+                              onChange={(e) =>
+                                setTempFilter((prev) => ({
+                                  ...prev,
+                                  value: e.target.value,
+                                }))
+                              }
+                            />
+                          );
+                        default:
+                          return (
+                            <Input
+                              value={tempFilter.value}
+                              onChange={(e) =>
+                                setTempFilter((prev) => ({
+                                  ...prev,
+                                  value: e.target.value,
+                                }))
+                              }
+                              placeholder='Enter value...'
+                            />
+                          );
                       }
-                      placeholder='Enter value...'
-                    />
+                    })()}
                   </div>
                 )}
               </div>
@@ -428,12 +565,12 @@ export function DataProviderTable({
           filterValues.map((filterValue) => (
             <Badge
               key={`${column}-${filterValue.value}-${filterValue.operator}`}
-              variant='secondary'
+              variant={(!_filters[column] ? 'outline' : 'secondary') as any}
             >
               {column} {getOperatorSymbol(filterValue.operator)}{' '}
               {filterValue.value}
               <button
-                className='ml-1 text-xs'
+                className={cn('ml-1 text-xs', !_filters[column] && 'hidden')}
                 onClick={() => removeFilter(column, filterValue)}
               >
                 ×
@@ -501,7 +638,7 @@ export function DataProviderTable({
                   {columns.map((column) => (
                     <TableCell key={column.key}>
                       {column.renderCell
-                        ? column.renderCell(row[column.key])
+                        ? column.renderCell(row[column.key], row)
                         : row[column.key]}
                     </TableCell>
                   ))}

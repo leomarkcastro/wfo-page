@@ -83,4 +83,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  .Toggle[data-state="on"] {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
 }

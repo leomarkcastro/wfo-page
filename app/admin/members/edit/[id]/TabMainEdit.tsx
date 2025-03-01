@@ -1,10 +1,11 @@
 'use client';
 
+import { FieldType } from '@/components/custom/quick-form.types';
 import { ResourceForm } from '@/components/custom/resource-form';
 import { MembersDataProvider } from '@/lib/dataProviders/members';
 import moment from 'moment';
 
-const MEMBER_FORM_FIELDS = [
+const MEMBER_FORM_FIELDS: FieldType[] = [
   {
     type: 'title',
     label: 'Personal Information',

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/custom/card';
 import { StackedBar } from '@/components/charts/StackedBar';
 import { BarChartMultiple } from '@/components/charts/BarChartMultiple';
-import { useFunction } from '@/components/hooks/useFunction';
+import { useFunction } from '@/lib/hooks/useFunction';
 import { MembersDataProvider } from '@/lib/dataProviders/members';
 import { ServicePurchaseDataProvider } from '@/lib/dataProviders/servicePurchase';
 import chroma from 'chroma-js';
