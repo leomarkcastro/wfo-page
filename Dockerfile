@@ -1,8 +1,8 @@
 # Stage 1: Development dependencies
 FROM node:18-alpine AS deps
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install --legacy-peer-deps
+COPY package.json yarn.lock ./
+RUN yarn install --ignore-engines --legacy-peer-deps
 
 # Stage 2: Builder
 FROM node:18-alpine AS builder

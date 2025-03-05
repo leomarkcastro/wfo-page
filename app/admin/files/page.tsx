@@ -1,3 +1,5 @@
+'use client';
+
 import { DataProviderTable } from '@/components/custom/quick-table';
 import { Button } from '@/components/ui/button';
 import { FilesDataProvider } from '@/lib/dataProviders/files';
@@ -7,7 +9,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import PagePath from '../(mainlayout)/path';
 
-export default function TabFiles() {
+export default function FilesPage() {
   const router = useRouter();
 
   return (
@@ -15,6 +17,7 @@ export default function TabFiles() {
       <PagePath id='files' title='Files' />
       <DataProviderTable
         name='Files'
+        enableUrlPersistence={true}
         onRowClick={(row) => {
           router.push(`/admin/files/edit/${row.id}`);
         }}

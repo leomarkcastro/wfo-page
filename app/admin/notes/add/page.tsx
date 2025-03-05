@@ -7,6 +7,15 @@ import { useSearchParams } from 'next/navigation';
 export default function NotesAdd() {
   const searchParams = useSearchParams();
   const userId = searchParams.get('userId');
+  const type = searchParams.get('type');
+  const returnTo = searchParams.get('returnTo');
+
+  let returnPath = '/admin/notes';
+  if (userId) {
+    returnPath = `/admin/members/edit/${userId}?tab=notes`;
+  } else if (returnTo === 'educations') {
+    returnPath = '/admin/educations';
+  }
 
   return (
     <ResourceForm
@@ -14,9 +23,10 @@ export default function NotesAdd() {
       title='New Note'
       subtitle='Add new note'
       dataProvider={NotesDataProvider}
-      // returnPath={`/admin/members/edit/${userId}?tab=notes`}
+      returnPath={returnPath}
       defaultValues={{
         userId: userId || '',
+        type: type || 'Notes',
       }}
       transformSubmitData={(data) => ({
         ...data,
@@ -39,6 +49,7 @@ export default function NotesAdd() {
           allowCustom: true,
           options: [
             { label: 'Notes', value: 'Notes' },
+            { label: 'Education', value: 'Education' },
             { label: 'Assignments', value: 'Assignments' },
             { label: 'Requests', value: 'Requests' },
             { label: 'Activities', value: 'Activities' },

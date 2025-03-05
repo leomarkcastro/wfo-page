@@ -30,7 +30,7 @@ export default function TabMainEdit() {
   useEffect(() => {
     if (!id) return;
     if (!lData) return;
-    let data = JSON.parse(JSON.stringify(lData.data));
+    const data = JSON.parse(JSON.stringify(lData.data));
 
     ['dateOfAchievement'].forEach((field) => {
       if (data[field]) {
@@ -90,10 +90,33 @@ export default function TabMainEdit() {
       fields={[
         {
           type: 'text',
+          name: 'userName',
+          label: 'User Name',
+          readonly: true,
+          row: 1,
+          cell: 1,
+        },
+        {
+          type: 'display',
+          name: 'userId',
+          label: 'User ID',
+          component: (form) => {
+            const value = form.getValues('userId');
+            return (
+              <div className='text-sm text-muted-foreground'>
+                {value || '--'}
+              </div>
+            );
+          },
+          row: 1,
+          cell: 1,
+        },
+        {
+          type: 'text',
           name: 'schoolName',
           label: 'School Name',
           required: true,
-          row: 1,
+          row: 2,
           cell: 2,
         },
         {
@@ -101,7 +124,7 @@ export default function TabMainEdit() {
           name: 'achievement',
           label: 'Achievement',
           required: true,
-          row: 2,
+          row: 3,
           cell: 2,
         },
         {
@@ -109,7 +132,7 @@ export default function TabMainEdit() {
           name: 'dateOfAchievement',
           label: 'Date of Achievement',
           required: true,
-          row: 3,
+          row: 4,
           cell: 2,
         },
       ]}

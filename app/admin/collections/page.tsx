@@ -1,42 +1,72 @@
 'use client';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import PagePath from '../(mainlayout)/path';
-import TabNotes from './TabNotes';
-import TabFiles from './TabFiles';
+import { DataProviderTable } from '@/components/custom/quick-table';
+import { Button } from '@/components/ui/button';
+import { FilesDataProvider } from '@/lib/dataProviders/files';
+import { fMoment } from '@/lib/services/fMoment';
+import { formatBytes } from '@/lib/utils';
+import Link from 'next/link';
 
-export default function MemberEditPage() {
+export default function CollectionsPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const currentTab = searchParams.get('tab') || 'notes';
-
-  const handleTabChange = (value: string) => {
-    let searchParams = new URLSearchParams(window.location.search);
-    const params = new URLSearchParams(searchParams);
-    params.set('tab', value);
-    router.push(`?${params.toString()}`);
-  };
 
   return (
     <>
-      <PagePath id='collections' title='Collections' />
-      <Tabs
-        defaultValue={currentTab}
-        className='w-full'
-        onValueChange={handleTabChange}
-      >
-        <TabsList>
-          <TabsTrigger value='notes'>Notes</TabsTrigger>
-          <TabsTrigger value='files'>Files</TabsTrigger>
-        </TabsList>
-        <TabsContent value='notes'>
-          <TabNotes />
-        </TabsContent>
-        <TabsContent value='files'>
-          <TabFiles />
-        </TabsContent>
-      </Tabs>
+      <PagePath id='collections' title='Files' />
+      <DataProviderTable
+        name='Files'
+        enableUrlPersistence={true}
+        onRowClick={(row) => {
+          router.push(`/admin/files/edit/${row.id}`);
+        }}
+        columns={[
+          {
+            key: 'name',
+            label: 'Filename',
+            sortable: true,
+            filterable: ['contains', 'equals'],
+          },
+          {
+            key: 'category',
+            label: 'Category',
+            sortable: true,
+            filterable: ['contains', 'equals'],
+          },
+          {
+            key: 'mime',
+            label: 'Type',
+            sortable: true,
+            filterable: ['contains', 'equals'],
+          },
+          {
+            key: 'size',
+            label: 'Size',
+            renderCell(value) {
+              return formatBytes(value);
+            },
+            sortable: true,
+          },
+          {
+            key: 'createdAt',
+            label: 'Uploaded At',
+            renderCell(value) {
+              return fMoment(value).format('MM/DD/YYYY hh:mm A');
+            },
+            sortable: true,
+            filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],
+          },
+        ]}
+        dataSource={FilesDataProvider}
+        actionButtons={
+          <div className=''>
+            <Link href={`/admin/files/add`}>
+              <Button>Upload File</Button>
+            </Link>
+          </div>
+        }
+      />
     </>
   );
 }

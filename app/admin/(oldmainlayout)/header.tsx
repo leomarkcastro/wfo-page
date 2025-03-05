@@ -1,22 +1,17 @@
-import { ThemeToggle } from '@/components/theme-toggle';
 import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 import { create } from 'zustand';
 
 export const pathTitle = create<{
   pathName: string;
-  subPathName?: string;
-  setPathName: (path: string, subPath?: string) => void;
+  setPathName: (path: string) => void;
 }>((set) => ({
   pathName: 'Dashboard',
-  setPathName: (path: string, subPath?: string) => {
-    set({ pathName: path, subPathName: subPath });
-  },
+  setPathName: (path: string) => set({ pathName: path }),
 }));
 
 export const AppHeaders = () => {
   const pathName = pathTitle((state) => state.pathName);
-  // const subPathName = pathTitle((state) => state.subPathName);
 
   const { open } = useSidebar();
 
@@ -31,8 +26,6 @@ export const AppHeaders = () => {
         <SidebarTrigger />
         <h2 className='text-lg font-semibold'>{pathName}</h2>
         <div className='ml-auto flex items-center gap-2'></div>
-        <ThemeToggle />
-        <div className='mr-2'></div>
       </div>
     </header>
   );

@@ -1,53 +1,47 @@
+'use client';
+
 import { DataProviderTable } from '@/components/custom/quick-table';
 import { Button } from '@/components/ui/button';
-import { FilesDataProvider } from '@/lib/dataProviders/files';
+import { NotesDataProvider } from '@/lib/dataProviders/notes';
 import { fMoment } from '@/lib/services/fMoment';
-import { formatBytes } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import PagePath from '../(mainlayout)/path';
 
-export default function TabFiles() {
+export default function NotesPage() {
   const router = useRouter();
 
   return (
     <>
-      <PagePath id='files' title='Files' />
+      <PagePath id='notes' title='Notes' />
       <DataProviderTable
-        name='Files'
+        name='Notes'
+        enableUrlPersistence={true}
         onRowClick={(row) => {
-          router.push(`/admin/files/edit/${row.id}`);
+          router.push(`/admin/notes/edit/${row.id}`);
         }}
         columns={[
           {
-            key: 'name',
-            label: 'Filename',
+            key: 'title',
+            label: 'Title',
             sortable: true,
             filterable: ['contains', 'equals'],
           },
           {
-            key: 'category',
-            label: 'Category',
-            sortable: true,
-            filterable: ['contains', 'equals'],
-          },
-          {
-            key: 'mime',
+            key: 'type',
             label: 'Type',
             sortable: true,
             filterable: ['contains', 'equals'],
           },
           {
-            key: 'size',
-            label: 'Size',
-            renderCell(value) {
-              return formatBytes(value);
-            },
+            key: 'content',
+            label: 'Content',
             sortable: true,
+            filterable: ['contains', 'equals'],
           },
           {
             key: 'createdAt',
-            label: 'Uploaded At',
+            label: 'Created At',
             renderCell(value) {
               return fMoment(value).format('MM/DD/YYYY hh:mm A');
             },
@@ -55,11 +49,11 @@ export default function TabFiles() {
             filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],
           },
         ]}
-        dataSource={FilesDataProvider}
+        dataSource={NotesDataProvider}
         actionButtons={
           <div className=''>
-            <Link href={`/admin/files/add`}>
-              <Button>Upload File</Button>
+            <Link href={`/admin/notes/add`}>
+              <Button>Add New</Button>
             </Link>
           </div>
         }

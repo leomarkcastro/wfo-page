@@ -1,53 +1,57 @@
+'use client';
+
+import PagePath from '../../(mainlayout)/path';
 import { DataProviderTable } from '@/components/custom/quick-table';
 import { Button } from '@/components/ui/button';
-import { FilesDataProvider } from '@/lib/dataProviders/files';
+import { InvoiceBatchDataProvider } from '@/lib/dataProviders/invoiceBatch';
 import { fMoment } from '@/lib/services/fMoment';
-import { formatBytes } from '@/lib/utils';
+import { displayBoolean } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import PagePath from '../(mainlayout)/path';
 
-export default function TabFiles() {
+export default function InvoiceBatchPage() {
   const router = useRouter();
 
   return (
     <>
-      <PagePath id='files' title='Files' />
+      <PagePath id='invoiceBatch' title='Invoice Batching' />
       <DataProviderTable
-        name='Files'
+        name='Invoice Batches'
         onRowClick={(row) => {
-          router.push(`/admin/files/edit/${row.id}`);
+          router.push(`/admin/products/invoice-batch/edit/${row.id}`);
         }}
         columns={[
           {
-            key: 'name',
-            label: 'Filename',
+            key: 'customer',
+            label: 'Customer',
             sortable: true,
             filterable: ['contains', 'equals'],
           },
           {
-            key: 'category',
-            label: 'Category',
+            key: 'batchID',
+            label: 'Batch ID',
             sortable: true,
             filterable: ['contains', 'equals'],
           },
           {
-            key: 'mime',
-            label: 'Type',
+            key: 'isOpen',
+            label: 'Is Open',
             sortable: true,
-            filterable: ['contains', 'equals'],
+            filterable: ['equals'],
+            renderCell: displayBoolean,
           },
           {
-            key: 'size',
-            label: 'Size',
+            key: 'closedAt',
+            label: 'Closed At',
             renderCell(value) {
-              return formatBytes(value);
+              return value ? fMoment(value).format('MM/DD/YYYY hh:mm A') : '-';
             },
             sortable: true,
+            filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],
           },
           {
             key: 'createdAt',
-            label: 'Uploaded At',
+            label: 'Created At',
             renderCell(value) {
               return fMoment(value).format('MM/DD/YYYY hh:mm A');
             },
@@ -55,11 +59,11 @@ export default function TabFiles() {
             filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],
           },
         ]}
-        dataSource={FilesDataProvider}
+        dataSource={InvoiceBatchDataProvider}
         actionButtons={
           <div className=''>
-            <Link href={`/admin/files/add`}>
-              <Button>Upload File</Button>
+            <Link href={`/admin/products/invoice-batch/add`}>
+              <Button>Add New</Button>
             </Link>
           </div>
         }

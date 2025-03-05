@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
 import DashboardContent from './dashboard-content';
+import { pathTitle } from './(mainlayout)/header';
 
 export default function DashboardPage() {
   // const { data, loading } = useSubscription(Ping_time);
@@ -11,6 +13,11 @@ export default function DashboardPage() {
   //     <p>Time: {data?.ping_time?.iso}</p>
   //   </div>
   // );
+
+  // Update the page title when the Dashboard page loads
+  useEffect(() => {
+    pathTitle.getState().setPathName('Dashboard');
+  }, []);
 
   return <DashboardContent />;
 }

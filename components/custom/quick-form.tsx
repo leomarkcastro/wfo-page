@@ -378,7 +378,7 @@ export function QuickForm({
             typeof transformedField.component === 'function'
               ? transformedField.component(form)
               : transformedField.component || (
-                  <div className='rounded-md bg-slate-50 p-2'>
+                  <div className='rounded-md bg-background p-2'>
                     {form.getValues(transformedField.name)}
                   </div>
                 ),
@@ -461,7 +461,7 @@ export function QuickForm({
               className={cn(
                 watch[transformedField.name]
                   ? '!bg-green-500 font-bold !text-white'
-                  : 'bg-gray-100',
+                  : 'border border-gray-300 bg-background',
               )}
             >
               {watch[transformedField.name]

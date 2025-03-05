@@ -1,14 +1,14 @@
 'use client';
 import PagePath from '../(mainlayout)/path';
 
-export default function CalendarLayout({
+export default function DashboardPage({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <>
-      <PagePath id='calendar' title='Calendar View' />
+      <PagePath id='eventslist' title='Events List' />
       {children}
     </>
   );
