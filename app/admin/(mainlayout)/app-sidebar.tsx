@@ -60,6 +60,19 @@ const navigationItems: NavItem[] = [
     description: 'Dashboard overview and main statistics',
   },
   {
+    name: 'Onboardings',
+    icon: FileText,
+    description: 'Manage membership applications',
+    children: [
+      {
+        name: 'Applications List',
+        href: '/admin/membership-applications',
+        icon: FileText,
+        description: 'Manage membership applications',
+      },
+    ],
+  },
+  {
     name: 'Members',
     icon: Users,
     description: 'Manage member accounts and information',
