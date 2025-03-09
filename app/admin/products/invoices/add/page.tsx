@@ -1,15 +1,26 @@
 'use client';
 
 import { QuickForm } from '@/components/custom/quick-form';
-import {
-  InvoiceDataProvider,
-  mockServicePurchases,
-} from '@/lib/dataProviders/invoice';
+import { InvoiceDataProvider } from '@/lib/dataProviders/invoice';
 import { useEffect, useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Plus, Trash2 } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+
+// Define invoice status options
+const INVOICE_STATUSES = [
+  { value: 'draft', label: 'Draft' },
+  { value: 'pending', label: 'Pending' },
+  { value: 'paid', label: 'Paid' },
+  { value: 'cancelled', label: 'Cancelled' },
+];
+
+const mockServicePurchases = [
+  { id: '1', name: 'Service 1', price: 100 },
+  { id: '2', name: 'Service 2', price: 200 },
+  { id: '3', name: 'Service 3', price: 300 },
+];
 
 // Define proper types for the form
 interface InvoiceItem {
@@ -181,7 +192,6 @@ export default function InvoiceAdd() {
           ...data,
           items: items,
           total: calculateTotal(),
-          status: 'pending',
         },
       });
       router.push('/admin/products/invoices');
@@ -196,6 +206,9 @@ export default function InvoiceAdd() {
       subtitle='Create a new invoice'
       onSubmit={handleSubmit}
       gridCols={3}
+      defaultValues={{
+        status: 'pending',
+      }}
       onForm={(formInstance) => {
         setForm(formInstance);
         // Set initial values only once when the form is initialized
@@ -232,12 +245,12 @@ export default function InvoiceAdd() {
           readonly: true,
         },
         {
-          type: 'text',
+          type: 'select',
           name: 'status',
           label: 'Status',
           row: 3,
           cell: 1,
-          readonly: true,
+          options: INVOICE_STATUSES,
         },
       ]}
     />

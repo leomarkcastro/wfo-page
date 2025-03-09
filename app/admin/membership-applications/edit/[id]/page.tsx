@@ -3,13 +3,77 @@
 import { FieldType } from '@/components/custom/quick-form.types';
 import { ResourceForm } from '@/components/custom/resource-form';
 import { MembershipApplicationsDataProvider } from '@/lib/dataProviders/membershipApplications';
-import moment from 'moment';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
+import { useEffect, useState } from 'react';
+
+interface ApplicationFormData {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  country: string;
+  society: string;
+  applicationDate: string;
+  status: string;
+  memberType: string;
+  notes?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
 
 export default function MembershipApplicationsEdit({
   params,
 }: {
   params: { id: string };
 }) {
+  const router = useRouter();
+  const { toast } = useToast();
+  const [defaultValues, setDefaultValues] =
+    useState<ApplicationFormData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchApplication = async () => {
+      try {
+        const response = await MembershipApplicationsDataProvider.getOne({
+          id: params.id,
+        });
+        const application = response.data;
+
+        // Format date for date input
+        const formatDate = (timestamp: number) => {
+          const date = new Date(timestamp);
+          return date.toISOString().split('T')[0];
+        };
+
+        setDefaultValues({
+          name: application.name,
+          email: application.email,
+          phoneNumber: application.phoneNumber,
+          country: application.country,
+          society: application.society,
+          applicationDate: formatDate(application.applicationDate),
+          status: application.status,
+          memberType: application.memberType,
+          notes: application.notes,
+          createdAt: application.createdAt,
+          updatedAt: application.updatedAt,
+        });
+      } catch (error) {
+        console.error('Error fetching membership application:', error);
+        toast({
+          title: 'Error',
+          description: 'Failed to fetch membership application details',
+          variant: 'destructive',
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchApplication();
+  }, [params.id, toast]);
+
   const fields: FieldType[] = [
     {
       type: 'title',
@@ -68,14 +132,6 @@ export default function MembershipApplicationsEdit({
       cell: 3,
     },
     {
-      type: 'date',
-      name: 'applicationDate',
-      label: 'Application Date',
-      required: true,
-      row: 5,
-      cell: 1,
-    },
-    {
       type: 'select',
       options: [
         { label: 'Pending', value: 'Pending' },
@@ -104,50 +160,43 @@ export default function MembershipApplicationsEdit({
       row: 5,
       cell: 1,
     },
-    {
-      type: 'textarea',
-      name: 'notes',
-      label: 'Additional Notes',
-      row: 6,
-      cell: 3,
-    },
-    {
-      type: 'divider',
-      row: 7,
-      cell: 3,
-    },
-    {
-      type: 'title',
-      label: 'System Information',
-      row: 8,
-      cell: 3,
-    },
-    {
-      type: 'display',
-      name: 'createdAt',
-      label: 'Created At',
-      row: 9,
-      cell: 1,
-      component: (form) =>
-        moment(Number(form.watch('createdAt'))).format('MM/DD/YYYY hh:mm A'),
-    },
-    {
-      type: 'display',
-      name: 'updatedAt',
-      label: 'Updated At',
-      row: 9,
-      cell: 1,
-      component: (form) =>
-        moment(Number(form.watch('updatedAt'))).format('MM/DD/YYYY hh:mm A'),
-    },
-    {
-      type: 'display',
-      name: 'id',
-      label: 'ID',
-      row: 9,
-      cell: 1,
-    },
   ];
+
+  const handleSubmit = async (data: ApplicationFormData) => {
+    try {
+      // Convert date to timestamp
+      const formattedData = {
+        ...data,
+        applicationDate: new Date(data.applicationDate).getTime(),
+      };
+
+      await MembershipApplicationsDataProvider.update({
+        id: params.id,
+        variables: formattedData,
+      });
+
+      toast({
+        title: 'Application Updated',
+        description: 'Membership application has been updated successfully',
+      });
+      router.push('/admin/membership-applications');
+    } catch (error) {
+      console.error('Error updating membership application:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to update membership application',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className='container mx-auto py-6'>
+        Loading application details...
+      </div>
+    );
+  }
 
   return (
     <ResourceForm
@@ -155,9 +204,10 @@ export default function MembershipApplicationsEdit({
       title='Edit Membership Application'
       subtitle='Update membership application details'
       dataProvider={MembershipApplicationsDataProvider}
-      getIDon={() => params.id}
       fields={fields}
       gridCols={3}
+      defaultValues={defaultValues}
+      onSubmit={handleSubmit}
     />
   );
 }

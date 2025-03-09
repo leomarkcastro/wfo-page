@@ -1,7 +1,7 @@
-import { gql } from '@apollo/client';
+import { graphql } from '../generated';
 
-export const Events_List = gql`
-  query Events_List($input: EventListInput!) {
+export const Events_List = graphql(`
+  query Events_List($input: Api_event_listInput!) {
     api_event_list(input: $input) {
       data {
         id
@@ -10,21 +10,25 @@ export const Events_List = gql`
         startDate
         endDate
         location
-        status
+        isCancelled
         createdAt
         updatedAt
       }
       page {
         total
+        range {
+          from
+          to
+        }
         page
         pageSize
       }
     }
   }
-`;
+`);
 
-export const Events_Get = gql`
-  query Events_Get($input: EventGetInput!) {
+export const Events_Get = graphql(`
+  query Events_Get($input: Api_event_getInput!) {
     api_event_get(input: $input) {
       data {
         id
@@ -33,53 +37,37 @@ export const Events_Get = gql`
         startDate
         endDate
         location
-        status
+        isCancelled
         createdAt
         updatedAt
       }
     }
   }
-`;
+`);
 
-export const Events_Create = gql`
-  mutation Events_Create($input: EventCreateInput!) {
+export const Events_Create = graphql(`
+  mutation Events_Create($input: Api_event_createInput!) {
     api_event_create(input: $input) {
-      ids
-    }
-  }
-`;
-
-export const Events_Update = gql`
-  mutation Events_Update($input: EventUpdateInput!) {
-    api_event_update(input: $input) {
-      ids
-    }
-  }
-`;
-
-export const Events_Delete = gql`
-  mutation Events_Delete($input: EventDeleteInput!) {
-    api_event_delete(input: $input) {
-      ids
-    }
-  }
-`;
-
-export const Events_Aggregate = gql`
-  query Events_Aggregate($input: EventAggregateInput!) {
-    api_event_aggregate(input: $input) {
       count
+      ids
     }
   }
-`;
+`);
 
-export const Events_GroupBy = gql`
-  query Events_GroupBy($input: EventGroupByInput!) {
-    api_event_groupBy(input: $input) {
-      groups {
-        key
-        count
-      }
+export const Events_Update = graphql(`
+  mutation Events_Update($input: Api_event_updateInput!) {
+    api_event_update(input: $input) {
+      count
+      ids
     }
   }
-`; 
+`);
+
+export const Events_Delete = graphql(`
+  mutation Events_Delete($input: Api_event_deleteInput!) {
+    api_event_delete(input: $input) {
+      count
+      ids
+    }
+  }
+`);

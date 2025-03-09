@@ -1,16 +1,37 @@
 'use client';
 
 import { QuickForm } from '@/components/custom/quick-form';
-import {
-  InvoiceDataProvider,
-  mockServicePurchases,
-} from '@/lib/dataProviders/invoice';
+import { InvoiceDataProvider } from '@/lib/dataProviders/invoice';
 import { useEffect, useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Copy, Plus, Trash2 } from 'lucide-react';
 import { UseFormReturn } from 'react-hook-form';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter, useParams } from 'next/navigation';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+
+// Define invoice status options
+const INVOICE_STATUSES = [
+  { value: 'draft', label: 'Draft' },
+  { value: 'pending', label: 'Pending' },
+  { value: 'paid', label: 'Paid' },
+  { value: 'cancelled', label: 'Cancelled' },
+];
+
+const mockServicePurchases = [
+  { id: '1', name: 'Service 1', price: 100 },
+  { id: '2', name: 'Service 2', price: 200 },
+  { id: '3', name: 'Service 3', price: 300 },
+];
 
 interface InvoiceItem {
   id: string;
@@ -35,6 +56,7 @@ interface InvoiceFormData {
   items: InvoiceItem[];
   total: number;
   status: string;
+  paidAt?: string | null;
 }
 
 export default function InvoiceEdit() {
@@ -42,6 +64,7 @@ export default function InvoiceEdit() {
   const [form, setForm] = useState<UseFormReturn<InvoiceFormData> | null>(null);
   const [invoice, setInvoice] = useState<Invoice | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
   const params = useParams();
@@ -226,11 +249,21 @@ export default function InvoiceEdit() {
 
   const handleSubmit = async (data: InvoiceFormData) => {
     try {
+      // on items, remove the __typename field
+      const itemsWithoutTypename = items.map((item) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { __typename, ...rest } = item;
+        return rest;
+      });
+      console.log(data);
       await InvoiceDataProvider.update({
         id,
         variables: {
           ...data,
-          items: items,
+          items: itemsWithoutTypename,
+          paidAt: data.paidAt ? new Date(data.paidAt).toISOString() : null,
           total: calculateTotal(),
         },
       });
@@ -249,6 +282,24 @@ export default function InvoiceEdit() {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await InvoiceDataProvider.deleteOne({ id });
+      toast({
+        title: 'Invoice Deleted',
+        description: 'The invoice has been deleted successfully.',
+      });
+      router.push('/admin/products/invoices');
+    } catch (error) {
+      console.error('Error deleting invoice:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to delete invoice',
+        variant: 'destructive',
+      });
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -258,104 +309,114 @@ export default function InvoiceEdit() {
   }
 
   return (
-    <QuickForm
-      title='Edit Invoice'
-      subtitle='Update invoice details'
-      onSubmit={handleSubmit}
-      gridCols={3}
-      defaultValues={{
-        customerName: invoice.customerName,
-        total: invoice.total,
-        status: invoice.status,
-        createdAt: new Date(invoice.createdAt).toLocaleDateString(),
-        paidAt: invoice.paidAt
-          ? new Date(invoice.paidAt).toLocaleDateString()
-          : 'Not paid yet',
-      }}
-      onForm={(formInstance) => {
-        setForm(formInstance);
-        // Set initial values only once when the form is initialized
-        if (!form) {
-          formInstance.setValue('items', items);
-          formInstance.setValue('total', calculateTotal());
-        }
-      }}
-      onCancel={() => router.push('/admin/products/invoices')}
-      fields={[
-        {
-          type: 'text',
-          name: 'customerName',
-          label: 'Customer Name',
-          required: true,
-          row: 1,
-          cell: 2,
-        },
-        {
-          type: 'custom',
-          name: 'items',
-          label: 'Invoice Items',
-          row: 2,
-          cell: 3,
-          component: renderItemsSection,
-        },
-        {
-          type: 'number',
-          name: 'total',
-          label: 'Total',
-          row: 3,
-          cell: 1,
-          readonly: true,
-        },
-        {
-          type: 'text',
-          name: 'status',
-          label: 'Status',
-          row: 3,
-          cell: 1,
-          readonly: true,
-        },
-        {
-          type: 'custom',
-          name: 'paymentLink',
-          label: 'Payment Link',
-          row: 4,
-          cell: 2,
-          component: () => (
-            <div className='flex items-center gap-2'>
-              <input
-                type='text'
-                className='w-full rounded border p-2'
-                value={invoice.paymentLink || ''}
-                readOnly
-              />
-              <Button
-                variant='outline'
-                size='icon'
-                onClick={copyPaymentLink}
-                title='Copy payment link'
-              >
-                <Copy className='h-4 w-4' />
-              </Button>
-            </div>
-          ),
-        },
-        {
-          type: 'text',
-          name: 'createdAt',
-          label: 'Created At',
-          row: 5,
-          cell: 1,
-          readonly: true,
-        },
-        {
-          type: 'text',
-          name: 'paidAt',
-          label: 'Paid At',
-          row: 5,
-          cell: 1,
-          readonly: true,
-        },
-      ]}
-    />
+    <>
+      <AlertDialog open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete the
+              invoice.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <QuickForm
+        title='Edit Invoice'
+        subtitle='Update invoice details'
+        onSubmit={handleSubmit}
+        gridCols={3}
+        defaultValues={{
+          customerName: invoice.customerName,
+          total: invoice.total,
+          status: invoice.status,
+          createdAt: new Date(invoice.createdAt).toLocaleDateString(),
+          paidAt: invoice.paidAt
+            ? new Date(invoice.paidAt).toLocaleDateString()
+            : 'Not paid yet',
+        }}
+        onForm={(formInstance) => {
+          setForm(formInstance);
+          // Set initial values only once when the form is initialized
+          if (!form) {
+            formInstance.setValue('items', items);
+            formInstance.setValue('total', calculateTotal());
+          }
+        }}
+        onCancel={() => router.push('/admin/products/invoices')}
+        onDelete={() => setShowDeleteDialog(true)}
+        fields={[
+          {
+            type: 'text',
+            name: 'customerName',
+            label: 'Customer Name',
+            required: true,
+            row: 1,
+            cell: 3,
+          },
+          {
+            type: 'custom',
+            name: 'items',
+            label: 'Invoice Items',
+            row: 2,
+            cell: 3,
+            component: renderItemsSection,
+          },
+          {
+            type: 'number',
+            name: 'total',
+            label: 'Total',
+            row: 3,
+            cell: 1,
+            readonly: true,
+          },
+          {
+            type: 'select',
+            name: 'status',
+            label: 'Status',
+            row: 3,
+            cell: 1,
+            options: INVOICE_STATUSES,
+          },
+          {
+            type: 'date',
+            name: 'paidAt',
+            label: 'Paid At',
+            row: 3,
+            cell: 1,
+          },
+          {
+            type: 'custom',
+            name: 'paymentLink',
+            label: 'Payment Link',
+            row: 4,
+            cell: 3,
+            component: () => (
+              <div className='flex items-center gap-2'>
+                <input
+                  type='text'
+                  className='w-full rounded border p-2'
+                  value={invoice.paymentLink || ''}
+                  readOnly
+                />
+                <Button
+                  variant='outline'
+                  size='icon'
+                  onClick={copyPaymentLink}
+                  title='Copy payment link'
+                >
+                  <Copy className='h-4 w-4' />
+                </Button>
+              </div>
+            ),
+          },
+        ]}
+      />
+    </>
   );
 }

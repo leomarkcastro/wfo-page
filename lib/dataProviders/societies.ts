@@ -1,13 +1,13 @@
-import { Invoice_Create, Invoice_Delete, Invoice_Get, Invoice_List, Invoice_Update } from '@/graphql/declarations/invoice';
+import { Society_Create, Society_Delete, Society_Get, Society_List, Society_Update } from '@/graphql/declarations/societies';
 import { apolloClient } from '../apollo/ApolloClient';
 import { DataProvider } from '../services/dataProvider';
 
-export const InvoiceDataProvider: DataProvider = {
-    name: 'InvoiceDataProvider',
+export const SocietiesDataProvider: DataProvider = {
+    name: 'SocietiesDataProvider',
     getList: async (args) => {
         try {
             const data = await apolloClient.query({
-                query: Invoice_List,
+                query: Society_List,
                 variables: {
                     input: {
                         data: {
@@ -31,27 +31,26 @@ export const InvoiceDataProvider: DataProvider = {
                 fetchPolicy: 'no-cache'
             });
 
-            const retData = data.data.api_invoice_list;
+            const retData = data.data.api_society_list;
             const total = retData.page.total ?? 0;
             const totalPages = Math.ceil(total / args.pagination.perPage);
 
             return {
-                data: retData.data?.map((invoice) => invoice),
+                data: retData.data?.map((society) => society),
                 total: total,
                 page: args.pagination.page,
                 perPage: args.pagination.perPage,
                 totalPages: totalPages,
             };
         } catch (error) {
-            console.error('Error fetching invoices:', error);
+            console.error('Error fetching societies:', error);
             throw error;
         }
     },
-
     getOne: async (args) => {
         try {
             const data = await apolloClient.query({
-                query: Invoice_Get,
+                query: Society_Get,
                 variables: {
                     input: {
                         data: {
@@ -63,18 +62,17 @@ export const InvoiceDataProvider: DataProvider = {
             });
 
             return {
-                data: data.data.api_invoice_get.data
+                data: data.data.api_society_get.data
             };
         } catch (error) {
-            console.error('Error fetching invoice:', error);
+            console.error('Error fetching society:', error);
             throw error;
         }
     },
-
     create: async (args) => {
         try {
             const data = await apolloClient.mutate({
-                mutation: Invoice_Create,
+                mutation: Society_Create,
                 variables: {
                     input: {
                         data: {
@@ -88,18 +86,17 @@ export const InvoiceDataProvider: DataProvider = {
             });
 
             return {
-                id: data.data.api_invoice_create.ids[0]
+                id: data.data.api_society_create.ids[0]
             };
         } catch (error) {
-            console.error('Error creating invoice:', error);
+            console.error('Error creating society:', error);
             throw error;
         }
     },
-
     update: async (args) => {
         try {
             const data = await apolloClient.mutate({
-                mutation: Invoice_Update,
+                mutation: Society_Update,
                 variables: {
                     input: {
                         data: {
@@ -116,18 +113,17 @@ export const InvoiceDataProvider: DataProvider = {
             });
 
             return {
-                id: data.data.api_invoice_update.ids[0]
+                id: data.data.api_society_update.ids[0]
             };
         } catch (error) {
-            console.error('Error updating invoice:', error);
+            console.error('Error updating society:', error);
             throw error;
         }
     },
-
     deleteOne: async (args) => {
         try {
             const data = await apolloClient.mutate({
-                mutation: Invoice_Delete,
+                mutation: Society_Delete,
                 variables: {
                     input: {
                         data: {
@@ -139,10 +135,10 @@ export const InvoiceDataProvider: DataProvider = {
             });
 
             return {
-                id: data.data.api_invoice_delete.ids[0]
+                id: data.data.api_society_delete.ids[0]
             };
         } catch (error) {
-            console.error('Error deleting invoice:', error);
+            console.error('Error deleting society:', error);
             throw error;
         }
     }

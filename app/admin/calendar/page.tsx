@@ -95,7 +95,10 @@ export default function CalendarPage() {
 
     return events.filter((event) => {
       const eventStart = moment(Number(event.startDate));
-      const eventEnd = moment(Number(event.endDate));
+      // If event has no end date, set it to start date + 1 hour
+      const eventEnd = event.endDate
+        ? moment(Number(event.endDate))
+        : moment(Number(event.startDate)).add(1, 'hour');
       return date.isBetween(eventStart, eventEnd, 'day', '[]');
     });
   };
@@ -232,10 +235,11 @@ export default function CalendarPage() {
                     {moment(Number(selectedEvent.startDate)).format(
                       'MMM DD, YYYY',
                     )}
-                    {!moment(Number(selectedEvent.startDate)).isSame(
-                      moment(Number(selectedEvent.endDate)),
-                      'day',
-                    ) &&
+                    {selectedEvent.endDate &&
+                      !moment(Number(selectedEvent.startDate)).isSame(
+                        moment(Number(selectedEvent.endDate)),
+                        'day',
+                      ) &&
                       ` - ${moment(Number(selectedEvent.endDate)).format('MMM DD, YYYY')}`}
                   </div>
                 </div>
@@ -246,7 +250,12 @@ export default function CalendarPage() {
                     {moment(Number(selectedEvent.startDate)).format(
                       'hh:mm A',
                     )}{' '}
-                    - {moment(Number(selectedEvent.endDate)).format('hh:mm A')}
+                    -{' '}
+                    {selectedEvent.endDate
+                      ? moment(Number(selectedEvent.endDate)).format('hh:mm A')
+                      : moment(Number(selectedEvent.startDate))
+                          .add(1, 'hour')
+                          .format('hh:mm A')}
                   </div>
                 </div>
                 {selectedEvent.location && (

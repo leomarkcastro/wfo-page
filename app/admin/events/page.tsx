@@ -63,7 +63,9 @@ export default function EventsPage() {
             sortable: true,
             specialType: 'datetime',
             renderCell(value) {
-              return moment(Number(value)).format('MM/DD/YYYY hh:mm A');
+              return value
+                ? moment(Number(value)).format('MM/DD/YYYY hh:mm A')
+                : '';
             },
           },
           {

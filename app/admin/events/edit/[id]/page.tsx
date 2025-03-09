@@ -1,11 +1,12 @@
 'use client';
 
-import { QuickForm } from '@/components/custom/quick-form';
+import { FieldType } from '@/components/custom/quick-form.types';
+import { ResourceForm } from '@/components/custom/resource-form';
 import { EventsDataProvider } from '@/lib/dataProviders/events';
-import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
-import { createProvider } from '@/lib/services/createProvider';
+import { useToast } from '@/hooks/use-toast';
 import { useEffect, useState } from 'react';
+import { fMoment } from '@/lib/services/fMoment';
 
 interface EventFormData {
   title: string;
@@ -14,6 +15,8 @@ interface EventFormData {
   endDate: string;
   location: string;
   isCancelled: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export default function EditEventPage({ params }: { params: { id: string } }) {
@@ -23,13 +26,6 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
     null,
   );
   const [isLoading, setIsLoading] = useState(true);
-
-  const dataHookProvider = createProvider({
-    name: EventsDataProvider.name,
-    dataProvider: EventsDataProvider,
-  });
-
-  const useUpdate = dataHookProvider.useUpdate();
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -52,6 +48,8 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
           endDate: formatDate(event.endDate),
           location: event.location,
           isCancelled: event.isCancelled || false,
+          createdAt: event.createdAt,
+          updatedAt: event.updatedAt,
         });
       } catch (error) {
         console.error('Error fetching event:', error);
@@ -68,30 +66,82 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
     fetchEvent();
   }, [params.id, toast]);
 
-  async function submitData(data: EventFormData) {
-    // Convert dates to timestamps
-    const startTimestamp = new Date(data.startDate).getTime();
-    const endTimestamp = new Date(data.endDate).getTime();
+  const fields: FieldType[] = [
+    {
+      type: 'text',
+      name: 'title',
+      label: 'Title',
+      required: true,
+      row: 1,
+      cell: 2,
+    },
+    {
+      type: 'text',
+      name: 'location',
+      label: 'Location',
+      required: true,
+      row: 2,
+      cell: 1,
+    },
+    {
+      type: 'checkbox',
+      name: 'isCancelled',
+      label: 'Cancelled',
+      row: 2,
+      cell: 1,
+    },
+    {
+      type: 'datetime',
+      name: 'startDate',
+      label: 'Start Date',
+      required: true,
+      row: 3,
+      cell: 1,
+    },
+    {
+      type: 'datetime',
+      name: 'endDate',
+      label: 'End Date',
+      row: 3,
+      cell: 1,
+    },
+    {
+      type: 'textarea',
+      name: 'description',
+      label: 'Description',
+      row: 4,
+      cell: 2,
+    },
+  ];
 
-    const eventData = {
-      ...data,
-      startDate: startTimestamp,
-      endDate: endTimestamp,
-    };
+  const handleSubmit = async (data: EventFormData) => {
+    try {
+      // Convert dates to timestamps
+      const formattedData = {
+        ...data,
+        startDate: new Date(data.startDate).getTime(),
+        endDate: new Date(data.endDate).getTime(),
+      };
 
-    await useUpdate.mutateAsync({
-      id: params.id,
-      variables: eventData,
-      meta: {},
-      resource: 'events',
-    });
+      await EventsDataProvider.update({
+        id: params.id,
+        variables: formattedData,
+      });
 
-    toast({
-      title: 'Event Updated',
-      description: 'Event has been updated successfully',
-    });
-    router.push('/admin/events');
-  }
+      toast({
+        title: 'Event Updated',
+        description: 'Event has been updated successfully',
+      });
+      router.push('/admin/events');
+    } catch (error) {
+      console.error('Error updating event:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to update event',
+        variant: 'destructive',
+      });
+    }
+  };
 
   if (isLoading) {
     return (
@@ -100,62 +150,29 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <QuickForm
-      gridCols={2}
-      onCancel={() => router.push('/admin/events')}
-      onSubmit={submitData}
+    <ResourceForm
+      mode='edit'
       title='Edit Event'
       subtitle='Update event details'
+      dataProvider={EventsDataProvider}
+      preprocessData={(data) => {
+        return {
+          ...data,
+          startDate: fMoment(data.startDate).format('YYYY-MM-DDTHH:mm'),
+          endDate: fMoment(data.endDate).format('YYYY-MM-DDTHH:mm'),
+        };
+      }}
+      transformSubmitData={(data) => {
+        return {
+          ...data,
+          startDate: fMoment(data.startDate).toDate().toISOString(),
+          endDate: fMoment(data.endDate).toDate().toISOString(),
+        };
+      }}
+      fields={fields}
+      gridCols={2}
       defaultValues={defaultValues}
-      fields={[
-        {
-          type: 'text',
-          name: 'title',
-          label: 'Title',
-          required: true,
-          row: 1,
-          cell: 2,
-        },
-        {
-          type: 'text',
-          name: 'location',
-          label: 'Location',
-          required: true,
-          row: 2,
-          cell: 1,
-        },
-        {
-          type: 'checkbox',
-          name: 'isCancelled',
-          label: 'Cancelled',
-          row: 2,
-          cell: 1,
-        },
-        {
-          type: 'datetime',
-          name: 'startDate',
-          label: 'Start Date',
-          required: true,
-          row: 3,
-          cell: 1,
-        },
-        {
-          type: 'datetime',
-          name: 'endDate',
-          label: 'End Date',
-          required: true,
-          row: 3,
-          cell: 1,
-        },
-        {
-          type: 'textarea',
-          name: 'description',
-          label: 'Description',
-          required: true,
-          row: 4,
-          cell: 2,
-        },
-      ]}
+      onSubmit={handleSubmit}
     />
   );
 }

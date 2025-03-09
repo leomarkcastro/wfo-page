@@ -3,8 +3,23 @@
 import { FieldType } from '@/components/custom/quick-form.types';
 import { ResourceForm } from '@/components/custom/resource-form';
 import { MembershipApplicationsDataProvider } from '@/lib/dataProviders/membershipApplications';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
+
+interface ApplicationFormData {
+  name: string;
+  email: string;
+  phoneNumber: string;
+  country: string;
+  society: string;
+  status: string;
+  memberType: string;
+}
 
 export default function MembershipApplicationsAdd() {
+  const router = useRouter();
+  const { toast } = useToast();
+
   const fields: FieldType[] = [
     {
       type: 'title',
@@ -63,14 +78,6 @@ export default function MembershipApplicationsAdd() {
       cell: 3,
     },
     {
-      type: 'date',
-      name: 'applicationDate',
-      label: 'Application Date',
-      required: true,
-      row: 5,
-      cell: 1,
-    },
-    {
       type: 'select',
       options: [
         { label: 'Pending', value: 'Pending' },
@@ -99,14 +106,40 @@ export default function MembershipApplicationsAdd() {
       row: 5,
       cell: 1,
     },
-    {
-      type: 'textarea',
-      name: 'notes',
-      label: 'Additional Notes',
-      row: 6,
-      cell: 3,
-    },
+    // {
+    //   type: 'textarea',
+    //   name: 'notes',
+    //   label: 'Additional Notes',
+    //   row: 6,
+    //   cell: 3,
+    // },
   ];
+
+  const handleSubmit = async (data: ApplicationFormData) => {
+    try {
+      // Convert date to timestamp
+      const formattedData = {
+        ...data,
+      };
+
+      await MembershipApplicationsDataProvider.create({
+        variables: formattedData,
+      });
+
+      toast({
+        title: 'Application Created',
+        description: 'Membership application has been created successfully',
+      });
+      router.push('/admin/membership-applications');
+    } catch (error) {
+      console.error('Error creating membership application:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to create membership application',
+        variant: 'destructive',
+      });
+    }
+  };
 
   return (
     <ResourceForm
@@ -116,6 +149,7 @@ export default function MembershipApplicationsAdd() {
       dataProvider={MembershipApplicationsDataProvider}
       fields={fields}
       gridCols={3}
+      onSubmit={handleSubmit}
     />
   );
 }

@@ -31,7 +31,7 @@ export const EducationDataProvider: DataProvider = {
             fetchPolicy: 'no-cache'
         });
 
-        let retData = data.data.api_education_list;
+        const retData = data.data.api_education_list;
         const total = retData.page.total ?? 0;
         const totalPages = Math.ceil(total / args.pagination.perPage);
 

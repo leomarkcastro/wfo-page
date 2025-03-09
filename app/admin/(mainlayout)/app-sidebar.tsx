@@ -88,7 +88,6 @@ const navigationItems: NavItem[] = [
         href: '/admin/societies',
         icon: Map,
         description: 'Manage societies and groups',
-        disabled: true,
       },
       {
         name: 'Educations',

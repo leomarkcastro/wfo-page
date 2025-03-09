@@ -49,9 +49,15 @@ export default function InvoicesPage() {
             filterable: ['equals'],
             renderCell: (value) => (
               <span
-                className={`rounded-full px-2 py-1 text-xs ${value === 'paid' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}
+                className={`rounded-full px-2 py-1 text-xs ${
+                  value === 'paid'
+                    ? 'bg-green-100 text-green-800'
+                    : value === 'pending' || value === 'draft'
+                      ? 'bg-yellow-100 text-yellow-800'
+                      : 'bg-red-100 text-red-800'
+                }`}
               >
-                {value === 'paid' ? 'Paid' : 'Pending'}
+                {value.toUpperCase()}
               </span>
             ),
           },
