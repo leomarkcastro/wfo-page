@@ -158,15 +158,16 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
       preprocessData={(data) => {
         return {
           ...data,
-          startDate: fMoment(data.startDate).format('YYYY-MM-DDTHH:mm'),
-          endDate: fMoment(data.endDate).format('YYYY-MM-DDTHH:mm'),
+          startDate: fMoment(data.startDate)?.format('YYYY-MM-DDTHH:mm'),
+          endDate: fMoment(data.endDate)?.format('YYYY-MM-DDTHH:mm'),
         };
       }}
       transformSubmitData={(data) => {
+        console.log(data);
         return {
           ...data,
-          startDate: fMoment(data.startDate).toDate().toISOString(),
-          endDate: fMoment(data.endDate).toDate().toISOString(),
+          startDate: fMoment(data.startDate)?.toDate().toISOString(),
+          endDate: fMoment(data.endDate)?.toDate().toISOString(),
         };
       }}
       fields={fields}

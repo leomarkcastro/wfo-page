@@ -44,7 +44,7 @@ export default function InvoiceBatchPage() {
             key: 'closedAt',
             label: 'Closed At',
             renderCell(value) {
-              return value ? fMoment(value).format('MM/DD/YYYY hh:mm A') : '-';
+              return value ? fMoment(value)?.format('MM/DD/YYYY hh:mm A') : '-';
             },
             sortable: true,
             filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],
@@ -53,7 +53,7 @@ export default function InvoiceBatchPage() {
             key: 'createdAt',
             label: 'Created At',
             renderCell(value) {
-              return fMoment(value).format('MM/DD/YYYY hh:mm A');
+              return fMoment(value)?.format('MM/DD/YYYY hh:mm A');
             },
             sortable: true,
             filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],

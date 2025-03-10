@@ -1591,6 +1591,85 @@ input EventCreateInput {
   updatedAt: DateTime
 }
 
+type InvoiceEntry {
+  id: ID!
+  customerName: String
+  total: Float
+  lineItems: JSON
+  createdAt: DateTime
+  paidAt: DateTime
+  status: String
+  paymentLink: String
+  updatedAt: DateTime
+}
+
+input InvoiceEntryWhereUniqueInput {
+  id: ID
+}
+
+input InvoiceEntryWhereInput {
+  AND: [InvoiceEntryWhereInput!]
+  OR: [InvoiceEntryWhereInput!]
+  NOT: [InvoiceEntryWhereInput!]
+  id: IDFilter
+  customerName: StringFilter
+  total: FloatFilter
+  createdAt: DateTimeNullableFilter
+  paidAt: DateTimeNullableFilter
+  status: StringFilter
+  paymentLink: StringFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input FloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: FloatFilter
+}
+
+input InvoiceEntryOrderByInput {
+  id: OrderDirection
+  customerName: OrderDirection
+  total: OrderDirection
+  createdAt: OrderDirection
+  paidAt: OrderDirection
+  status: OrderDirection
+  paymentLink: OrderDirection
+  updatedAt: OrderDirection
+}
+
+input InvoiceEntryUpdateInput {
+  customerName: String
+  total: Float
+  lineItems: JSON
+  createdAt: DateTime
+  paidAt: DateTime
+  status: String
+  paymentLink: String
+  updatedAt: DateTime
+}
+
+input InvoiceEntryUpdateArgs {
+  where: InvoiceEntryWhereUniqueInput!
+  data: InvoiceEntryUpdateInput!
+}
+
+input InvoiceEntryCreateInput {
+  customerName: String
+  total: Float
+  lineItems: JSON
+  createdAt: DateTime
+  paidAt: DateTime
+  status: String
+  paymentLink: String
+  updatedAt: DateTime
+}
+
 type NetforumLog {
   id: ID!
   topic: String
@@ -1897,6 +1976,71 @@ input InvoiceBatchCreateInput {
   createdAt: DateTime
 }
 
+type Product {
+  id: ID!
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ProductWhereUniqueInput {
+  id: ID
+}
+
+input ProductWhereInput {
+  AND: [ProductWhereInput!]
+  OR: [ProductWhereInput!]
+  NOT: [ProductWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  price: FloatNullableFilter
+  description: StringFilter
+  photo: StringFilter
+  note: StringFilter
+  createdAt: DateTimeNullableFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input ProductOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  price: OrderDirection
+  description: OrderDirection
+  photo: OrderDirection
+  note: OrderDirection
+  createdAt: OrderDirection
+  updatedAt: OrderDirection
+}
+
+input ProductUpdateInput {
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ProductUpdateArgs {
+  where: ProductWhereUniqueInput!
+  data: ProductUpdateInput!
+}
+
+input ProductCreateInput {
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -2081,6 +2225,15 @@ type Mutation {
   updateEvents(data: [EventUpdateArgs!]!): [Event]
   deleteEvent(where: EventWhereUniqueInput!): Event
   deleteEvents(where: [EventWhereUniqueInput!]!): [Event]
+  createInvoiceEntry(data: InvoiceEntryCreateInput!): InvoiceEntry
+  createInvoiceEntries(data: [InvoiceEntryCreateInput!]!): [InvoiceEntry]
+  updateInvoiceEntry(
+    where: InvoiceEntryWhereUniqueInput!
+    data: InvoiceEntryUpdateInput!
+  ): InvoiceEntry
+  updateInvoiceEntries(data: [InvoiceEntryUpdateArgs!]!): [InvoiceEntry]
+  deleteInvoiceEntry(where: InvoiceEntryWhereUniqueInput!): InvoiceEntry
+  deleteInvoiceEntries(where: [InvoiceEntryWhereUniqueInput!]!): [InvoiceEntry]
   createNetforumLog(data: NetforumLogCreateInput!): NetforumLog
   createNetforumLogs(data: [NetforumLogCreateInput!]!): [NetforumLog]
   updateNetforumLog(
@@ -2139,6 +2292,15 @@ type Mutation {
   updateInvoiceBatches(data: [InvoiceBatchUpdateArgs!]!): [InvoiceBatch]
   deleteInvoiceBatch(where: InvoiceBatchWhereUniqueInput!): InvoiceBatch
   deleteInvoiceBatches(where: [InvoiceBatchWhereUniqueInput!]!): [InvoiceBatch]
+  createProduct(data: ProductCreateInput!): Product
+  createProducts(data: [ProductCreateInput!]!): [Product]
+  updateProduct(
+    where: ProductWhereUniqueInput!
+    data: ProductUpdateInput!
+  ): Product
+  updateProducts(data: [ProductUpdateArgs!]!): [Product]
+  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteProducts(where: [ProductWhereUniqueInput!]!): [Product]
   endSession: Boolean!
   authenticateUserWithPassword(
     email: String!
@@ -2221,6 +2383,15 @@ type Mutation {
   api_invoiceBatch_delete(
     input: Api_invoiceBatch_deleteInput!
   ): Api_InvoiceBatch_deleteOutput
+  api_products_create(
+    input: Api_products_createInput!
+  ): Api_Products_createOutput
+  api_products_update(
+    input: Api_products_updateInput!
+  ): Api_Products_updateOutput
+  api_products_delete(
+    input: Api_products_deleteInput!
+  ): Api_Products_deleteOutput
   api_application_create(
     input: Api_application_createInput!
   ): Api_Application_createOutput
@@ -2429,6 +2600,15 @@ type Query {
     cursor: EventWhereUniqueInput
   ): [Event!]
   eventsCount(where: EventWhereInput! = {}): Int
+  invoiceEntry(where: InvoiceEntryWhereUniqueInput!): InvoiceEntry
+  invoiceEntries(
+    where: InvoiceEntryWhereInput! = {}
+    orderBy: [InvoiceEntryOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: InvoiceEntryWhereUniqueInput
+  ): [InvoiceEntry!]
+  invoiceEntriesCount(where: InvoiceEntryWhereInput! = {}): Int
   netforumLog(where: NetforumLogWhereUniqueInput!): NetforumLog
   netforumLogs(
     where: NetforumLogWhereInput! = {}
@@ -2476,6 +2656,15 @@ type Query {
     cursor: InvoiceBatchWhereUniqueInput
   ): [InvoiceBatch!]
   invoiceBatchesCount(where: InvoiceBatchWhereInput! = {}): Int
+  product(where: ProductWhereUniqueInput!): Product
+  products(
+    where: ProductWhereInput! = {}
+    orderBy: [ProductOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: ProductWhereUniqueInput
+  ): [Product!]
+  productsCount(where: ProductWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
   ErrorTest: String
@@ -2535,6 +2724,14 @@ type Query {
   api_invoiceBatch_get(
     input: Api_invoiceBatch_getInput!
   ): Api_InvoiceBatch_getOutput
+  api_products_list(input: Api_products_listInput!): Api_Products_listOutput
+  api_products_get(input: Api_products_getInput!): Api_Products_getOutput
+  api_products_groupBy(
+    input: Api_products_groupByInput!
+  ): Api_Products_groupByOutput
+  api_products_aggregate(
+    input: Api_products_aggregateInput!
+  ): Api_Products_aggregateOutput
   api_application_list(
     input: Api_application_listInput!
   ): Api_Application_listOutput
@@ -4419,6 +4616,230 @@ input Api_invoiceBatch_deleteInputData {
 
 input Api_invoiceBatch_deleteInput {
   data: Api_invoiceBatch_deleteInputData!
+}
+
+type Api_Products_listOutputData {
+  id: String
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Api_Products_listOutputPageRange {
+  from: Float!
+  to: Float!
+}
+
+type Api_Products_listOutputPage {
+  total: Float
+  range: Api_Products_listOutputPageRange
+  page: Float
+  pageSize: Float
+}
+
+type Api_Products_listOutput {
+  data: [Api_Products_listOutputData]
+  page: Api_Products_listOutputPage
+}
+
+input Api_products_listInputDataPageSort {
+  field: String!
+  order: String!
+}
+
+input Api_products_listInputDataPageFilter {
+  field: String!
+  operation: String!
+  value: String!
+}
+
+input Api_products_listInputDataPage {
+  page: Float
+  pageSize: Float
+  distinct: [String]
+  sort: Api_products_listInputDataPageSort
+  filter: [Api_products_listInputDataPageFilter]
+  search: String
+}
+
+input Api_products_listInputData {
+  page: Api_products_listInputDataPage
+}
+
+input Api_products_listInput {
+  data: Api_products_listInputData!
+}
+
+type Api_Products_getOutputData {
+  id: String
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Api_Products_getOutput {
+  data: Api_Products_getOutputData
+}
+
+input Api_products_getInputData {
+  id: String!
+}
+
+input Api_products_getInput {
+  data: Api_products_getInputData!
+}
+
+type Api_Products_createOutput {
+  count: Float
+  ids: [String]
+}
+
+input Api_products_createInputDataData {
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+}
+
+input Api_products_createInputData {
+  data: [Api_products_createInputDataData]!
+}
+
+input Api_products_createInput {
+  data: Api_products_createInputData!
+}
+
+type Api_Products_updateOutput {
+  count: Float
+  ids: [String]
+}
+
+input Api_products_updateInputDataDataData {
+  name: String
+  price: Float
+  description: String
+  photo: String
+  note: String
+}
+
+input Api_products_updateInputDataData {
+  id: String!
+  data: Api_products_updateInputDataDataData!
+}
+
+input Api_products_updateInputData {
+  data: [Api_products_updateInputDataData]!
+}
+
+input Api_products_updateInput {
+  data: Api_products_updateInputData!
+}
+
+type Api_Products_deleteOutput {
+  count: Float
+  ids: [String]
+}
+
+input Api_products_deleteInputData {
+  data: [String]!
+}
+
+input Api_products_deleteInput {
+  data: Api_products_deleteInputData!
+}
+
+type Api_Products_groupByOutputBreakdownCounts {
+  countBy: String
+  count: Float
+}
+
+type Api_Products_groupByOutputBreakdown {
+  uniqueIdentifier: String
+  counts: [Api_Products_groupByOutputBreakdownCounts]!
+}
+
+type Api_Products_groupByOutput {
+  breakdown: [Api_Products_groupByOutputBreakdown]
+}
+
+input Api_products_groupByInputDataPageSort {
+  field: String!
+  order: String!
+}
+
+input Api_products_groupByInputDataPageFilter {
+  field: String!
+  operation: String!
+  value: String!
+}
+
+input Api_products_groupByInputDataPage {
+  page: Float
+  pageSize: Float
+  distinct: [String]
+  sort: Api_products_groupByInputDataPageSort
+  filter: [Api_products_groupByInputDataPageFilter]
+  search: String
+}
+
+input Api_products_groupByInputData {
+  groupBy: [String]!
+  countBy: [String]!
+  operation: String!
+  type: String
+  page: Api_products_groupByInputDataPage
+}
+
+input Api_products_groupByInput {
+  data: Api_products_groupByInputData!
+}
+
+type Api_Products_aggregateOutputBreakdown {
+  countBy: String
+  count: Float
+}
+
+type Api_Products_aggregateOutput {
+  breakdown: [Api_Products_aggregateOutputBreakdown]
+}
+
+input Api_products_aggregateInputDataPageSort {
+  field: String!
+  order: String!
+}
+
+input Api_products_aggregateInputDataPageFilter {
+  field: String!
+  operation: String!
+  value: String!
+}
+
+input Api_products_aggregateInputDataPage {
+  page: Float
+  pageSize: Float
+  distinct: [String]
+  sort: Api_products_aggregateInputDataPageSort
+  filter: [Api_products_aggregateInputDataPageFilter]
+  search: String
+}
+
+input Api_products_aggregateInputData {
+  countBy: [String]!
+  operation: String!
+  page: Api_products_aggregateInputDataPage
+}
+
+input Api_products_aggregateInput {
+  data: Api_products_aggregateInputData!
 }
 
 type Api_Application_listOutputData {

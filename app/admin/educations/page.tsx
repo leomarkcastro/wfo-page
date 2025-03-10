@@ -43,7 +43,7 @@ export default function EducationsPage() {
             sortable: true,
             specialType: 'datetime',
             renderCell(value) {
-              return fMoment(value).format('MM/DD/YYYY hh:mm A');
+              return fMoment(value)?.format('MM/DD/YYYY hh:mm A');
             },
           },
           {
@@ -58,7 +58,7 @@ export default function EducationsPage() {
             sortable: true,
             specialType: 'datetime',
             renderCell(value) {
-              return fMoment(value).format('MM/DD/YYYY hh:mm A');
+              return fMoment(value)?.format('MM/DD/YYYY hh:mm A');
             },
           },
         ]}

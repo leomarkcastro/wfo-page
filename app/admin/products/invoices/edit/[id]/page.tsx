@@ -18,6 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { fMoment } from '@/lib/services/fMoment';
 
 // Define invoice status options
 const INVOICE_STATUSES = [
@@ -113,7 +114,8 @@ export default function InvoiceEdit() {
     }
   }, [items, form, calculateTotal]);
 
-  const addItem = () => {
+  const addItem = (e) => {
+    e.preventDefault();
     setItems([...items, { id: '', name: '', price: 0, quantity: 1 }]);
   };
 
@@ -126,6 +128,12 @@ export default function InvoiceEdit() {
   const updateItem = (index: number, field: string, value: number | string) => {
     const newItems = [...items];
     newItems[index] = { ...newItems[index], [field]: value };
+
+    // If setting a custom name, clear the service ID
+    if (field === 'name' && value !== '') {
+      newItems[index].id = '';
+    }
+
     setItems(newItems);
   };
 
@@ -169,23 +177,25 @@ export default function InvoiceEdit() {
         <div key={index} className='grid grid-cols-12 items-center gap-2'>
           <div className='col-span-5'>
             <div className='flex flex-col space-y-2'>
-              <select
-                className='w-full rounded border p-2'
-                value={item.id}
-                onChange={(e) => {
-                  updateItem(index, 'id', e.target.value);
-                  handleServiceSelection(index, e.target.value);
-                }}
-              >
-                <option value=''>Select a service or add custom</option>
-                {mockServicePurchases.map((service) => (
-                  <option key={service.id} value={service.id}>
-                    {service.name}
-                  </option>
-                ))}
-              </select>
+              {!item.name ? (
+                <select
+                  className='w-full rounded border p-2'
+                  value={item.id}
+                  onChange={(e) => {
+                    updateItem(index, 'id', e.target.value);
+                    handleServiceSelection(index, e.target.value);
+                  }}
+                >
+                  <option value=''>Select a service or add custom</option>
+                  {mockServicePurchases.map((service) => (
+                    <option key={service.id} value={service.id}>
+                      {service.name}
+                    </option>
+                  ))}
+                </select>
+              ) : null}
 
-              {!item.id && (
+              {(!item.id || item.name) && (
                 <input
                   type='text'
                   className='w-full rounded border p-2'
@@ -263,7 +273,7 @@ export default function InvoiceEdit() {
         variables: {
           ...data,
           items: itemsWithoutTypename,
-          paidAt: data.paidAt ? new Date(data.paidAt).toISOString() : null,
+          paidAt: fMoment(data.paidAt)?.toDate().toISOString(),
           total: calculateTotal(),
         },
       });
@@ -335,10 +345,8 @@ export default function InvoiceEdit() {
           customerName: invoice.customerName,
           total: invoice.total,
           status: invoice.status,
-          createdAt: new Date(invoice.createdAt).toLocaleDateString(),
-          paidAt: invoice.paidAt
-            ? new Date(invoice.paidAt).toLocaleDateString()
-            : 'Not paid yet',
+          createdAt: fMoment(invoice.createdAt).toDate().toLocaleDateString(),
+          paidAt: fMoment(invoice.paidAt)?.toDate().toLocaleDateString(),
         }}
         onForm={(formInstance) => {
           setForm(formInstance);

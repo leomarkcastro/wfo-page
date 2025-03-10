@@ -63,17 +63,16 @@ export function MultiFileInput({
     [maxFiles, existingFiles.length, newFiles.length],
   );
 
-  const { getRootProps, getInputProps, isDragActive, fileRejections } =
-    useDropzone({
-      onDrop,
-      maxFiles: maxFiles ? maxFiles - existingFiles.length : undefined,
-      accept: allowedTypes
-        ? Object.fromEntries(allowedTypes.map((type) => [type, []]))
-        : undefined,
-      onDropRejected: (rejections) => {
-        console.error('Files rejected:', rejections);
-      },
-    });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    maxFiles: maxFiles ? maxFiles - existingFiles.length : undefined,
+    accept: allowedTypes
+      ? Object.fromEntries(allowedTypes.map((type) => [type, []]))
+      : undefined,
+    onDropRejected: (rejections) => {
+      console.error('Files rejected:', rejections);
+    },
+  });
 
   const removeExistingFile = (id: string) => {
     setExistingFiles((prev) => prev.filter((file) => file.id !== id));
@@ -129,7 +128,7 @@ export function MultiFileInput({
       await Promise.all(uploadPromises);
 
       const newFileItems: FileItem[] = uploadURL.data.file_uploadURL.files.map(
-        (file: any) => ({
+        (file) => ({
           name: file.fileName,
           id: file.id,
         }),

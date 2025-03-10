@@ -866,6 +866,101 @@ export type Api_ProductFulfillment_UpdateOutput = {
   ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
+export type Api_Products_AggregateOutput = {
+  __typename?: 'Api_Products_aggregateOutput';
+  breakdown?: Maybe<Array<Maybe<Api_Products_AggregateOutputBreakdown>>>;
+};
+
+export type Api_Products_AggregateOutputBreakdown = {
+  __typename?: 'Api_Products_aggregateOutputBreakdown';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Products_CreateOutput = {
+  __typename?: 'Api_Products_createOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Products_DeleteOutput = {
+  __typename?: 'Api_Products_deleteOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type Api_Products_GetOutput = {
+  __typename?: 'Api_Products_getOutput';
+  data?: Maybe<Api_Products_GetOutputData>;
+};
+
+export type Api_Products_GetOutputData = {
+  __typename?: 'Api_Products_getOutputData';
+  createdAt?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  photo?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
+  updatedAt?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Products_GroupByOutput = {
+  __typename?: 'Api_Products_groupByOutput';
+  breakdown?: Maybe<Array<Maybe<Api_Products_GroupByOutputBreakdown>>>;
+};
+
+export type Api_Products_GroupByOutputBreakdown = {
+  __typename?: 'Api_Products_groupByOutputBreakdown';
+  counts: Array<Maybe<Api_Products_GroupByOutputBreakdownCounts>>;
+  uniqueIdentifier?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Products_GroupByOutputBreakdownCounts = {
+  __typename?: 'Api_Products_groupByOutputBreakdownCounts';
+  count?: Maybe<Scalars['Float']['output']>;
+  countBy?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Products_ListOutput = {
+  __typename?: 'Api_Products_listOutput';
+  data?: Maybe<Array<Maybe<Api_Products_ListOutputData>>>;
+  page?: Maybe<Api_Products_ListOutputPage>;
+};
+
+export type Api_Products_ListOutputData = {
+  __typename?: 'Api_Products_listOutputData';
+  createdAt?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  photo?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
+  updatedAt?: Maybe<Scalars['String']['output']>;
+};
+
+export type Api_Products_ListOutputPage = {
+  __typename?: 'Api_Products_listOutputPage';
+  page?: Maybe<Scalars['Float']['output']>;
+  pageSize?: Maybe<Scalars['Float']['output']>;
+  range?: Maybe<Api_Products_ListOutputPageRange>;
+  total?: Maybe<Scalars['Float']['output']>;
+};
+
+export type Api_Products_ListOutputPageRange = {
+  __typename?: 'Api_Products_listOutputPageRange';
+  from: Scalars['Float']['output'];
+  to: Scalars['Float']['output'];
+};
+
+export type Api_Products_UpdateOutput = {
+  __typename?: 'Api_Products_updateOutput';
+  count?: Maybe<Scalars['Float']['output']>;
+  ids?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
 export type Api_ServicePurchase_AggregateOutput = {
   __typename?: 'Api_ServicePurchase_aggregateOutput';
   breakdown?: Maybe<Array<Maybe<Api_ServicePurchase_AggregateOutputBreakdown>>>;
@@ -2284,6 +2379,149 @@ export type Api_ProductFulfillment_UpdateInputDataDataData = {
   total?: InputMaybe<Scalars['Float']['input']>;
 };
 
+export type Api_Products_AggregateInput = {
+  data: Api_Products_AggregateInputData;
+};
+
+export type Api_Products_AggregateInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_Products_AggregateInputDataPage>;
+};
+
+export type Api_Products_AggregateInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Products_AggregateInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Products_AggregateInputDataPageSort>;
+};
+
+export type Api_Products_AggregateInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Products_AggregateInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Products_CreateInput = {
+  data: Api_Products_CreateInputData;
+};
+
+export type Api_Products_CreateInputData = {
+  data: Array<InputMaybe<Api_Products_CreateInputDataData>>;
+};
+
+export type Api_Products_CreateInputDataData = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type Api_Products_DeleteInput = {
+  data: Api_Products_DeleteInputData;
+};
+
+export type Api_Products_DeleteInputData = {
+  data: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+export type Api_Products_GetInput = {
+  data: Api_Products_GetInputData;
+};
+
+export type Api_Products_GetInputData = {
+  id: Scalars['String']['input'];
+};
+
+export type Api_Products_GroupByInput = {
+  data: Api_Products_GroupByInputData;
+};
+
+export type Api_Products_GroupByInputData = {
+  countBy: Array<InputMaybe<Scalars['String']['input']>>;
+  groupBy: Array<InputMaybe<Scalars['String']['input']>>;
+  operation: Scalars['String']['input'];
+  page?: InputMaybe<Api_Products_GroupByInputDataPage>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Api_Products_GroupByInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Products_GroupByInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Products_GroupByInputDataPageSort>;
+};
+
+export type Api_Products_GroupByInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Products_GroupByInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Products_ListInput = {
+  data: Api_Products_ListInputData;
+};
+
+export type Api_Products_ListInputData = {
+  page?: InputMaybe<Api_Products_ListInputDataPage>;
+};
+
+export type Api_Products_ListInputDataPage = {
+  distinct?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  filter?: InputMaybe<Array<InputMaybe<Api_Products_ListInputDataPageFilter>>>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+  pageSize?: InputMaybe<Scalars['Float']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  sort?: InputMaybe<Api_Products_ListInputDataPageSort>;
+};
+
+export type Api_Products_ListInputDataPageFilter = {
+  field: Scalars['String']['input'];
+  operation: Scalars['String']['input'];
+  value: Scalars['String']['input'];
+};
+
+export type Api_Products_ListInputDataPageSort = {
+  field: Scalars['String']['input'];
+  order: Scalars['String']['input'];
+};
+
+export type Api_Products_UpdateInput = {
+  data: Api_Products_UpdateInputData;
+};
+
+export type Api_Products_UpdateInputData = {
+  data: Array<InputMaybe<Api_Products_UpdateInputDataData>>;
+};
+
+export type Api_Products_UpdateInputDataData = {
+  data: Api_Products_UpdateInputDataDataData;
+  id: Scalars['String']['input'];
+};
+
+export type Api_Products_UpdateInputDataDataData = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type Api_ServicePurchase_AggregateInput = {
   data: Api_ServicePurchase_AggregateInputData;
 };
@@ -3633,6 +3871,9 @@ export type Mutation = {
   api_productFulfillment_create?: Maybe<Api_ProductFulfillment_CreateOutput>;
   api_productFulfillment_delete?: Maybe<Api_ProductFulfillment_DeleteOutput>;
   api_productFulfillment_update?: Maybe<Api_ProductFulfillment_UpdateOutput>;
+  api_products_create?: Maybe<Api_Products_CreateOutput>;
+  api_products_delete?: Maybe<Api_Products_DeleteOutput>;
+  api_products_update?: Maybe<Api_Products_UpdateOutput>;
   api_servicePurchase_create?: Maybe<Api_ServicePurchase_CreateOutput>;
   api_servicePurchase_delete?: Maybe<Api_ServicePurchase_DeleteOutput>;
   api_servicePurchase_update?: Maybe<Api_ServicePurchase_UpdateOutput>;
@@ -3672,8 +3913,10 @@ export type Mutation = {
   createMailTrackHistory?: Maybe<MailTrackHistory>;
   createNetforumLog?: Maybe<NetforumLog>;
   createNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
+  createProduct?: Maybe<Product>;
   createProductFulfillment?: Maybe<ProductFulfillment>;
   createProductFulfillments?: Maybe<Array<Maybe<ProductFulfillment>>>;
+  createProducts?: Maybe<Array<Maybe<Product>>>;
   createServerError?: Maybe<ServerError>;
   createServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   createServerLog?: Maybe<ServerLog>;
@@ -3718,8 +3961,10 @@ export type Mutation = {
   deleteMailTrackHistory?: Maybe<MailTrackHistory>;
   deleteNetforumLog?: Maybe<NetforumLog>;
   deleteNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
+  deleteProduct?: Maybe<Product>;
   deleteProductFulfillment?: Maybe<ProductFulfillment>;
   deleteProductFulfillments?: Maybe<Array<Maybe<ProductFulfillment>>>;
+  deleteProducts?: Maybe<Array<Maybe<Product>>>;
   deleteServerError?: Maybe<ServerError>;
   deleteServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   deleteServerLog?: Maybe<ServerLog>;
@@ -3767,8 +4012,10 @@ export type Mutation = {
   updateMailTrackHistory?: Maybe<MailTrackHistory>;
   updateNetforumLog?: Maybe<NetforumLog>;
   updateNetforumLogs?: Maybe<Array<Maybe<NetforumLog>>>;
+  updateProduct?: Maybe<Product>;
   updateProductFulfillment?: Maybe<ProductFulfillment>;
   updateProductFulfillments?: Maybe<Array<Maybe<ProductFulfillment>>>;
+  updateProducts?: Maybe<Array<Maybe<Product>>>;
   updateServerError?: Maybe<ServerError>;
   updateServerErrors?: Maybe<Array<Maybe<ServerError>>>;
   updateServerLog?: Maybe<ServerLog>;
@@ -3927,6 +4174,21 @@ export type MutationApi_ProductFulfillment_DeleteArgs = {
 
 export type MutationApi_ProductFulfillment_UpdateArgs = {
   input: Api_ProductFulfillment_UpdateInput;
+};
+
+
+export type MutationApi_Products_CreateArgs = {
+  input: Api_Products_CreateInput;
+};
+
+
+export type MutationApi_Products_DeleteArgs = {
+  input: Api_Products_DeleteInput;
+};
+
+
+export type MutationApi_Products_UpdateArgs = {
+  input: Api_Products_UpdateInput;
 };
 
 
@@ -4133,6 +4395,11 @@ export type MutationCreateNetforumLogsArgs = {
 };
 
 
+export type MutationCreateProductArgs = {
+  data: ProductCreateInput;
+};
+
+
 export type MutationCreateProductFulfillmentArgs = {
   data: ProductFulfillmentCreateInput;
 };
@@ -4140,6 +4407,11 @@ export type MutationCreateProductFulfillmentArgs = {
 
 export type MutationCreateProductFulfillmentsArgs = {
   data: Array<ProductFulfillmentCreateInput>;
+};
+
+
+export type MutationCreateProductsArgs = {
+  data: Array<ProductCreateInput>;
 };
 
 
@@ -4363,6 +4635,11 @@ export type MutationDeleteNetforumLogsArgs = {
 };
 
 
+export type MutationDeleteProductArgs = {
+  where: ProductWhereUniqueInput;
+};
+
+
 export type MutationDeleteProductFulfillmentArgs = {
   where: ProductFulfillmentWhereUniqueInput;
 };
@@ -4370,6 +4647,11 @@ export type MutationDeleteProductFulfillmentArgs = {
 
 export type MutationDeleteProductFulfillmentsArgs = {
   where: Array<ProductFulfillmentWhereUniqueInput>;
+};
+
+
+export type MutationDeleteProductsArgs = {
+  where: Array<ProductWhereUniqueInput>;
 };
 
 
@@ -4614,6 +4896,12 @@ export type MutationUpdateNetforumLogsArgs = {
 };
 
 
+export type MutationUpdateProductArgs = {
+  data: ProductUpdateInput;
+  where: ProductWhereUniqueInput;
+};
+
+
 export type MutationUpdateProductFulfillmentArgs = {
   data: ProductFulfillmentUpdateInput;
   where: ProductFulfillmentWhereUniqueInput;
@@ -4622,6 +4910,11 @@ export type MutationUpdateProductFulfillmentArgs = {
 
 export type MutationUpdateProductFulfillmentsArgs = {
   data: Array<ProductFulfillmentUpdateArgs>;
+};
+
+
+export type MutationUpdateProductsArgs = {
+  data: Array<ProductUpdateArgs>;
 };
 
 
@@ -4829,6 +5122,28 @@ export type PasswordState = {
   isSet: Scalars['Boolean']['output'];
 };
 
+export type Product = {
+  __typename?: 'Product';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  note?: Maybe<Scalars['String']['output']>;
+  photo?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type ProductCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
 export type ProductFulfillment = {
   __typename?: 'ProductFulfillment';
   balance?: Maybe<Scalars['Float']['output']>;
@@ -4910,6 +5225,50 @@ export type ProductFulfillmentWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type ProductOrderByInput = {
+  createdAt?: InputMaybe<OrderDirection>;
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  note?: InputMaybe<OrderDirection>;
+  photo?: InputMaybe<OrderDirection>;
+  price?: InputMaybe<OrderDirection>;
+  updatedAt?: InputMaybe<OrderDirection>;
+};
+
+export type ProductUpdateArgs = {
+  data: ProductUpdateInput;
+  where: ProductWhereUniqueInput;
+};
+
+export type ProductUpdateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  note?: InputMaybe<Scalars['String']['input']>;
+  photo?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type ProductWhereInput = {
+  AND?: InputMaybe<Array<ProductWhereInput>>;
+  NOT?: InputMaybe<Array<ProductWhereInput>>;
+  OR?: InputMaybe<Array<ProductWhereInput>>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  name?: InputMaybe<StringFilter>;
+  note?: InputMaybe<StringFilter>;
+  photo?: InputMaybe<StringFilter>;
+  price?: InputMaybe<FloatNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeNullableFilter>;
+};
+
+export type ProductWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   ErrorTest?: Maybe<Scalars['String']['output']>;
@@ -4941,6 +5300,10 @@ export type Query = {
   api_productFulfillment_get?: Maybe<Api_ProductFulfillment_GetOutput>;
   api_productFulfillment_groupBy?: Maybe<Api_ProductFulfillment_GroupByOutput>;
   api_productFulfillment_list?: Maybe<Api_ProductFulfillment_ListOutput>;
+  api_products_aggregate?: Maybe<Api_Products_AggregateOutput>;
+  api_products_get?: Maybe<Api_Products_GetOutput>;
+  api_products_groupBy?: Maybe<Api_Products_GroupByOutput>;
+  api_products_list?: Maybe<Api_Products_ListOutput>;
   api_servicePurchase_aggregate?: Maybe<Api_ServicePurchase_AggregateOutput>;
   api_servicePurchase_get?: Maybe<Api_ServicePurchase_GetOutput>;
   api_servicePurchase_groupBy?: Maybe<Api_ServicePurchase_GroupByOutput>;
@@ -4986,9 +5349,12 @@ export type Query = {
   netforumLog?: Maybe<NetforumLog>;
   netforumLogs?: Maybe<Array<NetforumLog>>;
   netforumLogsCount?: Maybe<Scalars['Int']['output']>;
+  product?: Maybe<Product>;
   productFulfillment?: Maybe<ProductFulfillment>;
   productFulfillments?: Maybe<Array<ProductFulfillment>>;
   productFulfillmentsCount?: Maybe<Scalars['Int']['output']>;
+  products?: Maybe<Array<Product>>;
+  productsCount?: Maybe<Scalars['Int']['output']>;
   serverError?: Maybe<ServerError>;
   serverErrors?: Maybe<Array<ServerError>>;
   serverErrorsCount?: Maybe<Scalars['Int']['output']>;
@@ -5162,6 +5528,26 @@ export type QueryApi_ProductFulfillment_GroupByArgs = {
 
 export type QueryApi_ProductFulfillment_ListArgs = {
   input: Api_ProductFulfillment_ListInput;
+};
+
+
+export type QueryApi_Products_AggregateArgs = {
+  input: Api_Products_AggregateInput;
+};
+
+
+export type QueryApi_Products_GetArgs = {
+  input: Api_Products_GetInput;
+};
+
+
+export type QueryApi_Products_GroupByArgs = {
+  input: Api_Products_GroupByInput;
+};
+
+
+export type QueryApi_Products_ListArgs = {
+  input: Api_Products_ListInput;
 };
 
 
@@ -5424,6 +5810,11 @@ export type QueryNetforumLogsCountArgs = {
 };
 
 
+export type QueryProductArgs = {
+  where: ProductWhereUniqueInput;
+};
+
+
 export type QueryProductFulfillmentArgs = {
   where: ProductFulfillmentWhereUniqueInput;
 };
@@ -5440,6 +5831,20 @@ export type QueryProductFulfillmentsArgs = {
 
 export type QueryProductFulfillmentsCountArgs = {
   where?: ProductFulfillmentWhereInput;
+};
+
+
+export type QueryProductsArgs = {
+  cursor?: InputMaybe<ProductWhereUniqueInput>;
+  orderBy?: Array<ProductOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ProductWhereInput;
+};
+
+
+export type QueryProductsCountArgs = {
+  where?: ProductWhereInput;
 };
 
 
@@ -7260,6 +7665,41 @@ export type ProductFulfillment_GroupByQueryVariables = Exact<{
 
 export type ProductFulfillment_GroupByQuery = { __typename?: 'Query', api_productFulfillment_groupBy?: { __typename?: 'Api_ProductFulfillment_groupByOutput', breakdown?: Array<{ __typename?: 'Api_ProductFulfillment_groupByOutputBreakdown', uniqueIdentifier?: string | null, counts: Array<{ __typename?: 'Api_ProductFulfillment_groupByOutputBreakdownCounts', countBy?: string | null, count?: number | null } | null> } | null> | null } | null };
 
+export type Products_ListQueryVariables = Exact<{
+  input: Api_Products_ListInput;
+}>;
+
+
+export type Products_ListQuery = { __typename?: 'Query', api_products_list?: { __typename?: 'Api_Products_listOutput', data?: Array<{ __typename?: 'Api_Products_listOutputData', id?: string | null, name?: string | null, price?: number | null, description?: string | null, photo?: string | null, note?: string | null, createdAt?: string | null, updatedAt?: string | null } | null> | null, page?: { __typename?: 'Api_Products_listOutputPage', total?: number | null, page?: number | null, pageSize?: number | null, range?: { __typename?: 'Api_Products_listOutputPageRange', from: number, to: number } | null } | null } | null };
+
+export type Products_GetQueryVariables = Exact<{
+  input: Api_Products_GetInput;
+}>;
+
+
+export type Products_GetQuery = { __typename?: 'Query', api_products_get?: { __typename?: 'Api_Products_getOutput', data?: { __typename?: 'Api_Products_getOutputData', id?: string | null, name?: string | null, price?: number | null, description?: string | null, photo?: string | null, note?: string | null, createdAt?: string | null, updatedAt?: string | null } | null } | null };
+
+export type Products_CreateMutationVariables = Exact<{
+  input: Api_Products_CreateInput;
+}>;
+
+
+export type Products_CreateMutation = { __typename?: 'Mutation', api_products_create?: { __typename?: 'Api_Products_createOutput', ids?: Array<string | null> | null, count?: number | null } | null };
+
+export type Products_UpdateMutationVariables = Exact<{
+  input: Api_Products_UpdateInput;
+}>;
+
+
+export type Products_UpdateMutation = { __typename?: 'Mutation', api_products_update?: { __typename?: 'Api_Products_updateOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
+export type Products_DeleteMutationVariables = Exact<{
+  input: Api_Products_DeleteInput;
+}>;
+
+
+export type Products_DeleteMutation = { __typename?: 'Mutation', api_products_delete?: { __typename?: 'Api_Products_deleteOutput', count?: number | null, ids?: Array<string | null> | null } | null };
+
 export type Api_ServicePurchase_ListQueryVariables = Exact<{
   input: Api_ServicePurchase_ListInput;
 }>;
@@ -7429,6 +7869,11 @@ export const ProductFulfillment_UpdateDocument = {"kind":"Document","definitions
 export const ProductFulfillment_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ProductFulfillment_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_DeleteMutation, ProductFulfillment_DeleteMutationVariables>;
 export const Api_ProductFulfillment_AggregateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_productFulfillment_aggregate"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_aggregateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_aggregate"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]} as unknown as DocumentNode<Api_ProductFulfillment_AggregateQuery, Api_ProductFulfillment_AggregateQueryVariables>;
 export const ProductFulfillment_GroupByDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ProductFulfillment_GroupBy"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_productFulfillment_groupByInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_productFulfillment_groupBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"breakdown"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"uniqueIdentifier"}},{"kind":"Field","name":{"kind":"Name","value":"counts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countBy"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ProductFulfillment_GroupByQuery, ProductFulfillment_GroupByQueryVariables>;
+export const Products_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Products_List"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_products_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_products_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"photo"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Products_ListQuery, Products_ListQueryVariables>;
+export const Products_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Products_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_products_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_products_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"price"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"photo"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]}}]} as unknown as DocumentNode<Products_GetQuery, Products_GetQueryVariables>;
+export const Products_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Products_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_products_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_products_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"ids"}},{"kind":"Field","name":{"kind":"Name","value":"count"}}]}}]}}]} as unknown as DocumentNode<Products_CreateMutation, Products_CreateMutationVariables>;
+export const Products_UpdateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Products_Update"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_products_updateInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_products_update"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Products_UpdateMutation, Products_UpdateMutationVariables>;
+export const Products_DeleteDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Products_Delete"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_products_deleteInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_products_delete"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<Products_DeleteMutation, Products_DeleteMutationVariables>;
 export const Api_ServicePurchase_ListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Api_servicePurchase_list"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_listInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_list"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balanceDue"}},{"kind":"Field","name":{"kind":"Name","value":"cancelled"}},{"kind":"Field","name":{"kind":"Name","value":"cancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"range"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}},{"kind":"Field","name":{"kind":"Name","value":"page"}},{"kind":"Field","name":{"kind":"Name","value":"pageSize"}}]}}]}}]}}]} as unknown as DocumentNode<Api_ServicePurchase_ListQuery, Api_ServicePurchase_ListQueryVariables>;
 export const ServicePurchase_GetDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ServicePurchase_Get"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_getInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_get"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"product"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"total"}},{"kind":"Field","name":{"kind":"Name","value":"balanceDue"}},{"kind":"Field","name":{"kind":"Name","value":"cancelled"}},{"kind":"Field","name":{"kind":"Name","value":"cancelledAt"}},{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_GetQuery, ServicePurchase_GetQueryVariables>;
 export const ServicePurchase_CreateDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ServicePurchase_Create"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Api_servicePurchase_createInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"api_servicePurchase_create"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"count"}},{"kind":"Field","name":{"kind":"Name","value":"ids"}}]}}]}}]} as unknown as DocumentNode<ServicePurchase_CreateMutation, ServicePurchase_CreateMutationVariables>;

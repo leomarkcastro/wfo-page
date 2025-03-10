@@ -52,7 +52,7 @@ export default function CollectionsPage() {
             key: 'createdAt',
             label: 'Uploaded At',
             renderCell(value) {
-              return fMoment(value).format('MM/DD/YYYY hh:mm A');
+              return fMoment(value)?.format('MM/DD/YYYY hh:mm A');
             },
             sortable: true,
             filterable: ['contains', 'equals', 'gt', 'lt', 'gte', 'lte'],

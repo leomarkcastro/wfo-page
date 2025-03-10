@@ -5,5 +5,11 @@ export const fMoment = (inp?: moment.MomentInput) => {
     if (typeof inp === 'string' && !isNaN(Number(inp))) {
         inp = parseInt(inp)
     }
-    return moment(inp)
+    const ret = moment(inp)
+
+    if (ret.isValid()) {
+        return ret
+    } else {
+        return undefined
+    }
 }

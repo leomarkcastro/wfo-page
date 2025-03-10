@@ -123,10 +123,29 @@ const navigationItems: NavItem[] = [
     ],
   },
   {
+    name: 'Products',
+    icon: BoxesIcon,
+    description: 'Manage product catalog',
+    children: [
+      {
+        name: 'Products List',
+        href: '/admin/products/products',
+        icon: BoxesIcon,
+        description: 'Manage product catalog',
+      },
+    ],
+  },
+  {
     name: 'Orders & Billing',
     icon: DollarSign,
     description: 'Manage orders, products, and invoices',
     children: [
+      {
+        name: 'Invoices',
+        href: '/admin/products/invoices',
+        icon: FileText,
+        description: 'Manage customer invoices and payments',
+      },
       {
         name: 'Service Purchase',
         href: '/admin/products/service-purchase',
@@ -138,12 +157,6 @@ const navigationItems: NavItem[] = [
         href: '/admin/products/product-fulfillment',
         icon: BoxesIcon,
         description: 'Processing and delivering purchased products',
-      },
-      {
-        name: 'Invoices',
-        href: '/admin/products/invoices',
-        icon: FileText,
-        description: 'Manage customer invoices and payments',
       },
       {
         name: 'Invoice Batching',
